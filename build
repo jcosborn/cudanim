@@ -1,0 +1,13 @@
+#!/bin/sh
+
+#nvcc="/usr/local/cuda/bin/nvcc"
+#$nvcc vectorAdd.cu
+
+#nim cpp -c -d:release cuda
+
+#/usr/local/cuda/bin/nvcc -I$HOME/tmp/nim/Nim/lib nimcache/cuda.cpp
+
+#nim cpp -d:release cuda
+
+#nim cpp -d:release vectorAdd
+nim cpp -d:release genkernel

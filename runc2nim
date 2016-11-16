@@ -1,0 +1,8 @@
+#!/bin/sh
+exit
+
+f="vectorAdd.cu"
+g="vectorAdd.cup"
+
+cat $f |sed 's/\([a-zA-Z0-9_]*\)<<</cudaLaunch(\1,/;s/>>>(/,/' >$g
+c2nim opts.c2nim $g
