@@ -21,7 +21,8 @@ proc newGpuArray[T](n: int): gpuArray[T] =
 proc timesTwo*(a: gpuArray; n: int32) {.cudaGlobal.} =
   var i = blockDim.x * blockIdx.x + threadIdx.x
   if i < n:
-    a[i] = a.T(2) * a[i]
+    #a[i] = a.T(2) * a[i]
+    a[i] *= a.T(2)
 
 var
   n = 10000.int32

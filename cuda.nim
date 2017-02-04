@@ -1,4 +1,6 @@
 import macros
+#import deviceProcGen
+import inline
 #macro dumpType(x:typed): auto =
 #  result = newEmptyNode()
 #  echo x.getType.treerepr
@@ -84,7 +86,11 @@ template cudaDefs(body: untyped): untyped {.dirty.} =
     cast[ptr array[0,T]](x)[][i]
   template `[]=`[T](x: ptr T, i: SomeInteger, y:untyped): untyped =
     cast[ptr array[0,T]](x)[][i] = y
-  body
+  #bind deviceProcGen
+  #deviceProcGen:
+  bind inlineProcs
+  inlineProcs:
+    body
 
 template cudaLaunch*(p: proc, nb,nt: SomeInteger,
                      arg: varargs[pointer,dataAddr]) =
@@ -117,10 +123,10 @@ macro `>>`*(px: tuple, y: any): auto =
   #echo px[0].getTypeImpl.treerepr
   #echo "kernel args:"
   #echo y.treerepr
-  var a = y
-  if y.kind != nnkPar: a = newNimNode(nnkPar).addChildrenFrom(y)
+  #var a = y
+  #if y.kind != nnkPar: a = newNimNode(nnkPar).addChildrenFrom(y)
   result = newCall(ident("cudaLaunch"))
-  let krnl = newCall(px[0]).addChildrenFrom(a)
+  let krnl = newCall(px[0]).addChildrenFrom(y)
   #echo "kernel inst call:"
   #echo krnl.treerepr
   result.add getAst(getInst(krnl))[0]
