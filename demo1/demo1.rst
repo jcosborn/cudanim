@@ -23,7 +23,7 @@ Code portability in Nim
 
 Here's an example of the result (so far)
 
-.. code-block:: nim
+.. code-block:: Nim
 
   import cpugpuarray
 
@@ -80,7 +80,8 @@ Implementation details
 The main container object in the example above is an array that can live
 on the CPU and also the GPU.  This is defined as
 
-.. code-block:: nim
+.. code-block:: Nim
+
   type
     ArrayObj*[T] = object
       p*: ptr array[0,T]
@@ -99,14 +100,14 @@ They will be visible to another module that ``import``'s this module (otherwise 
 
 The ``ArrayObj`` contains four fields:
 
-* ``p``: which is a pointer (``ptr``) for the data on the host.\
+- ``p``: which is a pointer (``ptr``) for the data on the host.\
      This is implemented as a pointer to an array of length ``0``\
      with elements of type ``T`` for convenience.\
      This should really be marked with an ``{.unchecked.}`` pragma to prevent\
      bounds checking in debug mode (bounds checks are off by default in release mode).
-* ``n``: the number of elements in the array.
-* ``g``: a GPU array object, defined next.
-* ``lastOnGpu``: a Boolean that tells us which pointer is valid.
+- ``n``: the number of elements in the array.
+- ``g``: a GPU array object, defined next.
+- ``lastOnGpu``: a Boolean that tells us which pointer is valid.
 
 The ``GpuArrayObj`` is similar to ``ArrayObj``, but just contains a pointer\
 (which will hold a GPU pointer) and the number of elements.
@@ -169,10 +170,12 @@ The first major task is to examine the body of the ``onGpu`` block and extract\
 This is done by the ``packVars`` macro.
 It walks the syntax tree of the code block passed in and keeps track of\
 the (unique) variables it references.
-It then spits out a data structure (a `tuple<https://nim-lang.org/docs/manual.html#types-tuples-and-object-types>`__) containing those variables.
+It then spits out a data structure (a tuple_) containing those variables.
 It wraps each variable in a call to the function name that was passed in\
 (in this case ``getGpuPtr``).
 For the example above, this line would get expanded to
+
+.. _tuple: https://nim-lang.org/docs/manual.html#types-tuples-and-object-types
 
 .. code-block:: Nim
 
