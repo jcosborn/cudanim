@@ -3,7 +3,6 @@ Portable expressions in Nim
 ===========================
 
 :Author: James C. Osborn
-.. :Version: |nimversion|
 
 .. contents::
 
@@ -12,18 +11,20 @@ Preliminaries
 
 This document was created with Nim's built-in documentation generator.
 It can parse documentation comments in the source code and also process
-separate `reStructuredText<https://en.wikipedia.org/wiki/ReStructuredText>`_
-files.
+separate reStructuredText_ files.
 This document was made from a reStructuredText file using Nim's
 document generator to try it out and also take advantage of its Nim
 code highlighter.
+
+.. _reStructuredText: https://en.wikipedia.org/wiki/ReStructuredText
 
 Code portability in Nim
 =======================
 
 Here's an example of the result (so far)
 
-.. code-block:: Nim
+.. code-block:: nim
+
   import cpugpuarray
 
   let N = 1000
@@ -65,6 +66,7 @@ Here's an example of the result (so far)
 The above can be compiled and run with
 
 ::
+
   nim cpp -d:release -r ex1.nim
 
 
