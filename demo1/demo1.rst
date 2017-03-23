@@ -80,7 +80,7 @@ Implementation details
 The main container object in the example above is an array that can live
 on the CPU and also the GPU.  This is defined as
 
-.. code-block:: Nim
+.. code-block:: nim
   type
     ArrayObj*[T] = object
       p*: ptr array[0,T]
@@ -98,6 +98,7 @@ The ``*`` (star) after all the type and field names above means that they are ex
 They will be visible to another module that ``import``'s this module (otherwise they would be private to this module).
 
 The ``ArrayObj`` contains four fields:
+
 * ``p``: which is a pointer (``ptr``) for the data on the host.\
      This is implemented as a pointer to an array of length ``0``\
      with elements of type ``T`` for convenience.\
@@ -120,6 +121,7 @@ The offload magic happens in the ``onGpu:`` block.
 It is defined like
 
 .. code-block:: Nim
+
   # the default total threads (nn=32*256) and threads per block (tpb=256)
   # are just for testing, they really should be an educated
   # guess made from querying the device
@@ -132,6 +134,7 @@ querying the device (or let the user specify some global default).
 One can override the defaults for a call by explicitly specifying them
 
 .. code-block:: Nim
+
   onGpu(x.n, 128):
     x += y * z
     z := 4
@@ -142,6 +145,7 @@ This would launch one (virtual) thread per element of the array ``x`` and use
 The CUDA kernel gets created here
 
 .. code-block:: Nim
+
   template onGpu*(nn,tpb: untyped, body: untyped): untyped =
     block:
       var v = packVars(body, getGpuPtr)
@@ -171,6 +175,7 @@ It wraps each variable in a call to the function name that was passed in\
 For the example above, this line would get expanded to
 
 .. code-block:: Nim
+
   var v = (getGpuPtr(x), getGpuPtr(y), getGpuPtr(z))
 
 The function ``getGpuPtr`` can then be defined independently for each type\
@@ -178,6 +183,7 @@ to return a valid GPU object (it actually doesn't have to be a pointer as we'll 
 For the ``ArrayObj`` type it is defined as
 
 .. code-block:: Nim
+
   template getGpuPtr*(x: var ArrayObj): untyped =
     toGpu(x)
     x.g
@@ -190,6 +196,7 @@ This is a (small) object residing in CPU memory, and the CUDA library\
 Copying the data to the GPU is handled by
 
 .. code-block:: Nim
+
   proc toGpu*(x: var ArrayObj) =
     if not x.lastOnGpu:
       x.lastOnGpu = true
@@ -211,6 +218,7 @@ Next we create the CUDA kernel (``kern``).
 The kernel is defined here
 
 .. code-block:: Nim
+
   proc kern(xx: myt) {.cudaGlobal.} =
     template deref(k: int): untyped = xx.d[k]
     substVars(body, deref)
@@ -220,6 +228,7 @@ This is a function taking one argument (which contains the packed\
 I originally wrote the procedure definition as
 
 .. code-block:: Nim
+
   proc kern(xx: type(v)) {.cudaGlobal.} =
     template deref(k: int): untyped = xx[k]
     substVars(body, deref)
@@ -240,6 +249,7 @@ procedures.
 The main body of the kernel comes from the
 
 .. code-block:: Nim
+
   substVars(body, deref)
 
 macro.
@@ -250,6 +260,7 @@ that specifies which position in the kernel argument tuple that variable\
 is in.  For the example above this would generate
 
 .. code-block:: Nim
+
   deref(0) += deref(1) * deref(2)
   deref(2) := 4
 
@@ -266,6 +277,7 @@ I won't go into the details here.
 The main step left now is to launch the kernel
 
 .. code-block:: Nim
+
   let ni = nn.int32
   let threadsPerBlock = tpb.int32
   let blocksPerGrid = (ni+threadsPerBlock-1) div threadsPerBlock
@@ -277,6 +289,7 @@ kernel, then launches the kernel ``kern`` with the argument tuple ``v``.
 Lastly, we synchronize.
 
 .. code-block:: Nim
+
   discard cudaDeviceSynchronize()
 
 This returns an error code, which I really should be checking instead\
@@ -294,6 +307,7 @@ also check on every assignment made on the CPU that the fields are\
 updated there.  So in the expression
 
 .. code-block:: Nim
+
   # do something on CPU again
   x += y * z
 
@@ -315,6 +329,7 @@ block in QEX.
 One possibility is simply
 
 .. code-block:: Nim
+
   threads:
     # do something on CPU
     x += y * z
@@ -328,4 +343,3 @@ One possibility is simply
     x += y * z
 
 Other variants are also possible.
-
