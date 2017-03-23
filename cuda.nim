@@ -1,6 +1,8 @@
 import macros
 #import deviceProcGen
 import inline
+import expr
+
 #macro dumpType(x:typed): auto =
 #  result = newEmptyNode()
 #  echo x.getType.treerepr
@@ -38,7 +40,9 @@ template dataAddr*(x: typed): pointer =
   #dumpType: x
   when x is seq: dataAddr(x[0])
   elif x is array: dataAddr(x[0])
+  #elif x is ptr: x
   else: pointer(unsafeAddr(x))
+  #else: x
 
 proc cudaGetLastError*(): cudaError_t
   {.importC,header:"cuda_runtime.h".}
@@ -68,10 +72,12 @@ template cudaMemcpy*(dst,src: typed, count: csize,
   let psrc = toPointer(src)
   cudaMemcpyX(pdst, psrc, count, kind)
 
-proc cudaLaunchKernel(p:pointer, gd,bd: CudaDim3, args: ptr pointer)
-  {.importC,header:"cuda_runtime.h".}
+proc cudaLaunchKernel(p:pointer, gd,bd: CudaDim3, args: ptr pointer):
+  cudaError_t {.importC,header:"cuda_runtime.h".}
 
 proc cudaDeviceReset*(): cudaError_t
+  {.importC,header:"cuda_runtime.h".}
+proc cudaDeviceSynchronize*(): cudaError_t
   {.importC,header:"cuda_runtime.h".}
 
 #proc printf*(fmt:cstring):cint {.importc,varargs,header:"<stdio.h>",discardable.}
@@ -79,9 +85,16 @@ proc cudaDeviceReset*(): cudaError_t
 #proc malloc*(size: csize):pointer {.importc,header:"<stdlib.h>".}
 
 template cudaDefs(body: untyped): untyped {.dirty.} =
-  var blockDim{.global,importC,noDecl.}: CudaDim3
+  var gridDim{.global,importC,noDecl.}: CudaDim3
   var blockIdx{.global,importC,noDecl.}: CudaDim3
+  var blockDim{.global,importC,noDecl.}: CudaDim3
   var threadIdx{.global,importC,noDecl.}: CudaDim3
+  template getGridDim: untyped = gridDim
+  template getBlockIdx: untyped = blockIdx
+  template getBlockDim: untyped = blockDim
+  template getThreadIdx: untyped = threadIdx
+  template getThreadNum: untyped = blockDim.x * blockIdx.x + threadIdx.x
+  template getNumThreads: untyped = gridDim.x * blockDim.x
   template `[]`[T](x: ptr T, i: SomeInteger): untyped =
     cast[ptr array[0,T]](x)[][i]
   template `[]=`[T](x: ptr T, i: SomeInteger, y:untyped): untyped =
@@ -92,7 +105,7 @@ template cudaDefs(body: untyped): untyped {.dirty.} =
   inlineProcs:
     body
 
-template cudaLaunch*(p: proc, nb,nt: SomeInteger,
+template cudaLaunch*(p: proc; blocksPerGrid,threadsPerBlock: SomeInteger;
                      arg: varargs[pointer,dataAddr]) =
   var pp: proc = p
   var gridDim, blockDim: CudaDim3
@@ -104,7 +117,9 @@ template cudaLaunch*(p: proc, nb,nt: SomeInteger,
   blockDim.z = 1
   var args: array[arg.len, pointer]
   for i in 0..<arg.len: args[i] = arg[i]
-  cudaLaunchKernel(pp, gridDim, blockDim, addr args[0])
+  #echo "really launching kernel"
+  let err = cudaLaunchKernel(pp, gridDim, blockDim, addr args[0])
+  if err: echo err
 
 #macro `<<`*(x:varargs[untyped]): auto =
 #  result = newEmptyNode()
@@ -149,10 +164,32 @@ macro cuda*(s,p: untyped): auto =
     result = p[0]
   result.addPragma parseExpr("{.codegenDecl:\""&ss&" $# $#$#\".}")[0]
   result.body = getAst(cudaDefs(result.body))
+  var sl = newStmtList()
+  sl.add quote do:
+    {.push checks: off.}
+    {.push stacktrace: off.}
+  sl.add result
+  result = sl
   #echo "end cuda:"
   #echo result.treerepr
 template cudaGlobal*(p: untyped): auto = cuda("__global__",p)
 
+template onGpu*(nn,tpb: untyped, body: untyped): untyped =
+  block:
+    var v = packVars(body, getGpuPtr)
+    type ByCopy {.bycopy.} [T] = object
+      d: T
+    proc kern(xx: ByCopy[type(v)]) {.cudaGlobal.} =
+      template deref(k: int): untyped = xx.d[k]
+      substVars(body, deref)
+    let ni = nn.int32
+    let threadsPerBlock = tpb.int32
+    let blocksPerGrid = (ni+threadsPerBlock-1) div threadsPerBlock
+    #echo "launching kernel"
+    cudaLaunch(kern, blocksPerGrid, threadsPerBlock, v)
+    discard cudaDeviceSynchronize()
+template onGpu*(nn: untyped, body: untyped): untyped = onGpu(nn, 256, body)
+template onGpu*(body: untyped): untyped = onGpu(32*256, 256, body)
 
 when isMainModule:
   type FltArr = array[0,float32]
@@ -172,5 +209,12 @@ when isMainModule:
     var blocksPerGrid: cint = (n + threadsPerBlock - 1) div threadsPerBlock
 
     cudaLaunch(vectorAdd, blocksPerGrid, threadsPerBlock, a, b, c, n)
+
+    template getGpuPtr(x: int): untyped = x
+    template getGpuPtr[T](x: seq[T]): untyped = addr(x[0])
+    onGpu(n):
+      let i = getBlockDim().x * getBlockIdx().x + getThreadIdx().x
+      if i < n:
+        c[i] = a[i] + b[i]
 
   test()

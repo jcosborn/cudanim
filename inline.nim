@@ -4,6 +4,7 @@ proc isVarType(x: NimNode): bool =
   if x.kind==nnkVarTy: result = true
 
 proc isMagic(x: NimNode): bool =
+  #echo x.treerepr
   let pragmas = x[4]
   if pragmas.kind==nnkPragma and pragmas[0].kind==nnkExprColonExpr and
      $pragmas[0][0]=="magic": result = true
@@ -45,8 +46,8 @@ proc inlineProcsY*(call: NimNode, procImpl: NimNode): NimNode =
   for i in 1..<call.len:  # loop over call arguments
     let (sym,typ) = getParam(fp, i)
     if isVarType(typ):
-      echo "replacing: ", sym.treerepr
-      echo "with: ", call[i].treerepr
+      #echo "replacing: ", sym.treerepr
+      #echo "with: ", call[i].treerepr
       #let t = newNimNode(nnkHiddenAddr).add(call[i][0])
       #procImpl[6] = procImpl[6].replaceSym(sym, call[i][0])
       #procImpl[6] = procImpl[6].replaceSym(sym, t)
@@ -79,7 +80,7 @@ proc inlineProcsY*(call: NimNode, procImpl: NimNode): NimNode =
 
 proc callName(x: NimNode): NimNode =
   case x.kind
-  of nnkCall,nnkInfix: result = x[0]
+  of nnkCall,nnkInfix,nnkCommand: result = x[0]
   else:
     quit "callName: unknown kind (" & treeRepr(x) & ")\n" & repr(x)
 
@@ -87,9 +88,9 @@ proc inlineProcsX*(body: NimNode): NimNode =
   proc recurse(it: NimNode): NimNode =
     if it.kind in nnkCallKinds and it.callName.kind==nnkSym:
       let procImpl = it.callName.symbol.getImpl
-      echo it.treerepr
-      echo procImpl.treerepr
-      echo procImpl[1].treerepr
+      #echo it.treerepr
+      #echo procImpl.treerepr
+      #echo procImpl[1].treerepr
       if procImpl.body.kind!=nnkEmpty and
           not isMagic(procImpl) and
           procImpl.kind != nnkIteratorDef:
@@ -102,13 +103,13 @@ proc inlineProcsX*(body: NimNode): NimNode =
   result = recurse(body)
 
 macro inlineProcs*(body: typed): auto =
-  echo "begin inlineProcs:"
-  echo body.repr
-  echo body.treerepr
+  #echo "begin inlineProcs:"
+  #echo body.repr
+  #echo body.treerepr
   result = inlineProcsX(body)
-  echo "end inlineProcs:"
-  echo result.repr
-  echo result.treerepr
+  #echo "end inlineProcs:"
+  #echo result.repr
+  #echo result.treerepr
 
 
 when isMainModule:
