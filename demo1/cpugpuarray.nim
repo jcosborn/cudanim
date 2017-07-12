@@ -31,9 +31,9 @@ proc init[T](r: var ArrayRef[T], n: int) =
   r.new
   r[].init(n)
 
-proc newArrayObj[T](r: var ArrayObj[T], n: int) =
+proc newArrayObj*[T](r: var ArrayObj[T], n: int) =
   r.init(n)
-proc newArrayObj[T](n: int): ArrayObj[T] =
+proc newArrayObj*[T](n: int): ArrayObj[T] =
   result.init(n)
 
 proc newArrayRef*[T](r: var ArrayRef[T], n: int) =
