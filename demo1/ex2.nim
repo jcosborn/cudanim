@@ -3,8 +3,8 @@ include system/timers
 include system/ansi_c
 import strUtils
 
-proc test =
-  let N = 100000
+proc test(N: int) =
+  echo "=== N: ", N
   #var x = newFloatArray(N)
   #var y = newFloatArray(N)
   #var z = newFloatArray(N)
@@ -48,7 +48,8 @@ proc test =
   # do something on GPU
   echo "GPU1"
   tic()
-  onGpu:
+  #onGpu:
+  onGpu(2*768,64):
     #var t = s
     x += y * z
     #if ff(): discard
@@ -83,4 +84,7 @@ proc test =
   #   do you agree, GPU?
   #   yes, I agree!
 
-test()
+var n = 1000
+while n<=1_000_000:
+  test(n)
+  n *= 10

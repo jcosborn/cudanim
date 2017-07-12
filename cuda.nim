@@ -63,6 +63,8 @@ template cudaMalloc*(p:pointer, size: csize): cudaError_t =
   cudaMalloc((ptr pointer)(p.addr), size)
 proc cudaFree*(p: pointer): cudaError_t
   {.importC,header:"cuda_runtime.h".}
+proc cudaMallocManaged*(p: ptr pointer, size: csize): cudaError_t
+  {.importC,header:"cuda_runtime.h".}
 
 proc cudaMemcpyX*(dst,src: pointer, count: csize, kind: cudaMemcpyKind):
   cudaError_t {.importC:"cudaMemcpy",header:"cuda_runtime.h".}
@@ -165,9 +167,9 @@ macro cuda*(s,p: untyped): auto =
   result.addPragma parseExpr("{.codegenDecl:\""&ss&" $# $#$#\".}")[0]
   result.body = getAst(cudaDefs(result.body))
   var sl = newStmtList()
-  sl.add quote do:
+  sl.add( quote do:
     {.push checks: off.}
-    {.push stacktrace: off.}
+    {.push stacktrace: off.} )
   sl.add result
   result = sl
   #echo "end cuda:"

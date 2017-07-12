@@ -17,6 +17,7 @@ type
     n*: int
     g*: GpuArrayObj[T]
     lastOnGpu*: bool
+    unifiedMem*: bool
   ArrayRef*[T] = ref ArrayObj[T]
   Array*[T] = ArrayRef[T]
   Arrays* = ArrayObj | ArrayRef
@@ -24,7 +25,12 @@ type
   Arrays3* = ArrayObj | ArrayRef
 
 proc init[T](r: var ArrayObj[T], n: int) =
-  let p = createSharedU(T, n)
+  var p: ptr T
+  r.unifiedMem = true
+  if r.unifiedMem:
+    let err = cudaMallocManaged(cast[ptr pointer](addr p), n*sizeof(T))
+  else:
+    p = createSharedU(T, n)
   r.n = n
   r.p = cast[type(r.p)](p)
 proc init[T](r: var ArrayRef[T], n: int) =
@@ -42,17 +48,23 @@ proc newArrayRef*[T](n: int): ArrayRef[T] =
   result.init(n)
 
 proc toGpu*(x: var Arrays) =
-  if not x.lastOnGpu:
-    x.lastOnGpu = true
-    if x.g.n==0: x.g.init(x.n)
-    let err = cudaMemcpy(x.g.p, x.p, x.n*sizeof(x.T), cudaMemcpyHostToDevice)
-    if err: echo err
+  if x.unifiedMem:
+    if x.g.n==0:
+      x.g.n = x.n
+      x.g.p = cast[type(x.g.p)](x.p)
+  else:
+    if not x.lastOnGpu:
+      x.lastOnGpu = true
+      if x.g.n==0: x.g.init(x.n)
+      let err = cudaMemcpy(x.g.p, x.p, x.n*sizeof(x.T), cudaMemcpyHostToDevice)
+      if err: echo err
 
 proc toCpu*(x: var Arrays) =
-  if x.lastOnGpu:
-    x.lastOnGpu = false
-    let err = cudaMemcpy(x.p, x.g.p, x.n*sizeof(x.T), cudaMemcpyDeviceToHost)
-    if err: echo err
+  if not x.unifiedMem:
+    if x.lastOnGpu:
+      x.lastOnGpu = false
+      let err = cudaMemcpy(x.p, x.g.p, x.n*sizeof(x.T), cudaMemcpyDeviceToHost)
+      if err: echo err
 
 template getGpuPtr*(x: var Arrays): untyped =
   toGpu(x)
@@ -70,8 +82,8 @@ macro indexArray*(x: Arrays{call}, y: SomeInteger): untyped =
   result = newCall(ident($x[0]))
   for i in 1..<x.len:
     let xi = x[i]
-    result.add quote do:
-      indexArray(`xi`,`y`)
+    result.add( quote do:
+      indexArray(`xi`,`y`) )
   #else:
   #  result = quote do:
   #    let tt = `x`
