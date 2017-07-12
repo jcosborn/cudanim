@@ -1,8 +1,8 @@
 type SomeNumber2* = SomeInteger | SomeReal
 template `:=`*(x: var SomeNumber, y: SomeNumber2) =
   x = (type(x))(y)
-template `+=`*(x: var SomeNumber, y: SomeNumber2) =
-  x += (type(x))(y)
+#template `+=`*(x: var SomeNumber, y: SomeNumber2) =
+#  x += (type(x))(y)
 
 type
   Complex*[T] = object

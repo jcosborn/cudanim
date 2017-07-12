@@ -165,9 +165,10 @@ macro cuda*(s,p: untyped): auto =
   result.addPragma parseExpr("{.codegenDecl:\""&ss&" $# $#$#\".}")[0]
   result.body = getAst(cudaDefs(result.body))
   var sl = newStmtList()
-  sl.add quote do:
+  sl.add(quote do:
     {.push checks: off.}
     {.push stacktrace: off.}
+    )
   sl.add result
   result = sl
   #echo "end cuda:"

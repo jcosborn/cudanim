@@ -61,8 +61,9 @@ macro indexGpuArray*(x: GpuArrays{call}, y: SomeInteger): untyped =
   result = newCall(ident($x[0]))
   for i in 1..<x.len:
     let xi = x[i]
-    result.add quote do:
+    result.add(quote do:
       indexGpuArray(`xi`,`y`)
+      )
   #else:
   #  result = quote do:
   #    let tt = `x`

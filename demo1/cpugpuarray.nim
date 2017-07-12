@@ -70,8 +70,9 @@ macro indexArray*(x: Arrays{call}, y: SomeInteger): untyped =
   result = newCall(ident($x[0]))
   for i in 1..<x.len:
     let xi = x[i]
-    result.add quote do:
+    result.add(quote do:
       indexArray(`xi`,`y`)
+      )
   #else:
   #  result = quote do:
   #    let tt = `x`
