@@ -89,15 +89,15 @@ template cudaDefs(body: untyped): untyped {.dirty.} =
   var blockIdx{.global,importC,noDecl.}: CudaDim3
   var blockDim{.global,importC,noDecl.}: CudaDim3
   var threadIdx{.global,importC,noDecl.}: CudaDim3
-  template getGridDim: untyped = gridDim
-  template getBlockIdx: untyped = blockIdx
-  template getBlockDim: untyped = blockDim
-  template getThreadIdx: untyped = threadIdx
-  template getThreadNum: untyped = blockDim.x * blockIdx.x + threadIdx.x
-  template getNumThreads: untyped = gridDim.x * blockDim.x
-  template `[]`[T](x: ptr T, i: SomeInteger): untyped =
+  template getGridDim: untyped {.used.} = gridDim
+  template getBlockIdx: untyped {.used.} = blockIdx
+  template getBlockDim: untyped {.used.} = blockDim
+  template getThreadIdx: untyped {.used.} = threadIdx
+  template getThreadNum: untyped {.used.} = blockDim.x * blockIdx.x + threadIdx.x
+  template getNumThreads: untyped {.used.} = gridDim.x * blockDim.x
+  template `[]`[T](x: ptr T, i: SomeInteger): untyped {.used.} =
     cast[ptr array[0,T]](x)[][i]
-  template `[]=`[T](x: ptr T, i: SomeInteger, y:untyped): untyped =
+  template `[]=`[T](x: ptr T, i: SomeInteger, y:untyped): untyped {.used.} =
     cast[ptr array[0,T]](x)[][i] = y
   #bind deviceProcGen
   #deviceProcGen:
