@@ -170,9 +170,9 @@ when isMainModule:
   testcomplex()
 
   proc testcolmat =
-    var x = newGpuArrayRef[Colmat[float32]](N)
-    var y = newGpuArrayRef[Colmat[float32]](N)
-    var z = newGpuArrayRef[Colmat[float32]](N)
+    var x = newGpuArrayRef[Colmat[3,float32]](N)
+    var y = newGpuArrayRef[Colmat[3,float32]](N)
+    var z = newGpuArrayRef[Colmat[3,float32]](N)
     #y := 1
     #z := 2
     onGpu(N):

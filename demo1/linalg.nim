@@ -1,8 +1,9 @@
 type SomeNumber2* = SomeInteger | SomeReal
 template `:=`*(x: var SomeNumber, y: SomeNumber2) =
   x = (type(x))(y)
-#template `+=`*(x: var SomeNumber, y: SomeNumber2) =
-#  x += (type(x))(y)
+template `+=`*(x: var SomeNumber, y: SomeNumber2) =
+  bind `+=`    # So the following += doesn't call this template again.
+  x += (type(x))(y)
 
 type
   Complex*[T] = object
@@ -12,8 +13,9 @@ template `:=`*[T](x: var Complex[T], y: SomeNumber) =
   x.re := z
   x.im := 0
 template `:=`*[T](x: var Complex[T], y: Complex[T]) =
-  x.re = y.re
-  x.im = y.im
+  let z = y
+  x.re = z.re
+  x.im = z.im
 template `+=`*[T](x: var Complex[T], y: SomeNumber) =
   let z = y
   x.re += z
@@ -33,41 +35,45 @@ template `*`*[T](x,y: Complex[T]): untyped =
   r
 
 type
-  Colmat*[T] = object
-    d*: array[3,array[3,Complex[T]]]
+  Colmat*[N:static[int],T] = object
+    d*: array[N,array[N,Complex[T]]]
 template `[]`*(x: Colmat, i,j: int): untyped = x.d[i][j]
-template `:=`*[T](x: var Colmat[T], y: SomeNumber) =
+template `:=`*[N:static[int],T](x: var Colmat[N,T], y: SomeNumber) =
   let z = y
-  for i in 0..<x.d.len:
-    for j in 0..<x.d[0].len:
+  for i in 0..<N:
+    for j in 0..<N:
       if i==j:
         x.d[i][j] := z
       else:
         x.d[i][j] := 0
-template `:=`*[T](x: var Colmat[T], y: Colmat[T]) =
+template `:=`*[N:static[int],T](x: var Colmat[N,T], y: Colmat[N,T]) =
   let z = y
-  for i in 0..<x.d.len:
-    for j in 0..<x.d[0].len:
+  for i in 0..<N:
+    for j in 0..<N:
       x.d[i][j] = z.d[i][j]
-template `+=`*[T](x: var Colmat[T], y: Colmat[T]) =
+template `+=`*[N:static[int],T](x: var Colmat[N,T], y: Colmat[N,T]) =
   let z = y
-  for i in 0..<x.d.len:
-    for j in 0..<x.d[0].len:
+  for i in 0..<N:
+    for j in 0..<N:
       x.d[i][j] += z.d[i][j]
-template `+`*[T](x,y: Colmat[T]): untyped =
-  var r {.noInit.}: Colmat[type(x.d[0][0].re+y.d[0][0].re)]
-  for i in 0..<r.d.len:
-    for j in 0..<r.d[0].len:
-      r.d[i][j] = x.d[i][j] + y.d[i][j]
+template `+`*[N:static[int],T](x,y: Colmat[N,T]): untyped =
+  let xx = x
+  let yy = y
+  var r {.noInit.}: Colmat[N,type(xx.d[0][0].re+yy.d[0][0].re)]
+  for i in 0..<N:
+    for j in 0..<N:
+      r.d[i][j] = xx.d[i][j] + yy.d[i][j]
   r
-template `*`*[T](x,y: Colmat[T]): untyped =
-  var r {.noInit.}: Colmat[type(x.d[0][0].re*y.d[0][0].re)]
-  for i in 0..<r.d.len:
-    for j in 0..<r.d[0].len:
-      var t = x.d[i][0] * y.d[0][j]
-      for k in 1..<y.d.len:
-        t += x.d[i][k] * y.d[k][j]
-      r.d[i][j] = t
+template `*`*[N:static[int],T](x,y: Colmat[N,T]): untyped =
+  let xx = x
+  let yy = y
+  var r {.noInit.}: Colmat[N,type(xx.d[0][0].re*yy.d[0][0].re)]
+  for i in 0..<N:
+    for j in 0..<N:
+      r.d[i][j] = xx.d[i][0] * yy.d[0][j]
+    for k in 1..<N:
+      for j in 0..<N:
+        r.d[i][j] += xx.d[i][k] * yy.d[k][j]
   r
 
 when isMainModule:

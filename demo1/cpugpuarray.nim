@@ -154,7 +154,7 @@ proc `*`*(x: Arrays, y: Arrays2): auto =
   r
 
 template newColorMatrixArray*(n: int): untyped =
-  newArrayRef[Colmat[float32]](n)
+  newArrayRef[Colmat[3,float32]](n)
 template newComplexArray*(n: int): untyped =
   newArrayRef[Complex[float32]](n)
 template newFloatArray*(n: int): untyped =
@@ -211,9 +211,9 @@ when isMainModule:
   testcomplex()
 
   proc testcolmat =
-    var x = newArrayRef[Colmat[float32]](N)
-    var y = newArrayRef[Colmat[float32]](N)
-    var z = newArrayRef[Colmat[float32]](N)
+    var x = newArrayRef[Colmat[3,float32]](N)
+    var y = newArrayRef[Colmat[3,float32]](N)
+    var z = newArrayRef[Colmat[3,float32]](N)
     x := 1
     y := 2
     z := 3

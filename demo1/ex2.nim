@@ -24,7 +24,9 @@ proc test =
     cprintf("nanos:   %9i\n", t1-t0)
     #cprintf("GF/s: %9.3f\n", (2*N).float/(t1-t0).float)
     #cprintf("GF/s: %9.3f\n", (8*N).float/(t1-t0).float)
-    cprintf("GF/s: %9.3f\n", (3*72*N).float/(t1-t0).float)
+    #cprintf("GF/s: %9.3f\n", (3*72*N).float/(t1-t0).float)
+    let n = x.T.N
+    cprintf("GF/s: %9.3f\n", (8*n*n*n*N).float/(t1-t0).float)
 
   # set them to diagonal matrices on CPU
   x := 1
