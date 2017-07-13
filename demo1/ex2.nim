@@ -4,7 +4,6 @@ include system/ansi_c
 import strUtils
 
 proc test(N: int) =
-  echo "=== N: ", N
   #var x = newFloatArray(N)
   #var y = newFloatArray(N)
   #var z = newFloatArray(N)
@@ -19,7 +18,7 @@ proc test(N: int) =
     var t0 = getTicks()
     b
     var t1 = getTicks()
-    let t = if s.len == 0: $N&"\t" else: $N&" "&s&"\t"
+    let t = if s.len == 0: $N&"\t" else: $N&"\t"&s&"\t"
     #echo "nanos: ", formatFloat((t1-t0).float, precision=0)
     cprintf(t&"nanos:   %9i\n", t1-t0)
     #cprintf("GF/s: %9.3f\n", (2*N).float/(t1-t0).float)
@@ -55,6 +54,9 @@ proc test(N: int) =
   timeit "GPU2":
     onGpu(2*768,64):
       x += y * z
+  timeit "GPU3":
+    onGpu(1 shl 20,1 shl 10):
+      x += y * z
 
   # do something on CPU again
   timeit "CPU":
@@ -76,7 +78,4 @@ proc test(N: int) =
   #   do you agree, GPU?
   #   yes, I agree!
 
-var n = 1000
-while n<=1_000_000:
-  test(n)
-  n *= 10
+for n in 10..24: test(1 shl n)
