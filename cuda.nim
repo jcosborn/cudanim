@@ -55,7 +55,7 @@ proc `$`*(error: cudaError_t): string =
   let s = cudaGetErrorString(error)
   result = $s
 converter toBool*(e: cudaError_t): bool =
-  e != cudaSuccess
+  cast[cint](e) != cast[cint](cudaSuccess)
 
 proc cudaMalloc*(p:ptr pointer, size: csize): cudaError_t
   {.importC,header:"cuda_runtime.h".}
