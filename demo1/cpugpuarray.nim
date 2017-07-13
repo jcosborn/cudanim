@@ -29,7 +29,16 @@ proc init[T](r: var ArrayObj[T], n: int) =
   r.unifiedMem = true
   if r.unifiedMem:
     let err = cudaMallocManaged(cast[ptr pointer](addr p), n*sizeof(T))
-  else:
+    # Somehow == and != doesn't work as expected here??!
+    if err:
+      if cast[cint](err) == cast[cint](cudaErrorNotSupported):
+        echo "WARNING: cudaMallocManaged not supported"
+        echo "Fall back to non-unified memory."
+        r.unifiedMem = false
+      else:
+        echo "ERROR: cudaMallocManaged ", n*sizeof(T)
+        quit cast[cint](err)
+  if not r.unifiedMem:
     p = createSharedU(T, n)
   r.n = n
   r.p = cast[type(r.p)](p)
@@ -37,9 +46,16 @@ proc init[T](r: var ArrayRef[T], n: int) =
   r.new
   r[].init(n)
 
-proc newArrayObj[T](r: var ArrayObj[T], n: int) =
+proc free*[T](r: var ArrayObj[T]) =
+  if r.unifiedMem: discard r.p.cudaFree
+  else: discard r.g.p.cudaFree
+proc free*[T](r: ArrayRef[T]) =
+  if r.unifiedMem: discard r.p.cudaFree
+  else: discard r.g.p.cudaFree
+
+proc newArrayObj*[T](r: var ArrayObj[T], n: int) =
   r.init(n)
-proc newArrayObj[T](n: int): ArrayObj[T] =
+proc newArrayObj*[T](n: int): ArrayObj[T] =
   result.init(n)
 
 proc newArrayRef*[T](r: var ArrayRef[T], n: int) =
@@ -165,7 +181,7 @@ proc `*`*(x: Arrays, y: Arrays2): auto =
   r
 
 template newColorMatrixArray*(n: int): untyped =
-  newArrayRef[Colmat[float32]](n)
+  newArrayRef[Colmat[3,float32]](n)
 template newComplexArray*(n: int): untyped =
   newArrayRef[Complex[float32]](n)
 template newFloatArray*(n: int): untyped =
@@ -222,9 +238,9 @@ when isMainModule:
   testcomplex()
 
   proc testcolmat =
-    var x = newArrayRef[Colmat[float32]](N)
-    var y = newArrayRef[Colmat[float32]](N)
-    var z = newArrayRef[Colmat[float32]](N)
+    var x = newArrayRef[Colmat[3,float32]](N)
+    var y = newArrayRef[Colmat[3,float32]](N)
+    var z = newArrayRef[Colmat[3,float32]](N)
     x := 1
     y := 2
     z := 3
@@ -240,4 +256,7 @@ when isMainModule:
     if (x.n-1) mod getNumThreads() == getThreadNum():
       cprintf("thread %i/%i\n", getThreadNum(), getNumThreads())
       cprintf("x[%i][0,0]: %g\n", x.n-1, x[x.n-1].d[0][0].re)
+    x.free
+    y.free
+    z.free
   testcolmat()

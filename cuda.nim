@@ -23,6 +23,7 @@ type
   cudaMemcpyKind* {.importc,header:"cuda_runtime.h".} = object
 var
   cudaSuccess*{.importC,header:"cuda_runtime.h".}: cudaError_t
+  cudaErrorNotSupported*{.importC,header:"cuda_runtime.h".}: cudaError_t
   cudaMemcpyHostToDevice*{.importC,header:"cuda_runtime.h".}: cudaMemcpyKind
   cudaMemcpyDeviceToHost*{.importC,header:"cuda_runtime.h".}: cudaMemcpyKind
 
@@ -55,7 +56,7 @@ proc `$`*(error: cudaError_t): string =
   let s = cudaGetErrorString(error)
   result = $s
 converter toBool*(e: cudaError_t): bool =
-  e != cudaSuccess
+  cast[cint](e) != cast[cint](cudaSuccess)
 
 proc cudaMalloc*(p:ptr pointer, size: csize): cudaError_t
   {.importC,header:"cuda_runtime.h".}
@@ -91,15 +92,15 @@ template cudaDefs(body: untyped): untyped {.dirty.} =
   var blockIdx{.global,importC,noDecl.}: CudaDim3
   var blockDim{.global,importC,noDecl.}: CudaDim3
   var threadIdx{.global,importC,noDecl.}: CudaDim3
-  template getGridDim: untyped = gridDim
-  template getBlockIdx: untyped = blockIdx
-  template getBlockDim: untyped = blockDim
-  template getThreadIdx: untyped = threadIdx
-  template getThreadNum: untyped = blockDim.x * blockIdx.x + threadIdx.x
-  template getNumThreads: untyped = gridDim.x * blockDim.x
-  template `[]`[T](x: ptr T, i: SomeInteger): untyped =
+  template getGridDim: untyped {.used.} = gridDim
+  template getBlockIdx: untyped {.used.} = blockIdx
+  template getBlockDim: untyped {.used.} = blockDim
+  template getThreadIdx: untyped {.used.} = threadIdx
+  template getThreadNum: untyped {.used.} = blockDim.x * blockIdx.x + threadIdx.x
+  template getNumThreads: untyped {.used.} = gridDim.x * blockDim.x
+  template `[]`[T](x: ptr T, i: SomeInteger): untyped {.used.} =
     cast[ptr array[0,T]](x)[][i]
-  template `[]=`[T](x: ptr T, i: SomeInteger, y:untyped): untyped =
+  template `[]=`[T](x: ptr T, i: SomeInteger, y:untyped): untyped {.used.} =
     cast[ptr array[0,T]](x)[][i] = y
   #bind deviceProcGen
   #deviceProcGen:
@@ -121,7 +122,9 @@ template cudaLaunch*(p: proc; blocksPerGrid,threadsPerBlock: SomeInteger;
   for i in 0..<arg.len: args[i] = arg[i]
   #echo "really launching kernel"
   let err = cudaLaunchKernel(pp, gridDim, blockDim, addr args[0])
-  if err: echo err
+  if err:
+    echo err
+    quit cast[cint](err)
 
 #macro `<<`*(x:varargs[untyped]): auto =
 #  result = newEmptyNode()
