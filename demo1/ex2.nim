@@ -3,7 +3,8 @@ include system/timers
 include system/ansi_c
 import strUtils
 
-proc test(N:int) =
+proc test(N: int) =
+  echo "=== N: ", N
   #var x = newFloatArray(N)
   #var y = newFloatArray(N)
   #var z = newFloatArray(N)
@@ -14,12 +15,11 @@ proc test(N:int) =
   var y = newColorMatrixArray(N)
   var z = newColorMatrixArray(N)
 
-  var t0,t1: Ticks
   template timeit(s:string, b:untyped) =
     var t0 = getTicks()
     b
     var t1 = getTicks()
-    let t = if s.len == 0: "" else: s&"\t"
+    let t = if s.len == 0: $N&"\t" else: $N&" "&s&"\t"
     #echo "nanos: ", formatFloat((t1-t0).float, precision=0)
     cprintf(t&"nanos:   %9i\n", t1-t0)
     #cprintf("GF/s: %9.3f\n", (2*N).float/(t1-t0).float)
@@ -47,8 +47,11 @@ proc test(N:int) =
   template getGpuPtr(x: float): float = x
   # do something on GPU
   timeit "GPU1":
-    onGpu:
+    onGpu(2*768,64):
+      #var t = s
       x += y * z
+      #if ff(): discard
+        #z := 4
   timeit "GPU2":
     onGpu(2*768,64):
       x += y * z
@@ -73,4 +76,7 @@ proc test(N:int) =
   #   do you agree, GPU?
   #   yes, I agree!
 
-test(100000)
+var n = 1000
+while n<=1_000_000:
+  test(n)
+  n *= 10
