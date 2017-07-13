@@ -28,11 +28,17 @@ proc init[T](r: var ArrayObj[T], n: int) =
   var p: ptr T
   r.unifiedMem = true
   if r.unifiedMem:
-    let err = cast[cint](cudaMallocManaged(cast[ptr pointer](addr p), n*sizeof(T)))
-    if err != 0:
-      echo "ERROR( ",err," ): cudaMallocManaged can't allocate ", n*sizeof(T)
-      quit err
-  else:
+    let err = cudaMallocManaged(cast[ptr pointer](addr p), n*sizeof(T))
+    # Somehow == and != doesn't work as expected here??!
+    if err:
+      if cast[cint](err) == cast[cint](cudaErrorNotSupported):
+        echo "WARNING: cudaMallocManaged not supported"
+        echo "Fall back to non-unified memory."
+        r.unifiedMem = false
+      else:
+        echo "ERROR: cudaMallocManaged ", n*sizeof(T)
+        quit cast[cint](err)
+  if not r.unifiedMem:
     p = createSharedU(T, n)
   r.n = n
   r.p = cast[type(r.p)](p)

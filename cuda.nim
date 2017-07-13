@@ -23,6 +23,7 @@ type
   cudaMemcpyKind* {.importc,header:"cuda_runtime.h".} = object
 var
   cudaSuccess*{.importC,header:"cuda_runtime.h".}: cudaError_t
+  cudaErrorNotSupported*{.importC,header:"cuda_runtime.h".}: cudaError_t
   cudaMemcpyHostToDevice*{.importC,header:"cuda_runtime.h".}: cudaMemcpyKind
   cudaMemcpyDeviceToHost*{.importC,header:"cuda_runtime.h".}: cudaMemcpyKind
 
@@ -121,7 +122,9 @@ template cudaLaunch*(p: proc; blocksPerGrid,threadsPerBlock: SomeInteger;
   for i in 0..<arg.len: args[i] = arg[i]
   #echo "really launching kernel"
   let err = cudaLaunchKernel(pp, gridDim, blockDim, addr args[0])
-  if err: echo err
+  if err:
+    echo err
+    quit cast[cint](err)
 
 #macro `<<`*(x:varargs[untyped]): auto =
 #  result = newEmptyNode()
