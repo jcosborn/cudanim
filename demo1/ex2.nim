@@ -18,14 +18,12 @@ proc test(N: int) =
     var t0 = getTicks()
     b
     var t1 = getTicks()
-    let t = if s.len == 0: $N&"\t" else: $N&"\t"&s&"\t"
     #echo "nanos: ", formatFloat((t1-t0).float, precision=0)
-    cprintf(t&"nanos:   %9i\n", t1-t0)
     #cprintf("GF/s: %9.3f\n", (2*N).float/(t1-t0).float)
     #cprintf("GF/s: %9.3f\n", (8*N).float/(t1-t0).float)
     #cprintf("GF/s: %9.3f\n", (3*72*N).float/(t1-t0).float)
     let n = x.T.N
-    cprintf(t&"GF/s: %9.3f\n", (8*n*n*n*N).float/(t1-t0).float)
+    cprintf("%8lld\t%-7s\tmsec: %9.6f\tGF/s: %6.3f\n", N, s, (t1-t0).float*1e-9, (8*n*n*n*N).float/(t1-t0).float)
 
   # set them to diagonal matrices on CPU
   x := 1
