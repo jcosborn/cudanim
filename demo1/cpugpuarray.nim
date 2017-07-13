@@ -41,11 +41,11 @@ proc init[T](r: var ArrayRef[T], n: int) =
   r[].init(n)
 
 proc free*[T](r: var ArrayObj[T]) =
-  discard r.g.p.cudaFree
   if r.unifiedMem: discard r.p.cudaFree
+  else: discard r.g.p.cudaFree
 proc free*[T](r: ArrayRef[T]) =
-  discard r.g.p.cudaFree
   if r.unifiedMem: discard r.p.cudaFree
+  else: discard r.g.p.cudaFree
 
 proc newArrayObj*[T](r: var ArrayObj[T], n: int) =
   r.init(n)
