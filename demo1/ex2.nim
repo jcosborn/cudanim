@@ -77,5 +77,8 @@ proc test(N: int) =
   #   yay, it worked!
   #   do you agree, GPU?
   #   yes, I agree!
+  x.free
+  y.free
+  z.free
 
-for n in 10..24: test(1 shl n)
+for n in 10..25: test(1 shl n)    # 7 GB ~ float su3 × 3 × 2^25

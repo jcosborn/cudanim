@@ -32,6 +32,12 @@ proc init*[T](r: var GpuArrayObj[T], n: int) =
 proc init[T](r: var GpuArrayRef[T], n: int) =
   r.new
   r[].init(n)
+proc free*[T](r: var GpuArrayObj[T]) =
+  when haveCuda:
+    r.p.cudaFree
+proc free*[T](r: GpuArrayRef[T]) =
+  when haveCuda:
+    r.p.cudaFree
 
 proc newGpuArrayObj*[T](r: var GpuArrayObj[T], n: int) =
   r.init(n)

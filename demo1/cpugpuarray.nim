@@ -40,6 +40,13 @@ proc init[T](r: var ArrayRef[T], n: int) =
   r.new
   r[].init(n)
 
+proc free*[T](r: var ArrayObj[T]) =
+  discard r.g.p.cudaFree
+  if r.unifiedMem: discard r.p.cudaFree
+proc free*[T](r: ArrayRef[T]) =
+  discard r.g.p.cudaFree
+  if r.unifiedMem: discard r.p.cudaFree
+
 proc newArrayObj*[T](r: var ArrayObj[T], n: int) =
   r.init(n)
 proc newArrayObj*[T](n: int): ArrayObj[T] =
@@ -243,4 +250,7 @@ when isMainModule:
     if (x.n-1) mod getNumThreads() == getThreadNum():
       cprintf("thread %i/%i\n", getThreadNum(), getNumThreads())
       cprintf("x[%i][0,0]: %g\n", x.n-1, x[x.n-1].d[0][0].re)
+    x.free
+    y.free
+    z.free
   testcolmat()
