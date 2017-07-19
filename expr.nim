@@ -4,9 +4,9 @@ var ignore: seq[NimNode]
 proc addIfNewSym(s: var seq[NimNode], x: NimNode): int =
   let sx = $x
   for i in 0..<ignore.len:
-    if $ignore[i] == sx: return -1
+    if ignore[i].eqIdent sx: return -1
   for i in 0..<s.len:
-    if $s[i] == sx: return i
+    if s[i].eqIdent sx: return i
   result = s.len
   s.add x
 
@@ -39,8 +39,7 @@ proc getVars*(v: var seq[NimNode], x,a: NimNode): NimNode =
       let i = vars.addIfNewSym(it)
       if i>=0:
         let ii = newLit(i)
-        return quote do:
-          `a`(`ii`)
+        return newCall(a,ii)
     of nnkCallKinds: r0 = 1
     of nnkDotExpr: r1 = 0
     of {nnkVarSection,nnkLetSection}:
