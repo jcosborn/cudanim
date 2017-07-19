@@ -32,31 +32,27 @@ proc init*[T](r: var GpuArrayObj[T], n: int) =
 proc init[T](r: var GpuArrayRef[T], n: int) =
   r.new
   r[].init(n)
-proc free*[T](r: var GpuArrayObj[T]) =
-  when haveCuda:
-    r.p.cudaFree
-proc free*[T](r: GpuArrayRef[T]) =
-  when haveCuda:
-    r.p.cudaFree
 
-proc newGpuArrayObj*[T](r: var GpuArrayObj[T], n: int) =
+proc newGpuArrayObj[T](r: var GpuArrayObj[T], n: int) =
   r.init(n)
-proc newGpuArrayObj*[T](n: int): GpuArrayObj[T] =
+proc newGpuArrayObj[T](n: int): GpuArrayObj[T] =
   result.init(n)
 
-proc newGpuArrayRef*[T](r: var GpuArrayRef[T], n: int) =
+proc newGpuArrayRef[T](r: var GpuArrayRef[T], n: int) =
   r.init(n)
-proc newGpuArrayRef*[T](n: int): GpuArrayRef[T] =
+proc newGpuArrayRef[T](n: int): GpuArrayRef[T] =
   result.init(n)
 
-template getGpuPtr*(x: SomeNumber): untyped = x
+template getGpuPtr(x: SomeNumber): untyped = x
 #template getGpuPtr(x: GpuArrayObj): untyped = x
-template getGpuPtr*(x: GpuArrayRef): untyped = x[]
+template getGpuPtr(x: GpuArrayRef): untyped = x[]
 #template getGpuPtr(x: GpuArrayRef): untyped = x.p
 #template getGpuPtr(x: GpuArrayRef): untyped = (p:x.p,n:x.n)
 
-template indexGpuArray*(x: GpuArrays, i: SomeInteger): untyped =
+template indexGpuArray(x: GpuArrays, i: SomeInteger): untyped =
   x.p[][i]
+template `[]=`(x: GpuArrayObj, i: SomeInteger, y: untyped): untyped =
+  x.p[][i] = y
 
 macro indexGpuArray*(x: GpuArrays{call}, y: SomeInteger): untyped =
   #echo "call[", y.repr, "]"
@@ -75,13 +71,13 @@ macro indexGpuArray*(x: GpuArrays{call}, y: SomeInteger): untyped =
   #echo result.repr
 
 template `[]`*(x: GpuArrayObj, i: SomeInteger): untyped = indexGpuArray(x, i)
-template `[]=`*(x: GpuArrayObj, i: SomeInteger, y: untyped): untyped =
+template `[]=`(x: GpuArrayObj, i: SomeInteger, y: untyped): untyped =
   x.p[][i] = y
 
-template `[]`*(x: GpuArrayRef, i: SomeInteger): untyped =
+template `[]`(x: GpuArrayRef, i: SomeInteger): untyped =
   echo "GAR[]"
   x.p[][i]
-template `[]=`*(x: GpuArrayRef, i: SomeInteger, y: untyped): untyped =
+template `[]=`(x: GpuArrayRef, i: SomeInteger, y: untyped): untyped =
   x.p[][i] = y
 
 var threadNum = 0
@@ -173,9 +169,9 @@ when isMainModule:
   testcomplex()
 
   proc testcolmat =
-    var x = newGpuArrayRef[Colmat[3,float32]](N)
-    var y = newGpuArrayRef[Colmat[3,float32]](N)
-    var z = newGpuArrayRef[Colmat[3,float32]](N)
+    var x = newGpuArrayRef[Colmat[float32]](N)
+    var y = newGpuArrayRef[Colmat[float32]](N)
+    var z = newGpuArrayRef[Colmat[float32]](N)
     #y := 1
     #z := 2
     onGpu(N):
