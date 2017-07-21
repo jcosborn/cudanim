@@ -106,6 +106,15 @@ proc replace(n,x,y:NimNode):NimNode =
     for c in n:
       result.add c.replace(x,y)
 
+proc replaceId(n,x,y:NimNode):NimNode =
+  # Same as replace but only replace eqIdent identifier.
+  if n.kind == nnkIdent and n.eqIdent($x):
+    result = y.copyNimTree
+  else:
+    result = n.copyNimNode
+    for c in n:
+      result.add c.replaceId(x,y)
+
 proc replaceAlt(n,x,y:NimNode, k:NimNodeKind):NimNode =
   # Same as replace but the optional parent node kind k is included in the replacement.
   if n.kind == k and n.len==1 and n[0] == x:
@@ -168,12 +177,116 @@ proc replaceNonDeclSym(b,s,r: NimNode, extra:NimNodeKind = nnkEmpty): NimNode =
   if theSym.kind != nnkEmpty:
     result = b.replaceAlt(theSym, r, extra)
   else:
-    echo "Internal ERROR: replaceNonDeclSym: Couldn't find the symbol ",ss," in body:"
-    echo b.treerepr
-    quit 1
+    result = b
 
 proc append(x,y:NimNode) =
   for c in y: x.add c
+
+proc matchGeneric(n,ty,g:NimNode):NimNode =
+  ## Match generic type `ty`, with the instantiation node `n`, and return
+  ## the instantiation type of the generic identifier `g`.
+  # echo "MG:I: ",n.lisprepr
+  # echo "MG:T: ",ty.lisprepr
+  # echo "MG:G: ",g.lisprepr
+  proc isG(n:NimNode):bool =
+    n.kind == nnkIdent and n.eqIdent($g)
+  proc typeof(n:NimNode):NimNode =
+    newNimNode(nnkTypeOfExpr,g).add n
+  proc getGParams(ti:NimNode):NimNode =
+    # ti ~ type[G0,G1,...], is from gettypeinst
+    # We go through the implementation to find the correct generic names.
+    ti.expectKind nnkBracketExpr
+    let tn = ti[0]
+    tn.expectKind nnkSym
+    let td = tn.symbol.getImpl
+    td.expectKind nnkTypeDef
+    result = td[1]
+    result.expectKind nnkGenericParams
+  proc matchT(ti,ty,g:NimNode):NimNode =
+    # match instantiation type `ti`, with generic type `ty`
+    # recursively find the chain of generic type variables
+    # correponding to `g` in `ty`.
+    result = newPar()
+    var i = 0
+    let tg = getGParams ti
+    while i<ty.len:
+      if ty[i].isG: break
+      inc i
+    if i == 0: return
+    elif i < ty.len:
+      if tg.len < i: return
+      else: result.add tg[i-1]
+    else:
+      for i in 1..<ty.len:
+        if ty[i].kind == nnkBracketExpr:
+          if i < ti.len:
+            ti[i].expectKind nnkBracketExpr
+            result = matchT(ti[i],ty[i],g)
+            if result.len > 0:
+              result.add tg[i-1]
+              return
+  if ty.isG: return typeof n
+  elif ty.kind == nnkBracketExpr:
+    let ts = matchT(n.gettypeinst,ty,g)
+    result = n
+    if ts.len > 0:
+      for i in countdown(ts.len-1,0): result = result.newDotExpr ts[i]
+      return
+  echo "Internal WARNING: matchGeneric: Unsupported"
+  echo "MG:I: ",n.lisprepr
+  echo "MG:T: ",ty.lisprepr
+  echo "MG:G: ",g.lisprepr
+
+proc cleanIterator(n:NimNode):NimNode =
+  var fa = newPar()
+  proc replaceFastAsgn(n:NimNode):NimNode =
+    if n.kind == nnkFastAsgn:
+      fa.add newPar(n[0],n[1])
+      result = newNimNode(nnkLetSection,n[1])
+      # We will replace n[0] with a correct symbol later.
+      result.add newNimNode(nnkIdentDefs,n[1]).add(n[0],newEmptyNode(),n[1].replaceFastAsgn)
+    else:
+      result = n.copyNimNode
+      for c in n: result.add replaceFastAsgn c
+  proc removeDeclare(n:NimNode):NimNode =
+    if n.kind == nnkVarSection:
+      var keep = newseq[int](0)
+      for c in 0..<n.len:
+        var i = 0
+        while i < fa.len:
+          var j = 0
+          while j < n[c].len-2:
+            if fa[i][0] == n[c][j]: break
+            inc j
+          if j < n[c].len-2:
+            if n[c].len > 3:
+              echo "Internal ERROR: cleanIteragtor: removeDeclare: unhandled situation"
+              echo n.treerepr
+              quit 1
+            break
+          inc i
+        if i < fa.len and (n[c][^2].kind != nnkEmpty or n[c][^1].kind != nnkEmpty):
+          echo "Internal ERROR: cleanIteragtor: removeDeclare: unhandled situation"
+          echo n.treerepr
+          quit 1
+        elif i >= fa.len: keep.add c
+      # echo keep," ",n.repr
+      if keep.len == 0:
+        result = newNimNode(nnkDiscardStmt,n).add newStrLitNode(n.lisprepr)
+      else:
+        result = n.copyNimNode
+        for i in keep: result.add removeDeclare n[i]
+    else:
+      result = n.copyNimNode
+      for c in n: result.add removeDeclare c
+  result = replaceFastAsgn n
+  if fa.len > 0:
+    result = result.removeDeclare
+    for x in fa:
+      let t = genSym(nskLet, $x[0].symbol)
+      result = result.replace(x[0],t)
+  # echo "<<<<<< cleanIterator"
+  # echo result.treerepr
 
 proc regenSym(n:NimNode):NimNode =
   # Only regen nskVar and nskLet symbols.
@@ -207,9 +320,18 @@ proc inlineProcsY*(call: NimNode, procImpl: NimNode): NimNode =
   # echo "call:\n", call.lisprepr
   # echo "procImpl:\n", procImpl.treerepr
   let fp = procImpl[3]  # formal params
+  proc removeRoutines(n:NimNode):NimNode =
+    # We are inlining, so we don't need RoutineNodes anymore.
+    if n.kind in RoutineNodes:
+      result = newNimNode(nnkDiscardStmt,n).add(newStrLitNode(n.repr))
+    else:
+      result = n.copyNimNode
+      for c in n: result.add removeRoutines c
   var
     pre = newStmtList()
-    body = procImpl.body.copyNimTree
+    body = procImpl.body.copyNimTree.removeRoutines
+  # echo "### body w/o routines:"
+  # echo body.repr
   for i in 1..<call.len:  # loop over call arguments
     # We need to take care of the case when one argument use the same identifier
     # as one formal parameter.  Reusing the formal parameter identifiers is OK.
@@ -227,6 +349,53 @@ proc inlineProcsY*(call: NimNode, procImpl: NimNode): NimNode =
     else:
       pre.add getAst(letX(t, p))[0]
       body = body.replaceNonDeclSym(sym, t)
+  # echo "### body with fp replaced:"
+  # echo body.repr
+  proc resolveGeneric(n:NimNode):NimNode =
+    proc find(n:NimNode, s:string):bool =
+      if n.kind == nnkDotExpr:
+        # ignore n[1]
+        return n[0].find s
+      elif n.kind in RoutineNodes:
+        return false
+      elif n.kind == nnkIdent and n.eqIdent s:
+        return true
+      else:
+        for c in n:
+          if c.find s: return true
+      return false
+    var gs = newPar()
+    if procImpl[5].kind == nnkBracket and procImpl[5].len>=2 and procImpl[5][1].kind == nnkGenericParams:
+      let gp = procImpl[5][1]
+      for c in gp:
+        c.expectKind nnkIdentDefs
+        for i in 0..<c.len-2:
+          c[i].expectKind nnkIdent
+          if n.find($c[i]): gs.add c[i]
+    result = n
+    # echo gs.lisprepr
+    for g in gs:
+      var j = 1
+      var sym,typ:NimNode
+      while j < call.len:
+        (sym,typ) = fp.getParam j
+        if typ.find($g): break
+        inc j
+      if j < call.len:
+        # echo sym.treerepr
+        # echo typ.treerepr
+        # let tyi = call[j].gettypeinst
+        # echo "timpl: ",call[j].gettypeimpl.lisprepr
+        # echo "tinst: ",tyi.lisprepr
+        # echo "impl: ",tyi[0].symbol.getimpl.lisprepr
+        let inst = matchGeneric(call[j], typ, g)
+        # echo inst.treerepr
+        result = result.replaceId(g, inst)
+      else:
+        echo "Internal WARNING: resolveGeneric: couldn't find ",g.lisprepr
+  body = resolveGeneric body
+  # echo "### body after resolve generics:"
+  # echo body.repr
   let blockname = genSym(nskLabel, $call[0])
   proc breakReturn(n:NimNode):NimNode =
     if n.kind == nnkReturnStmt:
@@ -238,91 +407,64 @@ proc inlineProcsY*(call: NimNode, procImpl: NimNode): NimNode =
       result = n.copyNimNode
       for c in n: result.add breakReturn c
   body = breakReturn body
-  # echo "====== body:"
-  # echo body.treerepr
-  # echo "^^^^^^"
+  # echo "### body after replace return with break:"
+  # echo body.repr
+  body = cleanIterator body
+  # echo "### body after clean up iterator:"
+  # echo body.repr
   var sl:NimNode
   if procImpl.len == 7:
     pre.add body
     sl = newBlockStmt(blockname, pre)
   elif procImpl.len == 8:
+    # echo "TYPEof call: ",call.lisprepr," ",call.gettypeinst.treerepr
+    # echo "TYPEof call: ",call.lisprepr," ",call.gettypeimpl.treerepr
     # echo "TYPEof call[0]: ",call[0].lisprepr," ",call[0].gettypeinst.treerepr
+    # echo "TYPEof call[0]: ",call[0].lisprepr," ",call[0].gettypeimpl.treerepr
     # echo "TYPEof fp[0]: ",fp[0].lisprepr," ",fp[0].gettype.treerepr
     # echo "TYPEof pi[7]: ",procImpl[7].lisprepr," ",procImpl[7].gettype.treerepr
     template varX(x,t:untyped):untyped =
       var x: t
     let
-      #ty = call[0].gettypeinst[0][0].gettypeinst
-      ty = call[0].gettypeinst[0][0]
+      #ty = call.gettypeinst
+      #ty = call[0].gettypeinst[0][0]
+      #ty = call[0].gettypeimpl[0][0]
+      ty = newNimNode(nnkTypeOfExpr,call).add(call.copyNimTree)
       r = procImpl[7]
       z = genSym(nskVar, $r.symbol)
-      l = getAst(varX(z,ty))
+      d = getAst(varX(z,ty))
     # FIXME: check noinit pragma
     pre.add body.replace(r,z)
     # MAYBE: try blockexpr
-    sl = newNimNode(nnkStmtListExpr,call).add(l[0], newBlockStmt(blockname, pre), z)
+    sl = newNimNode(nnkStmtListExpr,call).add(d[0], newBlockStmt(blockname, pre), z)
   else:
     echo "Internal ERROR: inlineProcsY: unforeseen length of the proc implementation: ", procImpl.len
     quit 1
   # echo "====== sl"
   # echo sl.repr
   # echo "^^^^^^"
-  proc clean(n:NimNode):NimNode =
-    proc getFastAsgn(x:NimNode):NimNode =
-      result = newPar()
-      if x.kind == nnkFastAsgn:
-        result.add newPar(x[0],x[1])
-      elif x.kind notin AtomicNodes:
-        for y in x:
-          for c in getFastAsgn(y): result.add c
-    proc removeDeclare(n,x:NimNode):NimNode =
-      if n.kind == nnkVarSection and n.len == 1 and n[0][0] == x:
-        result = newNimNode(nnkDiscardStmt,n).add newStrLitNode(n.lisprepr)
-      else:
-        result = n.copyNimNode
-        for c in n:
-          result.add c.removeDeclare x
-    result = n.copyNimTree
-    let xs = getFastAsgn n
-    if xs.len > 0:
-      for x in xs:
-        let t = genSym(nskVar, $x[0].symbol)
-        result = result.removeDeclare(x[0]).replace(x[0],t).replace(x[1],t)
-    proc replaceFastAsgn(x:NimNode):NimNode =
-      if x.kind == nnkFastAsgn:
-        result = newNimNode(nnkDiscardStmt,x).add newStrLitNode(x.lisprepr)
-      else:
-        result = x.copyNimNode
-        if x.kind notin AtomicNodes:
-          for c in x:
-            result.add c.replaceFastAsgn
-    result = result.replaceFastAsgn
-    # echo "<<<<<< clean"
-    # echo result.treerepr
-  result = regenSym clean sl
-  #result = clean sl
+  result = regenSym sl
   # echo "<<<<<< inlineProcsY"
   # echo result.treerepr
 
 proc callName(x: NimNode): NimNode =
-  if x.kind in nnkCallKinds: result = x[0]
+  if x.kind in CallNodes: result = x[0]
   else: quit "callName: unknown kind (" & treeRepr(x) & ")\n" & repr(x)
 
 proc inlineProcsX*(body: NimNode): NimNode =
   # echo ">>>>>> inlineProcsX"
   # echo body.repr
   proc recurse(it: NimNode): NimNode =
-    if it.kind in nnkCallKinds and it.callName.kind==nnkSym:
+    if it.kind == nnkTypeOfExpr: return it.copyNimTree
+    if it.kind in CallNodes and it.callName.kind==nnkSym:
       let procImpl = it.callName.symbol.getImpl
       # echo "inspecting call"
-      # echo it.repr
+      # echo it.lisprepr
       # echo procImpl.repr
       if procImpl.body.kind!=nnkEmpty and
           not isMagic(procImpl) and
           procImpl.kind != nnkIteratorDef:
-        result = inlineProcsY(it, procImpl)
-        result = recurse(result)
-        return
+        return recurse inlineProcsY(it, procImpl)
     result = copyNimNode(it)
     for c in it: result.add recurse c
   result = recurse(body)
@@ -331,7 +473,7 @@ proc inlineProcsX*(body: NimNode): NimNode =
 
 macro inlineProcs*(body: typed): auto =
   # echo ">>>>>> inlineProcs:"
-  #echo body.repr
+  # echo body.repr
   # echo body.treerepr
   result = rebuild inlineProcsX(body)
   #result = body
@@ -469,3 +611,94 @@ when isMainModule:
     inlineProcs:
       var x = 3
       echo oc(x).x
+
+  echo "* Types with generic parameters"
+  proc gt[T] =
+    type
+      M[N:static[int]] = object
+        d:array[N,T]
+    var A:M[3]
+    proc g[N:static[int]](x:M[N]) = x.d.g
+    proc `[]`[N:static[int]](x:M[N],i:int):T = x.d[i]
+    proc `[]=`[N:static[int]](x:var M[N],i:int,y:T) = x.d[i] = y
+    inlineProcs:
+      for i in 0..<A.N:
+        A[i] = T(i)
+      g(A)
+  gt[float]()
+  gt[int]()                     # Note github issue #6126
+
+  echo "* Proc return an auto generic type"
+  proc rg[T](x:T):auto = x
+  type
+    M[N:static[int],T] = object
+      d:array[N,T]
+  proc rgt =
+    var x,y {.noinit.}:M[3,float]
+    for i in 0..<x.N: x.d[i] = 0.1+i.float
+    inlineProcs:
+      y = x.rg
+    for i in 0..<y.N: echo i," ",y.d[i]
+  rgt()
+
+  echo "* Object wrappers of generic types"
+  type
+    W[T] = object
+      o:T
+    Walt[T] = object
+      o:W[T]
+  proc toAlt[S](x:W[S]):auto = Walt[S](o:x)
+  proc toAlt2[S](x:W[W[S]]):auto = Walt[S](o:x.o)
+  block:
+    var A {.noinit.} :M[3,float]
+    for i in 0..<A.d.len: A.d[i] = i.float
+    var w = W[type(A)](o:A)
+    inlineProcs:
+      var walt = w.toAlt
+    for i in 0..<walt.o.o.d.len: echo walt.o.o.d[i]
+    var w2 = W[type(w)](o:w)
+    inlineProcs:
+      var walt2 = w2.toAlt2
+    for i in 0..<walt2.o.o.d.len: echo walt2.o.o.d[i]
+
+  echo "* Proc with local proc/template"
+  type Mt[F] = object
+    m:array[3,F]
+  proc len[F](m:Mt[F]):int = m.m.len
+  template `[]`[F](x:Mt[F],i:int):F = x.m[i]
+  iterator items[F](m:Mt[F]):F =
+    var i = 0
+    while i < m.len:
+      yield m[i]
+      inc i
+  proc lp =
+    proc `$`[F](m:Mt[F]):string =
+      result = "Mt["
+      for x in m: result &= " " & $x
+      result &= " ]"
+    template go[F](x:Mt[F],y:untyped) =
+      for i in 0..<x.len: x[i] += y[i]
+    var x = Mt[float](m:[1.0,2.0,3.0])
+    var y = [0.1,0.2,0.3]
+    for i in 0..<y.len: y[i] *= 0.1
+    x.go y
+    echo x
+  block:
+    inlineProcs:
+      lp()
+
+  echo "* varargs"
+  proc square[T](x:T):float =
+    let y = float(x)
+    y*y
+  proc fv(z:var float, xs:varargs[float, square]) =
+    for x in xs: z += x
+  block:
+    inlineProcs:
+      var
+        s = 0.0
+        x = 1
+        y = 2.2
+        z:float32 = 3.3
+      s.fv(x,y,z)
+      echo s
