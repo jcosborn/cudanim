@@ -1,0 +1,8 @@
+#!/bin/sh
+
+f="$1"
+if [ -z "$f" ]; then
+  f="ex1.nim"
+fi
+
+nim cpp -d:release $f
