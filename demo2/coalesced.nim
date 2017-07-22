@@ -30,9 +30,8 @@ import macros
 
 const
   V = 32                        # Inner array length
-  M = 2                         # Number of RegisterWords in a MemoryWord
-  # V = 4                         # Inner array length
-  # M = 1                         # Number of RegisterWords in a MemoryWord
+  M = 2                         # Number of RegisterWords in a MemoryWord, which is the granularity of memory transactions.
+  # M = 1                         # Number of RegisterWords in a MemoryWord, which is the granularity of memory transactions.
 
 type
   Coalesced*[T] = object
@@ -42,9 +41,20 @@ type
     o*: Coalesced[T]            # the coalesced array
     i*: int                     # the index to which we asks
   RegisterWord = int32          # Word fits in a register, 4 bytes for current GPU
-  # RegisterWord = int64          # Word fits in a register, 4 bytes for current GPU
-  Word[L:static[int]] = array[L,RegisterWord]
-  MemoryWord = Word[M]          # The granularity of memory transactions.
+when M == 1:
+  type
+    MemoryWord = object
+      a*:RegisterWord
+elif M == 2:
+  type
+    MemoryWord = object
+      a*,b*:RegisterWord
+elif M == 4:
+  type
+    MemoryWord = object
+      a*,b*,c*,d*:RegisterWord
+else:
+  {.fatal:"Unsupported memory size " & $M.}
 
 # Nim doesn't know the size of any struct for sure without the help of a C/C++ compiler.
 # So we use a C++ compiler to check if the user has provided a correct size.
@@ -53,7 +63,7 @@ type
 template <typename ToCheck, std::size_t ProvidedSize, std::size_t RealSize = sizeof(ToCheck)>
 void check_size() {static_assert(ProvidedSize == RealSize, "newCoalesced got the wrong size!");}
 """.}
-proc newCoalesced*[T](p:ptr T, n:int):auto =
+proc newCoalesced*[T](p:ptr T, n:int):auto {.noinit.} =
   when compiles((const size = sizeof(T))):
     const size = sizeof(T)
   else:
@@ -69,34 +79,50 @@ proc newCoalesced*[T](p:ptr T, n:int):auto =
 proc `[]`*[T](x:Coalesced[T], i:int):auto = CoalescedObj[T](o:x, i:i)
 proc len*[T](x:Coalesced[T]):auto = x.n
 
-template arr[T](p:ptr T):auto =
-  type A{.unchecked.} = array[0,T]
-  cast[ptr A](p)
+type
+  RWA {.unchecked.} = array[0,RegisterWord]
+  MWA {.unchecked.} = array[0,MemoryWord]
 
-proc copy[N:static[int]](x:ptr Word[N], y:ptr RegisterWord, n:int) = # n is number of Word[N] in x
+proc copy(x:ptr MemoryWord, y:ptr RegisterWord, n:int) = # n is number of MemoryWord in x
+  let
+    x = cast[ptr MWA](x)
+    y = cast[ptr RWA](y)
   for i in 0..<n:
-    for j in 0..<N: arr(x)[i][j] = arr(y)[i*N+j]
-proc copy[N:static[int]](x:ptr RegisterWord, y:ptr Word[N], n:int) = # n is number of Word[N] in y
+    x[i].a = y[M*i]
+    when M > 1:
+      x[i].b = y[M*i+1]
+    when M > 2:
+      x[i].c = y[M*i+2]
+      x[i].d = y[M*i+3]
+proc copy(x:ptr RegisterWord, y:ptr MemoryWord, n:int) = # n is number of MemoryWord in y
+  let
+    x = cast[ptr RWA](x)
+    y = cast[ptr MWA](y)
   for i in 0..<n:
-    for j in 0..<N: arr(x)[i*N+j] = arr(y)[i][j]
+    x[M*i] = y[i].a
+    when M > 1:
+      x[M*i+1] = y[i].b
+    when M > 2:
+      x[M*i+2] = y[i].c
+      x[M*i+3] = y[i].d
 
 converter fromCoalesced*[T](x:CoalescedObj[T]):T {.noinit.} =
   mixin structSize
   const N = structSize(T) div (M*sizeof(RegisterWord))
-  let p = cast[ptr MemoryWord](x.o.p)
+  let p = cast[ptr MWA](x.o.p)
   var m {.noinit.}: array[N,MemoryWord]
-  for i in 0..<N: m[i] = arr(p)[((x.i div V)*N + i)*V + x.i mod V]
+  for i in 0..<N: m[i] = p[((x.i div V)*N + i)*V + x.i mod V]
   copy(cast[ptr RegisterWord](result.addr), m[0].addr, N)
 
 proc `:=`*[T,Y](x:CoalescedObj[T], y:Y) =
   when Y is T:
     mixin structSize
     const N = structSize(T) div (M*sizeof(RegisterWord))
-    var y = y
-    let p = cast[ptr MemoryWord](x.o.p)
+    var y {.noinit.} = y
+    let p = cast[ptr MWA](x.o.p)
     var m {.noinit.}: array[N,MemoryWord]
     copy(m[0].addr, cast[ptr RegisterWord](y.addr), N)
-    for i in 0..<N: arr(p)[((x.i div V)*N + i)*V + x.i mod V] = m[i]
+    for i in 0..<N: p[((x.i div V)*N + i)*V + x.i mod V] = m[i]
   else:
     mixin `:=`
     var ty {.noinit.} :T
@@ -105,8 +131,8 @@ proc `:=`*[T,Y](x:CoalescedObj[T], y:Y) =
 
 proc `*`*[X,Y](x:CoalescedObj[X], y:CoalescedObj[Y]):auto {.noinit.} =
   let
-    tx = fromCoalesced(x)
-    ty = fromCoalesced(y)
+    tx {.noinit.} = fromCoalesced(x)
+    ty {.noinit.} = fromCoalesced(y)
   mixin `*`
   tx * ty
 
@@ -114,7 +140,7 @@ template `+=`*[T,Y](x:CoalescedObj[T], y:Y) = x := fromCoalesced(x) + y
 
 when isMainModule:
   import strutils
-  type T = Word[6]
+  type T = array[6,RegisterWord]
   proc structSize(t:typedesc[T]):int = 24
   var x {.noinit.}: array[64,T]
   let p = newCoalesced(x[0].addr, x.len)
@@ -132,9 +158,9 @@ when isMainModule:
   s &= "}"
   echo s
   s = "Memory layout: x = {"
-  let y = cast[ptr RegisterWord](x[0].addr)
+  let y = cast[ptr RWA](x[0].addr)
   for i in 0..<x.len*x[0].len:
     if i mod V == 0: s &= "\n"
-    s &= " " & align($arr(y)[i],4)
+    s &= " " & align($y[i],4)
   s &= "}"
   echo s
