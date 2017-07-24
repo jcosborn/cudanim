@@ -285,6 +285,7 @@ proc cleanIterator(n:NimNode):NimNode =
         elif i >= fa.len: keep.add c
       # echo keep," ",n.repr
       if keep.len == 0:
+        # echo "Removing declaration: ",n.lisprepr
         result = newNimNode(nnkDiscardStmt,n).add newStrLitNode(n.lisprepr)
       else:
         result = n.copyNimNode
@@ -297,49 +298,37 @@ proc cleanIterator(n:NimNode):NimNode =
     result = result.removeDeclare
     for x in fa:
       result = result.replace(x[0],x[2])
-      echo x[0].lisprepr,"\n  :: ",x[0].gettypeinst.lisprepr
-      echo x[1].lisprepr,"\n  :: ",x[1].gettypeinst.lisprepr
+      # echo x[0].lisprepr,"\n  :: ",x[0].gettypeinst.lisprepr
+      # echo x[1].lisprepr,"\n  :: ",x[1].gettypeinst.lisprepr
   proc fixDeclare(n:NimNode):NimNode =
     # Inlined iterators have var sections that are not clearly typed.
-    # We try to find inconsistencies from function calls.
+    # We try to find inconsistencies from the type of the actual symbol being declared.
     result = n.copyNimNode
     if n.kind == nnkVarSection:
       for i in 0..<n.len:
         result.add n[i].copyNimTree
         if n[i][^2].kind == nnkEmpty and n[i][^1].kind != nnkEmpty:
           for j in 0..<n[i].len-2:
-            echo n.treerepr
-            echo "sym ",i," ",j," : ",n[i][j].repr
-            echo "    :- ",n[i][^1].repr
+            # echo n.treerepr
+            # echo "sym ",i," ",j," : ",n[i][j].repr
+            # echo "    :- ",n[i][^1].repr
             let
               t = n[i][j].gettypeinst
               r = n[i][^1].gettypeinst
-            echo "    ty: ",t.lisprepr
-            echo "    <-: ",r.lisprepr
-            echo "    ??: ",t==r
+            # echo "    ty: ",t.lisprepr
+            # echo "    <-: ",r.lisprepr
+            # echo "    ??: ",t==r
             if result[i][^2].kind != nnkEmpty and result[i][^2] != r:
               echo "Internal ERROR: cleanIterator: fixDeclare: unhandled situation"
               echo n.treerepr
               quit 1
+            # echo "Fixing declaration: ",n[i].lisprepr
             if t != r: result[i][^2] = newNimNode(nnkTypeOfExpr,n[i][j]).add n[i][j]
         result[i][^1] = fixDeclare result[i][^1]
-      echo result.repr
+      # echo result.repr
     else:
       for c in n: result.add fixDeclare c
   result = fixDeclare result
-  proc fixQuirks(n:NimNode):NimNode =
-    if n.kind in CallNodes and n[0].eqIdent("inc"):
-      echo n[0].gettype.treerepr
-      echo n[0].gettypeinst.treerepr
-      echo n[1].gettype.treerepr
-      echo n[1].gettypeinst.treerepr
-      echo n[1].gettypeimpl.treerepr
-      result = newCall(bindsym"inc")
-      for i in 1..<n.len: result.add n[i]
-    else:
-      result = n.copyNimNode
-      for c in n: result.add fixQuirks c
-  result = fixQuirks result
   # echo "<<<<<< cleanIterator"
   # echo result.treerepr
 
@@ -376,9 +365,9 @@ proc regenSym(n:NimNode):NimNode =
     result = result.replaceExcl(x,y,nnkTypeOfExpr)
 
 proc inlineProcsY*(call: NimNode, procImpl: NimNode): NimNode =
-  echo ">>>>>> inlineProcsY"
-  echo "call:\n", call.lisprepr
-  echo "procImpl:\n", procImpl.treerepr
+  # echo ">>>>>> inlineProcsY"
+  # echo "call:\n", call.lisprepr
+  # echo "procImpl:\n", procImpl.treerepr
   let fp = procImpl[3]  # formal params
   proc removeRoutines(n:NimNode):NimNode =
     # We are inlining, so we don't need RoutineNodes anymore.
@@ -497,21 +486,22 @@ proc inlineProcsY*(call: NimNode, procImpl: NimNode): NimNode =
       p = procImpl[4]
     var noinit = false
     if p.kind != nnkEmpty:
-      echo "pragmas: ", p.lisprepr
+      # echo "pragmas: ", p.lisprepr
       p.expectKind nnkPragma
       for c in p:
         if c.eqIdent "noinit":
           noinit = true
           break
     let d = if noinit: getAst(varXNI(z,ty)) else: getAst(varX(z,ty))
+    # if noinit: echo "noinit: ", d.lisprepr
     pre.add body.replace(r,z)
     sl = newBlockStmt(newNimNode(nnkStmtListExpr,call).add(d[0], newBlockStmt(blockname, pre), z))
   else:
     echo "Internal ERROR: inlineProcsY: unforeseen length of the proc implementation: ", procImpl.len
     quit 1
-  echo "====== sl"
-  echo sl.repr
-  echo "^^^^^^"
+  # echo "====== sl"
+  # echo sl.repr
+  # echo "^^^^^^"
   # result = sl
   result = regenSym sl
   # echo "<<<<<< inlineProcsY"
@@ -547,9 +537,9 @@ macro inlineProcs*(body: typed): auto =
   # echo body.treerepr
   #result = body
   result = rebuild inlineProcsX body
-  echo "<<<<<< inlineProcs:"
-  echo result.repr
-  echo result.treerepr
+  # echo "<<<<<< inlineProcs:"
+  # echo result.repr
+  # echo result.treerepr
 
 
 when isMainModule:
