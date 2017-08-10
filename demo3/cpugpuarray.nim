@@ -253,15 +253,9 @@ template newComplexArray*(V,M:static[int], n:int): untyped =
 template newFloatArray*(V,M:static[int], n:int): untyped =
   newArrayObj(V,M,n,float32)
 
-template vectorType*(N:static[int],t:typedesc[float32]):untyped =
-  const V = N div VLEN
-  ShortVector[V,SVec]
-template vectorType*(N:static[int],t:typedesc[Complex[float32]]):untyped =
-  const V = N div VLEN
-  Complex[ShortVector[V,SVec]]
-template vectorType*[C:static[int]](N:static[int],t:typedesc[Colmat[C,float32]]):untyped =
-  const V = N div VLEN
-  Colmat[C,ShortVector[V,SVec]]
+template vectorType*(t:typedesc[float32],v:typedesc):untyped = v
+template vectorType*(t:typedesc[Complex[float32]],v:typedesc):untyped = Complex[v]
+template vectorType*[C:static[int]](t:typedesc[Colmat[C,float32]],v:typedesc):untyped = Colmat[C,v]
 
 template elementType*(t:typedesc[float32]):untyped = float32
 template elementType*(t:typedesc[Complex[float32]]):untyped = float32
@@ -273,13 +267,13 @@ proc printf*(frmt: cstring): cint {.
 when isMainModule:
   threads:
     echo "Threads ",getThreadNum(),"/",getNumThreads()
-  var N = 100
+  var N = 128
 
   proc testfloat =
     echo "### float"
-    var x = newArrayObj(4,1,N,float32)
-    var y = newArrayObj(4,1,N,float32)
-    var z = newArrayObj(4,1,N,float32)
+    var x = newArrayObj(8,1,N,float32)
+    var y = newArrayObj(8,1,N,float32)
+    var z = newArrayObj(8,1,N,float32)
     threads:
       x := 1
       y := 2
@@ -305,9 +299,9 @@ when isMainModule:
 
   proc testcomplex =
     echo "### complex"
-    var x = newArrayObj(4,2,N,Complex[float32])
-    var y = newArrayObj(4,2,N,Complex[float32])
-    var z = newArrayObj(4,2,N,Complex[float32])
+    var x = newArrayObj(8,2,N,Complex[float32])
+    var y = newArrayObj(8,2,N,Complex[float32])
+    var z = newArrayObj(8,2,N,Complex[float32])
     threads:
       x := 1
       y := 2
@@ -336,9 +330,9 @@ when isMainModule:
 
   proc testcolmat =
     echo "### colmat"
-    var x = newArrayObj(4,2,N,Colmat[3,float32])
-    var y = newArrayObj(4,2,N,Colmat[3,float32])
-    var z = newArrayObj(4,2,N,Colmat[3,float32])
+    var x = newArrayObj(8,2,N,Colmat[3,float32])
+    var y = newArrayObj(8,2,N,Colmat[3,float32])
+    var z = newArrayObj(8,2,N,Colmat[3,float32])
     threads:
       x := 1
       y := 2

@@ -25,26 +25,53 @@ defined corresponding to those of T.
 import coalesced
 import macros
 
-const VLEN* {.intdefine.} = 4    ## SIMD vector length
+const CPUVLEN* {.intdefine.} = 256 ## CPU SIMD vector length in bits.  Off if zero.
+const SupportedCPUVLENs = {128,256,512}
+const oneByte = 8
 macro defsimd:auto =
   var s,d:NimNode
+  var
+    ss = newIntLitNode(4)
+    ds = newIntLitNode(8)
   result = newstmtlist()
-  if VLEN > 1:
-    s = ident("SimdS" & $VLEN)
-    d = ident("SimdD" & $VLEN)
+  if CPUVLEN == 0:
+    s = ident("float32")
+    d = ident("float64")
+  elif CPUVLEN in SupportedCPUVLENs:
+    const
+      sl = CPUVLEN div (oneByte*sizeof(float32))
+      dl = CPUVLEN div (oneByte*sizeof(float64))
+    s = ident("SimdS" & $sl)
+    d = ident("SimdD" & $dl)
+    ss = newIntLitNode(CPUVLEN div oneByte)
+    ds = ss
     result.add( quote do:
       import qexLite/simd
     )
-  else:
-    s = ident("float32")
-    d = ident("float64")
   result.add( quote do:
     type
       SVec* {.inject.} = `s`
       DVec* {.inject.} = `d`
+    template structSize*(t:typedesc[SVec]):int = `ss`
+    template structSize*(t:typedesc[DVec]):int = `ds`
   )
   # echo result.repr
 defsimd()
+template vectorizedElementType(t:typedesc):untyped =
+  when t is float32: SVec
+  elif t is float64: DVec
+  else: t
+template vectorType(vlen:static[int],t:typedesc):untyped =
+  mixin elementType,vectorType
+  type E = elementType(t)
+  type VE = vectorizedElementType(E)
+  const
+    mvlen = getsize(VE) div sizeof(E) # guaranteed to be divisible
+    svlen = vlen div mvlen
+  when svlen*mvlen != vlen:
+    {.fatal:"Inner vector length " & $vlen & " not divisible by machin vector length " & $mvlen.}
+  type SV = ShortVector[svlen,VE]
+  vectorType(t,SV)
 
 type
   ShortVector*[V:static[int],E] = object
@@ -69,8 +96,8 @@ template fromVectorized*(x:VectorizedObj):untyped =
     N = getSize(x.T) div C
     S = N*x.V*x.M
   mixin vectorType, elementType
-  type V = vectorType(x.V, x.T)
   type E = elementType(x.T)
+  type V = vectorType(x.V,x.T)
   let ix = x.i.int
   let p = cast[RWA](cast[RWA](x.o.p)[ix*S].addr)
   var r {.noinit.}: V
@@ -118,13 +145,13 @@ macro `[]`*(x:VectorizedObj, ys:varargs[untyped]):untyped =
 
 proc `:=`*[V,M:static[int],X,Y](x:VectorizedObj[V,M,X], y:var Y) =
   mixin vectorType, elementType
-  type V = vectorType(x.V, x.T)
+  type E = elementType(x.T)
+  type V = vectorType(x.V,x.T)
   when Y is V:
     const
       C = x.M*sizeof(RegisterWord)
       N = getSize(x.T) div C
       S = N*x.V*x.M
-    type E = elementType(x.T)
     let ix = x.i.int
     let p = cast[RWA](cast[RWA](x.o.p)[ix*S].addr)
     # The code violates the strict aliasing rule.  GCC tends to optimize it away.
@@ -169,8 +196,8 @@ proc `:=`*[V,M:static[int],X,Y](x:VectorizedObj[V,M,X], y:var Y) =
     ty := y
     x := y
 proc `:=`*[V,M:static[int],X,Y](x:VectorizedObj[V,M,X], y:Y) =
-  mixin `:=`,vectorType
-  type V = vectorType(x.V, x.T)
+  mixin `:=`,vectorType,elementType
+  type V = vectorType(x.V,x.T)
   var ty {.noinit.}:V
   ty := y
   x := ty
@@ -223,13 +250,10 @@ when isMainModule:
     S = array[2,int32]
     U = array[L,int64]
   template structSize[N:static[int],T](t:typedesc[array[N,T]]):int = N*sizeof(T)
-  template vectorType(V:static[int],t:typedesc[T]):untyped = array[L,ShortVector[V,int32]]
-  template vectorType(V:static[int],t:typedesc[S]):untyped = array[2,ShortVector[V,int32]]
   template elementType[N:static[int],T](t:typedesc[array[N,T]]):untyped = T
-  #template elementType(t:typedesc[T]):auto = int32
-  #template structSize(t:typedesc[U]):int = L*sizeof(int64)
-  template vectorType(V:static[int],t:typedesc[U]):untyped = array[L,ShortVector[V,int64]]
-  #template elementType(t:typedesc[U]):auto = int64
+  template vectorType(t:typedesc[T],v:typedesc):untyped = array[L,v]
+  template vectorType(t:typedesc[S],v:typedesc):untyped = array[2,v]
+  template vectorType(t:typedesc[U],v:typedesc):untyped = array[L,v]
   proc test(v,m:static[int],ty:typedesc) =
     echo "### TEST ",v," ",m," ",ty.name
     var x {.noinit.}:array[12,ty]
