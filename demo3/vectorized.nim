@@ -26,15 +26,23 @@ import coalesced
 import macros
 
 const VLEN* {.intdefine.} = 4    ## SIMD vector length
-import qexLite/simd
 macro defsimd:auto =
-  let
+  var s,d:NimNode
+  result = newstmtlist()
+  if VLEN > 1:
     s = ident("SimdS" & $VLEN)
     d = ident("SimdD" & $VLEN)
-  result = quote do:
+    result.add( quote do:
+      import qexLite/simd
+    )
+  else:
+    s = ident("float32")
+    d = ident("float64")
+  result.add( quote do:
     type
       SVec* {.inject.} = `s`
       DVec* {.inject.} = `d`
+  )
   # echo result.repr
 defsimd()
 
