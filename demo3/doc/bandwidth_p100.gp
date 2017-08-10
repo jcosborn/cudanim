@@ -18,5 +18,5 @@ plot \
   p(16,2,'GPU5') u 1:10 w l ls 26 t 'V=16, M=2, GPU T/B=32', \
   p(32,1,'GPU5') u 1:10 w l ls  7 t 'V=32, M=1, GPU T/B=32', \
   p(32,2,'GPU5') u 1:10 w l ls 27 t 'V=32, M=2, GPU T/B=32', \
-  p(64,1,'GPU5') u 1:10 w l ls  7 t 'V=64, M=1, GPU T/B=32', \
-  p(64,2,'GPU5') u 1:10 w l ls 27 t 'V=64, M=2, GPU T/B=32'
+  p(64,1,'GPU5') u 1:10 w l ls  8 t 'V=64, M=1, GPU T/B=32', \
+  p(64,2,'GPU5') u 1:10 w l ls 28 t 'V=64, M=2, GPU T/B=32'
