@@ -1,8 +1,5 @@
 import macros
 
-proc isVarType(x: NimNode): bool =
-  if x.kind==nnkVarTy: result = true
-
 proc isMagic(x: NimNode): bool =
   #echo x.treerepr
   let pragmas = x[4]
@@ -395,7 +392,15 @@ proc inlineProcsY*(call: NimNode, procImpl: NimNode): NimNode =
     # echo "sym: ",sym.lineinfo," :: ",sym.lisprepr
     # echo "typ: ",typ.lineinfo," :: ",typ.lisprepr
     let p = if call[i].kind in {nnkHiddenAddr,nnkHiddenDeref}: call[i][0] else: call[i]
-    if isVarType(typ):
+    if typ.kind == nnkStaticTy:
+      # echo typ.lisprepr
+      # echo p.lisprepr
+      if p.kind notin nnkLiterals:
+        echo "ERROR: inlineProcsY: param type: ",typ.lisprepr
+        echo "    received a non-literal node: ",p.lisprepr
+        quit 1
+      # We do nothing, assuming the compiler has finished constant unfolding.
+    elif typ.kind == nnkVarTy:
       pre.add getAst(letX(t, newNimNode(nnkAddr,p).add p))[0]
       body = body.replaceNonDeclSym(sym, newNimNode(nnkDerefExpr,p).add(t), nnkHiddenDeref)
     else:
@@ -780,3 +785,11 @@ when isMainModule:
   block:
     inlineProcs:
       fr()
+
+  echo "* static[T]"
+  proc fs(x:int, y:static[int]):int = x*y
+  block:
+    inlineProcs:
+      var x = 2
+      let y = x.fs 3
+      echo y

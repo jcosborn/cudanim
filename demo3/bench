@@ -1,0 +1,9 @@
+#!/bin/bash
+n="$(hostname)"
+c="$HOME/tmp/samples/1_Utilities"
+[[ -d out ]] || mkdir out
+cat /proc/cpuinfo > "out/$n.info"
+"$c/deviceQuery/deviceQuery" >> "out/$n.info"
+"$c/bandwidthTest/bandwidthTest" >> "out/$n.info"
+./compile ex2
+./ex2 > out/$n.ex2

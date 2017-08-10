@@ -1,0 +1,4 @@
+#!/bin/sh
+args=("$@")
+if ((${#args[@]} == 0));then args=("ex1.nim");fi
+nim cpp '--warning[SmallLshouldNotBeUsed]:off' -d:SSE -d:AVX -d:VLEN=4 -d:release "${args[@]}"

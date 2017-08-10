@@ -1,0 +1,10 @@
+coalesced
+cpugpuarray
+ex1
+ex2
+gpuarray
+linalg
+ccwrapper.err
+ccwrapper.out
+qexLite/omp
+vectorized

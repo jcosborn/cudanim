@@ -1,5 +1,4 @@
 import macros
-#import deviceProcGen
 import inline
 import expr
 
@@ -98,12 +97,6 @@ template cudaDefs(body: untyped): untyped {.dirty.} =
   template getThreadIdx: untyped {.used.} = threadIdx
   template getThreadNum: untyped {.used.} = blockDim.x * blockIdx.x + threadIdx.x
   template getNumThreads: untyped {.used.} = gridDim.x * blockDim.x
-  template `[]`[T](x: ptr T, i: SomeInteger): untyped {.used.} =
-    cast[ptr array[0,T]](x)[][i]
-  template `[]=`[T](x: ptr T, i: SomeInteger, y:untyped): untyped {.used.} =
-    cast[ptr array[0,T]](x)[][i] = y
-  #bind deviceProcGen
-  #deviceProcGen:
   bind inlineProcs
   inlineProcs:
     body
@@ -163,10 +156,12 @@ macro cuda*(s,p: untyped): auto =
   let ss = s.strVal
   #echo "proc:"
   #echo p.treerepr
-  if p.kind == nnkProcDef:
-    result = p
-  else:
-    result = p[0]
+  p.expectKind nnkProcDef
+  result = p
+  # if p.kind == nnkProcDef:
+  #   result = p
+  # else:
+  #   result = p[0]
   result.addPragma parseExpr("{.codegenDecl:\""&ss&" $# $#$#\".}")[0]
   result.body = getAst(cudaDefs(result.body))
   var sl = newStmtList()
@@ -193,8 +188,8 @@ template onGpu*(nn,tpb: untyped, body: untyped): untyped =
     #echo "launching kernel"
     cudaLaunch(kern, blocksPerGrid, threadsPerBlock, v)
     discard cudaDeviceSynchronize()
-template onGpu*(nn: untyped, body: untyped): untyped = onGpu(nn, 256, body)
-template onGpu*(body: untyped): untyped = onGpu(32*256, 256, body)
+template onGpu*(nn: untyped, body: untyped): untyped = onGpu(nn, 64, body)
+template onGpu*(body: untyped): untyped = onGpu(512*64, 64, body)
 
 when isMainModule:
   type FltArr = array[0,float32]
@@ -217,6 +212,10 @@ when isMainModule:
 
     template getGpuPtr(x: int): untyped = x
     template getGpuPtr[T](x: seq[T]): untyped = addr(x[0])
+    template `[]`(x: ptr SomeNumber, i: SomeInteger): untyped {.used.} =
+      cast[ptr array[0,type(x[])]](x)[][i]
+    template `[]=`(x: ptr SomeNumber, i: SomeInteger, y:untyped): untyped {.used.} =
+      cast[ptr array[0,type(x[])]](x)[][i] = y
     onGpu(n):
       let i = getBlockDim().x * getBlockIdx().x + getThreadIdx().x
       if i < n:
