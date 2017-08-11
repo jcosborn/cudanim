@@ -282,7 +282,7 @@ when isMainModule:
     let y = cast[RWA](x[0].addr)
     for i in 0..<(sizeof(elementType(ty)) div sizeof(RegisterWord))*x.len*x[0].len:
       if i mod (p.V*p.M) == 0: s &= "\n"
-      s &= " " & align($y[i],4)
+      s &= " " & align($cast[uint32](y[i]),4)
     s &= "}"
     echo s
   echo "# Check vectorized access"

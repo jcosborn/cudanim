@@ -2,8 +2,10 @@
 n="$(hostname)"
 c="$HOME/tmp/samples/1_Utilities"
 [[ -d out ]] || mkdir out
-cat /proc/cpuinfo > "out/$n.info"
-"$c/deviceQuery/deviceQuery" >> "out/$n.info"
-"$c/bandwidthTest/bandwidthTest" >> "out/$n.info"
+if [[ ! -s out/$n.info ]];then
+  cat /proc/cpuinfo > "out/$n.info"
+  "$c/deviceQuery/deviceQuery" >> "out/$n.info"
+  "$c/bandwidthTest/bandwidthTest" >> "out/$n.info"
+fi
 ./compile ex2
 ./ex2 > out/$n.ex2

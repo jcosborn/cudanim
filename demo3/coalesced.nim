@@ -37,9 +37,31 @@ type
   CoalescedObj[V,M:static[int],T] = object
     o*: Coalesced[V,M,T]
     i*: int                     # the index to which we asks
-  RegisterWord* = int32          # Word fits in a register, 4 bytes for current GPU
-  MemoryWord[M:static[int]] = object
-    a*: array[M,RegisterWord]
+
+const llbits = currentSourcePath()[0..^14] & "llbits.h"
+type
+  RegisterWord* {.importc, header:llbits.} = object # Word fits in a register, 4 bytes for current GPU
+  MemoryWord1 {.importc, header:llbits.} = object # Word fits in a register, 4 bytes for current GPU
+    a*: array[1,RegisterWord]
+  MemoryWord2 {.importc, header:llbits.} = object # Word fits in a register, 4 bytes for current GPU
+    a*: array[2,RegisterWord]
+  MemoryWord4 {.importc, header:llbits.} = object # Word fits in a register, 4 bytes for current GPU
+    a*: array[4,RegisterWord]
+  MemoryWord8 {.importc, header:llbits.} = object # Word fits in a register, 4 bytes for current GPU
+    a*: array[8,RegisterWord]
+  MemoryWord16 {.importc, header:llbits.} = object # Word fits in a register, 4 bytes for current GPU
+    a*: array[16,RegisterWord]
+  MemoryWord32 {.importc, header:llbits.} = object # Word fits in a register, 4 bytes for current GPU
+    a*: array[32,RegisterWord]
+template MemoryWord(M:static[int]):untyped =
+  when 1 == M: MemoryWord1
+  elif 2 == M: MemoryWord2
+  elif 4 == M: MemoryWord4
+  elif 8 == M: MemoryWord8
+  elif 16 == M: MemoryWord16
+  elif 32 == M: MemoryWord32
+
+template sizeOf*(t:typedesc[RegisterWord]):int = 4
 
 # Nim doesn't know the size of any struct for sure without the help of a C/C++ compiler.
 # So we use a C++ compiler to check if the user has provided a correct size.
@@ -87,9 +109,11 @@ proc newCoalesced*[T](V,M:static[int], p:ptr T, n:int):auto {.noinit.} =
 template `[]`*(x:Coalesced, ix:int):untyped = CoalescedObj[x.V,x.M,x.T](o:x, i:ix)
 template len*(x:Coalesced):untyped = x.n
 
-type
-  RWA{.unchecked.} = ptr array[0,RegisterWord]
-  MWA{.unchecked.}[M:static[int]] = ptr array[0,MemoryWord[M]]
+# template MWA(M:static[int],p:pointer):untyped =
+#   bind MemoryWord
+#   type W = MemoryWord(M)
+#   type A{.unchecked.} = ptr array[0,W]
+#   cast[A](p)
 
 # proc copy(x:pointer, y:pointer, n:static[int]) = # n is number of RegisterWord in x
 #   let
@@ -113,11 +137,12 @@ type
 
 template fromCoalesced*(x:CoalescedObj):untyped =
   const N = getSize(x.T) div (x.M*sizeof(RegisterWord))
-  let p = cast[MWA[x.M]](x.o.p)
+  type A {.unchecked.}= ptr array[0,MemoryWord(x.M)]
+  # let p = MWA(x.M,x.o.p)
   var r {.noinit.}: x.T
-  let m = cast[MWA[x.M]](r.addr)
+  # let m = MWA(x.M,r.addr)
   # var m {.noinit.}: array[N,MemoryWord[x.M]]
-  for i in 0..<N: m[i] = p[((x.i div x.V)*N + i)*x.V + x.i mod x.V]
+  for i in 0..<N: cast[A](r.addr)[i] = cast[A](x.o.p)[((x.i div x.V)*N + i)*x.V + x.i mod x.V]
   # copy(r.addr, m[0].addr, N*x.M)
   r
 macro `[]`*(x:CoalescedObj, ys:varargs[untyped]):untyped =
@@ -131,7 +156,7 @@ macro `[]`*(x:CoalescedObj, ys:varargs[untyped]):untyped =
 proc `:=`*[Y](x:CoalescedObj, y:Y) =
   when Y is x.T:
     const N = getSize(x.T) div (x.M*sizeof(RegisterWord))
-    type A = ptr array[N,MemoryWord[x.M]]
+    type A {.unchecked.}= ptr array[0,MemoryWord(x.M)]
     when not compiles(y.addr):
       var y {.noinit.} = y
     for i in 0..<N: cast[A](x.o.p)[((x.i div x.V)*N + i)*x.V + x.i mod x.V] = cast[A](y.addr)[i]
@@ -166,29 +191,31 @@ template `+=`*[Y](x:CoalescedObj, y:Y) = x := fromCoalesced(x) + y
 
 when isMainModule:
   import strutils
-  type T = array[6,RegisterWord]
+  type T = array[6,int32]
   proc structSize(t:typedesc[T]):int = 24
   var x {.noinit.}: array[16,T]
-  let p = newCoalesced(8, 3, x[0].addr, x.len)
+  let p = newCoalesced(8, 2, x[0].addr, x.len)
   # var p:Coalesced[8,3,T]
   # p.initCoalesced(x[0].addr, x.len)
   for i in 0..<p.len:
     var t {.noinit.}: T
-    for j in 0..<t.len: t[j] = RegisterWord(100*i + j)
+    for j in 0..<t.len: t[j] = int32(100*i + j)
     p[i] := t
   var s:string
   s = "Lexical order: p = {"
   for i in 0..<p.len:
-    let t:T = fromCoalesced p[i]
+    let t = p[i][]
     s &= "\n["
     for j in 0..<t.len: s &= " " & align($t[j],4)
     s &= " ]"
   s &= "}"
   echo s
   s = "Memory layout: x = {"
-  let y = cast[RWA](x[0].addr)
-  for i in 0..<x.len*x[0].len:
-    if i mod (p.V*p.M) == 0: s &= "\n"
-    s &= " " & align($y[i],4)
+  var c = 0
+  for i in 0..<x.len:
+    for j in 0..<x[0].len:
+      if 0 == c mod (p.V*p.M): s &= "\n"
+      inc c
+      s &= " " & align($x[i][j],4)
   s &= "}"
   echo s
