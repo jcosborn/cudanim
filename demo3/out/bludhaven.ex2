@@ -1,1061 +1,885 @@
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-    1024	  4 1	CPU    	msec:  0.013	GF/s:  16.66	GB/s:  22.22
-    1024	  4 1	GPU5   	msec:  0.046	GF/s:   4.81	GB/s:   6.41
-    1024	  4 1	GPU6   	msec:  0.045	GF/s:   4.93	GB/s:   6.57
-    1024	  4 1	GPU7   	msec:  0.042	GF/s:   5.24	GB/s:   6.98
-    1024	  4 1	CPU    	msec:  0.013	GF/s:  16.64	GB/s:  22.19
+    1024	  8 1	CPU    	msec:  0.010	GF/s:  21.43	GB/s:  28.58
+    1024	  8 1	GPU5   	msec:  0.035	GF/s:   6.24	GB/s:   8.31
+    1024	  8 1	GPU6   	msec:  0.031	GF/s:   7.25	GB/s:   9.66
+    1024	  8 1	GPU7   	msec:  0.030	GF/s:   7.37	GB/s:   9.83
+    1024	  8 1	CPU    	msec:  0.010	GF/s:  22.92	GB/s:  30.57
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-    1024	  4 2	CPU    	msec:  0.016	GF/s:  13.59	GB/s:  18.12
-    1024	  4 2	GPU5   	msec:  0.043	GF/s:   5.15	GB/s:   6.87
-    1024	  4 2	GPU6   	msec:  0.042	GF/s:   5.26	GB/s:   7.01
-    1024	  4 2	GPU7   	msec:  0.042	GF/s:   5.26	GB/s:   7.02
-    1024	  4 2	CPU    	msec:  0.016	GF/s:  13.68	GB/s:  18.24
+    1024	  8 2	CPU    	msec:  0.011	GF/s:  20.74	GB/s:  27.65
+    1024	  8 2	GPU5   	msec:  0.027	GF/s:   8.08	GB/s:  10.77
+    1024	  8 2	GPU6   	msec:  0.024	GF/s:   9.10	GB/s:  12.13
+    1024	  8 2	GPU7   	msec:  0.024	GF/s:   9.08	GB/s:  12.11
+    1024	  8 2	CPU    	msec:  0.011	GF/s:  20.99	GB/s:  27.98
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-    1024	  8 1	CPU    	msec:  0.016	GF/s:  14.23	GB/s:  18.97
-    1024	  8 1	GPU5   	msec:  0.033	GF/s:   6.63	GB/s:   8.84
-    1024	  8 1	GPU6   	msec:  0.028	GF/s:   7.95	GB/s:  10.60
-    1024	  8 1	GPU7   	msec:  0.028	GF/s:   7.97	GB/s:  10.62
-    1024	  8 1	CPU    	msec:  0.015	GF/s:  14.31	GB/s:  19.08
+    1024	 16 1	CPU    	msec:  0.013	GF/s:  16.38	GB/s:  21.85
+    1024	 16 1	GPU5   	msec:  0.028	GF/s:   7.99	GB/s:  10.65
+    1024	 16 1	GPU6   	msec:  0.024	GF/s:   9.29	GB/s:  12.38
+    1024	 16 1	GPU7   	msec:  0.024	GF/s:   9.31	GB/s:  12.42
+    1024	 16 1	CPU    	msec:  0.013	GF/s:  16.40	GB/s:  21.87
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-    1024	  8 2	CPU    	msec:  0.017	GF/s:  13.33	GB/s:  17.77
-    1024	  8 2	GPU5   	msec:  0.033	GF/s:   6.67	GB/s:   8.90
-    1024	  8 2	GPU6   	msec:  0.028	GF/s:   7.86	GB/s:  10.48
-    1024	  8 2	GPU7   	msec:  0.028	GF/s:   7.83	GB/s:  10.44
-    1024	  8 2	CPU    	msec:  0.017	GF/s:  13.28	GB/s:  17.71
+    1024	 16 2	CPU    	msec:  0.014	GF/s:  15.84	GB/s:  21.12
+    1024	 16 2	GPU5   	msec:  0.026	GF/s:   8.52	GB/s:  11.36
+    1024	 16 2	GPU6   	msec:  0.023	GF/s:   9.72	GB/s:  12.96
+    1024	 16 2	GPU7   	msec:  0.023	GF/s:   9.73	GB/s:  12.97
+    1024	 16 2	CPU    	msec:  0.014	GF/s:  15.90	GB/s:  21.20
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-    1024	 16 1	CPU    	msec:  0.015	GF/s:  14.91	GB/s:  19.88
-    1024	 16 1	GPU5   	msec:  0.028	GF/s:   7.92	GB/s:  10.56
-    1024	 16 1	GPU6   	msec:  0.024	GF/s:   9.21	GB/s:  12.28
-    1024	 16 1	GPU7   	msec:  0.024	GF/s:   9.21	GB/s:  12.28
-    1024	 16 1	CPU    	msec:  0.015	GF/s:  14.93	GB/s:  19.91
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-    1024	 16 2	CPU    	msec:  0.015	GF/s:  14.45	GB/s:  19.27
-    1024	 16 2	GPU5   	msec:  0.028	GF/s:   7.77	GB/s:  10.36
-    1024	 16 2	GPU6   	msec:  0.024	GF/s:   9.06	GB/s:  12.08
-    1024	 16 2	GPU7   	msec:  0.024	GF/s:   9.06	GB/s:  12.08
-    1024	 16 2	CPU    	msec:  0.015	GF/s:  14.31	GB/s:  19.07
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-    1024	 32 1	CPU    	msec:  0.016	GF/s:  13.51	GB/s:  18.01
+    1024	 32 1	CPU    	msec:  0.015	GF/s:  14.56	GB/s:  19.41
     1024	 32 1	GPU5   	msec:  0.028	GF/s:   8.02	GB/s:  10.69
-    1024	 32 1	GPU6   	msec:  0.023	GF/s:   9.70	GB/s:  12.93
-    1024	 32 1	GPU7   	msec:  0.023	GF/s:   9.70	GB/s:  12.93
-    1024	 32 1	CPU    	msec:  0.016	GF/s:  13.47	GB/s:  17.96
+    1024	 32 1	GPU6   	msec:  0.023	GF/s:   9.77	GB/s:  13.02
+    1024	 32 1	GPU7   	msec:  0.023	GF/s:   9.74	GB/s:  12.98
+    1024	 32 1	CPU    	msec:  0.015	GF/s:  14.60	GB/s:  19.47
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-    1024	 32 2	CPU    	msec:  0.017	GF/s:  13.05	GB/s:  17.40
-    1024	 32 2	GPU5   	msec:  0.029	GF/s:   7.71	GB/s:  10.28
-    1024	 32 2	GPU6   	msec:  0.025	GF/s:   8.96	GB/s:  11.95
-    1024	 32 2	GPU7   	msec:  0.025	GF/s:   8.91	GB/s:  11.89
-    1024	 32 2	CPU    	msec:  0.017	GF/s:  13.20	GB/s:  17.60
+    1024	 32 2	CPU    	msec:  0.015	GF/s:  14.68	GB/s:  19.57
+    1024	 32 2	GPU5   	msec:  0.026	GF/s:   8.56	GB/s:  11.41
+    1024	 32 2	GPU6   	msec:  0.023	GF/s:   9.82	GB/s:  13.10
+    1024	 32 2	GPU7   	msec:  0.023	GF/s:   9.83	GB/s:  13.10
+    1024	 32 2	CPU    	msec:  0.015	GF/s:  14.53	GB/s:  19.38
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-    1024	 64 1	CPU    	msec:  0.018	GF/s:  12.62	GB/s:  16.82
-    1024	 64 1	GPU5   	msec:  0.028	GF/s:   7.97	GB/s:  10.62
-    1024	 64 1	GPU6   	msec:  0.023	GF/s:   9.62	GB/s:  12.82
-    1024	 64 1	GPU7   	msec:  0.023	GF/s:   9.59	GB/s:  12.78
-    1024	 64 1	CPU    	msec:  0.017	GF/s:  13.04	GB/s:  17.39
+    1024	 64 1	CPU    	msec:  0.015	GF/s:  14.40	GB/s:  19.20
+    1024	 64 1	GPU5   	msec:  0.027	GF/s:   8.15	GB/s:  10.87
+    1024	 64 1	GPU6   	msec:  0.023	GF/s:   9.79	GB/s:  13.05
+    1024	 64 1	GPU7   	msec:  0.023	GF/s:   9.77	GB/s:  13.02
+    1024	 64 1	CPU    	msec:  0.016	GF/s:  14.13	GB/s:  18.84
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-    1024	 64 2	CPU    	msec:  0.018	GF/s:  12.32	GB/s:  16.43
-    1024	 64 2	GPU5   	msec:  0.029	GF/s:   7.66	GB/s:  10.22
-    1024	 64 2	GPU6   	msec:  0.025	GF/s:   8.87	GB/s:  11.83
-    1024	 64 2	GPU7   	msec:  0.025	GF/s:   8.87	GB/s:  11.83
-    1024	 64 2	CPU    	msec:  0.018	GF/s:  12.42	GB/s:  16.56
+    1024	 64 2	CPU    	msec:  0.016	GF/s:  13.76	GB/s:  18.34
+    1024	 64 2	GPU5   	msec:  0.026	GF/s:   8.48	GB/s:  11.31
+    1024	 64 2	GPU6   	msec:  0.023	GF/s:   9.79	GB/s:  13.06
+    1024	 64 2	GPU7   	msec:  0.023	GF/s:   9.81	GB/s:  13.08
+    1024	 64 2	CPU    	msec:  0.016	GF/s:  13.67	GB/s:  18.23
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-    1024	128 1	CPU    	msec:  0.043	GF/s:   5.18	GB/s:   6.91
-    1024	128 1	GPU5   	msec:  0.027	GF/s:   8.08	GB/s:  10.78
-    1024	128 1	GPU6   	msec:  0.023	GF/s:   9.83	GB/s:  13.10
-    1024	128 1	GPU7   	msec:  0.023	GF/s:   9.81	GB/s:  13.08
-    1024	128 1	CPU    	msec:  0.042	GF/s:   5.26	GB/s:   7.01
+    1024	128 1	CPU    	msec:  0.019	GF/s:  11.92	GB/s:  15.89
+    1024	128 1	GPU5   	msec:  0.027	GF/s:   8.15	GB/s:  10.86
+    1024	128 1	GPU6   	msec:  0.022	GF/s:   9.95	GB/s:  13.27
+    1024	128 1	GPU7   	msec:  0.022	GF/s:   9.93	GB/s:  13.24
+    1024	128 1	CPU    	msec:  0.018	GF/s:  12.01	GB/s:  16.02
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-    1024	128 2	CPU    	msec:  0.042	GF/s:   5.31	GB/s:   7.08
-    1024	128 2	GPU5   	msec:  0.029	GF/s:   7.75	GB/s:  10.34
-    1024	128 2	GPU6   	msec:  0.025	GF/s:   8.96	GB/s:  11.95
-    1024	128 2	GPU7   	msec:  0.025	GF/s:   9.02	GB/s:  12.03
-    1024	128 2	CPU    	msec:  0.042	GF/s:   5.33	GB/s:   7.10
+    1024	128 2	CPU    	msec:  0.019	GF/s:  11.72	GB/s:  15.63
+    1024	128 2	GPU5   	msec:  0.025	GF/s:   8.69	GB/s:  11.59
+    1024	128 2	GPU6   	msec:  0.022	GF/s:  10.03	GB/s:  13.38
+    1024	128 2	GPU7   	msec:  0.022	GF/s:  10.02	GB/s:  13.36
+    1024	128 2	CPU    	msec:  0.019	GF/s:  11.65	GB/s:  15.53
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-    2048	  4 1	CPU    	msec:  0.026	GF/s:  17.11	GB/s:  22.82
-    2048	  4 1	GPU5   	msec:  0.078	GF/s:   5.67	GB/s:   7.56
-    2048	  4 1	GPU6   	msec:  0.072	GF/s:   6.10	GB/s:   8.14
-    2048	  4 1	GPU7   	msec:  0.079	GF/s:   5.59	GB/s:   7.45
-    2048	  4 1	CPU    	msec:  0.026	GF/s:  17.06	GB/s:  22.74
+    2048	  8 1	CPU    	msec:  0.019	GF/s:  23.55	GB/s:  31.40
+    2048	  8 1	GPU5   	msec:  0.057	GF/s:   7.70	GB/s:  10.26
+    2048	  8 1	GPU6   	msec:  0.046	GF/s:   9.54	GB/s:  12.72
+    2048	  8 1	GPU7   	msec:  0.049	GF/s:   9.10	GB/s:  12.14
+    2048	  8 1	CPU    	msec:  0.019	GF/s:  23.63	GB/s:  31.51
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-    2048	  4 2	CPU    	msec:  0.032	GF/s:  13.87	GB/s:  18.50
-    2048	  4 2	GPU5   	msec:  0.076	GF/s:   5.79	GB/s:   7.72
-    2048	  4 2	GPU6   	msec:  0.072	GF/s:   6.11	GB/s:   8.15
-    2048	  4 2	GPU7   	msec:  0.078	GF/s:   5.64	GB/s:   7.53
-    2048	  4 2	CPU    	msec:  0.033	GF/s:  13.58	GB/s:  18.11
+    2048	  8 2	CPU    	msec:  0.021	GF/s:  21.35	GB/s:  28.47
+    2048	  8 2	GPU5   	msec:  0.045	GF/s:   9.76	GB/s:  13.02
+    2048	  8 2	GPU6   	msec:  0.042	GF/s:  10.64	GB/s:  14.18
+    2048	  8 2	GPU7   	msec:  0.042	GF/s:  10.46	GB/s:  13.95
+    2048	  8 2	CPU    	msec:  0.021	GF/s:  21.38	GB/s:  28.50
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-    2048	  8 1	CPU    	msec:  0.030	GF/s:  14.64	GB/s:  19.52
-    2048	  8 1	GPU5   	msec:  0.058	GF/s:   7.69	GB/s:  10.25
-    2048	  8 1	GPU6   	msec:  0.047	GF/s:   9.51	GB/s:  12.68
-    2048	  8 1	GPU7   	msec:  0.048	GF/s:   9.12	GB/s:  12.16
-    2048	  8 1	CPU    	msec:  0.030	GF/s:  14.60	GB/s:  19.47
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-    2048	  8 2	CPU    	msec:  0.032	GF/s:  13.70	GB/s:  18.27
-    2048	  8 2	GPU5   	msec:  0.057	GF/s:   7.79	GB/s:  10.39
-    2048	  8 2	GPU6   	msec:  0.047	GF/s:   9.42	GB/s:  12.56
-    2048	  8 2	GPU7   	msec:  0.048	GF/s:   9.18	GB/s:  12.24
-    2048	  8 2	CPU    	msec:  0.033	GF/s:  13.56	GB/s:  18.08
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-    2048	 16 1	CPU    	msec:  0.029	GF/s:  15.23	GB/s:  20.31
-    2048	 16 1	GPU5   	msec:  0.046	GF/s:   9.52	GB/s:  12.69
+    2048	 16 1	CPU    	msec:  0.026	GF/s:  16.78	GB/s:  22.37
+    2048	 16 1	GPU5   	msec:  0.046	GF/s:   9.57	GB/s:  12.77
     2048	 16 1	GPU6   	msec:  0.040	GF/s:  11.10	GB/s:  14.80
-    2048	 16 1	GPU7   	msec:  0.040	GF/s:  10.97	GB/s:  14.63
-    2048	 16 1	CPU    	msec:  0.029	GF/s:  15.19	GB/s:  20.26
+    2048	 16 1	GPU7   	msec:  0.040	GF/s:  11.02	GB/s:  14.70
+    2048	 16 1	CPU    	msec:  0.026	GF/s:  16.73	GB/s:  22.31
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-    2048	 16 2	CPU    	msec:  0.030	GF/s:  14.76	GB/s:  19.68
-    2048	 16 2	GPU5   	msec:  0.047	GF/s:   9.43	GB/s:  12.58
-    2048	 16 2	GPU6   	msec:  0.040	GF/s:  10.96	GB/s:  14.61
-    2048	 16 2	GPU7   	msec:  0.041	GF/s:  10.89	GB/s:  14.52
-    2048	 16 2	CPU    	msec:  0.030	GF/s:  14.71	GB/s:  19.61
+    2048	 16 2	CPU    	msec:  0.027	GF/s:  16.14	GB/s:  21.52
+    2048	 16 2	GPU5   	msec:  0.042	GF/s:  10.45	GB/s:  13.94
+    2048	 16 2	GPU6   	msec:  0.037	GF/s:  11.81	GB/s:  15.74
+    2048	 16 2	GPU7   	msec:  0.037	GF/s:  11.80	GB/s:  15.74
+    2048	 16 2	CPU    	msec:  0.027	GF/s:  16.12	GB/s:  21.49
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-    2048	 32 1	CPU    	msec:  0.032	GF/s:  13.71	GB/s:  18.28
-    2048	 32 1	GPU5   	msec:  0.046	GF/s:   9.66	GB/s:  12.87
-    2048	 32 1	GPU6   	msec:  0.038	GF/s:  11.74	GB/s:  15.65
-    2048	 32 1	GPU7   	msec:  0.038	GF/s:  11.60	GB/s:  15.47
-    2048	 32 1	CPU    	msec:  0.033	GF/s:  13.61	GB/s:  18.15
+    2048	 32 1	CPU    	msec:  0.030	GF/s:  14.90	GB/s:  19.87
+    2048	 32 1	GPU5   	msec:  0.046	GF/s:   9.64	GB/s:  12.86
+    2048	 32 1	GPU6   	msec:  0.038	GF/s:  11.79	GB/s:  15.73
+    2048	 32 1	GPU7   	msec:  0.038	GF/s:  11.63	GB/s:  15.50
+    2048	 32 1	CPU    	msec:  0.030	GF/s:  14.87	GB/s:  19.83
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-    2048	 32 2	CPU    	msec:  0.033	GF/s:  13.37	GB/s:  17.83
-    2048	 32 2	GPU5   	msec:  0.047	GF/s:   9.37	GB/s:  12.49
-    2048	 32 2	GPU6   	msec:  0.041	GF/s:  10.81	GB/s:  14.42
-    2048	 32 2	GPU7   	msec:  0.041	GF/s:  10.74	GB/s:  14.33
-    2048	 32 2	CPU    	msec:  0.033	GF/s:  13.44	GB/s:  17.92
+    2048	 32 2	CPU    	msec:  0.030	GF/s:  14.90	GB/s:  19.87
+    2048	 32 2	GPU5   	msec:  0.042	GF/s:  10.43	GB/s:  13.91
+    2048	 32 2	GPU6   	msec:  0.037	GF/s:  11.89	GB/s:  15.85
+    2048	 32 2	GPU7   	msec:  0.037	GF/s:  11.86	GB/s:  15.81
+    2048	 32 2	CPU    	msec:  0.030	GF/s:  14.77	GB/s:  19.69
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-    2048	 64 1	CPU    	msec:  0.042	GF/s:  10.57	GB/s:  14.09
-    2048	 64 1	GPU5   	msec:  0.046	GF/s:   9.62	GB/s:  12.83
-    2048	 64 1	GPU6   	msec:  0.038	GF/s:  11.77	GB/s:  15.70
-    2048	 64 1	GPU7   	msec:  0.038	GF/s:  11.63	GB/s:  15.51
-    2048	 64 1	CPU    	msec:  0.033	GF/s:  13.21	GB/s:  17.61
+    2048	 64 1	CPU    	msec:  0.030	GF/s:  14.63	GB/s:  19.50
+    2048	 64 1	GPU5   	msec:  0.046	GF/s:   9.68	GB/s:  12.91
+    2048	 64 1	GPU6   	msec:  0.037	GF/s:  11.83	GB/s:  15.77
+    2048	 64 1	GPU7   	msec:  0.038	GF/s:  11.71	GB/s:  15.61
+    2048	 64 1	CPU    	msec:  0.031	GF/s:  14.33	GB/s:  19.11
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-    2048	 64 2	CPU    	msec:  0.035	GF/s:  12.64	GB/s:  16.85
-    2048	 64 2	GPU5   	msec:  0.047	GF/s:   9.33	GB/s:  12.43
-    2048	 64 2	GPU6   	msec:  0.041	GF/s:  10.83	GB/s:  14.44
-    2048	 64 2	GPU7   	msec:  0.041	GF/s:  10.77	GB/s:  14.36
-    2048	 64 2	CPU    	msec:  0.035	GF/s:  12.62	GB/s:  16.83
+    2048	 64 2	CPU    	msec:  0.032	GF/s:  14.00	GB/s:  18.67
+    2048	 64 2	GPU5   	msec:  0.042	GF/s:  10.52	GB/s:  14.02
+    2048	 64 2	GPU6   	msec:  0.037	GF/s:  11.97	GB/s:  15.96
+    2048	 64 2	GPU7   	msec:  0.037	GF/s:  11.95	GB/s:  15.93
+    2048	 64 2	CPU    	msec:  0.032	GF/s:  13.90	GB/s:  18.54
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-    2048	128 1	CPU    	msec:  0.084	GF/s:   5.24	GB/s:   6.99
-    2048	128 1	GPU5   	msec:  0.045	GF/s:   9.74	GB/s:  12.98
-    2048	128 1	GPU6   	msec:  0.037	GF/s:  11.85	GB/s:  15.80
-    2048	128 1	GPU7   	msec:  0.038	GF/s:  11.74	GB/s:  15.66
-    2048	128 1	CPU    	msec:  0.084	GF/s:   5.25	GB/s:   7.00
+    2048	128 1	CPU    	msec:  0.037	GF/s:  11.93	GB/s:  15.91
+    2048	128 1	GPU5   	msec:  0.045	GF/s:   9.80	GB/s:  13.07
+    2048	128 1	GPU6   	msec:  0.037	GF/s:  11.94	GB/s:  15.92
+    2048	128 1	GPU7   	msec:  0.037	GF/s:  11.87	GB/s:  15.83
+    2048	128 1	CPU    	msec:  0.037	GF/s:  12.00	GB/s:  16.01
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-    2048	128 2	CPU    	msec:  0.083	GF/s:   5.31	GB/s:   7.08
-    2048	128 2	GPU5   	msec:  0.047	GF/s:   9.41	GB/s:  12.55
-    2048	128 2	GPU6   	msec:  0.041	GF/s:  10.86	GB/s:  14.48
-    2048	128 2	GPU7   	msec:  0.041	GF/s:  10.83	GB/s:  14.44
-    2048	128 2	CPU    	msec:  0.083	GF/s:   5.33	GB/s:   7.11
+    2048	128 2	CPU    	msec:  0.038	GF/s:  11.79	GB/s:  15.72
+    2048	128 2	GPU5   	msec:  0.042	GF/s:  10.63	GB/s:  14.18
+    2048	128 2	GPU6   	msec:  0.037	GF/s:  12.08	GB/s:  16.11
+    2048	128 2	GPU7   	msec:  0.037	GF/s:  12.06	GB/s:  16.08
+    2048	128 2	CPU    	msec:  0.038	GF/s:  11.70	GB/s:  15.61
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-    4096	  4 1	CPU    	msec:  0.053	GF/s:  16.80	GB/s:  22.40
-    4096	  4 1	GPU5   	msec:  0.144	GF/s:   6.14	GB/s:   8.18
-    4096	  4 1	GPU6   	msec:  0.130	GF/s:   6.79	GB/s:   9.06
-    4096	  4 1	GPU7   	msec:  0.144	GF/s:   6.13	GB/s:   8.17
-    4096	  4 1	CPU    	msec:  0.053	GF/s:  16.78	GB/s:  22.37
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-    4096	  4 2	CPU    	msec:  0.064	GF/s:  13.80	GB/s:  18.40
-    4096	  4 2	GPU5   	msec:  0.143	GF/s:   6.20	GB/s:   8.27
-    4096	  4 2	GPU6   	msec:  0.130	GF/s:   6.80	GB/s:   9.06
-    4096	  4 2	GPU7   	msec:  0.141	GF/s:   6.28	GB/s:   8.37
-    4096	  4 2	CPU    	msec:  0.064	GF/s:  13.89	GB/s:  18.52
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-    4096	  8 1	CPU    	msec:  0.062	GF/s:  14.33	GB/s:  19.10
+    4096	  8 1	CPU    	msec:  0.038	GF/s:  23.07	GB/s:  30.77
     4096	  8 1	GPU5   	msec:  0.105	GF/s:   8.40	GB/s:  11.20
-    4096	  8 1	GPU6   	msec:  0.083	GF/s:  10.60	GB/s:  14.13
-    4096	  8 1	GPU7   	msec:  0.088	GF/s:  10.04	GB/s:  13.38
-    4096	  8 1	CPU    	msec:  0.062	GF/s:  14.30	GB/s:  19.07
+    4096	  8 1	GPU6   	msec:  0.083	GF/s:  10.62	GB/s:  14.16
+    4096	  8 1	GPU7   	msec:  0.088	GF/s:  10.05	GB/s:  13.40
+    4096	  8 1	CPU    	msec:  0.038	GF/s:  23.04	GB/s:  30.72
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-    4096	  8 2	CPU    	msec:  0.065	GF/s:  13.53	GB/s:  18.04
-    4096	  8 2	GPU5   	msec:  0.104	GF/s:   8.52	GB/s:  11.36
-    4096	  8 2	GPU6   	msec:  0.083	GF/s:  10.65	GB/s:  14.20
-    4096	  8 2	GPU7   	msec:  0.086	GF/s:  10.23	GB/s:  13.64
-    4096	  8 2	CPU    	msec:  0.066	GF/s:  13.37	GB/s:  17.83
+    4096	  8 2	CPU    	msec:  0.042	GF/s:  21.09	GB/s:  28.12
+    4096	  8 2	GPU5   	msec:  0.080	GF/s:  11.08	GB/s:  14.77
+    4096	  8 2	GPU6   	msec:  0.075	GF/s:  11.81	GB/s:  15.74
+    4096	  8 2	GPU7   	msec:  0.077	GF/s:  11.42	GB/s:  15.23
+    4096	  8 2	CPU    	msec:  0.042	GF/s:  21.09	GB/s:  28.12
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-    4096	 16 1	CPU    	msec:  0.058	GF/s:  15.13	GB/s:  20.18
-    4096	 16 1	GPU5   	msec:  0.083	GF/s:  10.65	GB/s:  14.20
-    4096	 16 1	GPU6   	msec:  0.071	GF/s:  12.42	GB/s:  16.56
-    4096	 16 1	GPU7   	msec:  0.072	GF/s:  12.32	GB/s:  16.42
-    4096	 16 1	CPU    	msec:  0.059	GF/s:  15.09	GB/s:  20.12
+    4096	 16 1	CPU    	msec:  0.053	GF/s:  16.63	GB/s:  22.18
+    4096	 16 1	GPU5   	msec:  0.083	GF/s:  10.71	GB/s:  14.27
+    4096	 16 1	GPU6   	msec:  0.071	GF/s:  12.45	GB/s:  16.60
+    4096	 16 1	GPU7   	msec:  0.071	GF/s:  12.38	GB/s:  16.51
+    4096	 16 1	CPU    	msec:  0.053	GF/s:  16.63	GB/s:  22.17
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-    4096	 16 2	CPU    	msec:  0.060	GF/s:  14.85	GB/s:  19.80
-    4096	 16 2	GPU5   	msec:  0.084	GF/s:  10.52	GB/s:  14.03
-    4096	 16 2	GPU6   	msec:  0.072	GF/s:  12.29	GB/s:  16.39
-    4096	 16 2	GPU7   	msec:  0.072	GF/s:  12.26	GB/s:  16.35
-    4096	 16 2	CPU    	msec:  0.060	GF/s:  14.82	GB/s:  19.75
+    4096	 16 2	CPU    	msec:  0.055	GF/s:  16.12	GB/s:  21.49
+    4096	 16 2	GPU5   	msec:  0.076	GF/s:  11.71	GB/s:  15.61
+    4096	 16 2	GPU6   	msec:  0.067	GF/s:  13.22	GB/s:  17.62
+    4096	 16 2	GPU7   	msec:  0.068	GF/s:  13.09	GB/s:  17.45
+    4096	 16 2	CPU    	msec:  0.055	GF/s:  16.12	GB/s:  21.49
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-    4096	 32 1	CPU    	msec:  0.065	GF/s:  13.71	GB/s:  18.28
-    4096	 32 1	GPU5   	msec:  0.083	GF/s:  10.70	GB/s:  14.27
-    4096	 32 1	GPU6   	msec:  0.067	GF/s:  13.18	GB/s:  17.58
-    4096	 32 1	GPU7   	msec:  0.068	GF/s:  13.00	GB/s:  17.34
-    4096	 32 1	CPU    	msec:  0.065	GF/s:  13.63	GB/s:  18.18
+    4096	 32 1	CPU    	msec:  0.059	GF/s:  14.93	GB/s:  19.91
+    4096	 32 1	GPU5   	msec:  0.082	GF/s:  10.78	GB/s:  14.37
+    4096	 32 1	GPU6   	msec:  0.067	GF/s:  13.26	GB/s:  17.69
+    4096	 32 1	GPU7   	msec:  0.068	GF/s:  13.02	GB/s:  17.36
+    4096	 32 1	CPU    	msec:  0.059	GF/s:  14.95	GB/s:  19.93
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-    4096	 32 2	CPU    	msec:  0.066	GF/s:  13.34	GB/s:  17.79
-    4096	 32 2	GPU5   	msec:  0.084	GF/s:  10.52	GB/s:  14.02
-    4096	 32 2	GPU6   	msec:  0.073	GF/s:  12.13	GB/s:  16.17
-    4096	 32 2	GPU7   	msec:  0.073	GF/s:  12.12	GB/s:  16.16
-    4096	 32 2	CPU    	msec:  0.065	GF/s:  13.51	GB/s:  18.01
+    4096	 32 2	CPU    	msec:  0.059	GF/s:  14.95	GB/s:  19.94
+    4096	 32 2	GPU5   	msec:  0.075	GF/s:  11.85	GB/s:  15.81
+    4096	 32 2	GPU6   	msec:  0.066	GF/s:  13.39	GB/s:  17.85
+    4096	 32 2	GPU7   	msec:  0.067	GF/s:  13.17	GB/s:  17.56
+    4096	 32 2	CPU    	msec:  0.059	GF/s:  14.88	GB/s:  19.83
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-    4096	 64 1	CPU    	msec:  0.069	GF/s:  12.88	GB/s:  17.17
-    4096	 64 1	GPU5   	msec:  0.083	GF/s:  10.69	GB/s:  14.25
-    4096	 64 1	GPU6   	msec:  0.067	GF/s:  13.19	GB/s:  17.58
-    4096	 64 1	GPU7   	msec:  0.068	GF/s:  12.94	GB/s:  17.26
-    4096	 64 1	CPU    	msec:  0.066	GF/s:  13.31	GB/s:  17.75
+    4096	 64 1	CPU    	msec:  0.060	GF/s:  14.67	GB/s:  19.55
+    4096	 64 1	GPU5   	msec:  0.082	GF/s:  10.75	GB/s:  14.33
+    4096	 64 1	GPU6   	msec:  0.067	GF/s:  13.29	GB/s:  17.72
+    4096	 64 1	GPU7   	msec:  0.068	GF/s:  13.03	GB/s:  17.37
+    4096	 64 1	CPU    	msec:  0.062	GF/s:  14.37	GB/s:  19.15
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-    4096	 64 2	CPU    	msec:  0.070	GF/s:  12.71	GB/s:  16.94
-    4096	 64 2	GPU5   	msec:  0.084	GF/s:  10.48	GB/s:  13.98
-    4096	 64 2	GPU6   	msec:  0.073	GF/s:  12.14	GB/s:  16.19
-    4096	 64 2	GPU7   	msec:  0.073	GF/s:  12.10	GB/s:  16.14
-    4096	 64 2	CPU    	msec:  0.070	GF/s:  12.71	GB/s:  16.94
+    4096	 64 2	CPU    	msec:  0.063	GF/s:  13.98	GB/s:  18.64
+    4096	 64 2	GPU5   	msec:  0.075	GF/s:  11.76	GB/s:  15.68
+    4096	 64 2	GPU6   	msec:  0.067	GF/s:  13.12	GB/s:  17.50
+    4096	 64 2	GPU7   	msec:  0.068	GF/s:  13.05	GB/s:  17.41
+    4096	 64 2	CPU    	msec:  0.063	GF/s:  13.93	GB/s:  18.58
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-    4096	128 1	CPU    	msec:  0.168	GF/s:   5.26	GB/s:   7.02
-    4096	128 1	GPU5   	msec:  0.082	GF/s:  10.80	GB/s:  14.39
-    4096	128 1	GPU6   	msec:  0.067	GF/s:  13.29	GB/s:  17.72
-    4096	128 1	GPU7   	msec:  0.068	GF/s:  13.08	GB/s:  17.44
-    4096	128 1	CPU    	msec:  0.169	GF/s:   5.24	GB/s:   6.99
+    4096	128 1	CPU    	msec:  0.074	GF/s:  11.99	GB/s:  15.99
+    4096	128 1	GPU5   	msec:  0.082	GF/s:  10.83	GB/s:  14.44
+    4096	128 1	GPU6   	msec:  0.066	GF/s:  13.36	GB/s:  17.82
+    4096	128 1	GPU7   	msec:  0.067	GF/s:  13.16	GB/s:  17.54
+    4096	128 1	CPU    	msec:  0.073	GF/s:  12.05	GB/s:  16.06
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-    4096	128 2	CPU    	msec:  0.167	GF/s:   5.29	GB/s:   7.05
-    4096	128 2	GPU5   	msec:  0.084	GF/s:  10.58	GB/s:  14.10
-    4096	128 2	GPU6   	msec:  0.072	GF/s:  12.21	GB/s:  16.28
-    4096	128 2	GPU7   	msec:  0.073	GF/s:  12.17	GB/s:  16.23
-    4096	128 2	CPU    	msec:  0.166	GF/s:   5.34	GB/s:   7.11
+    4096	128 2	CPU    	msec:  0.075	GF/s:  11.86	GB/s:  15.81
+    4096	128 2	GPU5   	msec:  0.074	GF/s:  11.97	GB/s:  15.95
+    4096	128 2	GPU6   	msec:  0.065	GF/s:  13.58	GB/s:  18.10
+    4096	128 2	GPU7   	msec:  0.066	GF/s:  13.40	GB/s:  17.86
+    4096	128 2	CPU    	msec:  0.075	GF/s:  11.79	GB/s:  15.72
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-    8192	  4 1	CPU    	msec:  0.106	GF/s:  16.71	GB/s:  22.29
-    8192	  4 1	GPU5   	msec:  0.275	GF/s:   6.43	GB/s:   8.58
-    8192	  4 1	GPU6   	msec:  0.240	GF/s:   7.38	GB/s:   9.83
-    8192	  4 1	GPU7   	msec:  0.265	GF/s:   6.67	GB/s:   8.90
-    8192	  4 1	CPU    	msec:  0.106	GF/s:  16.69	GB/s:  22.26
+    8192	  8 1	CPU    	msec:  0.115	GF/s:  15.38	GB/s:  20.51
+    8192	  8 1	GPU5   	msec:  0.201	GF/s:   8.79	GB/s:  11.72
+    8192	  8 1	GPU6   	msec:  0.155	GF/s:  11.42	GB/s:  15.23
+    8192	  8 1	GPU7   	msec:  0.158	GF/s:  11.20	GB/s:  14.93
+    8192	  8 1	CPU    	msec:  0.078	GF/s:  22.67	GB/s:  30.22
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-    8192	  4 2	CPU    	msec:  0.129	GF/s:  13.67	GB/s:  18.23
-    8192	  4 2	GPU5   	msec:  0.273	GF/s:   6.48	GB/s:   8.64
-    8192	  4 2	GPU6   	msec:  0.241	GF/s:   7.36	GB/s:   9.81
-    8192	  4 2	GPU7   	msec:  0.253	GF/s:   7.00	GB/s:   9.33
-    8192	  4 2	CPU    	msec:  0.129	GF/s:  13.71	GB/s:  18.27
+    8192	  8 2	CPU    	msec:  0.085	GF/s:  20.79	GB/s:  27.72
+    8192	  8 2	GPU5   	msec:  0.147	GF/s:  12.04	GB/s:  16.06
+    8192	  8 2	GPU6   	msec:  0.142	GF/s:  12.48	GB/s:  16.64
+    8192	  8 2	GPU7   	msec:  0.145	GF/s:  12.18	GB/s:  16.23
+    8192	  8 2	CPU    	msec:  0.085	GF/s:  20.79	GB/s:  27.72
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-    8192	  8 1	CPU    	msec:  0.125	GF/s:  14.16	GB/s:  18.89
-    8192	  8 1	GPU5   	msec:  0.201	GF/s:   8.82	GB/s:  11.76
-    8192	  8 1	GPU6   	msec:  0.155	GF/s:  11.40	GB/s:  15.20
-    8192	  8 1	GPU7   	msec:  0.158	GF/s:  11.19	GB/s:  14.92
-    8192	  8 1	CPU    	msec:  0.125	GF/s:  14.18	GB/s:  18.91
+    8192	 16 1	CPU    	msec:  0.107	GF/s:  16.49	GB/s:  21.98
+    8192	 16 1	GPU5   	msec:  0.155	GF/s:  11.38	GB/s:  15.18
+    8192	 16 1	GPU6   	msec:  0.133	GF/s:  13.27	GB/s:  17.69
+    8192	 16 1	GPU7   	msec:  0.131	GF/s:  13.46	GB/s:  17.95
+    8192	 16 1	CPU    	msec:  0.108	GF/s:  16.44	GB/s:  21.92
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-    8192	  8 2	CPU    	msec:  0.132	GF/s:  13.39	GB/s:  17.85
-    8192	  8 2	GPU5   	msec:  0.198	GF/s:   8.95	GB/s:  11.93
-    8192	  8 2	GPU6   	msec:  0.153	GF/s:  11.57	GB/s:  15.43
-    8192	  8 2	GPU7   	msec:  0.154	GF/s:  11.46	GB/s:  15.28
-    8192	  8 2	CPU    	msec:  0.133	GF/s:  13.29	GB/s:  17.72
+    8192	 16 2	CPU    	msec:  0.110	GF/s:  16.05	GB/s:  21.39
+    8192	 16 2	GPU5   	msec:  0.141	GF/s:  12.59	GB/s:  16.79
+    8192	 16 2	GPU6   	msec:  0.125	GF/s:  14.18	GB/s:  18.91
+    8192	 16 2	GPU7   	msec:  0.125	GF/s:  14.20	GB/s:  18.93
+    8192	 16 2	CPU    	msec:  0.110	GF/s:  16.02	GB/s:  21.36
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-    8192	 16 1	CPU    	msec:  0.117	GF/s:  15.06	GB/s:  20.08
-    8192	 16 1	GPU5   	msec:  0.156	GF/s:  11.36	GB/s:  15.15
-    8192	 16 1	GPU6   	msec:  0.133	GF/s:  13.26	GB/s:  17.68
-    8192	 16 1	GPU7   	msec:  0.132	GF/s:  13.43	GB/s:  17.90
-    8192	 16 1	CPU    	msec:  0.117	GF/s:  15.14	GB/s:  20.18
+    8192	 32 1	CPU    	msec:  0.119	GF/s:  14.91	GB/s:  19.88
+    8192	 32 1	GPU5   	msec:  0.156	GF/s:  11.34	GB/s:  15.12
+    8192	 32 1	GPU6   	msec:  0.124	GF/s:  14.24	GB/s:  18.98
+    8192	 32 1	GPU7   	msec:  0.124	GF/s:  14.29	GB/s:  19.06
+    8192	 32 1	CPU    	msec:  0.119	GF/s:  14.89	GB/s:  19.85
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-    8192	 16 2	CPU    	msec:  0.118	GF/s:  14.99	GB/s:  19.98
-    8192	 16 2	GPU5   	msec:  0.158	GF/s:  11.23	GB/s:  14.97
-    8192	 16 2	GPU6   	msec:  0.135	GF/s:  13.13	GB/s:  17.50
-    8192	 16 2	GPU7   	msec:  0.133	GF/s:  13.28	GB/s:  17.70
-    8192	 16 2	CPU    	msec:  0.119	GF/s:  14.90	GB/s:  19.87
+    8192	 32 2	CPU    	msec:  0.118	GF/s:  15.02	GB/s:  20.03
+    8192	 32 2	GPU5   	msec:  0.139	GF/s:  12.77	GB/s:  17.03
+    8192	 32 2	GPU6   	msec:  0.124	GF/s:  14.31	GB/s:  19.08
+    8192	 32 2	GPU7   	msec:  0.124	GF/s:  14.32	GB/s:  19.10
+    8192	 32 2	CPU    	msec:  0.118	GF/s:  14.95	GB/s:  19.93
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-    8192	 32 1	CPU    	msec:  0.129	GF/s:  13.74	GB/s:  18.32
-    8192	 32 1	GPU5   	msec:  0.156	GF/s:  11.32	GB/s:  15.10
-    8192	 32 1	GPU6   	msec:  0.124	GF/s:  14.23	GB/s:  18.97
-    8192	 32 1	GPU7   	msec:  0.124	GF/s:  14.32	GB/s:  19.09
-    8192	 32 1	CPU    	msec:  0.130	GF/s:  13.63	GB/s:  18.17
+    8192	 64 1	CPU    	msec:  0.121	GF/s:  14.65	GB/s:  19.53
+    8192	 64 1	GPU5   	msec:  0.157	GF/s:  11.30	GB/s:  15.07
+    8192	 64 1	GPU6   	msec:  0.124	GF/s:  14.23	GB/s:  18.98
+    8192	 64 1	GPU7   	msec:  0.124	GF/s:  14.31	GB/s:  19.08
+    8192	 64 1	CPU    	msec:  0.123	GF/s:  14.39	GB/s:  19.19
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-    8192	 32 2	CPU    	msec:  0.131	GF/s:  13.49	GB/s:  17.99
-    8192	 32 2	GPU5   	msec:  0.158	GF/s:  11.20	GB/s:  14.94
-    8192	 32 2	GPU6   	msec:  0.136	GF/s:  12.98	GB/s:  17.30
-    8192	 32 2	GPU7   	msec:  0.135	GF/s:  13.11	GB/s:  17.48
-    8192	 32 2	CPU    	msec:  0.129	GF/s:  13.70	GB/s:  18.27
+    8192	 64 2	CPU    	msec:  0.126	GF/s:  14.00	GB/s:  18.66
+    8192	 64 2	GPU5   	msec:  0.139	GF/s:  12.71	GB/s:  16.94
+    8192	 64 2	GPU6   	msec:  0.125	GF/s:  14.18	GB/s:  18.91
+    8192	 64 2	GPU7   	msec:  0.125	GF/s:  14.19	GB/s:  18.92
+    8192	 64 2	CPU    	msec:  0.127	GF/s:  13.93	GB/s:  18.57
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-    8192	 64 1	CPU    	msec:  0.137	GF/s:  12.88	GB/s:  17.17
-    8192	 64 1	GPU5   	msec:  0.157	GF/s:  11.29	GB/s:  15.06
-    8192	 64 1	GPU6   	msec:  0.124	GF/s:  14.24	GB/s:  18.99
-    8192	 64 1	GPU7   	msec:  0.124	GF/s:  14.30	GB/s:  19.07
-    8192	 64 1	CPU    	msec:  0.164	GF/s:  10.77	GB/s:  14.36
+    8192	128 1	CPU    	msec:  0.148	GF/s:  11.99	GB/s:  15.99
+    8192	128 1	GPU5   	msec:  0.155	GF/s:  11.43	GB/s:  15.24
+    8192	128 1	GPU6   	msec:  0.123	GF/s:  14.33	GB/s:  19.11
+    8192	128 1	GPU7   	msec:  0.123	GF/s:  14.42	GB/s:  19.23
+    8192	128 1	CPU    	msec:  0.850	GF/s:   2.08	GB/s:   2.78
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-    8192	 64 2	CPU    	msec:  0.139	GF/s:  12.71	GB/s:  16.94
-    8192	 64 2	GPU5   	msec:  0.158	GF/s:  11.20	GB/s:  14.93
-    8192	 64 2	GPU6   	msec:  0.136	GF/s:  13.02	GB/s:  17.36
-    8192	 64 2	GPU7   	msec:  0.135	GF/s:  13.14	GB/s:  17.52
-    8192	 64 2	CPU    	msec:  0.139	GF/s:  12.73	GB/s:  16.97
+    8192	128 2	CPU    	msec:  0.148	GF/s:  11.92	GB/s:  15.89
+    8192	128 2	GPU5   	msec:  0.138	GF/s:  12.85	GB/s:  17.13
+    8192	128 2	GPU6   	msec:  0.122	GF/s:  14.56	GB/s:  19.42
+    8192	128 2	GPU7   	msec:  0.121	GF/s:  14.62	GB/s:  19.49
+    8192	128 2	CPU    	msec:  0.149	GF/s:  11.84	GB/s:  15.79
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-    8192	128 1	CPU    	msec:  0.334	GF/s:   5.29	GB/s:   7.06
-    8192	128 1	GPU5   	msec:  0.155	GF/s:  11.41	GB/s:  15.22
-    8192	128 1	GPU6   	msec:  0.124	GF/s:  14.30	GB/s:  19.07
-    8192	128 1	GPU7   	msec:  0.123	GF/s:  14.40	GB/s:  19.20
-    8192	128 1	CPU    	msec:  0.336	GF/s:   5.27	GB/s:   7.03
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-    8192	128 2	CPU    	msec:  0.331	GF/s:   5.34	GB/s:   7.12
-    8192	128 2	GPU5   	msec:  0.157	GF/s:  11.29	GB/s:  15.06
-    8192	128 2	GPU6   	msec:  0.135	GF/s:  13.07	GB/s:  17.43
-    8192	128 2	GPU7   	msec:  0.134	GF/s:  13.23	GB/s:  17.64
-    8192	128 2	CPU    	msec:  0.329	GF/s:   5.38	GB/s:   7.18
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-   16384	  4 1	CPU    	msec:  0.211	GF/s:  16.77	GB/s:  22.35
-   16384	  4 1	GPU5   	msec:  0.540	GF/s:   6.56	GB/s:   8.74
-   16384	  4 1	GPU6   	msec:  0.464	GF/s:   7.62	GB/s:  10.16
-   16384	  4 1	GPU7   	msec:  0.507	GF/s:   6.98	GB/s:   9.31
-   16384	  4 1	CPU    	msec:  0.212	GF/s:  16.68	GB/s:  22.24
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-   16384	  4 2	CPU    	msec:  0.255	GF/s:  13.86	GB/s:  18.47
-   16384	  4 2	GPU5   	msec:  0.538	GF/s:   6.58	GB/s:   8.77
-   16384	  4 2	GPU6   	msec:  0.457	GF/s:   7.74	GB/s:  10.32
-   16384	  4 2	GPU7   	msec:  0.482	GF/s:   7.34	GB/s:   9.79
-   16384	  4 2	CPU    	msec:  0.256	GF/s:  13.85	GB/s:  18.47
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-   16384	  8 1	CPU    	msec:  0.250	GF/s:  14.18	GB/s:  18.90
+   16384	  8 1	CPU    	msec:  0.156	GF/s:  22.75	GB/s:  30.33
    16384	  8 1	GPU5   	msec:  0.392	GF/s:   9.04	GB/s:  12.05
-   16384	  8 1	GPU6   	msec:  0.301	GF/s:  11.75	GB/s:  15.67
-   16384	  8 1	GPU7   	msec:  0.303	GF/s:  11.67	GB/s:  15.56
-   16384	  8 1	CPU    	msec:  0.250	GF/s:  14.17	GB/s:  18.90
+   16384	  8 1	GPU6   	msec:  0.301	GF/s:  11.77	GB/s:  15.70
+   16384	  8 1	GPU7   	msec:  0.303	GF/s:  11.69	GB/s:  15.59
+   16384	  8 1	CPU    	msec:  0.155	GF/s:  22.76	GB/s:  30.35
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-   16384	  8 2	CPU    	msec:  0.262	GF/s:  13.49	GB/s:  17.99
-   16384	  8 2	GPU5   	msec:  0.385	GF/s:   9.19	GB/s:  12.25
-   16384	  8 2	GPU6   	msec:  0.295	GF/s:  11.99	GB/s:  15.99
-   16384	  8 2	GPU7   	msec:  0.298	GF/s:  11.86	GB/s:  15.82
-   16384	  8 2	CPU    	msec:  0.265	GF/s:  13.36	GB/s:  17.82
+   16384	  8 2	CPU    	msec:  0.169	GF/s:  20.92	GB/s:  27.90
+   16384	  8 2	GPU5   	msec:  0.281	GF/s:  12.59	GB/s:  16.79
+   16384	  8 2	GPU6   	msec:  0.275	GF/s:  12.86	GB/s:  17.14
+   16384	  8 2	GPU7   	msec:  0.283	GF/s:  12.50	GB/s:  16.67
+   16384	  8 2	CPU    	msec:  0.168	GF/s:  21.01	GB/s:  28.01
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-   16384	 16 1	CPU    	msec:  0.237	GF/s:  14.92	GB/s:  19.89
-   16384	 16 1	GPU5   	msec:  0.301	GF/s:  11.75	GB/s:  15.67
-   16384	 16 1	GPU6   	msec:  0.256	GF/s:  13.81	GB/s:  18.41
-   16384	 16 1	GPU7   	msec:  0.253	GF/s:  13.97	GB/s:  18.63
-   16384	 16 1	CPU    	msec:  0.237	GF/s:  14.91	GB/s:  19.87
+   16384	 16 1	CPU    	msec:  0.215	GF/s:  16.44	GB/s:  21.92
+   16384	 16 1	GPU5   	msec:  0.300	GF/s:  11.78	GB/s:  15.71
+   16384	 16 1	GPU6   	msec:  0.256	GF/s:  13.84	GB/s:  18.45
+   16384	 16 1	GPU7   	msec:  0.253	GF/s:  14.00	GB/s:  18.66
+   16384	 16 1	CPU    	msec:  0.215	GF/s:  16.44	GB/s:  21.91
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-   16384	 16 2	CPU    	msec:  0.238	GF/s:  14.88	GB/s:  19.84
-   16384	 16 2	GPU5   	msec:  0.304	GF/s:  11.63	GB/s:  15.51
-   16384	 16 2	GPU6   	msec:  0.259	GF/s:  13.67	GB/s:  18.22
-   16384	 16 2	GPU7   	msec:  0.257	GF/s:  13.79	GB/s:  18.38
-   16384	 16 2	CPU    	msec:  0.239	GF/s:  14.82	GB/s:  19.76
+   16384	 16 2	CPU    	msec:  0.221	GF/s:  15.99	GB/s:  21.32
+   16384	 16 2	GPU5   	msec:  0.270	GF/s:  13.13	GB/s:  17.51
+   16384	 16 2	GPU6   	msec:  0.240	GF/s:  14.76	GB/s:  19.68
+   16384	 16 2	GPU7   	msec:  0.239	GF/s:  14.80	GB/s:  19.74
+   16384	 16 2	CPU    	msec:  0.221	GF/s:  15.99	GB/s:  21.32
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-   16384	 32 1	CPU    	msec:  0.259	GF/s:  13.68	GB/s:  18.24
-   16384	 32 1	GPU5   	msec:  0.304	GF/s:  11.66	GB/s:  15.54
+   16384	 32 1	CPU    	msec:  0.238	GF/s:  14.85	GB/s:  19.80
+   16384	 32 1	GPU5   	msec:  0.302	GF/s:  11.71	GB/s:  15.61
    16384	 32 1	GPU6   	msec:  0.238	GF/s:  14.86	GB/s:  19.81
-   16384	 32 1	GPU7   	msec:  0.236	GF/s:  15.01	GB/s:  20.02
-   16384	 32 1	CPU    	msec:  0.260	GF/s:  13.60	GB/s:  18.13
+   16384	 32 1	GPU7   	msec:  0.236	GF/s:  15.01	GB/s:  20.01
+   16384	 32 1	CPU    	msec:  0.239	GF/s:  14.81	GB/s:  19.75
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-   16384	 32 2	CPU    	msec:  0.262	GF/s:  13.50	GB/s:  18.00
-   16384	 32 2	GPU5   	msec:  0.305	GF/s:  11.61	GB/s:  15.48
-   16384	 32 2	GPU6   	msec:  0.263	GF/s:  13.48	GB/s:  17.97
-   16384	 32 2	GPU7   	msec:  0.260	GF/s:  13.60	GB/s:  18.13
-   16384	 32 2	CPU    	msec:  0.260	GF/s:  13.63	GB/s:  18.17
+   16384	 32 2	CPU    	msec:  0.235	GF/s:  15.07	GB/s:  20.09
+   16384	 32 2	GPU5   	msec:  0.265	GF/s:  13.34	GB/s:  17.79
+   16384	 32 2	GPU6   	msec:  0.239	GF/s:  14.81	GB/s:  19.74
+   16384	 32 2	GPU7   	msec:  0.237	GF/s:  14.91	GB/s:  19.88
+   16384	 32 2	CPU    	msec:  0.236	GF/s:  15.01	GB/s:  20.01
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-   16384	 64 1	CPU    	msec:  0.284	GF/s:  12.46	GB/s:  16.61
-   16384	 64 1	GPU5   	msec:  0.305	GF/s:  11.61	GB/s:  15.49
-   16384	 64 1	GPU6   	msec:  0.238	GF/s:  14.86	GB/s:  19.81
-   16384	 64 1	GPU7   	msec:  0.236	GF/s:  15.00	GB/s:  19.99
-   16384	 64 1	CPU    	msec:  0.265	GF/s:  13.35	GB/s:  17.80
+   16384	 64 1	CPU    	msec:  0.241	GF/s:  14.66	GB/s:  19.55
+   16384	 64 1	GPU5   	msec:  0.304	GF/s:  11.65	GB/s:  15.53
+   16384	 64 1	GPU6   	msec:  0.238	GF/s:  14.89	GB/s:  19.85
+   16384	 64 1	GPU7   	msec:  0.235	GF/s:  15.03	GB/s:  20.04
+   16384	 64 1	CPU    	msec:  0.245	GF/s:  14.43	GB/s:  19.24
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-   16384	 64 2	CPU    	msec:  0.277	GF/s:  12.78	GB/s:  17.04
-   16384	 64 2	GPU5   	msec:  0.306	GF/s:  11.58	GB/s:  15.44
-   16384	 64 2	GPU6   	msec:  0.262	GF/s:  13.53	GB/s:  18.04
-   16384	 64 2	GPU7   	msec:  0.260	GF/s:  13.64	GB/s:  18.18
-   16384	 64 2	CPU    	msec:  0.276	GF/s:  12.81	GB/s:  17.08
+   16384	 64 2	CPU    	msec:  0.252	GF/s:  14.03	GB/s:  18.71
+   16384	 64 2	GPU5   	msec:  0.267	GF/s:  13.24	GB/s:  17.65
+   16384	 64 2	GPU6   	msec:  0.240	GF/s:  14.72	GB/s:  19.63
+   16384	 64 2	GPU7   	msec:  0.239	GF/s:  14.78	GB/s:  19.70
+   16384	 64 2	CPU    	msec:  0.284	GF/s:  12.44	GB/s:  16.59
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-   16384	128 1	CPU    	msec:  0.668	GF/s:   5.30	GB/s:   7.06
+   16384	128 1	CPU    	msec:  0.292	GF/s:  12.10	GB/s:  16.13
    16384	128 1	GPU5   	msec:  0.301	GF/s:  11.75	GB/s:  15.67
-   16384	128 1	GPU6   	msec:  0.237	GF/s:  14.95	GB/s:  19.93
-   16384	128 1	GPU7   	msec:  0.234	GF/s:  15.11	GB/s:  20.14
-   16384	128 1	CPU    	msec:  0.681	GF/s:   5.20	GB/s:   6.93
+   16384	128 1	GPU6   	msec:  0.236	GF/s:  14.96	GB/s:  19.95
+   16384	128 1	GPU7   	msec:  0.234	GF/s:  15.12	GB/s:  20.16
+   16384	128 1	CPU    	msec:  0.359	GF/s:   9.86	GB/s:  13.15
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-   16384	128 2	CPU    	msec:  0.662	GF/s:   5.35	GB/s:   7.13
-   16384	128 2	GPU5   	msec:  0.303	GF/s:  11.67	GB/s:  15.56
-   16384	128 2	GPU6   	msec:  0.260	GF/s:  13.59	GB/s:  18.11
-   16384	128 2	GPU7   	msec:  0.258	GF/s:  13.74	GB/s:  18.32
-   16384	128 2	CPU    	msec:  0.703	GF/s:   5.04	GB/s:   6.71
+   16384	128 2	CPU    	msec:  0.295	GF/s:  11.99	GB/s:  15.99
+   16384	128 2	GPU5   	msec:  0.263	GF/s:  13.45	GB/s:  17.93
+   16384	128 2	GPU6   	msec:  0.234	GF/s:  15.15	GB/s:  20.21
+   16384	128 2	GPU7   	msec:  0.233	GF/s:  15.19	GB/s:  20.25
+   16384	128 2	CPU    	msec:  0.297	GF/s:  11.92	GB/s:  15.90
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-   32768	  4 1	CPU    	msec:  0.434	GF/s:  16.29	GB/s:  21.72
-   32768	  4 1	GPU5   	msec:  1.061	GF/s:   6.67	GB/s:   8.89
-   32768	  4 1	GPU6   	msec:  0.902	GF/s:   7.85	GB/s:  10.47
-   32768	  4 1	GPU7   	msec:  0.977	GF/s:   7.24	GB/s:   9.66
-   32768	  4 1	CPU    	msec:  0.436	GF/s:  16.24	GB/s:  21.66
+   32768	  8 1	CPU    	msec:  0.324	GF/s:  21.87	GB/s:  29.15
+   32768	  8 1	GPU5   	msec:  0.770	GF/s:   9.20	GB/s:  12.26
+   32768	  8 1	GPU6   	msec:  0.592	GF/s:  11.96	GB/s:  15.95
+   32768	  8 1	GPU7   	msec:  0.595	GF/s:  11.89	GB/s:  15.85
+   32768	  8 1	CPU    	msec:  0.327	GF/s:  21.66	GB/s:  28.88
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-   32768	  4 2	CPU    	msec:  0.524	GF/s:  13.50	GB/s:  18.00
-   32768	  4 2	GPU5   	msec:  1.059	GF/s:   6.68	GB/s:   8.91
-   32768	  4 2	GPU6   	msec:  0.885	GF/s:   8.00	GB/s:  10.66
-   32768	  4 2	GPU7   	msec:  0.924	GF/s:   7.66	GB/s:  10.22
-   32768	  4 2	CPU    	msec:  0.524	GF/s:  13.51	GB/s:  18.01
+   32768	  8 2	CPU    	msec:  0.347	GF/s:  20.38	GB/s:  27.17
+   32768	  8 2	GPU5   	msec:  0.548	GF/s:  12.91	GB/s:  17.21
+   32768	  8 2	GPU6   	msec:  0.542	GF/s:  13.06	GB/s:  17.42
+   32768	  8 2	GPU7   	msec:  0.558	GF/s:  12.68	GB/s:  16.90
+   32768	  8 2	CPU    	msec:  0.346	GF/s:  20.46	GB/s:  27.27
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-   32768	  8 1	CPU    	msec:  0.505	GF/s:  14.03	GB/s:  18.70
-   32768	  8 1	GPU5   	msec:  0.769	GF/s:   9.20	GB/s:  12.27
-   32768	  8 1	GPU6   	msec:  0.591	GF/s:  11.97	GB/s:  15.96
-   32768	  8 1	GPU7   	msec:  0.596	GF/s:  11.88	GB/s:  15.84
-   32768	  8 1	CPU    	msec:  0.504	GF/s:  14.04	GB/s:  18.71
+   32768	 16 1	CPU    	msec:  0.436	GF/s:  16.25	GB/s:  21.67
+   32768	 16 1	GPU5   	msec:  0.590	GF/s:  12.00	GB/s:  16.00
+   32768	 16 1	GPU6   	msec:  0.501	GF/s:  14.13	GB/s:  18.84
+   32768	 16 1	GPU7   	msec:  0.495	GF/s:  14.29	GB/s:  19.05
+   32768	 16 1	CPU    	msec:  0.435	GF/s:  16.25	GB/s:  21.67
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-   32768	  8 2	CPU    	msec:  0.535	GF/s:  13.23	GB/s:  17.63
-   32768	  8 2	GPU5   	msec:  0.757	GF/s:   9.35	GB/s:  12.47
-   32768	  8 2	GPU6   	msec:  0.577	GF/s:  12.26	GB/s:  16.34
-   32768	  8 2	GPU7   	msec:  0.584	GF/s:  12.13	GB/s:  16.17
-   32768	  8 2	CPU    	msec:  0.540	GF/s:  13.10	GB/s:  17.47
+   32768	 16 2	CPU    	msec:  0.444	GF/s:  15.94	GB/s:  21.25
+   32768	 16 2	GPU5   	msec:  0.522	GF/s:  13.55	GB/s:  18.07
+   32768	 16 2	GPU6   	msec:  0.469	GF/s:  15.09	GB/s:  20.12
+   32768	 16 2	GPU7   	msec:  0.468	GF/s:  15.12	GB/s:  20.16
+   32768	 16 2	CPU    	msec:  0.446	GF/s:  15.88	GB/s:  21.18
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-   32768	 16 1	CPU    	msec:  0.477	GF/s:  14.84	GB/s:  19.79
-   32768	 16 1	GPU5   	msec:  0.590	GF/s:  11.99	GB/s:  15.99
-   32768	 16 1	GPU6   	msec:  0.501	GF/s:  14.12	GB/s:  18.83
-   32768	 16 1	GPU7   	msec:  0.496	GF/s:  14.27	GB/s:  19.03
-   32768	 16 1	CPU    	msec:  0.510	GF/s:  13.87	GB/s:  18.49
+   32768	 32 1	CPU    	msec:  0.472	GF/s:  14.98	GB/s:  19.98
+   32768	 32 1	GPU5   	msec:  0.596	GF/s:  11.87	GB/s:  15.83
+   32768	 32 1	GPU6   	msec:  0.465	GF/s:  15.22	GB/s:  20.29
+   32768	 32 1	GPU7   	msec:  0.462	GF/s:  15.33	GB/s:  20.44
+   32768	 32 1	CPU    	msec:  0.473	GF/s:  14.97	GB/s:  19.96
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-   32768	 16 2	CPU    	msec:  0.493	GF/s:  14.35	GB/s:  19.14
-   32768	 16 2	GPU5   	msec:  0.597	GF/s:  11.85	GB/s:  15.81
-   32768	 16 2	GPU6   	msec:  0.507	GF/s:  13.96	GB/s:  18.62
-   32768	 16 2	GPU7   	msec:  0.503	GF/s:  14.07	GB/s:  18.76
-   32768	 16 2	CPU    	msec:  0.492	GF/s:  14.40	GB/s:  19.20
+   32768	 32 2	CPU    	msec:  0.483	GF/s:  14.64	GB/s:  19.52
+   32768	 32 2	GPU5   	msec:  0.516	GF/s:  13.72	GB/s:  18.30
+   32768	 32 2	GPU6   	msec:  0.467	GF/s:  15.15	GB/s:  20.20
+   32768	 32 2	GPU7   	msec:  0.466	GF/s:  15.17	GB/s:  20.23
+   32768	 32 2	CPU    	msec:  0.475	GF/s:  14.89	GB/s:  19.86
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-   32768	 32 1	CPU    	msec:  0.951	GF/s:   7.44	GB/s:   9.92
-   32768	 32 1	GPU5   	msec:  0.596	GF/s:  11.87	GB/s:  15.82
-   32768	 32 1	GPU6   	msec:  0.464	GF/s:  15.25	GB/s:  20.33
-   32768	 32 1	GPU7   	msec:  0.461	GF/s:  15.35	GB/s:  20.46
-   32768	 32 1	CPU    	msec:  0.520	GF/s:  13.61	GB/s:  18.15
+   32768	 64 1	CPU    	msec:  0.500	GF/s:  14.16	GB/s:  18.88
+   32768	 64 1	GPU5   	msec:  0.599	GF/s:  11.81	GB/s:  15.75
+   32768	 64 1	GPU6   	msec:  0.465	GF/s:  15.23	GB/s:  20.31
+   32768	 64 1	GPU7   	msec:  0.461	GF/s:  15.34	GB/s:  20.46
+   32768	 64 1	CPU    	msec:  0.498	GF/s:  14.22	GB/s:  18.96
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-   32768	 32 2	CPU    	msec:  0.522	GF/s:  13.57	GB/s:  18.09
-   32768	 32 2	GPU5   	msec:  0.598	GF/s:  11.84	GB/s:  15.78
-   32768	 32 2	GPU6   	msec:  0.514	GF/s:  13.77	GB/s:  18.37
-   32768	 32 2	GPU7   	msec:  0.510	GF/s:  13.89	GB/s:  18.52
-   32768	 32 2	CPU    	msec:  0.518	GF/s:  13.67	GB/s:  18.23
+   32768	 64 2	CPU    	msec:  0.518	GF/s:  13.68	GB/s:  18.23
+   32768	 64 2	GPU5   	msec:  0.516	GF/s:  13.71	GB/s:  18.28
+   32768	 64 2	GPU6   	msec:  0.471	GF/s:  15.04	GB/s:  20.06
+   32768	 64 2	GPU7   	msec:  0.470	GF/s:  15.07	GB/s:  20.09
+   32768	 64 2	CPU    	msec:  0.513	GF/s:  13.80	GB/s:  18.40
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-   32768	 64 1	CPU    	msec:  0.555	GF/s:  12.75	GB/s:  16.99
-   32768	 64 1	GPU5   	msec:  0.600	GF/s:  11.79	GB/s:  15.72
-   32768	 64 1	GPU6   	msec:  0.465	GF/s:  15.21	GB/s:  20.28
-   32768	 64 1	GPU7   	msec:  0.462	GF/s:  15.32	GB/s:  20.42
-   32768	 64 1	CPU    	msec:  0.541	GF/s:  13.08	GB/s:  17.44
+   32768	128 1	CPU    	msec:  0.594	GF/s:  11.91	GB/s:  15.88
+   32768	128 1	GPU5   	msec:  0.594	GF/s:  11.92	GB/s:  15.89
+   32768	128 1	GPU6   	msec:  0.462	GF/s:  15.31	GB/s:  20.42
+   32768	128 1	GPU7   	msec:  0.459	GF/s:  15.42	GB/s:  20.56
+   32768	128 1	CPU    	msec:  0.592	GF/s:  11.95	GB/s:  15.93
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-   32768	 64 2	CPU    	msec:  0.563	GF/s:  12.58	GB/s:  16.77
-   32768	 64 2	GPU5   	msec:  0.599	GF/s:  11.82	GB/s:  15.75
-   32768	 64 2	GPU6   	msec:  0.513	GF/s:  13.81	GB/s:  18.41
-   32768	 64 2	GPU7   	msec:  0.509	GF/s:  13.90	GB/s:  18.54
-   32768	 64 2	CPU    	msec:  0.562	GF/s:  12.58	GB/s:  16.78
+   32768	128 2	CPU    	msec:  0.596	GF/s:  11.88	GB/s:  15.84
+   32768	128 2	GPU5   	msec:  0.512	GF/s:  13.81	GB/s:  18.42
+   32768	128 2	GPU6   	msec:  0.458	GF/s:  15.46	GB/s:  20.62
+   32768	128 2	GPU7   	msec:  0.457	GF/s:  15.49	GB/s:  20.65
+   32768	128 2	CPU    	msec:  0.609	GF/s:  11.61	GB/s:  15.48
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-   32768	128 1	CPU    	msec:  1.351	GF/s:   5.24	GB/s:   6.99
-   32768	128 1	GPU5   	msec:  0.593	GF/s:  11.93	GB/s:  15.90
-   32768	128 1	GPU6   	msec:  0.462	GF/s:  15.31	GB/s:  20.41
-   32768	128 1	GPU7   	msec:  0.459	GF/s:  15.41	GB/s:  20.55
-   32768	128 1	CPU    	msec:  1.354	GF/s:   5.23	GB/s:   6.97
+   65536	  8 1	CPU    	msec:  0.872	GF/s:  16.23	GB/s:  21.63
+   65536	  8 1	GPU5   	msec:  1.526	GF/s:   9.27	GB/s:  12.37
+   65536	  8 1	GPU6   	msec:  1.177	GF/s:  12.03	GB/s:  16.04
+   65536	  8 1	GPU7   	msec:  1.195	GF/s:  11.85	GB/s:  15.80
+   65536	  8 1	CPU    	msec:  0.863	GF/s:  16.41	GB/s:  21.87
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-   32768	128 2	CPU    	msec:  1.318	GF/s:   5.37	GB/s:   7.16
-   32768	128 2	GPU5   	msec:  0.594	GF/s:  11.91	GB/s:  15.88
-   32768	128 2	GPU6   	msec:  0.510	GF/s:  13.87	GB/s:  18.49
-   32768	128 2	GPU7   	msec:  0.505	GF/s:  14.01	GB/s:  18.68
-   32768	128 2	CPU    	msec:  1.358	GF/s:   5.21	GB/s:   6.95
+   65536	  8 2	CPU    	msec:  0.868	GF/s:  16.30	GB/s:  21.74
+   65536	  8 2	GPU5   	msec:  1.083	GF/s:  13.07	GB/s:  17.43
+   65536	  8 2	GPU6   	msec:  1.075	GF/s:  13.17	GB/s:  17.56
+   65536	  8 2	GPU7   	msec:  1.108	GF/s:  12.77	GB/s:  17.03
+   65536	  8 2	CPU    	msec:  0.870	GF/s:  16.28	GB/s:  21.70
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-   65536	  4 1	CPU    	msec:  1.027	GF/s:  13.78	GB/s:  18.38
-   65536	  4 1	GPU5   	msec:  2.106	GF/s:   6.72	GB/s:   8.96
-   65536	  4 1	GPU6   	msec:  1.791	GF/s:   7.90	GB/s:  10.54
-   65536	  4 1	GPU7   	msec:  1.935	GF/s:   7.31	GB/s:   9.75
-   65536	  4 1	CPU    	msec:  1.022	GF/s:  13.85	GB/s:  18.47
+   65536	 16 1	CPU    	msec:  0.985	GF/s:  14.37	GB/s:  19.16
+   65536	 16 1	GPU5   	msec:  1.165	GF/s:  12.16	GB/s:  16.21
+   65536	 16 1	GPU6   	msec:  0.990	GF/s:  14.29	GB/s:  19.06
+   65536	 16 1	GPU7   	msec:  0.980	GF/s:  14.44	GB/s:  19.25
+   65536	 16 1	CPU    	msec:  0.982	GF/s:  14.42	GB/s:  19.22
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-   65536	  4 2	CPU    	msec:  1.123	GF/s:  12.60	GB/s:  16.80
-   65536	  4 2	GPU5   	msec:  2.111	GF/s:   6.71	GB/s:   8.94
-   65536	  4 2	GPU6   	msec:  1.732	GF/s:   8.17	GB/s:  10.90
-   65536	  4 2	GPU7   	msec:  1.824	GF/s:   7.76	GB/s:  10.35
-   65536	  4 2	CPU    	msec:  1.124	GF/s:  12.59	GB/s:  16.79
+   65536	 16 2	CPU    	msec:  0.948	GF/s:  14.94	GB/s:  19.92
+   65536	 16 2	GPU5   	msec:  1.028	GF/s:  13.77	GB/s:  18.36
+   65536	 16 2	GPU6   	msec:  0.927	GF/s:  15.27	GB/s:  20.35
+   65536	 16 2	GPU7   	msec:  0.927	GF/s:  15.28	GB/s:  20.37
+   65536	 16 2	CPU    	msec:  0.959	GF/s:  14.76	GB/s:  19.67
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-   65536	  8 1	CPU    	msec:  1.116	GF/s:  12.69	GB/s:  16.92
-   65536	  8 1	GPU5   	msec:  1.527	GF/s:   9.27	GB/s:  12.36
-   65536	  8 1	GPU6   	msec:  1.177	GF/s:  12.02	GB/s:  16.03
-   65536	  8 1	GPU7   	msec:  1.193	GF/s:  11.86	GB/s:  15.82
-   65536	  8 1	CPU    	msec:  1.113	GF/s:  12.71	GB/s:  16.95
+   65536	 32 1	CPU    	msec:  1.046	GF/s:  13.53	GB/s:  18.04
+   65536	 32 1	GPU5   	msec:  1.181	GF/s:  11.99	GB/s:  15.99
+   65536	 32 1	GPU6   	msec:  0.918	GF/s:  15.42	GB/s:  20.57
+   65536	 32 1	GPU7   	msec:  0.913	GF/s:  15.51	GB/s:  20.68
+   65536	 32 1	CPU    	msec:  1.045	GF/s:  13.55	GB/s:  18.07
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-   65536	  8 2	CPU    	msec:  1.147	GF/s:  12.34	GB/s:  16.45
-   65536	  8 2	GPU5   	msec:  1.503	GF/s:   9.42	GB/s:  12.55
-   65536	  8 2	GPU6   	msec:  1.148	GF/s:  12.34	GB/s:  16.45
-   65536	  8 2	GPU7   	msec:  1.169	GF/s:  12.11	GB/s:  16.15
-   65536	  8 2	CPU    	msec:  1.146	GF/s:  12.35	GB/s:  16.47
+   65536	 32 2	CPU    	msec:  1.067	GF/s:  13.27	GB/s:  17.69
+   65536	 32 2	GPU5   	msec:  1.017	GF/s:  13.92	GB/s:  18.56
+   65536	 32 2	GPU6   	msec:  0.924	GF/s:  15.32	GB/s:  20.42
+   65536	 32 2	GPU7   	msec:  0.923	GF/s:  15.33	GB/s:  20.44
+   65536	 32 2	CPU    	msec:  1.007	GF/s:  14.06	GB/s:  18.75
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-   65536	 16 1	CPU    	msec:  1.103	GF/s:  12.83	GB/s:  17.11
-   65536	 16 1	GPU5   	msec:  1.167	GF/s:  12.13	GB/s:  16.17
-   65536	 16 1	GPU6   	msec:  0.991	GF/s:  14.29	GB/s:  19.05
-   65536	 16 1	GPU7   	msec:  0.981	GF/s:  14.44	GB/s:  19.25
-   65536	 16 1	CPU    	msec:  1.104	GF/s:  12.82	GB/s:  17.09
+   65536	 64 1	CPU    	msec:  1.045	GF/s:  13.54	GB/s:  18.06
+   65536	 64 1	GPU5   	msec:  1.190	GF/s:  11.89	GB/s:  15.86
+   65536	 64 1	GPU6   	msec:  0.919	GF/s:  15.40	GB/s:  20.53
+   65536	 64 1	GPU7   	msec:  0.913	GF/s:  15.51	GB/s:  20.67
+   65536	 64 1	CPU    	msec:  1.054	GF/s:  13.43	GB/s:  17.90
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-   65536	 16 2	CPU    	msec:  1.022	GF/s:  13.85	GB/s:  18.47
-   65536	 16 2	GPU5   	msec:  1.181	GF/s:  11.98	GB/s:  15.97
-   65536	 16 2	GPU6   	msec:  1.002	GF/s:  14.12	GB/s:  18.83
-   65536	 16 2	GPU7   	msec:  0.995	GF/s:  14.23	GB/s:  18.97
-   65536	 16 2	CPU    	msec:  1.076	GF/s:  13.16	GB/s:  17.54
+   65536	 64 2	CPU    	msec:  1.066	GF/s:  13.28	GB/s:  17.71
+   65536	 64 2	GPU5   	msec:  1.015	GF/s:  13.95	GB/s:  18.60
+   65536	 64 2	GPU6   	msec:  0.930	GF/s:  15.23	GB/s:  20.30
+   65536	 64 2	GPU7   	msec:  0.930	GF/s:  15.23	GB/s:  20.30
+   65536	 64 2	CPU    	msec:  1.075	GF/s:  13.17	GB/s:  17.56
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-   65536	 32 1	CPU    	msec:  1.173	GF/s:  12.06	GB/s:  16.09
-   65536	 32 1	GPU5   	msec:  1.181	GF/s:  11.98	GB/s:  15.98
-   65536	 32 1	GPU6   	msec:  0.917	GF/s:  15.44	GB/s:  20.58
-   65536	 32 1	GPU7   	msec:  0.912	GF/s:  15.52	GB/s:  20.69
-   65536	 32 1	CPU    	msec:  1.177	GF/s:  12.03	GB/s:  16.04
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-   65536	 32 2	CPU    	msec:  1.121	GF/s:  12.62	GB/s:  16.83
-   65536	 32 2	GPU5   	msec:  1.182	GF/s:  11.97	GB/s:  15.96
-   65536	 32 2	GPU6   	msec:  1.018	GF/s:  13.91	GB/s:  18.55
-   65536	 32 2	GPU7   	msec:  1.009	GF/s:  14.03	GB/s:  18.71
-   65536	 32 2	CPU    	msec:  1.115	GF/s:  12.69	GB/s:  16.93
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-   65536	 64 1	CPU    	msec:  1.196	GF/s:  11.83	GB/s:  15.78
-   65536	 64 1	GPU5   	msec:  1.191	GF/s:  11.89	GB/s:  15.85
-   65536	 64 1	GPU6   	msec:  0.918	GF/s:  15.41	GB/s:  20.55
-   65536	 64 1	GPU7   	msec:  0.913	GF/s:  15.50	GB/s:  20.67
-   65536	 64 1	CPU    	msec:  1.170	GF/s:  12.10	GB/s:  16.13
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-   65536	 64 2	CPU    	msec:  1.183	GF/s:  11.96	GB/s:  15.95
-   65536	 64 2	GPU5   	msec:  1.190	GF/s:  11.89	GB/s:  15.86
-   65536	 64 2	GPU6   	msec:  1.015	GF/s:  13.94	GB/s:  18.59
-   65536	 64 2	GPU7   	msec:  1.008	GF/s:  14.04	GB/s:  18.73
-   65536	 64 2	CPU    	msec:  1.181	GF/s:  11.99	GB/s:  15.98
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-   65536	128 1	CPU    	msec:  2.805	GF/s:   5.05	GB/s:   6.73
-   65536	128 1	GPU5   	msec:  1.178	GF/s:  12.02	GB/s:  16.03
+   65536	128 1	CPU    	msec:  1.277	GF/s:  11.08	GB/s:  14.78
+   65536	128 1	GPU5   	msec:  1.179	GF/s:  12.01	GB/s:  16.01
    65536	128 1	GPU6   	msec:  0.912	GF/s:  15.51	GB/s:  20.68
-   65536	128 1	GPU7   	msec:  0.908	GF/s:  15.60	GB/s:  20.79
-   65536	128 1	CPU    	msec:  2.806	GF/s:   5.04	GB/s:   6.73
+   65536	128 1	GPU7   	msec:  0.907	GF/s:  15.60	GB/s:  20.80
+   65536	128 1	CPU    	msec:  1.252	GF/s:  11.30	GB/s:  15.07
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-   65536	128 2	CPU    	msec:  2.681	GF/s:   5.28	GB/s:   7.04
-   65536	128 2	GPU5   	msec:  1.176	GF/s:  12.04	GB/s:  16.05
-   65536	128 2	GPU6   	msec:  1.010	GF/s:  14.01	GB/s:  18.68
-   65536	128 2	GPU7   	msec:  1.000	GF/s:  14.16	GB/s:  18.87
-   65536	128 2	CPU    	msec:  2.691	GF/s:   5.26	GB/s:   7.01
+   65536	128 2	CPU    	msec:  1.212	GF/s:  11.68	GB/s:  15.57
+   65536	128 2	GPU5   	msec:  1.013	GF/s:  13.98	GB/s:  18.64
+   65536	128 2	GPU6   	msec:  0.906	GF/s:  15.63	GB/s:  20.84
+   65536	128 2	GPU7   	msec:  0.905	GF/s:  15.64	GB/s:  20.86
+   65536	128 2	CPU    	msec:  1.216	GF/s:  11.65	GB/s:  15.53
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-  131072	  4 1	CPU    	msec:  2.073	GF/s:  13.65	GB/s:  18.21
-  131072	  4 1	GPU5   	msec:  4.195	GF/s:   6.75	GB/s:   9.00
-  131072	  4 1	GPU6   	msec:  3.560	GF/s:   7.95	GB/s:  10.60
-  131072	  4 1	GPU7   	msec:  3.823	GF/s:   7.41	GB/s:   9.87
-  131072	  4 1	CPU    	msec:  2.077	GF/s:  13.63	GB/s:  18.17
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-  131072	  4 2	CPU    	msec:  2.258	GF/s:  12.54	GB/s:  16.72
-  131072	  4 2	GPU5   	msec:  4.201	GF/s:   6.74	GB/s:   8.99
-  131072	  4 2	GPU6   	msec:  3.411	GF/s:   8.30	GB/s:  11.07
-  131072	  4 2	GPU7   	msec:  3.583	GF/s:   7.90	GB/s:  10.54
-  131072	  4 2	CPU    	msec:  2.261	GF/s:  12.52	GB/s:  16.70
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-  131072	  8 1	CPU    	msec:  2.201	GF/s:  12.86	GB/s:  17.15
+  131072	  8 1	CPU    	msec:  1.882	GF/s:  15.04	GB/s:  20.06
   131072	  8 1	GPU5   	msec:  3.041	GF/s:   9.31	GB/s:  12.41
-  131072	  8 1	GPU6   	msec:  2.340	GF/s:  12.10	GB/s:  16.13
-  131072	  8 1	GPU7   	msec:  2.342	GF/s:  12.09	GB/s:  16.12
-  131072	  8 1	CPU    	msec:  2.190	GF/s:  12.93	GB/s:  17.23
+  131072	  8 1	GPU6   	msec:  2.322	GF/s:  12.19	GB/s:  16.26
+  131072	  8 1	GPU7   	msec:  2.339	GF/s:  12.11	GB/s:  16.14
+  131072	  8 1	CPU    	msec:  1.969	GF/s:  14.38	GB/s:  19.17
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-  131072	  8 2	CPU    	msec:  2.201	GF/s:  12.86	GB/s:  17.15
-  131072	  8 2	GPU5   	msec:  2.990	GF/s:   9.47	GB/s:  12.63
-  131072	  8 2	GPU6   	msec:  2.263	GF/s:  12.51	GB/s:  16.68
-  131072	  8 2	GPU7   	msec:  2.300	GF/s:  12.31	GB/s:  16.41
-  131072	  8 2	CPU    	msec:  2.227	GF/s:  12.71	GB/s:  16.95
+  131072	  8 2	CPU    	msec:  2.078	GF/s:  13.62	GB/s:  18.16
+  131072	  8 2	GPU5   	msec:  2.153	GF/s:  13.15	GB/s:  17.54
+  131072	  8 2	GPU6   	msec:  2.143	GF/s:  13.21	GB/s:  17.61
+  131072	  8 2	GPU7   	msec:  2.209	GF/s:  12.82	GB/s:  17.09
+  131072	  8 2	CPU    	msec:  1.818	GF/s:  15.57	GB/s:  20.76
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-  131072	 16 1	CPU    	msec:  2.221	GF/s:  12.75	GB/s:  17.00
-  131072	 16 1	GPU5   	msec:  2.324	GF/s:  12.18	GB/s:  16.24
-  131072	 16 1	GPU6   	msec:  1.972	GF/s:  14.36	GB/s:  19.14
-  131072	 16 1	GPU7   	msec:  1.951	GF/s:  14.51	GB/s:  19.35
-  131072	 16 1	CPU    	msec:  2.216	GF/s:  12.77	GB/s:  17.03
+  131072	 16 1	CPU    	msec:  2.065	GF/s:  13.71	GB/s:  18.28
+  131072	 16 1	GPU5   	msec:  2.321	GF/s:  12.20	GB/s:  16.27
+  131072	 16 1	GPU6   	msec:  1.969	GF/s:  14.38	GB/s:  19.17
+  131072	 16 1	GPU7   	msec:  1.949	GF/s:  14.53	GB/s:  19.37
+  131072	 16 1	CPU    	msec:  2.067	GF/s:  13.70	GB/s:  18.26
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-  131072	 16 2	CPU    	msec:  2.097	GF/s:  13.50	GB/s:  18.00
-  131072	 16 2	GPU5   	msec:  2.354	GF/s:  12.03	GB/s:  16.04
-  131072	 16 2	GPU6   	msec:  1.996	GF/s:  14.19	GB/s:  18.91
-  131072	 16 2	GPU7   	msec:  1.980	GF/s:  14.30	GB/s:  19.06
-  131072	 16 2	CPU    	msec:  2.122	GF/s:  13.34	GB/s:  17.79
+  131072	 16 2	CPU    	msec:  1.884	GF/s:  15.03	GB/s:  20.04
+  131072	 16 2	GPU5   	msec:  2.043	GF/s:  13.86	GB/s:  18.48
+  131072	 16 2	GPU6   	msec:  1.842	GF/s:  15.37	GB/s:  20.50
+  131072	 16 2	GPU7   	msec:  1.842	GF/s:  15.37	GB/s:  20.49
+  131072	 16 2	CPU    	msec:  1.944	GF/s:  14.56	GB/s:  19.42
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-  131072	 32 1	CPU    	msec:  2.360	GF/s:  12.00	GB/s:  16.00
-  131072	 32 1	GPU5   	msec:  2.358	GF/s:  12.01	GB/s:  16.01
-  131072	 32 1	GPU6   	msec:  1.820	GF/s:  15.55	GB/s:  20.74
-  131072	 32 1	GPU7   	msec:  1.812	GF/s:  15.63	GB/s:  20.84
-  131072	 32 1	CPU    	msec:  2.379	GF/s:  11.90	GB/s:  15.87
+  131072	 32 1	CPU    	msec:  2.215	GF/s:  12.78	GB/s:  17.04
+  131072	 32 1	GPU5   	msec:  2.355	GF/s:  12.02	GB/s:  16.03
+  131072	 32 1	GPU6   	msec:  1.819	GF/s:  15.56	GB/s:  20.75
+  131072	 32 1	GPU7   	msec:  1.811	GF/s:  15.63	GB/s:  20.84
+  131072	 32 1	CPU    	msec:  2.215	GF/s:  12.78	GB/s:  17.05
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-  131072	 32 2	CPU    	msec:  2.272	GF/s:  12.46	GB/s:  16.61
-  131072	 32 2	GPU5   	msec:  2.353	GF/s:  12.03	GB/s:  16.05
-  131072	 32 2	GPU6   	msec:  2.026	GF/s:  13.98	GB/s:  18.64
-  131072	 32 2	GPU7   	msec:  2.008	GF/s:  14.10	GB/s:  18.80
-  131072	 32 2	CPU    	msec:  2.249	GF/s:  12.59	GB/s:  16.78
+  131072	 32 2	CPU    	msec:  2.054	GF/s:  13.78	GB/s:  18.38
+  131072	 32 2	GPU5   	msec:  2.019	GF/s:  14.02	GB/s:  18.69
+  131072	 32 2	GPU6   	msec:  1.837	GF/s:  15.41	GB/s:  20.55
+  131072	 32 2	GPU7   	msec:  1.836	GF/s:  15.42	GB/s:  20.56
+  131072	 32 2	CPU    	msec:  2.057	GF/s:  13.76	GB/s:  18.35
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-  131072	 64 1	CPU    	msec:  2.397	GF/s:  11.81	GB/s:  15.75
-  131072	 64 1	GPU5   	msec:  2.367	GF/s:  11.96	GB/s:  15.95
-  131072	 64 1	GPU6   	msec:  1.821	GF/s:  15.54	GB/s:  20.72
-  131072	 64 1	GPU7   	msec:  1.813	GF/s:  15.61	GB/s:  20.82
-  131072	 64 1	CPU    	msec:  2.349	GF/s:  12.05	GB/s:  16.07
+  131072	 64 1	CPU    	msec:  2.222	GF/s:  12.74	GB/s:  16.99
+  131072	 64 1	GPU5   	msec:  2.368	GF/s:  11.96	GB/s:  15.94
+  131072	 64 1	GPU6   	msec:  1.820	GF/s:  15.55	GB/s:  20.74
+  131072	 64 1	GPU7   	msec:  1.812	GF/s:  15.62	GB/s:  20.83
+  131072	 64 1	CPU    	msec:  2.254	GF/s:  12.56	GB/s:  16.75
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-  131072	 64 2	CPU    	msec:  2.376	GF/s:  11.92	GB/s:  15.89
-  131072	 64 2	GPU5   	msec:  2.355	GF/s:  12.02	GB/s:  16.03
-  131072	 64 2	GPU6   	msec:  2.034	GF/s:  13.92	GB/s:  18.56
-  131072	 64 2	GPU7   	msec:  2.006	GF/s:  14.11	GB/s:  18.82
-  131072	 64 2	CPU    	msec:  2.368	GF/s:  11.95	GB/s:  15.94
+  131072	 64 2	CPU    	msec:  2.150	GF/s:  13.17	GB/s:  17.56
+  131072	 64 2	GPU5   	msec:  2.023	GF/s:  14.00	GB/s:  18.66
+  131072	 64 2	GPU6   	msec:  1.848	GF/s:  15.32	GB/s:  20.43
+  131072	 64 2	GPU7   	msec:  1.848	GF/s:  15.32	GB/s:  20.43
+  131072	 64 2	CPU    	msec:  2.159	GF/s:  13.12	GB/s:  17.49
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-  131072	128 1	CPU    	msec:  5.561	GF/s:   5.09	GB/s:   6.79
-  131072	128 1	GPU5   	msec:  2.346	GF/s:  12.07	GB/s:  16.09
+  131072	128 1	CPU    	msec:  2.600	GF/s:  10.89	GB/s:  14.52
+  131072	128 1	GPU5   	msec:  2.344	GF/s:  12.08	GB/s:  16.10
   131072	128 1	GPU6   	msec:  1.813	GF/s:  15.62	GB/s:  20.82
-  131072	128 1	GPU7   	msec:  1.805	GF/s:  15.69	GB/s:  20.91
-  131072	128 1	CPU    	msec:  5.574	GF/s:   5.08	GB/s:   6.77
+  131072	128 1	GPU7   	msec:  1.805	GF/s:  15.69	GB/s:  20.92
+  131072	128 1	CPU    	msec:  2.586	GF/s:  10.95	GB/s:  14.59
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-  131072	128 2	CPU    	msec:  5.315	GF/s:   5.33	GB/s:   7.10
-  131072	128 2	GPU5   	msec:  2.338	GF/s:  12.11	GB/s:  16.14
-  131072	128 2	GPU6   	msec:  2.010	GF/s:  14.08	GB/s:  18.78
-  131072	128 2	GPU7   	msec:  1.990	GF/s:  14.23	GB/s:  18.97
-  131072	128 2	CPU    	msec:  5.315	GF/s:   5.33	GB/s:   7.10
+  131072	128 2	CPU    	msec:  2.458	GF/s:  11.52	GB/s:  15.36
+  131072	128 2	GPU5   	msec:  2.012	GF/s:  14.07	GB/s:  18.76
+  131072	128 2	GPU6   	msec:  1.802	GF/s:  15.71	GB/s:  20.95
+  131072	128 2	GPU7   	msec:  1.801	GF/s:  15.72	GB/s:  20.96
+  131072	128 2	CPU    	msec:  2.478	GF/s:  11.42	GB/s:  15.23
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-  262144	  4 1	CPU    	msec:  4.208	GF/s:  13.46	GB/s:  17.94
-  262144	  4 1	GPU5   	msec:  8.375	GF/s:   6.76	GB/s:   9.01
-  262144	  4 1	GPU6   	msec:  7.085	GF/s:   7.99	GB/s:  10.66
-  262144	  4 1	GPU7   	msec:  7.602	GF/s:   7.45	GB/s:   9.93
-  262144	  4 1	CPU    	msec:  4.212	GF/s:  13.44	GB/s:  17.93
+  262144	  8 1	CPU    	msec:  3.614	GF/s:  15.67	GB/s:  20.89
+  262144	  8 1	GPU5   	msec:  6.074	GF/s:   9.32	GB/s:  12.43
+  262144	  8 1	GPU6   	msec:  4.636	GF/s:  12.21	GB/s:  16.28
+  262144	  8 1	GPU7   	msec:  4.677	GF/s:  12.11	GB/s:  16.14
+  262144	  8 1	CPU    	msec:  3.624	GF/s:  15.63	GB/s:  20.83
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-  262144	  4 2	CPU    	msec:  4.561	GF/s:  12.41	GB/s:  16.55
-  262144	  4 2	GPU5   	msec:  8.401	GF/s:   6.74	GB/s:   8.99
-  262144	  4 2	GPU6   	msec:  6.775	GF/s:   8.36	GB/s:  11.14
-  262144	  4 2	GPU7   	msec:  7.118	GF/s:   7.96	GB/s:  10.61
-  262144	  4 2	CPU    	msec:  4.717	GF/s:  12.00	GB/s:  16.01
+  262144	  8 2	CPU    	msec:  3.615	GF/s:  15.66	GB/s:  20.88
+  262144	  8 2	GPU5   	msec:  4.293	GF/s:  13.19	GB/s:  17.59
+  262144	  8 2	GPU6   	msec:  4.282	GF/s:  13.22	GB/s:  17.63
+  262144	  8 2	GPU7   	msec:  4.414	GF/s:  12.83	GB/s:  17.11
+  262144	  8 2	CPU    	msec:  3.586	GF/s:  15.79	GB/s:  21.06
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-  262144	  8 1	CPU    	msec:  4.414	GF/s:  12.83	GB/s:  17.10
-  262144	  8 1	GPU5   	msec:  6.075	GF/s:   9.32	GB/s:  12.43
-  262144	  8 1	GPU6   	msec:  4.647	GF/s:  12.18	GB/s:  16.25
-  262144	  8 1	GPU7   	msec:  4.675	GF/s:  12.11	GB/s:  16.15
-  262144	  8 1	CPU    	msec:  4.413	GF/s:  12.83	GB/s:  17.11
+  262144	 16 1	CPU    	msec:  4.101	GF/s:  13.81	GB/s:  18.41
+  262144	 16 1	GPU5   	msec:  4.624	GF/s:  12.25	GB/s:  16.33
+  262144	 16 1	GPU6   	msec:  3.931	GF/s:  14.40	GB/s:  19.20
+  262144	 16 1	GPU7   	msec:  3.892	GF/s:  14.55	GB/s:  19.40
+  262144	 16 1	CPU    	msec:  4.131	GF/s:  13.71	GB/s:  18.28
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-  262144	  8 2	CPU    	msec:  4.441	GF/s:  12.75	GB/s:  17.00
-  262144	  8 2	GPU5   	msec:  5.970	GF/s:   9.48	GB/s:  12.65
-  262144	  8 2	GPU6   	msec:  4.515	GF/s:  12.54	GB/s:  16.72
-  262144	  8 2	GPU7   	msec:  4.591	GF/s:  12.33	GB/s:  16.45
-  262144	  8 2	CPU    	msec:  4.463	GF/s:  12.69	GB/s:  16.92
+  262144	 16 2	CPU    	msec:  3.749	GF/s:  15.10	GB/s:  20.14
+  262144	 16 2	GPU5   	msec:  4.070	GF/s:  13.91	GB/s:  18.55
+  262144	 16 2	GPU6   	msec:  3.677	GF/s:  15.40	GB/s:  20.53
+  262144	 16 2	GPU7   	msec:  3.679	GF/s:  15.39	GB/s:  20.52
+  262144	 16 2	CPU    	msec:  3.758	GF/s:  15.07	GB/s:  20.09
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-  262144	 16 1	CPU    	msec:  4.520	GF/s:  12.53	GB/s:  16.70
-  262144	 16 1	GPU5   	msec:  4.627	GF/s:  12.24	GB/s:  16.32
-  262144	 16 1	GPU6   	msec:  3.929	GF/s:  14.41	GB/s:  19.21
-  262144	 16 1	GPU7   	msec:  3.889	GF/s:  14.56	GB/s:  19.41
-  262144	 16 1	CPU    	msec:  4.494	GF/s:  12.60	GB/s:  16.80
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-  262144	 16 2	CPU    	msec:  4.197	GF/s:  13.49	GB/s:  17.99
-  262144	 16 2	GPU5   	msec:  4.690	GF/s:  12.07	GB/s:  16.10
-  262144	 16 2	GPU6   	msec:  3.976	GF/s:  14.24	GB/s:  18.99
-  262144	 16 2	GPU7   	msec:  3.948	GF/s:  14.34	GB/s:  19.12
-  262144	 16 2	CPU    	msec:  4.219	GF/s:  13.42	GB/s:  17.89
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-  262144	 32 1	CPU    	msec:  4.709	GF/s:  12.02	GB/s:  16.03
-  262144	 32 1	GPU5   	msec:  4.697	GF/s:  12.06	GB/s:  16.07
-  262144	 32 1	GPU6   	msec:  3.632	GF/s:  15.59	GB/s:  20.79
+  262144	 32 1	CPU    	msec:  4.440	GF/s:  12.75	GB/s:  17.00
+  262144	 32 1	GPU5   	msec:  4.700	GF/s:  12.05	GB/s:  16.06
+  262144	 32 1	GPU6   	msec:  3.628	GF/s:  15.61	GB/s:  20.81
   262144	 32 1	GPU7   	msec:  3.616	GF/s:  15.66	GB/s:  20.88
-  262144	 32 1	CPU    	msec:  4.777	GF/s:  11.85	GB/s:  15.80
+  262144	 32 1	CPU    	msec:  4.417	GF/s:  12.82	GB/s:  17.09
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-  262144	 32 2	CPU    	msec:  4.486	GF/s:  12.62	GB/s:  16.83
-  262144	 32 2	GPU5   	msec:  4.690	GF/s:  12.07	GB/s:  16.10
-  262144	 32 2	GPU6   	msec:  4.038	GF/s:  14.02	GB/s:  18.69
-  262144	 32 2	GPU7   	msec:  4.020	GF/s:  14.09	GB/s:  18.78
-  262144	 32 2	CPU    	msec:  4.454	GF/s:  12.71	GB/s:  16.95
+  262144	 32 2	CPU    	msec:  4.085	GF/s:  13.86	GB/s:  18.48
+  262144	 32 2	GPU5   	msec:  4.023	GF/s:  14.08	GB/s:  18.77
+  262144	 32 2	GPU6   	msec:  3.662	GF/s:  15.46	GB/s:  20.62
+  262144	 32 2	GPU7   	msec:  3.661	GF/s:  15.46	GB/s:  20.62
+  262144	 32 2	CPU    	msec:  4.091	GF/s:  13.84	GB/s:  18.45
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-  262144	 64 1	CPU    	msec:  4.810	GF/s:  11.77	GB/s:  15.70
-  262144	 64 1	GPU5   	msec:  4.709	GF/s:  12.03	GB/s:  16.03
-  262144	 64 1	GPU6   	msec:  3.632	GF/s:  15.59	GB/s:  20.78
-  262144	 64 1	GPU7   	msec:  3.616	GF/s:  15.66	GB/s:  20.88
-  262144	 64 1	CPU    	msec:  4.724	GF/s:  11.99	GB/s:  15.98
+  262144	 64 1	CPU    	msec:  4.441	GF/s:  12.75	GB/s:  17.00
+  262144	 64 1	GPU5   	msec:  4.716	GF/s:  12.01	GB/s:  16.01
+  262144	 64 1	GPU6   	msec:  3.634	GF/s:  15.58	GB/s:  20.78
+  262144	 64 1	GPU7   	msec:  3.620	GF/s:  15.64	GB/s:  20.86
+  262144	 64 1	CPU    	msec:  4.466	GF/s:  12.68	GB/s:  16.90
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-  262144	 64 2	CPU    	msec:  4.630	GF/s:  12.23	GB/s:  16.31
-  262144	 64 2	GPU5   	msec:  4.698	GF/s:  12.05	GB/s:  16.07
-  262144	 64 2	GPU6   	msec:  4.041	GF/s:  14.01	GB/s:  18.68
-  262144	 64 2	GPU7   	msec:  3.999	GF/s:  14.16	GB/s:  18.88
-  262144	 64 2	CPU    	msec:  4.621	GF/s:  12.25	GB/s:  16.34
+  262144	 64 2	CPU    	msec:  4.281	GF/s:  13.23	GB/s:  17.63
+  262144	 64 2	GPU5   	msec:  4.024	GF/s:  14.07	GB/s:  18.76
+  262144	 64 2	GPU6   	msec:  3.684	GF/s:  15.37	GB/s:  20.49
+  262144	 64 2	GPU7   	msec:  3.690	GF/s:  15.35	GB/s:  20.46
+  262144	 64 2	CPU    	msec:  4.300	GF/s:  13.17	GB/s:  17.56
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-  262144	128 1	CPU    	msec: 11.058	GF/s:   5.12	GB/s:   6.83
-  262144	128 1	GPU5   	msec:  4.680	GF/s:  12.10	GB/s:  16.13
+  262144	128 1	CPU    	msec:  5.138	GF/s:  11.02	GB/s:  14.69
+  262144	128 1	GPU5   	msec:  4.683	GF/s:  12.09	GB/s:  16.12
   262144	128 1	GPU6   	msec:  3.614	GF/s:  15.67	GB/s:  20.89
-  262144	128 1	GPU7   	msec:  3.599	GF/s:  15.73	GB/s:  20.98
-  262144	128 1	CPU    	msec: 11.097	GF/s:   5.10	GB/s:   6.80
+  262144	128 1	GPU7   	msec:  3.600	GF/s:  15.73	GB/s:  20.97
+  262144	128 1	CPU    	msec:  5.114	GF/s:  11.07	GB/s:  14.76
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-  262144	128 2	CPU    	msec: 10.580	GF/s:   5.35	GB/s:   7.14
-  262144	128 2	GPU5   	msec:  4.668	GF/s:  12.13	GB/s:  16.17
-  262144	128 2	GPU6   	msec:  4.009	GF/s:  14.12	GB/s:  18.83
-  262144	128 2	GPU7   	msec:  3.969	GF/s:  14.27	GB/s:  19.02
-  262144	128 2	CPU    	msec: 10.569	GF/s:   5.36	GB/s:   7.14
+  262144	128 2	CPU    	msec:  4.863	GF/s:  11.64	GB/s:  15.53
+  262144	128 2	GPU5   	msec:  4.003	GF/s:  14.14	GB/s:  18.86
+  262144	128 2	GPU6   	msec:  3.594	GF/s:  15.76	GB/s:  21.01
+  262144	128 2	GPU7   	msec:  3.592	GF/s:  15.76	GB/s:  21.02
+  262144	128 2	CPU    	msec:  4.907	GF/s:  11.54	GB/s:  15.39
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-  524288	  4 1	CPU    	msec:  8.484	GF/s:  13.35	GB/s:  17.80
-  524288	  4 1	GPU5   	msec: 16.741	GF/s:   6.76	GB/s:   9.02
-  524288	  4 1	GPU6   	msec: 14.197	GF/s:   7.98	GB/s:  10.64
-  524288	  4 1	GPU7   	msec: 15.203	GF/s:   7.45	GB/s:   9.93
-  524288	  4 1	CPU    	msec:  8.515	GF/s:  13.30	GB/s:  17.73
+  524288	  8 1	CPU    	msec:  7.187	GF/s:  15.76	GB/s:  21.01
+  524288	  8 1	GPU5   	msec: 12.123	GF/s:   9.34	GB/s:  12.46
+  524288	  8 1	GPU6   	msec:  9.263	GF/s:  12.23	GB/s:  16.30
+  524288	  8 1	GPU7   	msec:  9.348	GF/s:  12.11	GB/s:  16.15
+  524288	  8 1	CPU    	msec:  7.816	GF/s:  14.49	GB/s:  19.32
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-  524288	  4 2	CPU    	msec:  9.350	GF/s:  12.11	GB/s:  16.15
-  524288	  4 2	GPU5   	msec: 16.768	GF/s:   6.75	GB/s:   9.00
-  524288	  4 2	GPU6   	msec: 13.506	GF/s:   8.39	GB/s:  11.18
-  524288	  4 2	GPU7   	msec: 14.238	GF/s:   7.95	GB/s:  10.61
-  524288	  4 2	CPU    	msec:  9.370	GF/s:  12.09	GB/s:  16.11
+  524288	  8 2	CPU    	msec:  7.318	GF/s:  15.47	GB/s:  20.63
+  524288	  8 2	GPU5   	msec:  8.578	GF/s:  13.20	GB/s:  17.60
+  524288	  8 2	GPU6   	msec:  8.549	GF/s:  13.25	GB/s:  17.66
+  524288	  8 2	GPU7   	msec:  8.812	GF/s:  12.85	GB/s:  17.14
+  524288	  8 2	CPU    	msec:  7.276	GF/s:  15.56	GB/s:  20.75
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-  524288	  8 1	CPU    	msec:  8.747	GF/s:  12.95	GB/s:  17.26
-  524288	  8 1	GPU5   	msec: 12.124	GF/s:   9.34	GB/s:  12.45
-  524288	  8 1	GPU6   	msec:  9.270	GF/s:  12.22	GB/s:  16.29
-  524288	  8 1	GPU7   	msec:  9.344	GF/s:  12.12	GB/s:  16.16
-  524288	  8 1	CPU    	msec:  8.789	GF/s:  12.88	GB/s:  17.18
+  524288	 16 1	CPU    	msec:  8.453	GF/s:  13.40	GB/s:  17.86
+  524288	 16 1	GPU5   	msec:  9.251	GF/s:  12.24	GB/s:  16.32
+  524288	 16 1	GPU6   	msec:  7.858	GF/s:  14.41	GB/s:  19.22
+  524288	 16 1	GPU7   	msec:  7.779	GF/s:  14.56	GB/s:  19.41
+  524288	 16 1	CPU    	msec:  8.452	GF/s:  13.40	GB/s:  17.86
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-  524288	  8 2	CPU    	msec:  8.873	GF/s:  12.76	GB/s:  17.02
-  524288	  8 2	GPU5   	msec: 11.939	GF/s:   9.49	GB/s:  12.65
-  524288	  8 2	GPU6   	msec:  9.019	GF/s:  12.56	GB/s:  16.74
-  524288	  8 2	GPU7   	msec:  9.166	GF/s:  12.35	GB/s:  16.47
-  524288	  8 2	CPU    	msec:  8.884	GF/s:  12.75	GB/s:  17.00
+  524288	 16 2	CPU    	msec:  7.928	GF/s:  14.28	GB/s:  19.05
+  524288	 16 2	GPU5   	msec:  8.125	GF/s:  13.94	GB/s:  18.58
+  524288	 16 2	GPU6   	msec:  7.347	GF/s:  15.41	GB/s:  20.55
+  524288	 16 2	GPU7   	msec:  7.350	GF/s:  15.41	GB/s:  20.54
+  524288	 16 2	CPU    	msec:  7.947	GF/s:  14.25	GB/s:  19.00
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-  524288	 16 1	CPU    	msec:  8.947	GF/s:  12.66	GB/s:  16.88
-  524288	 16 1	GPU5   	msec:  9.241	GF/s:  12.26	GB/s:  16.34
-  524288	 16 1	GPU6   	msec:  7.864	GF/s:  14.40	GB/s:  19.20
-  524288	 16 1	GPU7   	msec:  7.776	GF/s:  14.56	GB/s:  19.42
-  524288	 16 1	CPU    	msec:  8.918	GF/s:  12.70	GB/s:  16.93
+  524288	 32 1	CPU    	msec:  8.863	GF/s:  12.78	GB/s:  17.04
+  524288	 32 1	GPU5   	msec:  9.389	GF/s:  12.06	GB/s:  16.08
+  524288	 32 1	GPU6   	msec:  7.241	GF/s:  15.64	GB/s:  20.85
+  524288	 32 1	GPU7   	msec:  7.217	GF/s:  15.69	GB/s:  20.92
+  524288	 32 1	CPU    	msec:  8.825	GF/s:  12.83	GB/s:  17.11
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-  524288	 16 2	CPU    	msec:  8.411	GF/s:  13.46	GB/s:  17.95
-  524288	 16 2	GPU5   	msec:  9.367	GF/s:  12.09	GB/s:  16.12
-  524288	 16 2	GPU6   	msec:  7.954	GF/s:  14.24	GB/s:  18.98
-  524288	 16 2	GPU7   	msec:  7.893	GF/s:  14.35	GB/s:  19.13
-  524288	 16 2	CPU    	msec:  8.421	GF/s:  13.45	GB/s:  17.93
+  524288	 32 2	CPU    	msec:  8.344	GF/s:  13.57	GB/s:  18.10
+  524288	 32 2	GPU5   	msec:  8.026	GF/s:  14.11	GB/s:  18.81
+  524288	 32 2	GPU6   	msec:  7.311	GF/s:  15.49	GB/s:  20.65
+  524288	 32 2	GPU7   	msec:  7.310	GF/s:  15.49	GB/s:  20.66
+  524288	 32 2	CPU    	msec:  8.385	GF/s:  13.51	GB/s:  18.01
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-  524288	 32 1	CPU    	msec:  9.449	GF/s:  11.99	GB/s:  15.98
-  524288	 32 1	GPU5   	msec:  9.384	GF/s:  12.07	GB/s:  16.09
-  524288	 32 1	GPU6   	msec:  7.239	GF/s:  15.64	GB/s:  20.86
-  524288	 32 1	GPU7   	msec:  7.212	GF/s:  15.70	GB/s:  20.94
-  524288	 32 1	CPU    	msec:  9.541	GF/s:  11.87	GB/s:  15.83
+  524288	 64 1	CPU    	msec:  8.787	GF/s:  12.89	GB/s:  17.18
+  524288	 64 1	GPU5   	msec:  9.432	GF/s:  12.01	GB/s:  16.01
+  524288	 64 1	GPU6   	msec:  7.252	GF/s:  15.62	GB/s:  20.82
+  524288	 64 1	GPU7   	msec:  7.225	GF/s:  15.67	GB/s:  20.90
+  524288	 64 1	CPU    	msec:  8.915	GF/s:  12.70	GB/s:  16.94
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-  524288	 32 2	CPU    	msec:  8.958	GF/s:  12.64	GB/s:  16.85
-  524288	 32 2	GPU5   	msec:  9.363	GF/s:  12.09	GB/s:  16.13
-  524288	 32 2	GPU6   	msec:  8.061	GF/s:  14.05	GB/s:  18.73
-  524288	 32 2	GPU7   	msec:  8.014	GF/s:  14.13	GB/s:  18.84
-  524288	 32 2	CPU    	msec:  8.824	GF/s:  12.83	GB/s:  17.11
+  524288	 64 2	CPU    	msec:  8.734	GF/s:  12.97	GB/s:  17.29
+  524288	 64 2	GPU5   	msec:  8.018	GF/s:  14.12	GB/s:  18.83
+  524288	 64 2	GPU6   	msec:  7.360	GF/s:  15.39	GB/s:  20.52
+  524288	 64 2	GPU7   	msec:  7.366	GF/s:  15.37	GB/s:  20.50
+  524288	 64 2	CPU    	msec:  8.635	GF/s:  13.12	GB/s:  17.49
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-  524288	 64 1	CPU    	msec:  9.644	GF/s:  11.74	GB/s:  15.66
-  524288	 64 1	GPU5   	msec:  9.431	GF/s:  12.01	GB/s:  16.01
-  524288	 64 1	GPU6   	msec:  7.245	GF/s:  15.63	GB/s:  20.84
-  524288	 64 1	GPU7   	msec:  7.235	GF/s:  15.65	GB/s:  20.87
-  524288	 64 1	CPU    	msec:  9.462	GF/s:  11.97	GB/s:  15.96
+  524288	128 1	CPU    	msec: 10.148	GF/s:  11.16	GB/s:  14.88
+  524288	128 1	GPU5   	msec:  9.346	GF/s:  12.12	GB/s:  16.16
+  524288	128 1	GPU6   	msec:  7.215	GF/s:  15.70	GB/s:  20.93
+  524288	128 1	GPU7   	msec:  7.187	GF/s:  15.76	GB/s:  21.01
+  524288	128 1	CPU    	msec: 10.108	GF/s:  11.20	GB/s:  14.94
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-  524288	 64 2	CPU    	msec:  9.256	GF/s:  12.23	GB/s:  16.31
-  524288	 64 2	GPU5   	msec:  9.374	GF/s:  12.08	GB/s:  16.11
-  524288	 64 2	GPU6   	msec:  8.049	GF/s:  14.07	GB/s:  18.76
-  524288	 64 2	GPU7   	msec:  7.987	GF/s:  14.18	GB/s:  18.91
-  524288	 64 2	CPU    	msec:  9.234	GF/s:  12.26	GB/s:  16.35
+  524288	128 2	CPU    	msec:  9.747	GF/s:  11.62	GB/s:  15.49
+  524288	128 2	GPU5   	msec:  7.991	GF/s:  14.17	GB/s:  18.89
+  524288	128 2	GPU6   	msec:  7.176	GF/s:  15.78	GB/s:  21.04
+  524288	128 2	GPU7   	msec:  7.174	GF/s:  15.79	GB/s:  21.05
+  524288	128 2	CPU    	msec:  9.733	GF/s:  11.64	GB/s:  15.51
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-  524288	128 1	CPU    	msec: 22.099	GF/s:   5.12	GB/s:   6.83
-  524288	128 1	GPU5   	msec:  9.348	GF/s:  12.11	GB/s:  16.15
-  524288	128 1	GPU6   	msec:  7.214	GF/s:  15.70	GB/s:  20.93
-  524288	128 1	GPU7   	msec:  7.194	GF/s:  15.74	GB/s:  20.99
-  524288	128 1	CPU    	msec: 22.150	GF/s:   5.11	GB/s:   6.82
+ 1048576	  8 1	CPU    	msec: 14.564	GF/s:  15.55	GB/s:  20.74
+ 1048576	  8 1	GPU5   	msec: 24.261	GF/s:   9.34	GB/s:  12.45
+ 1048576	  8 1	GPU6   	msec: 18.520	GF/s:  12.23	GB/s:  16.31
+ 1048576	  8 1	GPU7   	msec: 18.681	GF/s:  12.12	GB/s:  16.17
+ 1048576	  8 1	CPU    	msec: 14.559	GF/s:  15.56	GB/s:  20.74
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-  524288	128 2	CPU    	msec: 21.120	GF/s:   5.36	GB/s:   7.15
-  524288	128 2	GPU5   	msec:  9.334	GF/s:  12.13	GB/s:  16.18
-  524288	128 2	GPU6   	msec:  8.006	GF/s:  14.15	GB/s:  18.86
-  524288	128 2	GPU7   	msec:  7.927	GF/s:  14.29	GB/s:  19.05
-  524288	128 2	CPU    	msec: 21.086	GF/s:   5.37	GB/s:   7.16
+ 1048576	  8 2	CPU    	msec: 14.829	GF/s:  15.27	GB/s:  20.36
+ 1048576	  8 2	GPU5   	msec: 17.140	GF/s:  13.21	GB/s:  17.62
+ 1048576	  8 2	GPU6   	msec: 17.078	GF/s:  13.26	GB/s:  17.68
+ 1048576	  8 2	GPU7   	msec: 17.596	GF/s:  12.87	GB/s:  17.16
+ 1048576	  8 2	CPU    	msec: 14.889	GF/s:  15.21	GB/s:  20.28
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
- 1048576	  4 1	CPU    	msec: 16.851	GF/s:  13.44	GB/s:  17.92
- 1048576	  4 1	GPU5   	msec: 33.490	GF/s:   6.76	GB/s:   9.02
- 1048576	  4 1	GPU6   	msec: 28.289	GF/s:   8.01	GB/s:  10.68
- 1048576	  4 1	GPU7   	msec: 30.338	GF/s:   7.47	GB/s:   9.95
- 1048576	  4 1	CPU    	msec: 16.957	GF/s:  13.36	GB/s:  17.81
+ 1048576	 16 1	CPU    	msec: 16.954	GF/s:  13.36	GB/s:  17.81
+ 1048576	 16 1	GPU5   	msec: 18.497	GF/s:  12.25	GB/s:  16.33
+ 1048576	 16 1	GPU6   	msec: 15.739	GF/s:  14.39	GB/s:  19.19
+ 1048576	 16 1	GPU7   	msec: 15.557	GF/s:  14.56	GB/s:  19.41
+ 1048576	 16 1	CPU    	msec: 17.030	GF/s:  13.30	GB/s:  17.73
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
- 1048576	  4 2	CPU    	msec: 18.571	GF/s:  12.20	GB/s:  16.26
- 1048576	  4 2	GPU5   	msec: 33.509	GF/s:   6.76	GB/s:   9.01
- 1048576	  4 2	GPU6   	msec: 26.956	GF/s:   8.40	GB/s:  11.20
- 1048576	  4 2	GPU7   	msec: 28.361	GF/s:   7.99	GB/s:  10.65
- 1048576	  4 2	CPU    	msec: 18.666	GF/s:  12.13	GB/s:  16.18
+ 1048576	 16 2	CPU    	msec: 15.540	GF/s:  14.57	GB/s:  19.43
+ 1048576	 16 2	GPU5   	msec: 16.197	GF/s:  13.98	GB/s:  18.64
+ 1048576	 16 2	GPU6   	msec: 14.687	GF/s:  15.42	GB/s:  20.56
+ 1048576	 16 2	GPU7   	msec: 14.696	GF/s:  15.41	GB/s:  20.55
+ 1048576	 16 2	CPU    	msec: 16.119	GF/s:  14.05	GB/s:  18.74
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
- 1048576	  8 1	CPU    	msec: 17.917	GF/s:  12.64	GB/s:  16.85
- 1048576	  8 1	GPU5   	msec: 24.262	GF/s:   9.34	GB/s:  12.45
- 1048576	  8 1	GPU6   	msec: 18.528	GF/s:  12.22	GB/s:  16.30
- 1048576	  8 1	GPU7   	msec: 18.692	GF/s:  12.12	GB/s:  16.16
- 1048576	  8 1	CPU    	msec: 17.866	GF/s:  12.68	GB/s:  16.90
+ 1048576	 32 1	CPU    	msec: 17.980	GF/s:  12.60	GB/s:  16.80
+ 1048576	 32 1	GPU5   	msec: 18.752	GF/s:  12.08	GB/s:  16.10
+ 1048576	 32 1	GPU6   	msec: 14.479	GF/s:  15.64	GB/s:  20.86
+ 1048576	 32 1	GPU7   	msec: 14.426	GF/s:  15.70	GB/s:  20.93
+ 1048576	 32 1	CPU    	msec: 17.971	GF/s:  12.60	GB/s:  16.80
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
- 1048576	  8 2	CPU    	msec: 17.948	GF/s:  12.62	GB/s:  16.83
- 1048576	  8 2	GPU5   	msec: 23.874	GF/s:   9.49	GB/s:  12.65
- 1048576	  8 2	GPU6   	msec: 18.030	GF/s:  12.56	GB/s:  16.75
- 1048576	  8 2	GPU7   	msec: 18.322	GF/s:  12.36	GB/s:  16.48
- 1048576	  8 2	CPU    	msec: 17.930	GF/s:  12.63	GB/s:  16.84
+ 1048576	 32 2	CPU    	msec: 16.668	GF/s:  13.59	GB/s:  18.12
+ 1048576	 32 2	GPU5   	msec: 15.999	GF/s:  14.16	GB/s:  18.88
+ 1048576	 32 2	GPU6   	msec: 14.601	GF/s:  15.51	GB/s:  20.68
+ 1048576	 32 2	GPU7   	msec: 14.597	GF/s:  15.52	GB/s:  20.69
+ 1048576	 32 2	CPU    	msec: 16.682	GF/s:  13.58	GB/s:  18.10
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
- 1048576	 16 1	CPU    	msec: 18.064	GF/s:  12.54	GB/s:  16.72
- 1048576	 16 1	GPU5   	msec: 18.483	GF/s:  12.25	GB/s:  16.34
- 1048576	 16 1	GPU6   	msec: 15.743	GF/s:  14.39	GB/s:  19.18
- 1048576	 16 1	GPU7   	msec: 15.587	GF/s:  14.53	GB/s:  19.37
- 1048576	 16 1	CPU    	msec: 18.013	GF/s:  12.57	GB/s:  16.76
+ 1048576	 64 1	CPU    	msec: 17.322	GF/s:  13.08	GB/s:  17.43
+ 1048576	 64 1	GPU5   	msec: 18.839	GF/s:  12.02	GB/s:  16.03
+ 1048576	 64 1	GPU6   	msec: 14.485	GF/s:  15.64	GB/s:  20.85
+ 1048576	 64 1	GPU7   	msec: 14.429	GF/s:  15.70	GB/s:  20.93
+ 1048576	 64 1	CPU    	msec: 17.433	GF/s:  12.99	GB/s:  17.32
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
- 1048576	 16 2	CPU    	msec: 16.724	GF/s:  13.54	GB/s:  18.06
- 1048576	 16 2	GPU5   	msec: 18.736	GF/s:  12.09	GB/s:  16.12
- 1048576	 16 2	GPU6   	msec: 15.920	GF/s:  14.23	GB/s:  18.97
- 1048576	 16 2	GPU7   	msec: 15.772	GF/s:  14.36	GB/s:  19.15
- 1048576	 16 2	CPU    	msec: 16.725	GF/s:  13.54	GB/s:  18.06
+ 1048576	 64 2	CPU    	msec: 17.181	GF/s:  13.18	GB/s:  17.58
+ 1048576	 64 2	GPU5   	msec: 16.080	GF/s:  14.09	GB/s:  18.78
+ 1048576	 64 2	GPU6   	msec: 14.709	GF/s:  15.40	GB/s:  20.53
+ 1048576	 64 2	GPU7   	msec: 14.710	GF/s:  15.40	GB/s:  20.53
+ 1048576	 64 2	CPU    	msec: 17.254	GF/s:  13.13	GB/s:  17.50
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
- 1048576	 32 1	CPU    	msec: 19.074	GF/s:  11.87	GB/s:  15.83
- 1048576	 32 1	GPU5   	msec: 18.777	GF/s:  12.06	GB/s:  16.08
- 1048576	 32 1	GPU6   	msec: 14.521	GF/s:  15.60	GB/s:  20.80
- 1048576	 32 1	GPU7   	msec: 14.464	GF/s:  15.66	GB/s:  20.88
- 1048576	 32 1	CPU    	msec: 19.244	GF/s:  11.77	GB/s:  15.69
+ 1048576	128 1	CPU    	msec: 20.490	GF/s:  11.05	GB/s:  14.74
+ 1048576	128 1	GPU5   	msec: 18.690	GF/s:  12.12	GB/s:  16.16
+ 1048576	128 1	GPU6   	msec: 14.420	GF/s:  15.71	GB/s:  20.94
+ 1048576	128 1	GPU7   	msec: 14.364	GF/s:  15.77	GB/s:  21.02
+ 1048576	128 1	CPU    	msec: 20.413	GF/s:  11.10	GB/s:  14.79
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
- 1048576	 32 2	CPU    	msec: 17.707	GF/s:  12.79	GB/s:  17.05
- 1048576	 32 2	GPU5   	msec: 18.695	GF/s:  12.12	GB/s:  16.15
- 1048576	 32 2	GPU6   	msec: 16.125	GF/s:  14.05	GB/s:  18.73
- 1048576	 32 2	GPU7   	msec: 16.020	GF/s:  14.14	GB/s:  18.85
- 1048576	 32 2	CPU    	msec: 18.058	GF/s:  12.54	GB/s:  16.72
+ 1048576	128 2	CPU    	msec: 19.502	GF/s:  11.61	GB/s:  15.49
+ 1048576	128 2	GPU5   	msec: 15.948	GF/s:  14.20	GB/s:  18.94
+ 1048576	128 2	GPU6   	msec: 14.341	GF/s:  15.79	GB/s:  21.06
+ 1048576	128 2	GPU7   	msec: 14.338	GF/s:  15.80	GB/s:  21.06
+ 1048576	128 2	CPU    	msec: 19.330	GF/s:  11.72	GB/s:  15.62
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
 WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
- 1048576	 64 1	CPU    	msec: 19.496	GF/s:  11.62	GB/s:  15.49
- 1048576	 64 1	GPU5   	msec: 18.814	GF/s:  12.04	GB/s:  16.05
- 1048576	 64 1	GPU6   	msec: 14.520	GF/s:  15.60	GB/s:  20.80
- 1048576	 64 1	GPU7   	msec: 14.470	GF/s:  15.65	GB/s:  20.87
- 1048576	 64 1	CPU    	msec: 19.022	GF/s:  11.91	GB/s:  15.88
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
- 1048576	 64 2	CPU    	msec: 18.821	GF/s:  12.03	GB/s:  16.05
- 1048576	 64 2	GPU5   	msec: 18.715	GF/s:  12.10	GB/s:  16.14
- 1048576	 64 2	GPU6   	msec: 16.061	GF/s:  14.10	GB/s:  18.80
- 1048576	 64 2	GPU7   	msec: 15.956	GF/s:  14.19	GB/s:  18.93
- 1048576	 64 2	CPU    	msec: 18.552	GF/s:  12.21	GB/s:  16.28
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
- 1048576	128 1	CPU    	msec: 44.337	GF/s:   5.11	GB/s:   6.81
- 1048576	128 1	GPU5   	msec: 18.717	GF/s:  12.10	GB/s:  16.13
- 1048576	128 1	GPU6   	msec: 14.434	GF/s:  15.69	GB/s:  20.92
- 1048576	128 1	GPU7   	msec: 14.365	GF/s:  15.77	GB/s:  21.02
- 1048576	128 1	CPU    	msec: 44.483	GF/s:   5.09	GB/s:   6.79
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
- 1048576	128 2	CPU    	msec: 42.247	GF/s:   5.36	GB/s:   7.15
- 1048576	128 2	GPU5   	msec: 18.605	GF/s:  12.17	GB/s:  16.23
- 1048576	128 2	GPU6   	msec: 15.997	GF/s:  14.16	GB/s:  18.88
- 1048576	128 2	GPU7   	msec: 15.846	GF/s:  14.29	GB/s:  19.06
- 1048576	128 2	CPU    	msec: 42.366	GF/s:   5.35	GB/s:   7.13
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
-WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory.
- 2097152	  4 1	CPU    	msec: 33.912	GF/s:  13.36	GB/s:  17.81
+ 2097152	  8 1	CPU    	msec: 29.892	GF/s:  15.15	GB/s:  20.21
 invalid configuration argument

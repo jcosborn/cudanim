@@ -1,1020 +1,850 @@
-    1024	  4 1	CPU    	msec:  0.021	GF/s:  10.41	GB/s:  13.88
-    1024	  4 1	GPU5   	msec:  0.023	GF/s:   9.67	GB/s:  12.90
-    1024	  4 1	GPU6   	msec:  0.023	GF/s:   9.82	GB/s:  13.10
-    1024	  4 1	GPU7   	msec:  0.023	GF/s:   9.50	GB/s:  12.66
-    1024	  4 1	CPU    	msec:  0.024	GF/s:   9.27	GB/s:  12.36
-    1024	  4 2	CPU    	msec:  0.013	GF/s:  17.53	GB/s:  23.37
-    1024	  4 2	GPU5   	msec:  0.021	GF/s:  10.30	GB/s:  13.74
-    1024	  4 2	GPU6   	msec:  0.022	GF/s:  10.27	GB/s:  13.69
-    1024	  4 2	GPU7   	msec:  0.022	GF/s:   9.83	GB/s:  13.11
-    1024	  4 2	CPU    	msec:  0.025	GF/s:   8.74	GB/s:  11.65
-    1024	  8 1	CPU    	msec:  0.009	GF/s:  25.05	GB/s:  33.41
-    1024	  8 1	GPU5   	msec:  0.022	GF/s:   9.89	GB/s:  13.19
-    1024	  8 1	GPU6   	msec:  0.023	GF/s:   9.67	GB/s:  12.89
-    1024	  8 1	GPU7   	msec:  0.023	GF/s:   9.45	GB/s:  12.60
-    1024	  8 1	CPU    	msec:  0.010	GF/s:  22.70	GB/s:  30.27
-    1024	  8 2	CPU    	msec:  0.009	GF/s:  23.63	GB/s:  31.51
-    1024	  8 2	GPU5   	msec:  0.021	GF/s:  10.41	GB/s:  13.88
-    1024	  8 2	GPU6   	msec:  0.022	GF/s:   9.85	GB/s:  13.13
-    1024	  8 2	GPU7   	msec:  0.023	GF/s:   9.58	GB/s:  12.77
-    1024	  8 2	CPU    	msec:  0.012	GF/s:  18.64	GB/s:  24.85
-    1024	 16 1	CPU    	msec:  0.003	GF/s:  85.02	GB/s: 113.36
-    1024	 16 1	GPU5   	msec:  0.024	GF/s:   9.17	GB/s:  12.23
-    1024	 16 1	GPU6   	msec:  0.023	GF/s:   9.48	GB/s:  12.64
-    1024	 16 1	GPU7   	msec:  0.024	GF/s:   9.33	GB/s:  12.44
-    1024	 16 1	CPU    	msec:  0.003	GF/s:  63.91	GB/s:  85.21
-    1024	 16 2	CPU    	msec:  0.006	GF/s:  38.57	GB/s:  51.43
-    1024	 16 2	GPU5   	msec:  0.022	GF/s:  10.25	GB/s:  13.66
-    1024	 16 2	GPU6   	msec:  0.021	GF/s:  10.36	GB/s:  13.81
-    1024	 16 2	GPU7   	msec:  0.022	GF/s:   9.85	GB/s:  13.14
-    1024	 16 2	CPU    	msec:  0.003	GF/s:  71.86	GB/s:  95.81
-    1024	 32 1	CPU    	msec:  0.003	GF/s:  65.38	GB/s:  87.18
-    1024	 32 1	GPU5   	msec:  0.022	GF/s:  10.12	GB/s:  13.50
-    1024	 32 1	GPU6   	msec:  0.022	GF/s:  10.00	GB/s:  13.33
-    1024	 32 1	GPU7   	msec:  0.022	GF/s:   9.83	GB/s:  13.11
-    1024	 32 1	CPU    	msec:  0.007	GF/s:  32.73	GB/s:  43.64
-    1024	 32 2	CPU    	msec:  0.004	GF/s:  58.13	GB/s:  77.51
-    1024	 32 2	GPU5   	msec:  0.024	GF/s:   9.38	GB/s:  12.50
-    1024	 32 2	GPU6   	msec:  0.023	GF/s:   9.73	GB/s:  12.98
-    1024	 32 2	GPU7   	msec:  0.024	GF/s:   9.41	GB/s:  12.54
-    1024	 32 2	CPU    	msec:  0.004	GF/s:  62.09	GB/s:  82.78
-    1024	 64 1	CPU    	msec:  0.008	GF/s:  28.45	GB/s:  37.94
-    1024	 64 1	GPU5   	msec:  0.022	GF/s:   9.94	GB/s:  13.25
-    1024	 64 1	GPU6   	msec:  0.022	GF/s:   9.96	GB/s:  13.28
-    1024	 64 1	GPU7   	msec:  0.022	GF/s:   9.84	GB/s:  13.12
-    1024	 64 1	CPU    	msec:  0.008	GF/s:  28.17	GB/s:  37.56
-    1024	 64 2	CPU    	msec:  0.008	GF/s:  27.98	GB/s:  37.30
-    1024	 64 2	GPU5   	msec:  0.022	GF/s:  10.18	GB/s:  13.58
-    1024	 64 2	GPU6   	msec:  0.022	GF/s:  10.27	GB/s:  13.70
-    1024	 64 2	GPU7   	msec:  0.022	GF/s:   9.97	GB/s:  13.29
-    1024	 64 2	CPU    	msec:  0.008	GF/s:  27.59	GB/s:  36.79
-    1024	128 1	CPU    	msec:  0.039	GF/s:   5.72	GB/s:   7.63
-    1024	128 1	GPU5   	msec:  0.023	GF/s:   9.67	GB/s:  12.89
-    1024	128 1	GPU6   	msec:  0.023	GF/s:   9.80	GB/s:  13.07
-    1024	128 1	GPU7   	msec:  0.022	GF/s:   9.86	GB/s:  13.15
-    1024	128 1	CPU    	msec:  0.038	GF/s:   5.75	GB/s:   7.66
-    1024	128 2	CPU    	msec:  0.040	GF/s:   5.49	GB/s:   7.32
-    1024	128 2	GPU5   	msec:  0.023	GF/s:   9.81	GB/s:  13.08
-    1024	128 2	GPU6   	msec:  0.022	GF/s:  10.11	GB/s:  13.48
-    1024	128 2	GPU7   	msec:  0.022	GF/s:   9.93	GB/s:  13.24
-    1024	128 2	CPU    	msec:  0.040	GF/s:   5.54	GB/s:   7.39
-    2048	  4 1	CPU    	msec:  0.027	GF/s:  16.57	GB/s:  22.09
-    2048	  4 1	GPU5   	msec:  0.022	GF/s:  20.52	GB/s:  27.35
-    2048	  4 1	GPU6   	msec:  0.022	GF/s:  20.06	GB/s:  26.74
-    2048	  4 1	GPU7   	msec:  0.022	GF/s:  19.69	GB/s:  26.26
-    2048	  4 1	CPU    	msec:  0.033	GF/s:  13.23	GB/s:  17.64
-    2048	  4 2	CPU    	msec:  0.032	GF/s:  13.64	GB/s:  18.18
-    2048	  4 2	GPU5   	msec:  0.023	GF/s:  19.52	GB/s:  26.02
-    2048	  4 2	GPU6   	msec:  0.022	GF/s:  19.68	GB/s:  26.24
-    2048	  4 2	GPU7   	msec:  0.023	GF/s:  19.47	GB/s:  25.96
-    2048	  4 2	CPU    	msec:  0.050	GF/s:   8.85	GB/s:  11.80
-    2048	  8 1	CPU    	msec:  0.014	GF/s:  31.35	GB/s:  41.80
-    2048	  8 1	GPU5   	msec:  0.024	GF/s:  18.47	GB/s:  24.62
-    2048	  8 1	GPU6   	msec:  0.023	GF/s:  19.10	GB/s:  25.47
-    2048	  8 1	GPU7   	msec:  0.024	GF/s:  18.27	GB/s:  24.35
-    2048	  8 1	CPU    	msec:  0.023	GF/s:  18.83	GB/s:  25.11
-    2048	  8 2	CPU    	msec:  0.009	GF/s:  47.50	GB/s:  63.34
-    2048	  8 2	GPU5   	msec:  0.022	GF/s:  20.09	GB/s:  26.78
-    2048	  8 2	GPU6   	msec:  0.022	GF/s:  19.69	GB/s:  26.25
-    2048	  8 2	GPU7   	msec:  0.023	GF/s:  19.64	GB/s:  26.19
-    2048	  8 2	CPU    	msec:  0.036	GF/s:  12.20	GB/s:  16.27
-    2048	 16 1	CPU    	msec:  0.009	GF/s:  50.97	GB/s:  67.95
-    2048	 16 1	GPU5   	msec:  0.022	GF/s:  19.97	GB/s:  26.63
-    2048	 16 1	GPU6   	msec:  0.022	GF/s:  20.11	GB/s:  26.82
-    2048	 16 1	GPU7   	msec:  0.022	GF/s:  19.92	GB/s:  26.56
-    2048	 16 1	CPU    	msec:  0.009	GF/s:  47.38	GB/s:  63.18
-    2048	 16 2	CPU    	msec:  0.009	GF/s:  49.54	GB/s:  66.05
-    2048	 16 2	GPU5   	msec:  0.023	GF/s:  18.93	GB/s:  25.24
-    2048	 16 2	GPU6   	msec:  0.023	GF/s:  19.53	GB/s:  26.04
-    2048	 16 2	GPU7   	msec:  0.023	GF/s:  19.10	GB/s:  25.47
-    2048	 16 2	CPU    	msec:  0.008	GF/s:  56.91	GB/s:  75.88
-    2048	 32 1	CPU    	msec:  0.008	GF/s:  53.27	GB/s:  71.02
-    2048	 32 1	GPU5   	msec:  0.022	GF/s:  20.02	GB/s:  26.70
-    2048	 32 1	GPU6   	msec:  0.022	GF/s:  20.14	GB/s:  26.85
-    2048	 32 1	GPU7   	msec:  0.023	GF/s:  19.54	GB/s:  26.05
-    2048	 32 1	CPU    	msec:  0.008	GF/s:  53.72	GB/s:  71.63
-    2048	 32 2	CPU    	msec:  0.008	GF/s:  55.19	GB/s:  73.58
-    2048	 32 2	GPU5   	msec:  0.022	GF/s:  20.18	GB/s:  26.91
-    2048	 32 2	GPU6   	msec:  0.022	GF/s:  20.16	GB/s:  26.88
-    2048	 32 2	GPU7   	msec:  0.023	GF/s:  19.58	GB/s:  26.11
-    2048	 32 2	CPU    	msec:  0.007	GF/s:  59.54	GB/s:  79.39
-    2048	 64 1	CPU    	msec:  0.008	GF/s:  54.92	GB/s:  73.23
+    1024	  8 1	CPU    	msec:  0.005	GF/s:  48.48	GB/s:  64.64
+    1024	  8 1	GPU5   	msec:  0.022	GF/s:   9.93	GB/s:  13.24
+    1024	  8 1	GPU6   	msec:  0.023	GF/s:   9.62	GB/s:  12.83
+    1024	  8 1	GPU7   	msec:  0.023	GF/s:   9.51	GB/s:  12.68
+    1024	  8 1	CPU    	msec:  0.010	GF/s:  21.24	GB/s:  28.32
+    1024	  8 2	CPU    	msec:  0.002	GF/s: 113.70	GB/s: 151.60
+    1024	  8 2	GPU5   	msec:  0.024	GF/s:   9.25	GB/s:  12.34
+    1024	  8 2	GPU6   	msec:  0.024	GF/s:   9.09	GB/s:  12.12
+    1024	  8 2	GPU7   	msec:  0.024	GF/s:   9.06	GB/s:  12.08
+    1024	  8 2	CPU    	msec:  0.010	GF/s:  23.13	GB/s:  30.84
+    1024	 16 1	CPU    	msec:  0.005	GF/s:  46.26	GB/s:  61.68
+    1024	 16 1	GPU5   	msec:  0.022	GF/s:   9.98	GB/s:  13.31
+    1024	 16 1	GPU6   	msec:  0.022	GF/s:   9.88	GB/s:  13.17
+    1024	 16 1	GPU7   	msec:  0.023	GF/s:   9.76	GB/s:  13.02
+    1024	 16 1	CPU    	msec:  0.003	GF/s:  85.79	GB/s: 114.39
+    1024	 16 2	CPU    	msec:  0.006	GF/s:  37.50	GB/s:  50.00
+    1024	 16 2	GPU5   	msec:  0.022	GF/s:  10.14	GB/s:  13.53
+    1024	 16 2	GPU6   	msec:  0.021	GF/s:  10.29	GB/s:  13.72
+    1024	 16 2	GPU7   	msec:  0.023	GF/s:   9.80	GB/s:  13.07
+    1024	 16 2	CPU    	msec:  0.007	GF/s:  29.65	GB/s:  39.53
+    1024	 32 1	CPU    	msec:  0.003	GF/s:  75.70	GB/s: 100.93
+    1024	 32 1	GPU5   	msec:  0.024	GF/s:   9.27	GB/s:  12.36
+    1024	 32 1	GPU6   	msec:  0.024	GF/s:   9.34	GB/s:  12.45
+    1024	 32 1	GPU7   	msec:  0.024	GF/s:   9.26	GB/s:  12.34
+    1024	 32 1	CPU    	msec:  0.003	GF/s:  66.15	GB/s:  88.20
+    1024	 32 2	CPU    	msec:  0.003	GF/s:  69.73	GB/s:  92.98
+    1024	 32 2	GPU5   	msec:  0.022	GF/s:  10.20	GB/s:  13.60
+    1024	 32 2	GPU6   	msec:  0.022	GF/s:  10.19	GB/s:  13.58
+    1024	 32 2	GPU7   	msec:  0.022	GF/s:  10.06	GB/s:  13.41
+    1024	 32 2	CPU    	msec:  0.003	GF/s:  79.75	GB/s: 106.33
+    1024	 64 1	CPU    	msec:  0.005	GF/s:  43.89	GB/s:  58.53
+    1024	 64 1	GPU5   	msec:  0.023	GF/s:   9.66	GB/s:  12.88
+    1024	 64 1	GPU6   	msec:  0.023	GF/s:   9.58	GB/s:  12.77
+    1024	 64 1	GPU7   	msec:  0.024	GF/s:   9.41	GB/s:  12.55
+    1024	 64 1	CPU    	msec:  0.005	GF/s:  41.09	GB/s:  54.79
+    1024	 64 2	CPU    	msec:  0.005	GF/s:  40.79	GB/s:  54.39
+    1024	 64 2	GPU5   	msec:  0.021	GF/s:  10.52	GB/s:  14.02
+    1024	 64 2	GPU6   	msec:  0.021	GF/s:  10.71	GB/s:  14.28
+    1024	 64 2	GPU7   	msec:  0.021	GF/s:  10.33	GB/s:  13.77
+    1024	 64 2	CPU    	msec:  0.006	GF/s:  36.63	GB/s:  48.83
+    1024	128 1	CPU    	msec:  0.011	GF/s:  20.61	GB/s:  27.47
+    1024	128 1	GPU5   	msec:  0.022	GF/s:  10.10	GB/s:  13.46
+    1024	128 1	GPU6   	msec:  0.022	GF/s:  10.16	GB/s:  13.54
+    1024	128 1	GPU7   	msec:  0.022	GF/s:  10.11	GB/s:  13.48
+    1024	128 1	CPU    	msec:  0.011	GF/s:  20.15	GB/s:  26.87
+    1024	128 2	CPU    	msec:  0.011	GF/s:  19.29	GB/s:  25.71
+    1024	128 2	GPU5   	msec:  0.024	GF/s:   9.17	GB/s:  12.23
+    1024	128 2	GPU6   	msec:  0.023	GF/s:   9.61	GB/s:  12.82
+    1024	128 2	GPU7   	msec:  0.023	GF/s:   9.44	GB/s:  12.59
+    1024	128 2	CPU    	msec:  0.011	GF/s:  19.23	GB/s:  25.64
+    2048	  8 1	CPU    	msec:  0.008	GF/s:  53.47	GB/s:  71.29
+    2048	  8 1	GPU5   	msec:  0.022	GF/s:  19.77	GB/s:  26.36
+    2048	  8 1	GPU6   	msec:  0.022	GF/s:  19.84	GB/s:  26.45
+    2048	  8 1	GPU7   	msec:  0.023	GF/s:  19.44	GB/s:  25.92
+    2048	  8 1	CPU    	msec:  0.008	GF/s:  55.24	GB/s:  73.66
+    2048	  8 2	CPU    	msec:  0.015	GF/s:  28.82	GB/s:  38.42
+    2048	  8 2	GPU5   	msec:  0.022	GF/s:  20.12	GB/s:  26.83
+    2048	  8 2	GPU6   	msec:  0.022	GF/s:  20.20	GB/s:  26.93
+    2048	  8 2	GPU7   	msec:  0.022	GF/s:  19.80	GB/s:  26.40
+    2048	  8 2	CPU    	msec:  0.012	GF/s:  36.11	GB/s:  48.15
+    2048	 16 1	CPU    	msec:  0.009	GF/s:  47.03	GB/s:  62.71
+    2048	 16 1	GPU5   	msec:  0.022	GF/s:  19.87	GB/s:  26.49
+    2048	 16 1	GPU6   	msec:  0.022	GF/s:  19.85	GB/s:  26.47
+    2048	 16 1	GPU7   	msec:  0.023	GF/s:  19.51	GB/s:  26.01
+    2048	 16 1	CPU    	msec:  0.007	GF/s:  62.50	GB/s:  83.33
+    2048	 16 2	CPU    	msec:  0.008	GF/s:  52.72	GB/s:  70.30
+    2048	 16 2	GPU5   	msec:  0.024	GF/s:  18.65	GB/s:  24.87
+    2048	 16 2	GPU6   	msec:  0.023	GF/s:  19.55	GB/s:  26.06
+    2048	 16 2	GPU7   	msec:  0.024	GF/s:  18.77	GB/s:  25.02
+    2048	 16 2	CPU    	msec:  0.013	GF/s:  34.72	GB/s:  46.29
+    2048	 32 1	CPU    	msec:  0.007	GF/s:  65.31	GB/s:  87.08
+    2048	 32 1	GPU5   	msec:  0.022	GF/s:  20.28	GB/s:  27.04
+    2048	 32 1	GPU6   	msec:  0.022	GF/s:  20.19	GB/s:  26.92
+    2048	 32 1	GPU7   	msec:  0.022	GF/s:  20.02	GB/s:  26.70
+    2048	 32 1	CPU    	msec:  0.008	GF/s:  57.78	GB/s:  77.04
+    2048	 32 2	CPU    	msec:  0.007	GF/s:  61.75	GB/s:  82.33
+    2048	 32 2	GPU5   	msec:  0.023	GF/s:  19.05	GB/s:  25.39
+    2048	 32 2	GPU6   	msec:  0.023	GF/s:  19.65	GB/s:  26.20
+    2048	 32 2	GPU7   	msec:  0.022	GF/s:  20.15	GB/s:  26.87
+    2048	 32 2	CPU    	msec:  0.007	GF/s:  61.88	GB/s:  82.51
+    2048	 64 1	CPU    	msec:  0.007	GF/s:  65.99	GB/s:  87.99
     2048	 64 1	GPU5   	msec:  0.022	GF/s:  19.98	GB/s:  26.64
-    2048	 64 1	GPU6   	msec:  0.022	GF/s:  20.11	GB/s:  26.82
-    2048	 64 1	GPU7   	msec:  0.022	GF/s:  19.92	GB/s:  26.56
-    2048	 64 1	CPU    	msec:  0.008	GF/s:  57.66	GB/s:  76.88
-    2048	 64 2	CPU    	msec:  0.008	GF/s:  55.57	GB/s:  74.09
-    2048	 64 2	GPU5   	msec:  0.023	GF/s:  18.89	GB/s:  25.18
-    2048	 64 2	GPU6   	msec:  0.022	GF/s:  19.85	GB/s:  26.47
-    2048	 64 2	GPU7   	msec:  0.023	GF/s:  19.23	GB/s:  25.64
-    2048	 64 2	CPU    	msec:  0.008	GF/s:  55.62	GB/s:  74.16
-    2048	128 1	CPU    	msec:  0.038	GF/s:  11.51	GB/s:  15.35
-    2048	128 1	GPU5   	msec:  0.023	GF/s:  19.31	GB/s:  25.75
-    2048	128 1	GPU6   	msec:  0.022	GF/s:  19.95	GB/s:  26.60
-    2048	128 1	GPU7   	msec:  0.022	GF/s:  19.90	GB/s:  26.54
-    2048	128 1	CPU    	msec:  0.039	GF/s:  11.48	GB/s:  15.31
-    2048	128 2	CPU    	msec:  0.040	GF/s:  11.01	GB/s:  14.68
-    2048	128 2	GPU5   	msec:  0.023	GF/s:  19.59	GB/s:  26.11
-    2048	128 2	GPU6   	msec:  0.022	GF/s:  20.06	GB/s:  26.75
-    2048	128 2	GPU7   	msec:  0.022	GF/s:  19.87	GB/s:  26.49
-    2048	128 2	CPU    	msec:  0.040	GF/s:  11.04	GB/s:  14.73
-    4096	  4 1	CPU    	msec:  0.076	GF/s:  11.69	GB/s:  15.58
-    4096	  4 1	GPU5   	msec:  0.024	GF/s:  36.92	GB/s:  49.23
-    4096	  4 1	GPU6   	msec:  0.024	GF/s:  37.23	GB/s:  49.64
-    4096	  4 1	GPU7   	msec:  0.024	GF/s:  36.46	GB/s:  48.61
-    4096	  4 1	CPU    	msec:  0.060	GF/s:  14.67	GB/s:  19.57
-    4096	  4 2	CPU    	msec:  0.089	GF/s:   9.92	GB/s:  13.23
-    4096	  4 2	GPU5   	msec:  0.024	GF/s:  37.17	GB/s:  49.56
-    4096	  4 2	GPU6   	msec:  0.024	GF/s:  37.39	GB/s:  49.85
-    4096	  4 2	GPU7   	msec:  0.024	GF/s:  36.48	GB/s:  48.65
-    4096	  4 2	CPU    	msec:  0.086	GF/s:  10.32	GB/s:  13.76
-    4096	  8 1	CPU    	msec:  0.019	GF/s:  46.72	GB/s:  62.29
-    4096	  8 1	GPU5   	msec:  0.024	GF/s:  37.49	GB/s:  49.98
-    4096	  8 1	GPU6   	msec:  0.024	GF/s:  36.76	GB/s:  49.01
-    4096	  8 1	GPU7   	msec:  0.024	GF/s:  36.46	GB/s:  48.61
-    4096	  8 1	CPU    	msec:  0.044	GF/s:  20.31	GB/s:  27.08
-    4096	  8 2	CPU    	msec:  0.049	GF/s:  18.06	GB/s:  24.08
-    4096	  8 2	GPU5   	msec:  0.023	GF/s:  37.69	GB/s:  50.25
-    4096	  8 2	GPU6   	msec:  0.023	GF/s:  38.09	GB/s:  50.79
-    4096	  8 2	GPU7   	msec:  0.024	GF/s:  37.52	GB/s:  50.03
-    4096	  8 2	CPU    	msec:  0.056	GF/s:  15.81	GB/s:  21.08
-    4096	 16 1	CPU    	msec:  0.018	GF/s:  49.71	GB/s:  66.28
-    4096	 16 1	GPU5   	msec:  0.023	GF/s:  39.19	GB/s:  52.25
-    4096	 16 1	GPU6   	msec:  0.023	GF/s:  38.64	GB/s:  51.52
-    4096	 16 1	GPU7   	msec:  0.023	GF/s:  38.55	GB/s:  51.39
-    4096	 16 1	CPU    	msec:  0.018	GF/s:  48.77	GB/s:  65.03
-    4096	 16 2	CPU    	msec:  0.016	GF/s:  54.97	GB/s:  73.30
-    4096	 16 2	GPU5   	msec:  0.022	GF/s:  40.22	GB/s:  53.62
-    4096	 16 2	GPU6   	msec:  0.022	GF/s:  39.93	GB/s:  53.24
-    4096	 16 2	GPU7   	msec:  0.023	GF/s:  38.31	GB/s:  51.08
-    4096	 16 2	CPU    	msec:  0.015	GF/s:  60.46	GB/s:  80.62
-    4096	 32 1	CPU    	msec:  0.016	GF/s:  53.85	GB/s:  71.80
-    4096	 32 1	GPU5   	msec:  0.022	GF/s:  40.17	GB/s:  53.56
-    4096	 32 1	GPU6   	msec:  0.022	GF/s:  40.03	GB/s:  53.37
-    4096	 32 1	GPU7   	msec:  0.022	GF/s:  39.89	GB/s:  53.19
-    4096	 32 1	CPU    	msec:  0.016	GF/s:  54.87	GB/s:  73.16
-    4096	 32 2	CPU    	msec:  0.016	GF/s:  54.66	GB/s:  72.87
-    4096	 32 2	GPU5   	msec:  0.022	GF/s:  40.47	GB/s:  53.97
-    4096	 32 2	GPU6   	msec:  0.022	GF/s:  39.32	GB/s:  52.43
-    4096	 32 2	GPU7   	msec:  0.023	GF/s:  39.29	GB/s:  52.39
-    4096	 32 2	CPU    	msec:  0.016	GF/s:  53.98	GB/s:  71.97
-    4096	 64 1	CPU    	msec:  0.015	GF/s:  57.20	GB/s:  76.26
-    4096	 64 1	GPU5   	msec:  0.022	GF/s:  40.06	GB/s:  53.41
-    4096	 64 1	GPU6   	msec:  0.022	GF/s:  40.77	GB/s:  54.35
-    4096	 64 1	GPU7   	msec:  0.023	GF/s:  39.10	GB/s:  52.14
-    4096	 64 1	CPU    	msec:  0.015	GF/s:  57.20	GB/s:  76.26
-    4096	 64 2	CPU    	msec:  0.016	GF/s:  54.18	GB/s:  72.25
-    4096	 64 2	GPU5   	msec:  0.022	GF/s:  40.30	GB/s:  53.73
-    4096	 64 2	GPU6   	msec:  0.022	GF/s:  39.35	GB/s:  52.47
-    4096	 64 2	GPU7   	msec:  0.023	GF/s:  38.65	GB/s:  51.53
-    4096	 64 2	CPU    	msec:  0.016	GF/s:  54.60	GB/s:  72.80
-    4096	128 1	CPU    	msec:  0.038	GF/s:  23.48	GB/s:  31.30
-    4096	128 1	GPU5   	msec:  0.022	GF/s:  40.23	GB/s:  53.64
-    4096	128 1	GPU6   	msec:  0.022	GF/s:  39.49	GB/s:  52.65
-    4096	128 1	GPU7   	msec:  0.022	GF/s:  39.46	GB/s:  52.61
-    4096	128 1	CPU    	msec:  0.038	GF/s:  23.24	GB/s:  30.99
-    4096	128 2	CPU    	msec:  0.040	GF/s:  22.08	GB/s:  29.43
-    4096	128 2	GPU5   	msec:  0.022	GF/s:  40.19	GB/s:  53.58
-    4096	128 2	GPU6   	msec:  0.022	GF/s:  39.71	GB/s:  52.94
-    4096	128 2	GPU7   	msec:  0.023	GF/s:  38.82	GB/s:  51.76
-    4096	128 2	CPU    	msec:  0.040	GF/s:  22.20	GB/s:  29.60
-    8192	  4 1	CPU    	msec:  0.084	GF/s:  21.04	GB/s:  28.05
-    8192	  4 1	GPU5   	msec:  0.025	GF/s:  69.63	GB/s:  92.83
-    8192	  4 1	GPU6   	msec:  0.025	GF/s:  69.45	GB/s:  92.61
-    8192	  4 1	GPU7   	msec:  0.026	GF/s:  67.77	GB/s:  90.36
-    8192	  4 1	CPU    	msec:  0.092	GF/s:  19.25	GB/s:  25.67
-    8192	  4 2	CPU    	msec:  0.104	GF/s:  17.07	GB/s:  22.75
-    8192	  4 2	GPU5   	msec:  0.025	GF/s:  70.45	GB/s:  93.93
-    8192	  4 2	GPU6   	msec:  0.025	GF/s:  71.22	GB/s:  94.97
-    8192	  4 2	GPU7   	msec:  0.025	GF/s:  69.99	GB/s:  93.32
-    8192	  4 2	CPU    	msec:  0.097	GF/s:  18.20	GB/s:  24.26
-    8192	  8 1	CPU    	msec:  0.041	GF/s:  43.51	GB/s:  58.02
-    8192	  8 1	GPU5   	msec:  0.026	GF/s:  69.31	GB/s:  92.41
-    8192	  8 1	GPU6   	msec:  0.025	GF/s:  70.51	GB/s:  94.02
-    8192	  8 1	GPU7   	msec:  0.025	GF/s:  69.58	GB/s:  92.78
-    8192	  8 1	CPU    	msec:  0.041	GF/s:  42.96	GB/s:  57.28
-    8192	  8 2	CPU    	msec:  0.040	GF/s:  44.15	GB/s:  58.87
-    8192	  8 2	GPU5   	msec:  0.025	GF/s:  71.56	GB/s:  95.42
-    8192	  8 2	GPU6   	msec:  0.024	GF/s:  72.27	GB/s:  96.36
-    8192	  8 2	GPU7   	msec:  0.025	GF/s:  70.82	GB/s:  94.43
-    8192	  8 2	CPU    	msec:  0.039	GF/s:  45.47	GB/s:  60.63
-    8192	 16 1	CPU    	msec:  0.034	GF/s:  51.46	GB/s:  68.62
-    8192	 16 1	GPU5   	msec:  0.023	GF/s:  76.88	GB/s: 102.51
-    8192	 16 1	GPU6   	msec:  0.023	GF/s:  77.59	GB/s: 103.46
-    8192	 16 1	GPU7   	msec:  0.023	GF/s:  76.52	GB/s: 102.02
-    8192	 16 1	CPU    	msec:  0.035	GF/s:  50.78	GB/s:  67.71
-    8192	 16 2	CPU    	msec:  0.037	GF/s:  47.61	GB/s:  63.48
-    8192	 16 2	GPU5   	msec:  0.023	GF/s:  76.49	GB/s: 101.99
-    8192	 16 2	GPU6   	msec:  0.023	GF/s:  76.88	GB/s: 102.51
-    8192	 16 2	GPU7   	msec:  0.024	GF/s:  72.62	GB/s:  96.82
-    8192	 16 2	CPU    	msec:  0.038	GF/s:  46.11	GB/s:  61.48
-    8192	 32 1	CPU    	msec:  0.034	GF/s:  52.01	GB/s:  69.34
-    8192	 32 1	GPU5   	msec:  0.023	GF/s:  77.35	GB/s: 103.14
-    8192	 32 1	GPU6   	msec:  0.023	GF/s:  77.17	GB/s: 102.89
-    8192	 32 1	GPU7   	msec:  0.023	GF/s:  76.36	GB/s: 101.82
-    8192	 32 1	CPU    	msec:  0.034	GF/s:  52.47	GB/s:  69.95
-    8192	 32 2	CPU    	msec:  0.033	GF/s:  54.11	GB/s:  72.14
-    8192	 32 2	GPU5   	msec:  0.025	GF/s:  70.80	GB/s:  94.40
-    8192	 32 2	GPU6   	msec:  0.025	GF/s:  71.00	GB/s:  94.67
-    8192	 32 2	GPU7   	msec:  0.025	GF/s:  69.97	GB/s:  93.29
-    8192	 32 2	CPU    	msec:  0.032	GF/s:  54.81	GB/s:  73.09
-    8192	 64 1	CPU    	msec:  0.031	GF/s:  56.50	GB/s:  75.33
-    8192	 64 1	GPU5   	msec:  0.023	GF/s:  77.73	GB/s: 103.63
-    8192	 64 1	GPU6   	msec:  0.023	GF/s:  77.38	GB/s: 103.17
-    8192	 64 1	GPU7   	msec:  0.023	GF/s:  77.27	GB/s: 103.03
-    8192	 64 1	CPU    	msec:  0.031	GF/s:  56.72	GB/s:  75.63
-    8192	 64 2	CPU    	msec:  0.033	GF/s:  54.25	GB/s:  72.33
-    8192	 64 2	GPU5   	msec:  0.024	GF/s:  74.80	GB/s:  99.73
-    8192	 64 2	GPU6   	msec:  0.024	GF/s:  75.20	GB/s: 100.26
-    8192	 64 2	GPU7   	msec:  0.024	GF/s:  72.73	GB/s:  96.98
-    8192	 64 2	CPU    	msec:  0.033	GF/s:  54.42	GB/s:  72.56
-    8192	128 1	CPU    	msec:  0.077	GF/s:  22.84	GB/s:  30.46
-    8192	128 1	GPU5   	msec:  0.023	GF/s:  77.54	GB/s: 103.39
-    8192	128 1	GPU6   	msec:  0.023	GF/s:  76.86	GB/s: 102.47
-    8192	128 1	GPU7   	msec:  0.023	GF/s:  75.55	GB/s: 100.73
-    8192	128 1	CPU    	msec:  0.078	GF/s:  22.83	GB/s:  30.44
-    8192	128 2	CPU    	msec:  0.081	GF/s:  21.91	GB/s:  29.21
-    8192	128 2	GPU5   	msec:  0.024	GF/s:  73.44	GB/s:  97.92
-    8192	128 2	GPU6   	msec:  0.024	GF/s:  75.15	GB/s: 100.20
-    8192	128 2	GPU7   	msec:  0.024	GF/s:  73.66	GB/s:  98.21
-    8192	128 2	CPU    	msec:  0.081	GF/s:  21.97	GB/s:  29.29
-   16384	  4 1	CPU    	msec:  0.071	GF/s:  49.60	GB/s:  66.13
-   16384	  4 1	GPU5   	msec:  0.029	GF/s: 120.25	GB/s: 160.33
-   16384	  4 1	GPU6   	msec:  0.029	GF/s: 120.64	GB/s: 160.85
-   16384	  4 1	GPU7   	msec:  0.029	GF/s: 121.02	GB/s: 161.36
-   16384	  4 1	CPU    	msec:  0.106	GF/s:  33.51	GB/s:  44.68
-   16384	  4 2	CPU    	msec:  0.092	GF/s:  38.63	GB/s:  51.50
-   16384	  4 2	GPU5   	msec:  0.029	GF/s: 122.07	GB/s: 162.75
-   16384	  4 2	GPU6   	msec:  0.030	GF/s: 116.96	GB/s: 155.95
-   16384	  4 2	GPU7   	msec:  0.029	GF/s: 122.86	GB/s: 163.81
-   16384	  4 2	CPU    	msec:  0.094	GF/s:  37.69	GB/s:  50.25
-   16384	  8 1	CPU    	msec:  0.082	GF/s:  43.19	GB/s:  57.58
-   16384	  8 1	GPU5   	msec:  0.034	GF/s: 103.80	GB/s: 138.40
-   16384	  8 1	GPU6   	msec:  0.034	GF/s: 105.44	GB/s: 140.59
-   16384	  8 1	GPU7   	msec:  0.033	GF/s: 106.06	GB/s: 141.41
-   16384	  8 1	CPU    	msec:  0.083	GF/s:  42.88	GB/s:  57.17
-   16384	  8 2	CPU    	msec:  0.083	GF/s:  42.62	GB/s:  56.83
-   16384	  8 2	GPU5   	msec:  0.034	GF/s: 103.33	GB/s: 137.77
-   16384	  8 2	GPU6   	msec:  0.034	GF/s: 104.42	GB/s: 139.23
-   16384	  8 2	GPU7   	msec:  0.034	GF/s: 104.91	GB/s: 139.87
-   16384	  8 2	CPU    	msec:  0.082	GF/s:  43.40	GB/s:  57.86
-   16384	 16 1	CPU    	msec:  0.069	GF/s:  51.03	GB/s:  68.04
-   16384	 16 1	GPU5   	msec:  0.030	GF/s: 119.84	GB/s: 159.78
-   16384	 16 1	GPU6   	msec:  0.029	GF/s: 119.96	GB/s: 159.95
-   16384	 16 1	GPU7   	msec:  0.029	GF/s: 120.25	GB/s: 160.33
-   16384	 16 1	CPU    	msec:  0.069	GF/s:  51.22	GB/s:  68.29
-   16384	 16 2	CPU    	msec:  0.067	GF/s:  52.96	GB/s:  70.61
-   16384	 16 2	GPU5   	msec:  0.031	GF/s: 112.60	GB/s: 150.13
-   16384	 16 2	GPU6   	msec:  0.031	GF/s: 113.10	GB/s: 150.81
-   16384	 16 2	GPU7   	msec:  0.031	GF/s: 112.94	GB/s: 150.58
-   16384	 16 2	CPU    	msec:  0.067	GF/s:  52.86	GB/s:  70.48
-   16384	 32 1	CPU    	msec:  0.067	GF/s:  52.72	GB/s:  70.30
-   16384	 32 1	GPU5   	msec:  0.029	GF/s: 120.67	GB/s: 160.89
-   16384	 32 1	GPU6   	msec:  0.029	GF/s: 121.18	GB/s: 161.58
-   16384	 32 1	GPU7   	msec:  0.029	GF/s: 121.18	GB/s: 161.58
-   16384	 32 1	CPU    	msec:  0.067	GF/s:  52.51	GB/s:  70.02
-   16384	 32 2	CPU    	msec:  0.065	GF/s:  54.13	GB/s:  72.17
-   16384	 32 2	GPU5   	msec:  0.032	GF/s: 112.32	GB/s: 149.76
-   16384	 32 2	GPU6   	msec:  0.031	GF/s: 112.46	GB/s: 149.95
-   16384	 32 2	GPU7   	msec:  0.031	GF/s: 112.99	GB/s: 150.66
-   16384	 32 2	CPU    	msec:  0.066	GF/s:  53.73	GB/s:  71.65
-   16384	 64 1	CPU    	msec:  0.061	GF/s:  58.39	GB/s:  77.85
-   16384	 64 1	GPU5   	msec:  0.030	GF/s: 118.71	GB/s: 158.28
-   16384	 64 1	GPU6   	msec:  0.030	GF/s: 118.99	GB/s: 158.65
-   16384	 64 1	GPU7   	msec:  0.029	GF/s: 120.44	GB/s: 160.59
-   16384	 64 1	CPU    	msec:  0.062	GF/s:  57.46	GB/s:  76.61
-   16384	 64 2	CPU    	msec:  0.062	GF/s:  57.27	GB/s:  76.37
-   16384	 64 2	GPU5   	msec:  0.032	GF/s: 110.70	GB/s: 147.60
-   16384	 64 2	GPU6   	msec:  0.031	GF/s: 113.13	GB/s: 150.84
-   16384	 64 2	GPU7   	msec:  0.031	GF/s: 113.36	GB/s: 151.15
-   16384	 64 2	CPU    	msec:  0.064	GF/s:  55.70	GB/s:  74.26
-   16384	128 1	CPU    	msec:  0.156	GF/s:  22.75	GB/s:  30.33
-   16384	128 1	GPU5   	msec:  0.029	GF/s: 120.99	GB/s: 161.32
-   16384	128 1	GPU6   	msec:  0.029	GF/s: 122.69	GB/s: 163.59
-   16384	128 1	GPU7   	msec:  0.029	GF/s: 121.90	GB/s: 162.53
-   16384	128 1	CPU    	msec:  0.155	GF/s:  22.81	GB/s:  30.41
-   16384	128 2	CPU    	msec:  0.162	GF/s:  21.85	GB/s:  29.13
-   16384	128 2	GPU5   	msec:  0.031	GF/s: 114.19	GB/s: 152.25
-   16384	128 2	GPU6   	msec:  0.031	GF/s: 115.44	GB/s: 153.92
-   16384	128 2	GPU7   	msec:  0.031	GF/s: 114.74	GB/s: 152.98
-   16384	128 2	CPU    	msec:  0.162	GF/s:  21.90	GB/s:  29.20
-   32768	  4 1	CPU    	msec:  0.118	GF/s:  60.00	GB/s:  80.00
-   32768	  4 1	GPU5   	msec:  0.055	GF/s: 129.24	GB/s: 172.32
-   32768	  4 1	GPU6   	msec:  0.054	GF/s: 130.49	GB/s: 173.98
-   32768	  4 1	GPU7   	msec:  0.056	GF/s: 126.11	GB/s: 168.15
-   32768	  4 1	CPU    	msec:  0.122	GF/s:  58.13	GB/s:  77.51
-   32768	  4 2	CPU    	msec:  0.163	GF/s:  43.40	GB/s:  57.86
-   32768	  4 2	GPU5   	msec:  0.053	GF/s: 134.48	GB/s: 179.30
-   32768	  4 2	GPU6   	msec:  0.053	GF/s: 134.66	GB/s: 179.54
-   32768	  4 2	GPU7   	msec:  0.054	GF/s: 130.92	GB/s: 174.56
-   32768	  4 2	CPU    	msec:  0.164	GF/s:  43.23	GB/s:  57.64
-   32768	  8 1	CPU    	msec:  0.166	GF/s:  42.58	GB/s:  56.77
-   32768	  8 1	GPU5   	msec:  0.055	GF/s: 127.76	GB/s: 170.35
-   32768	  8 1	GPU6   	msec:  0.055	GF/s: 129.24	GB/s: 172.32
-   32768	  8 1	GPU7   	msec:  0.055	GF/s: 128.40	GB/s: 171.20
-   32768	  8 1	CPU    	msec:  0.166	GF/s:  42.76	GB/s:  57.01
-   32768	  8 2	CPU    	msec:  0.167	GF/s:  42.28	GB/s:  56.38
-   32768	  8 2	GPU5   	msec:  0.047	GF/s: 149.85	GB/s: 199.79
-   32768	  8 2	GPU6   	msec:  0.047	GF/s: 151.58	GB/s: 202.10
-   32768	  8 2	GPU7   	msec:  0.047	GF/s: 149.70	GB/s: 199.60
-   32768	  8 2	CPU    	msec:  0.165	GF/s:  42.80	GB/s:  57.06
-   32768	 16 1	CPU    	msec:  0.142	GF/s:  49.90	GB/s:  66.53
-   32768	 16 1	GPU5   	msec:  0.039	GF/s: 180.69	GB/s: 240.92
-   32768	 16 1	GPU6   	msec:  0.039	GF/s: 182.51	GB/s: 243.34
-   32768	 16 1	GPU7   	msec:  0.039	GF/s: 180.47	GB/s: 240.63
-   32768	 16 1	CPU    	msec:  0.143	GF/s:  49.54	GB/s:  66.06
-   32768	 16 2	CPU    	msec:  0.142	GF/s:  49.91	GB/s:  66.55
-   32768	 16 2	GPU5   	msec:  0.041	GF/s: 172.53	GB/s: 230.04
-   32768	 16 2	GPU6   	msec:  0.041	GF/s: 172.17	GB/s: 229.56
-   32768	 16 2	GPU7   	msec:  0.042	GF/s: 170.26	GB/s: 227.02
-   32768	 16 2	CPU    	msec:  0.141	GF/s:  50.27	GB/s:  67.03
-   32768	 32 1	CPU    	msec:  0.142	GF/s:  49.82	GB/s:  66.42
-   32768	 32 1	GPU5   	msec:  0.038	GF/s: 185.12	GB/s: 246.82
-   32768	 32 1	GPU6   	msec:  0.038	GF/s: 184.22	GB/s: 245.62
-   32768	 32 1	GPU7   	msec:  0.039	GF/s: 183.32	GB/s: 244.43
-   32768	 32 1	CPU    	msec:  0.142	GF/s:  49.95	GB/s:  66.59
-   32768	 32 2	CPU    	msec:  0.133	GF/s:  53.18	GB/s:  70.90
-   32768	 32 2	GPU5   	msec:  0.042	GF/s: 168.68	GB/s: 224.90
-   32768	 32 2	GPU6   	msec:  0.042	GF/s: 167.55	GB/s: 223.41
-   32768	 32 2	GPU7   	msec:  0.042	GF/s: 166.57	GB/s: 222.09
-   32768	 32 2	CPU    	msec:  0.132	GF/s:  53.79	GB/s:  71.72
-   32768	 64 1	CPU    	msec:  0.128	GF/s:  55.21	GB/s:  73.62
-   32768	 64 1	GPU5   	msec:  0.039	GF/s: 183.14	GB/s: 244.18
-   32768	 64 1	GPU6   	msec:  0.038	GF/s: 184.25	GB/s: 245.67
-   32768	 64 1	GPU7   	msec:  0.039	GF/s: 183.32	GB/s: 244.43
-   32768	 64 1	CPU    	msec:  0.125	GF/s:  56.56	GB/s:  75.41
-   32768	 64 2	CPU    	msec:  0.130	GF/s:  54.32	GB/s:  72.43
-   32768	 64 2	GPU5   	msec:  0.042	GF/s: 168.87	GB/s: 225.16
-   32768	 64 2	GPU6   	msec:  0.042	GF/s: 169.25	GB/s: 225.66
-   32768	 64 2	GPU7   	msec:  0.042	GF/s: 167.96	GB/s: 223.95
-   32768	 64 2	CPU    	msec:  0.133	GF/s:  53.18	GB/s:  70.91
-   32768	128 1	CPU    	msec:  0.310	GF/s:  22.82	GB/s:  30.43
-   32768	128 1	GPU5   	msec:  0.039	GF/s: 181.89	GB/s: 242.51
-   32768	128 1	GPU6   	msec:  0.039	GF/s: 183.06	GB/s: 244.08
-   32768	128 1	GPU7   	msec:  0.039	GF/s: 181.67	GB/s: 242.22
-   32768	128 1	CPU    	msec:  0.310	GF/s:  22.84	GB/s:  30.45
-   32768	128 2	CPU    	msec:  0.323	GF/s:  21.89	GB/s:  29.18
-   32768	128 2	GPU5   	msec:  0.042	GF/s: 169.53	GB/s: 226.04
-   32768	128 2	GPU6   	msec:  0.042	GF/s: 169.53	GB/s: 226.04
-   32768	128 2	GPU7   	msec:  0.042	GF/s: 168.18	GB/s: 224.24
-   32768	128 2	CPU    	msec:  0.323	GF/s:  21.93	GB/s:  29.24
-   65536	  4 1	CPU    	msec:  0.235	GF/s:  60.23	GB/s:  80.31
-   65536	  4 1	GPU5   	msec:  0.083	GF/s: 171.26	GB/s: 228.35
-   65536	  4 1	GPU6   	msec:  0.080	GF/s: 177.07	GB/s: 236.09
-   65536	  4 1	GPU7   	msec:  0.082	GF/s: 173.08	GB/s: 230.77
-   65536	  4 1	CPU    	msec:  0.237	GF/s:  59.61	GB/s:  79.48
-   65536	  4 2	CPU    	msec:  0.326	GF/s:  43.44	GB/s:  57.91
-   65536	  4 2	GPU5   	msec:  0.077	GF/s: 184.99	GB/s: 246.65
-   65536	  4 2	GPU6   	msec:  0.075	GF/s: 189.87	GB/s: 253.16
-   65536	  4 2	GPU7   	msec:  0.076	GF/s: 186.24	GB/s: 248.32
-   65536	  4 2	CPU    	msec:  0.327	GF/s:  43.35	GB/s:  57.80
-   65536	  8 1	CPU    	msec:  0.305	GF/s:  46.46	GB/s:  61.95
-   65536	  8 1	GPU5   	msec:  0.079	GF/s: 179.44	GB/s: 239.25
-   65536	  8 1	GPU6   	msec:  0.075	GF/s: 187.79	GB/s: 250.38
-   65536	  8 1	GPU7   	msec:  0.076	GF/s: 185.25	GB/s: 247.00
-   65536	  8 1	CPU    	msec:  0.305	GF/s:  46.48	GB/s:  61.97
-   65536	  8 2	CPU    	msec:  0.329	GF/s:  43.09	GB/s:  57.45
-   65536	  8 2	GPU5   	msec:  0.070	GF/s: 202.36	GB/s: 269.81
-   65536	  8 2	GPU6   	msec:  0.067	GF/s: 211.06	GB/s: 281.41
-   65536	  8 2	GPU7   	msec:  0.068	GF/s: 209.13	GB/s: 278.85
-   65536	  8 2	CPU    	msec:  0.329	GF/s:  43.03	GB/s:  57.37
-   65536	 16 1	CPU    	msec:  0.267	GF/s:  53.07	GB/s:  70.77
-   65536	 16 1	GPU5   	msec:  0.058	GF/s: 243.12	GB/s: 324.15
-   65536	 16 1	GPU6   	msec:  0.056	GF/s: 253.95	GB/s: 338.60
-   65536	 16 1	GPU7   	msec:  0.057	GF/s: 250.37	GB/s: 333.83
-   65536	 16 1	CPU    	msec:  0.267	GF/s:  53.06	GB/s:  70.75
-   65536	 16 2	CPU    	msec:  0.258	GF/s:  54.88	GB/s:  73.17
-   65536	 16 2	GPU5   	msec:  0.059	GF/s: 238.73	GB/s: 318.30
-   65536	 16 2	GPU6   	msec:  0.058	GF/s: 245.15	GB/s: 326.87
-   65536	 16 2	GPU7   	msec:  0.059	GF/s: 240.98	GB/s: 321.31
-   65536	 16 2	CPU    	msec:  0.255	GF/s:  55.55	GB/s:  74.07
-   65536	 32 1	CPU    	msec:  0.280	GF/s:  50.50	GB/s:  67.33
-   65536	 32 1	GPU5   	msec:  0.058	GF/s: 244.07	GB/s: 325.42
-   65536	 32 1	GPU6   	msec:  0.056	GF/s: 253.31	GB/s: 337.75
-   65536	 32 1	GPU7   	msec:  0.056	GF/s: 251.24	GB/s: 334.99
-   65536	 32 1	CPU    	msec:  0.277	GF/s:  51.19	GB/s:  68.26
-   65536	 32 2	CPU    	msec:  0.260	GF/s:  54.55	GB/s:  72.73
-   65536	 32 2	GPU5   	msec:  0.059	GF/s: 240.47	GB/s: 320.63
-   65536	 32 2	GPU6   	msec:  0.058	GF/s: 245.75	GB/s: 327.67
-   65536	 32 2	GPU7   	msec:  0.058	GF/s: 242.82	GB/s: 323.76
-   65536	 32 2	CPU    	msec:  0.261	GF/s:  54.33	GB/s:  72.44
-   65536	 64 1	CPU    	msec:  0.281	GF/s:  50.32	GB/s:  67.10
-   65536	 64 1	GPU5   	msec:  0.059	GF/s: 240.18	GB/s: 320.24
-   65536	 64 1	GPU6   	msec:  0.057	GF/s: 249.61	GB/s: 332.82
-   65536	 64 1	GPU7   	msec:  0.057	GF/s: 246.79	GB/s: 329.05
-   65536	 64 1	CPU    	msec:  0.263	GF/s:  53.76	GB/s:  71.68
-   65536	 64 2	CPU    	msec:  0.282	GF/s:  50.24	GB/s:  66.98
-   65536	 64 2	GPU5   	msec:  0.061	GF/s: 233.59	GB/s: 311.45
-   65536	 64 2	GPU6   	msec:  0.059	GF/s: 239.80	GB/s: 319.74
-   65536	 64 2	GPU7   	msec:  0.060	GF/s: 235.50	GB/s: 314.00
-   65536	 64 2	CPU    	msec:  0.273	GF/s:  51.82	GB/s:  69.09
-   65536	128 1	CPU    	msec:  0.635	GF/s:  22.31	GB/s:  29.74
-   65536	128 1	GPU5   	msec:  0.059	GF/s: 240.37	GB/s: 320.50
-   65536	128 1	GPU6   	msec:  0.057	GF/s: 249.92	GB/s: 333.23
-   65536	128 1	GPU7   	msec:  0.057	GF/s: 246.42	GB/s: 328.56
-   65536	128 1	CPU    	msec:  0.640	GF/s:  22.13	GB/s:  29.51
-   65536	128 2	CPU    	msec:  0.650	GF/s:  21.77	GB/s:  29.02
-   65536	128 2	GPU5   	msec:  0.059	GF/s: 237.91	GB/s: 317.22
-   65536	128 2	GPU6   	msec:  0.058	GF/s: 242.66	GB/s: 323.55
-   65536	128 2	GPU7   	msec:  0.059	GF/s: 239.01	GB/s: 318.68
-   65536	128 2	CPU    	msec:  0.648	GF/s:  21.86	GB/s:  29.15
-  131072	  4 1	CPU    	msec:  0.461	GF/s:  61.41	GB/s:  81.88
-  131072	  4 1	GPU5   	msec:  0.142	GF/s: 199.10	GB/s: 265.47
-  131072	  4 1	GPU6   	msec:  0.148	GF/s: 190.79	GB/s: 254.39
-  131072	  4 1	GPU7   	msec:  0.147	GF/s: 192.03	GB/s: 256.05
-  131072	  4 1	CPU    	msec:  0.469	GF/s:  60.39	GB/s:  80.52
-  131072	  4 2	CPU    	msec:  0.648	GF/s:  43.69	GB/s:  58.26
-  131072	  4 2	GPU5   	msec:  0.130	GF/s: 217.87	GB/s: 290.50
-  131072	  4 2	GPU6   	msec:  0.135	GF/s: 209.09	GB/s: 278.78
-  131072	  4 2	GPU7   	msec:  0.135	GF/s: 209.57	GB/s: 279.43
-  131072	  4 2	CPU    	msec:  0.630	GF/s:  44.97	GB/s:  59.96
-  131072	  8 1	CPU    	msec:  0.669	GF/s:  42.32	GB/s:  56.43
-  131072	  8 1	GPU5   	msec:  0.136	GF/s: 208.53	GB/s: 278.04
-  131072	  8 1	GPU6   	msec:  0.136	GF/s: 208.10	GB/s: 277.47
-  131072	  8 1	GPU7   	msec:  0.135	GF/s: 209.64	GB/s: 279.52
-  131072	  8 1	CPU    	msec:  0.678	GF/s:  41.76	GB/s:  55.68
-  131072	  8 2	CPU    	msec:  0.697	GF/s:  40.64	GB/s:  54.19
-  131072	  8 2	GPU5   	msec:  0.115	GF/s: 245.74	GB/s: 327.65
-  131072	  8 2	GPU6   	msec:  0.113	GF/s: 250.96	GB/s: 334.61
-  131072	  8 2	GPU7   	msec:  0.113	GF/s: 251.45	GB/s: 335.26
-  131072	  8 2	CPU    	msec:  0.694	GF/s:  40.81	GB/s:  54.42
-  131072	 16 1	CPU    	msec:  0.562	GF/s:  50.42	GB/s:  67.23
-  131072	 16 1	GPU5   	msec:  0.093	GF/s: 302.97	GB/s: 403.97
-  131072	 16 1	GPU6   	msec:  0.091	GF/s: 311.14	GB/s: 414.86
-  131072	 16 1	GPU7   	msec:  0.092	GF/s: 308.10	GB/s: 410.80
-  131072	 16 1	CPU    	msec:  0.568	GF/s:  49.81	GB/s:  66.42
-  131072	 16 2	CPU    	msec:  0.539	GF/s:  52.53	GB/s:  70.03
-  131072	 16 2	GPU5   	msec:  0.096	GF/s: 295.10	GB/s: 393.47
-  131072	 16 2	GPU6   	msec:  0.094	GF/s: 299.72	GB/s: 399.62
-  131072	 16 2	GPU7   	msec:  0.096	GF/s: 296.00	GB/s: 394.66
-  131072	 16 2	CPU    	msec:  0.542	GF/s:  52.23	GB/s:  69.64
-  131072	 32 1	CPU    	msec:  0.548	GF/s:  51.62	GB/s:  68.82
-  131072	 32 1	GPU5   	msec:  0.093	GF/s: 305.89	GB/s: 407.85
-  131072	 32 1	GPU6   	msec:  0.090	GF/s: 313.97	GB/s: 418.63
-  131072	 32 1	GPU7   	msec:  0.090	GF/s: 313.19	GB/s: 417.58
-  131072	 32 1	CPU    	msec:  0.549	GF/s:  51.59	GB/s:  68.78
-  131072	 32 2	CPU    	msec:  0.554	GF/s:  51.11	GB/s:  68.15
-  131072	 32 2	GPU5   	msec:  0.095	GF/s: 298.21	GB/s: 397.62
-  131072	 32 2	GPU6   	msec:  0.095	GF/s: 298.98	GB/s: 398.63
-  131072	 32 2	GPU7   	msec:  0.095	GF/s: 297.06	GB/s: 396.08
-  131072	 32 2	CPU    	msec:  0.555	GF/s:  51.00	GB/s:  68.00
-  131072	 64 1	CPU    	msec:  0.526	GF/s:  53.80	GB/s:  71.73
-  131072	 64 1	GPU5   	msec:  0.092	GF/s: 307.34	GB/s: 409.79
-  131072	 64 1	GPU6   	msec:  0.090	GF/s: 314.76	GB/s: 419.69
-  131072	 64 1	GPU7   	msec:  0.090	GF/s: 313.86	GB/s: 418.49
-  131072	 64 1	CPU    	msec:  0.525	GF/s:  53.97	GB/s:  71.96
-  131072	 64 2	CPU    	msec:  0.532	GF/s:  53.24	GB/s:  70.99
-  131072	 64 2	GPU5   	msec:  0.095	GF/s: 296.72	GB/s: 395.63
-  131072	 64 2	GPU6   	msec:  0.095	GF/s: 298.53	GB/s: 398.04
-  131072	 64 2	GPU7   	msec:  0.096	GF/s: 296.43	GB/s: 395.24
-  131072	 64 2	CPU    	msec:  0.529	GF/s:  53.52	GB/s:  71.36
-  131072	128 1	CPU    	msec:  1.253	GF/s:  22.59	GB/s:  30.12
-  131072	128 1	GPU5   	msec:  0.092	GF/s: 306.33	GB/s: 408.44
-  131072	128 1	GPU6   	msec:  0.090	GF/s: 314.30	GB/s: 419.07
-  131072	128 1	GPU7   	msec:  0.091	GF/s: 312.48	GB/s: 416.65
-  131072	128 1	CPU    	msec:  1.247	GF/s:  22.70	GB/s:  30.27
-  131072	128 2	CPU    	msec:  1.304	GF/s:  21.72	GB/s:  28.96
-  131072	128 2	GPU5   	msec:  0.096	GF/s: 295.27	GB/s: 393.70
-  131072	128 2	GPU6   	msec:  0.095	GF/s: 297.60	GB/s: 396.80
-  131072	128 2	GPU7   	msec:  0.096	GF/s: 293.84	GB/s: 391.78
-  131072	128 2	CPU    	msec:  1.290	GF/s:  21.95	GB/s:  29.26
-  262144	  4 1	CPU    	msec:  1.227	GF/s:  46.15	GB/s:  61.53
-  262144	  4 1	GPU5   	msec:  0.304	GF/s: 186.21	GB/s: 248.28
-  262144	  4 1	GPU6   	msec:  0.350	GF/s: 161.78	GB/s: 215.71
-  262144	  4 1	GPU7   	msec:  0.350	GF/s: 161.76	GB/s: 215.68
-  262144	  4 1	CPU    	msec:  1.340	GF/s:  42.25	GB/s:  56.33
-  262144	  4 2	CPU    	msec:  1.882	GF/s:  30.09	GB/s:  40.12
-  262144	  4 2	GPU5   	msec:  0.227	GF/s: 249.00	GB/s: 332.01
-  262144	  4 2	GPU6   	msec:  0.252	GF/s: 224.46	GB/s: 299.28
-  262144	  4 2	GPU7   	msec:  0.248	GF/s: 228.54	GB/s: 304.72
-  262144	  4 2	CPU    	msec:  1.884	GF/s:  30.05	GB/s:  40.07
-  262144	  8 1	CPU    	msec:  1.883	GF/s:  30.06	GB/s:  40.08
-  262144	  8 1	GPU5   	msec:  0.244	GF/s: 231.68	GB/s: 308.90
-  262144	  8 1	GPU6   	msec:  0.250	GF/s: 226.66	GB/s: 302.21
-  262144	  8 1	GPU7   	msec:  0.249	GF/s: 227.63	GB/s: 303.51
-  262144	  8 1	CPU    	msec:  1.903	GF/s:  29.76	GB/s:  39.68
-  262144	  8 2	CPU    	msec:  1.897	GF/s:  29.84	GB/s:  39.79
-  262144	  8 2	GPU5   	msec:  0.197	GF/s: 286.78	GB/s: 382.37
-  262144	  8 2	GPU6   	msec:  0.192	GF/s: 295.53	GB/s: 394.03
-  262144	  8 2	GPU7   	msec:  0.193	GF/s: 293.97	GB/s: 391.96
-  262144	  8 2	CPU    	msec:  1.889	GF/s:  29.97	GB/s:  39.97
-  262144	 16 1	CPU    	msec:  1.601	GF/s:  35.36	GB/s:  47.15
-  262144	 16 1	GPU5   	msec:  0.163	GF/s: 347.02	GB/s: 462.69
-  262144	 16 1	GPU6   	msec:  0.164	GF/s: 346.15	GB/s: 461.54
-  262144	 16 1	GPU7   	msec:  0.165	GF/s: 342.57	GB/s: 456.76
-  262144	 16 1	CPU    	msec:  1.605	GF/s:  35.27	GB/s:  47.03
-  262144	 16 2	CPU    	msec:  1.442	GF/s:  39.28	GB/s:  52.37
-  262144	 16 2	GPU5   	msec:  0.166	GF/s: 341.57	GB/s: 455.43
-  262144	 16 2	GPU6   	msec:  0.166	GF/s: 340.85	GB/s: 454.46
-  262144	 16 2	GPU7   	msec:  0.167	GF/s: 339.51	GB/s: 452.67
-  262144	 16 2	CPU    	msec:  1.438	GF/s:  39.38	GB/s:  52.50
-  262144	 32 1	CPU    	msec:  1.354	GF/s:  41.83	GB/s:  55.77
-  262144	 32 1	GPU5   	msec:  0.161	GF/s: 351.68	GB/s: 468.91
-  262144	 32 1	GPU6   	msec:  0.161	GF/s: 351.15	GB/s: 468.20
-  262144	 32 1	GPU7   	msec:  0.163	GF/s: 348.15	GB/s: 464.20
-  262144	 32 1	CPU    	msec:  1.354	GF/s:  41.81	GB/s:  55.74
-  262144	 32 2	CPU    	msec:  1.294	GF/s:  43.76	GB/s:  58.34
-  262144	 32 2	GPU5   	msec:  0.164	GF/s: 344.79	GB/s: 459.72
-  262144	 32 2	GPU6   	msec:  0.166	GF/s: 341.86	GB/s: 455.81
-  262144	 32 2	GPU7   	msec:  0.165	GF/s: 342.18	GB/s: 456.24
-  262144	 32 2	CPU    	msec:  1.295	GF/s:  43.74	GB/s:  58.32
-  262144	 64 1	CPU    	msec:  1.206	GF/s:  46.95	GB/s:  62.60
-  262144	 64 1	GPU5   	msec:  0.160	GF/s: 353.07	GB/s: 470.76
-  262144	 64 1	GPU6   	msec:  0.160	GF/s: 353.31	GB/s: 471.08
-  262144	 64 1	GPU7   	msec:  0.161	GF/s: 350.62	GB/s: 467.50
-  262144	 64 1	CPU    	msec:  1.173	GF/s:  48.28	GB/s:  64.37
-  262144	 64 2	CPU    	msec:  1.202	GF/s:  47.11	GB/s:  62.81
-  262144	 64 2	GPU5   	msec:  0.165	GF/s: 343.64	GB/s: 458.19
-  262144	 64 2	GPU6   	msec:  0.166	GF/s: 341.79	GB/s: 455.73
-  262144	 64 2	GPU7   	msec:  0.166	GF/s: 340.75	GB/s: 454.33
-  262144	 64 2	CPU    	msec:  1.185	GF/s:  47.79	GB/s:  63.72
-  262144	128 1	CPU    	msec:  2.593	GF/s:  21.84	GB/s:  29.12
-  262144	128 1	GPU5   	msec:  0.160	GF/s: 353.79	GB/s: 471.72
-  262144	128 1	GPU6   	msec:  0.160	GF/s: 353.26	GB/s: 471.01
-  262144	128 1	GPU7   	msec:  0.161	GF/s: 350.73	GB/s: 467.63
-  262144	128 1	CPU    	msec:  2.577	GF/s:  21.97	GB/s:  29.30
-  262144	128 2	CPU    	msec:  2.691	GF/s:  21.04	GB/s:  28.05
-  262144	128 2	GPU5   	msec:  0.165	GF/s: 344.18	GB/s: 458.91
-  262144	128 2	GPU6   	msec:  0.165	GF/s: 343.97	GB/s: 458.62
-  262144	128 2	GPU7   	msec:  0.166	GF/s: 341.63	GB/s: 455.51
-  262144	128 2	CPU    	msec:  2.670	GF/s:  21.21	GB/s:  28.27
-  524288	  4 1	CPU    	msec:  3.420	GF/s:  33.11	GB/s:  44.15
-  524288	  4 1	GPU5   	msec:  0.494	GF/s: 229.28	GB/s: 305.70
-  524288	  4 1	GPU6   	msec:  0.543	GF/s: 208.38	GB/s: 277.84
-  524288	  4 1	GPU7   	msec:  0.538	GF/s: 210.63	GB/s: 280.84
-  524288	  4 1	CPU    	msec:  3.453	GF/s:  32.79	GB/s:  43.73
-  524288	  4 2	CPU    	msec:  4.952	GF/s:  22.87	GB/s:  30.49
-  524288	  4 2	GPU5   	msec:  0.446	GF/s: 253.96	GB/s: 338.62
-  524288	  4 2	GPU6   	msec:  0.494	GF/s: 229.05	GB/s: 305.40
-  524288	  4 2	GPU7   	msec:  0.471	GF/s: 240.55	GB/s: 320.73
-  524288	  4 2	CPU    	msec:  4.886	GF/s:  23.18	GB/s:  30.90
-  524288	  8 1	CPU    	msec:  3.968	GF/s:  28.54	GB/s:  38.05
-  524288	  8 1	GPU5   	msec:  0.480	GF/s: 236.13	GB/s: 314.84
-  524288	  8 1	GPU6   	msec:  0.485	GF/s: 233.56	GB/s: 311.42
-  524288	  8 1	GPU7   	msec:  0.481	GF/s: 235.30	GB/s: 313.74
-  524288	  8 1	CPU    	msec:  3.941	GF/s:  28.74	GB/s:  38.31
-  524288	  8 2	CPU    	msec:  4.235	GF/s:  26.74	GB/s:  35.66
-  524288	  8 2	GPU5   	msec:  0.394	GF/s: 287.67	GB/s: 383.56
-  524288	  8 2	GPU6   	msec:  0.364	GF/s: 310.89	GB/s: 414.52
-  524288	  8 2	GPU7   	msec:  0.357	GF/s: 317.48	GB/s: 423.31
-  524288	  8 2	CPU    	msec:  4.262	GF/s:  26.57	GB/s:  35.43
-  524288	 16 1	CPU    	msec:  3.339	GF/s:  33.91	GB/s:  45.22
-  524288	 16 1	GPU5   	msec:  0.304	GF/s: 372.66	GB/s: 496.89
-  524288	 16 1	GPU6   	msec:  0.307	GF/s: 369.35	GB/s: 492.47
-  524288	 16 1	GPU7   	msec:  0.308	GF/s: 367.76	GB/s: 490.34
-  524288	 16 1	CPU    	msec:  3.318	GF/s:  34.13	GB/s:  45.50
-  524288	 16 2	CPU    	msec:  3.336	GF/s:  33.95	GB/s:  45.26
-  524288	 16 2	GPU5   	msec:  0.327	GF/s: 346.45	GB/s: 461.93
-  524288	 16 2	GPU6   	msec:  0.333	GF/s: 339.59	GB/s: 452.79
-  524288	 16 2	GPU7   	msec:  0.334	GF/s: 339.08	GB/s: 452.10
-  524288	 16 2	CPU    	msec:  3.316	GF/s:  34.15	GB/s:  45.54
-  524288	 32 1	CPU    	msec:  2.975	GF/s:  38.06	GB/s:  50.75
-  524288	 32 1	GPU5   	msec:  0.353	GF/s: 320.79	GB/s: 427.72
-  524288	 32 1	GPU6   	msec:  0.353	GF/s: 320.91	GB/s: 427.88
-  524288	 32 1	GPU7   	msec:  0.352	GF/s: 321.57	GB/s: 428.76
-  524288	 32 1	CPU    	msec:  3.010	GF/s:  37.63	GB/s:  50.17
-  524288	 32 2	CPU    	msec:  2.847	GF/s:  39.78	GB/s:  53.04
-  524288	 32 2	GPU5   	msec:  0.303	GF/s: 373.95	GB/s: 498.60
-  524288	 32 2	GPU6   	msec:  0.310	GF/s: 365.34	GB/s: 487.12
-  524288	 32 2	GPU7   	msec:  0.310	GF/s: 365.30	GB/s: 487.07
-  524288	 32 2	CPU    	msec:  2.865	GF/s:  39.53	GB/s:  52.71
-  524288	 64 1	CPU    	msec:  2.718	GF/s:  41.66	GB/s:  55.55
-  524288	 64 1	GPU5   	msec:  0.299	GF/s: 378.35	GB/s: 504.47
-  524288	 64 1	GPU6   	msec:  0.319	GF/s: 354.80	GB/s: 473.07
-  524288	 64 1	GPU7   	msec:  0.347	GF/s: 326.34	GB/s: 435.12
-  524288	 64 1	CPU    	msec:  2.650	GF/s:  42.73	GB/s:  56.98
-  524288	 64 2	CPU    	msec:  2.774	GF/s:  40.82	GB/s:  54.42
-  524288	 64 2	GPU5   	msec:  0.303	GF/s: 374.10	GB/s: 498.80
-  524288	 64 2	GPU6   	msec:  0.309	GF/s: 366.82	GB/s: 489.09
-  524288	 64 2	GPU7   	msec:  0.309	GF/s: 366.49	GB/s: 488.66
-  524288	 64 2	CPU    	msec:  2.756	GF/s:  41.10	GB/s:  54.80
-  524288	128 1	CPU    	msec:  5.257	GF/s:  21.54	GB/s:  28.72
-  524288	128 1	GPU5   	msec:  0.345	GF/s: 328.50	GB/s: 437.99
-  524288	128 1	GPU6   	msec:  0.343	GF/s: 330.05	GB/s: 440.07
-  524288	128 1	GPU7   	msec:  0.343	GF/s: 330.15	GB/s: 440.20
-  524288	128 1	CPU    	msec:  5.267	GF/s:  21.50	GB/s:  28.67
-  524288	128 2	CPU    	msec:  5.422	GF/s:  20.89	GB/s:  27.85
-  524288	128 2	GPU5   	msec:  0.307	GF/s: 368.44	GB/s: 491.25
-  524288	128 2	GPU6   	msec:  0.308	GF/s: 367.86	GB/s: 490.48
-  524288	128 2	GPU7   	msec:  0.308	GF/s: 367.23	GB/s: 489.63
-  524288	128 2	CPU    	msec:  5.433	GF/s:  20.84	GB/s:  27.79
- 1048576	  4 1	CPU    	msec:  7.205	GF/s:  31.44	GB/s:  41.91
- 1048576	  4 1	GPU5   	msec:  0.978	GF/s: 231.54	GB/s: 308.72
- 1048576	  4 1	GPU6   	msec:  1.077	GF/s: 210.33	GB/s: 280.44
- 1048576	  4 1	GPU7   	msec:  1.064	GF/s: 212.84	GB/s: 283.79
- 1048576	  4 1	CPU    	msec:  7.389	GF/s:  30.65	GB/s:  40.87
- 1048576	  4 2	CPU    	msec:  9.711	GF/s:  23.32	GB/s:  31.10
- 1048576	  4 2	GPU5   	msec:  0.802	GF/s: 282.31	GB/s: 376.41
- 1048576	  4 2	GPU6   	msec:  0.924	GF/s: 245.00	GB/s: 326.67
- 1048576	  4 2	GPU7   	msec:  0.912	GF/s: 248.39	GB/s: 331.19
- 1048576	  4 2	CPU    	msec:  9.768	GF/s:  23.19	GB/s:  30.92
- 1048576	  8 1	CPU    	msec:  7.331	GF/s:  30.89	GB/s:  41.19
- 1048576	  8 1	GPU5   	msec:  0.952	GF/s: 237.97	GB/s: 317.30
- 1048576	  8 1	GPU6   	msec:  0.978	GF/s: 231.68	GB/s: 308.90
- 1048576	  8 1	GPU7   	msec:  0.976	GF/s: 232.17	GB/s: 309.55
- 1048576	  8 1	CPU    	msec:  7.262	GF/s:  31.19	GB/s:  41.59
- 1048576	  8 2	CPU    	msec:  8.274	GF/s:  27.37	GB/s:  36.50
- 1048576	  8 2	GPU5   	msec:  0.720	GF/s: 314.44	GB/s: 419.26
- 1048576	  8 2	GPU6   	msec:  0.703	GF/s: 322.01	GB/s: 429.34
- 1048576	  8 2	GPU7   	msec:  0.692	GF/s: 327.45	GB/s: 436.60
- 1048576	  8 2	CPU    	msec:  7.904	GF/s:  28.65	GB/s:  38.21
- 1048576	 16 1	CPU    	msec:  6.333	GF/s:  35.76	GB/s:  47.68
- 1048576	 16 1	GPU5   	msec:  0.611	GF/s: 370.84	GB/s: 494.46
- 1048576	 16 1	GPU6   	msec:  0.616	GF/s: 367.84	GB/s: 490.45
- 1048576	 16 1	GPU7   	msec:  0.615	GF/s: 367.98	GB/s: 490.64
- 1048576	 16 1	CPU    	msec:  6.279	GF/s:  36.07	GB/s:  48.10
- 1048576	 16 2	CPU    	msec:  5.986	GF/s:  37.84	GB/s:  50.45
- 1048576	 16 2	GPU5   	msec:  0.593	GF/s: 382.24	GB/s: 509.65
- 1048576	 16 2	GPU6   	msec:  0.599	GF/s: 377.91	GB/s: 503.88
- 1048576	 16 2	GPU7   	msec:  0.601	GF/s: 376.74	GB/s: 502.32
- 1048576	 16 2	CPU    	msec:  5.950	GF/s:  38.06	GB/s:  50.75
- 1048576	 32 1	CPU    	msec:  5.746	GF/s:  39.42	GB/s:  52.56
- 1048576	 32 1	GPU5   	msec:  0.610	GF/s: 371.02	GB/s: 494.70
- 1048576	 32 1	GPU6   	msec:  0.614	GF/s: 369.14	GB/s: 492.19
- 1048576	 32 1	GPU7   	msec:  0.609	GF/s: 371.95	GB/s: 495.94
- 1048576	 32 1	CPU    	msec:  5.729	GF/s:  39.54	GB/s:  52.71
- 1048576	 32 2	CPU    	msec:  5.555	GF/s:  40.77	GB/s:  54.37
- 1048576	 32 2	GPU5   	msec:  0.605	GF/s: 374.36	GB/s: 499.14
- 1048576	 32 2	GPU6   	msec:  0.618	GF/s: 366.25	GB/s: 488.33
- 1048576	 32 2	GPU7   	msec:  0.609	GF/s: 371.61	GB/s: 495.48
- 1048576	 32 2	CPU    	msec:  5.572	GF/s:  40.65	GB/s:  54.20
- 1048576	 64 1	CPU    	msec:  5.393	GF/s:  42.00	GB/s:  56.00
- 1048576	 64 1	GPU5   	msec:  0.604	GF/s: 374.94	GB/s: 499.92
- 1048576	 64 1	GPU6   	msec:  0.607	GF/s: 373.12	GB/s: 497.50
- 1048576	 64 1	GPU7   	msec:  0.600	GF/s: 377.78	GB/s: 503.71
- 1048576	 64 1	CPU    	msec:  5.255	GF/s:  43.10	GB/s:  57.46
- 1048576	 64 2	CPU    	msec:  5.441	GF/s:  41.63	GB/s:  55.50
- 1048576	 64 2	GPU5   	msec:  0.608	GF/s: 372.24	GB/s: 496.32
- 1048576	 64 2	GPU6   	msec:  0.622	GF/s: 363.99	GB/s: 485.32
- 1048576	 64 2	GPU7   	msec:  0.621	GF/s: 365.01	GB/s: 486.68
- 1048576	 64 2	CPU    	msec:  5.440	GF/s:  41.64	GB/s:  55.51
- 1048576	128 1	CPU    	msec: 10.679	GF/s:  21.21	GB/s:  28.28
- 1048576	128 1	GPU5   	msec:  0.598	GF/s: 378.99	GB/s: 505.32
- 1048576	128 1	GPU6   	msec:  0.584	GF/s: 387.96	GB/s: 517.29
- 1048576	128 1	GPU7   	msec:  0.579	GF/s: 391.42	GB/s: 521.89
- 1048576	128 1	CPU    	msec: 10.640	GF/s:  21.29	GB/s:  28.38
- 1048576	128 2	CPU    	msec: 10.893	GF/s:  20.79	GB/s:  27.72
- 1048576	128 2	GPU5   	msec:  0.600	GF/s: 377.33	GB/s: 503.11
- 1048576	128 2	GPU6   	msec:  0.610	GF/s: 371.58	GB/s: 495.43
- 1048576	128 2	GPU7   	msec:  0.614	GF/s: 368.70	GB/s: 491.60
- 1048576	128 2	CPU    	msec: 10.832	GF/s:  20.91	GB/s:  27.88
- 2097152	  4 1	CPU    	msec: 14.514	GF/s:  31.21	GB/s:  41.61
- 2097152	  4 1	GPU5   	msec:  1.957	GF/s: 231.46	GB/s: 308.62
- 2097152	  4 1	GPU6   	msec:  2.164	GF/s: 209.31	GB/s: 279.08
- 2097152	  4 1	GPU7   	msec:  2.138	GF/s: 211.85	GB/s: 282.46
- 2097152	  4 1	CPU    	msec: 15.847	GF/s:  28.59	GB/s:  38.11
- 2097152	  4 2	CPU    	msec: 19.838	GF/s:  22.83	GB/s:  30.45
- 2097152	  4 2	GPU5   	msec:  1.554	GF/s: 291.44	GB/s: 388.59
- 2097152	  4 2	GPU6   	msec:  1.832	GF/s: 247.25	GB/s: 329.67
- 2097152	  4 2	GPU7   	msec:  1.802	GF/s: 251.41	GB/s: 335.21
- 2097152	  4 2	CPU    	msec: 19.947	GF/s:  22.71	GB/s:  30.28
- 2097152	  8 1	CPU    	msec: 14.469	GF/s:  31.31	GB/s:  41.74
- 2097152	  8 1	GPU5   	msec:  1.854	GF/s: 244.38	GB/s: 325.84
- 2097152	  8 1	GPU6   	msec:  1.899	GF/s: 238.52	GB/s: 318.03
- 2097152	  8 1	GPU7   	msec:  1.887	GF/s: 240.08	GB/s: 320.11
- 2097152	  8 1	CPU    	msec: 13.347	GF/s:  33.94	GB/s:  45.25
- 2097152	  8 2	CPU    	msec: 15.797	GF/s:  28.67	GB/s:  38.23
- 2097152	  8 2	GPU5   	msec:  1.365	GF/s: 331.98	GB/s: 442.64
- 2097152	  8 2	GPU6   	msec:  1.365	GF/s: 331.90	GB/s: 442.53
- 2097152	  8 2	GPU7   	msec:  1.362	GF/s: 332.68	GB/s: 443.58
- 2097152	  8 2	CPU    	msec: 15.256	GF/s:  29.69	GB/s:  39.59
- 2097152	 16 1	CPU    	msec: 11.487	GF/s:  39.44	GB/s:  52.58
- 2097152	 16 1	GPU5   	msec:  1.188	GF/s: 381.39	GB/s: 508.52
- 2097152	 16 1	GPU6   	msec:  1.197	GF/s: 378.34	GB/s: 504.46
- 2097152	 16 1	GPU7   	msec:  1.196	GF/s: 378.71	GB/s: 504.94
- 2097152	 16 1	CPU    	msec: 11.559	GF/s:  39.19	GB/s:  52.25
- 2097152	 16 2	CPU    	msec: 11.847	GF/s:  38.24	GB/s:  50.98
- 2097152	 16 2	GPU5   	msec:  1.171	GF/s: 386.89	GB/s: 515.85
- 2097152	 16 2	GPU6   	msec:  1.197	GF/s: 378.49	GB/s: 504.65
- 2097152	 16 2	GPU7   	msec:  1.187	GF/s: 381.77	GB/s: 509.02
- 2097152	 16 2	CPU    	msec: 11.864	GF/s:  38.18	GB/s:  50.91
- 2097152	 32 1	CPU    	msec: 11.625	GF/s:  38.97	GB/s:  51.95
- 2097152	 32 1	GPU5   	msec:  1.172	GF/s: 386.42	GB/s: 515.22
- 2097152	 32 1	GPU6   	msec:  1.179	GF/s: 384.08	GB/s: 512.10
- 2097152	 32 1	GPU7   	msec:  1.178	GF/s: 384.54	GB/s: 512.72
- 2097152	 32 1	CPU    	msec: 11.606	GF/s:  39.03	GB/s:  52.04
- 2097152	 32 2	CPU    	msec: 11.024	GF/s:  41.09	GB/s:  54.79
- 2097152	 32 2	GPU5   	msec:  1.165	GF/s: 388.93	GB/s: 518.57
- 2097152	 32 2	GPU6   	msec:  1.196	GF/s: 378.62	GB/s: 504.83
- 2097152	 32 2	GPU7   	msec:  1.192	GF/s: 379.99	GB/s: 506.65
- 2097152	 32 2	CPU    	msec: 10.842	GF/s:  41.78	GB/s:  55.71
- 2097152	 64 1	CPU    	msec: 10.927	GF/s:  41.46	GB/s:  55.27
- 2097152	 64 1	GPU5   	msec:  1.161	GF/s: 390.13	GB/s: 520.17
- 2097152	 64 1	GPU6   	msec:  1.165	GF/s: 388.80	GB/s: 518.40
- 2097152	 64 1	GPU7   	msec:  1.165	GF/s: 388.70	GB/s: 518.27
- 2097152	 64 1	CPU    	msec: 10.663	GF/s:  42.48	GB/s:  56.64
- 2097152	 64 2	CPU    	msec: 10.722	GF/s:  42.25	GB/s:  56.33
- 2097152	 64 2	GPU5   	msec:  1.139	GF/s: 397.86	GB/s: 530.48
- 2097152	 64 2	GPU6   	msec:  1.184	GF/s: 382.49	GB/s: 509.99
- 2097152	 64 2	GPU7   	msec:  1.162	GF/s: 389.91	GB/s: 519.88
- 2097152	 64 2	CPU    	msec: 10.811	GF/s:  41.90	GB/s:  55.87
- 2097152	128 1	CPU    	msec: 21.189	GF/s:  21.38	GB/s:  28.50
- 2097152	128 1	GPU5   	msec:  1.158	GF/s: 391.30	GB/s: 521.73
- 2097152	128 1	GPU6   	msec:  1.165	GF/s: 388.81	GB/s: 518.41
- 2097152	128 1	GPU7   	msec:  1.165	GF/s: 388.98	GB/s: 518.64
- 2097152	128 1	CPU    	msec: 21.159	GF/s:  21.41	GB/s:  28.54
- 2097152	128 2	CPU    	msec: 21.828	GF/s:  20.75	GB/s:  27.67
- 2097152	128 2	GPU5   	msec:  1.148	GF/s: 394.66	GB/s: 526.22
- 2097152	128 2	GPU6   	msec:  1.176	GF/s: 385.13	GB/s: 513.51
- 2097152	128 2	GPU7   	msec:  1.183	GF/s: 382.84	GB/s: 510.45
- 2097152	128 2	CPU    	msec: 21.667	GF/s:  20.91	GB/s:  27.88
- 4194304	  4 1	CPU    	msec: 28.920	GF/s:  31.33	GB/s:  41.77
- 4194304	  4 1	GPU5   	msec:  3.872	GF/s: 233.99	GB/s: 311.99
- 4194304	  4 1	GPU6   	msec:  4.301	GF/s: 210.66	GB/s: 280.87
- 4194304	  4 1	GPU7   	msec:  4.251	GF/s: 213.12	GB/s: 284.16
- 4194304	  4 1	CPU    	msec: 28.950	GF/s:  31.29	GB/s:  41.73
- 4194304	  4 2	CPU    	msec: 38.965	GF/s:  23.25	GB/s:  31.00
- 4194304	  4 2	GPU5   	msec:  3.081	GF/s: 294.03	GB/s: 392.04
- 4194304	  4 2	GPU6   	msec:  3.670	GF/s: 246.86	GB/s: 329.15
- 4194304	  4 2	GPU7   	msec:  3.607	GF/s: 251.16	GB/s: 334.89
- 4194304	  4 2	CPU    	msec: 38.852	GF/s:  23.32	GB/s:  31.09
- 4194304	  8 1	CPU    	msec: 28.375	GF/s:  31.93	GB/s:  42.57
- 4194304	  8 1	GPU5   	msec:  3.747	GF/s: 241.80	GB/s: 322.39
- 4194304	  8 1	GPU6   	msec:  3.817	GF/s: 237.36	GB/s: 316.48
- 4194304	  8 1	GPU7   	msec:  3.793	GF/s: 238.83	GB/s: 318.44
- 4194304	  8 1	CPU    	msec: 28.950	GF/s:  31.29	GB/s:  41.73
- 4194304	  8 2	CPU    	msec: 33.384	GF/s:  27.14	GB/s:  36.18
- 4194304	  8 2	GPU5   	msec:  2.637	GF/s: 343.62	GB/s: 458.17
- 4194304	  8 2	GPU6   	msec:  2.640	GF/s: 343.16	GB/s: 457.54
- 4194304	  8 2	GPU7   	msec:  2.632	GF/s: 344.24	GB/s: 458.98
- 4194304	  8 2	CPU    	msec: 33.146	GF/s:  27.33	GB/s:  36.44
- 4194304	 16 1	CPU    	msec: 23.515	GF/s:  38.53	GB/s:  51.37
- 4194304	 16 1	GPU5   	msec:  2.324	GF/s: 389.75	GB/s: 519.67
- 4194304	 16 1	GPU6   	msec:  2.346	GF/s: 386.19	GB/s: 514.93
- 4194304	 16 1	GPU7   	msec:  2.342	GF/s: 386.77	GB/s: 515.69
- 4194304	 16 1	CPU    	msec: 23.438	GF/s:  38.65	GB/s:  51.54
- 4194304	 16 2	CPU    	msec: 25.537	GF/s:  35.48	GB/s:  47.30
- 4194304	 16 2	GPU5   	msec:  2.262	GF/s: 400.45	GB/s: 533.94
- 4194304	 16 2	GPU6   	msec:  2.316	GF/s: 391.21	GB/s: 521.61
- 4194304	 16 2	GPU7   	msec:  2.307	GF/s: 392.75	GB/s: 523.67
- 4194304	 16 2	CPU    	msec: 24.663	GF/s:  36.73	GB/s:  48.98
- 4194304	 32 1	CPU    	msec: 22.165	GF/s:  40.87	GB/s:  54.50
- 4194304	 32 1	GPU5   	msec:  2.281	GF/s: 397.11	GB/s: 529.48
- 4194304	 32 1	GPU6   	msec:  2.283	GF/s: 396.75	GB/s: 529.00
- 4194304	 32 1	GPU7   	msec:  2.300	GF/s: 393.82	GB/s: 525.09
- 4194304	 32 1	CPU    	msec: 22.517	GF/s:  40.24	GB/s:  53.65
- 4194304	 32 2	CPU    	msec: 23.053	GF/s:  39.30	GB/s:  52.40
- 4194304	 32 2	GPU5   	msec:  2.296	GF/s: 394.60	GB/s: 526.14
- 4194304	 32 2	GPU6   	msec:  2.356	GF/s: 384.48	GB/s: 512.64
- 4194304	 32 2	GPU7   	msec:  2.348	GF/s: 385.92	GB/s: 514.56
- 4194304	 32 2	CPU    	msec: 23.523	GF/s:  38.51	GB/s:  51.35
- 4194304	 64 1	CPU    	msec: 21.598	GF/s:  41.95	GB/s:  55.93
- 4194304	 64 1	GPU5   	msec:  2.278	GF/s: 397.74	GB/s: 530.32
- 4194304	 64 1	GPU6   	msec:  2.290	GF/s: 395.61	GB/s: 527.49
- 4194304	 64 1	GPU7   	msec:  2.287	GF/s: 396.13	GB/s: 528.17
- 4194304	 64 1	CPU    	msec: 21.454	GF/s:  42.23	GB/s:  56.30
- 4194304	 64 2	CPU    	msec: 22.081	GF/s:  41.03	GB/s:  54.71
- 4194304	 64 2	GPU5   	msec:  2.282	GF/s: 396.99	GB/s: 529.31
- 4194304	 64 2	GPU6   	msec:  2.337	GF/s: 387.63	GB/s: 516.84
- 4194304	 64 2	GPU7   	msec:  2.328	GF/s: 389.15	GB/s: 518.86
- 4194304	 64 2	CPU    	msec: 22.308	GF/s:  40.61	GB/s:  54.15
- 4194304	128 1	CPU    	msec: 42.311	GF/s:  21.41	GB/s:  28.55
- 4194304	128 1	GPU5   	msec:  2.266	GF/s: 399.79	GB/s: 533.05
- 4194304	128 1	GPU6   	msec:  2.281	GF/s: 397.22	GB/s: 529.63
- 4194304	128 1	GPU7   	msec:  2.278	GF/s: 397.62	GB/s: 530.17
- 4194304	128 1	CPU    	msec: 42.564	GF/s:  21.28	GB/s:  28.38
- 4194304	128 2	CPU    	msec: 43.614	GF/s:  20.77	GB/s:  27.70
- 4194304	128 2	GPU5   	msec:  2.234	GF/s: 405.56	GB/s: 540.74
- 4194304	128 2	GPU6   	msec:  2.288	GF/s: 396.03	GB/s: 528.03
- 4194304	128 2	GPU7   	msec:  2.302	GF/s: 393.50	GB/s: 524.67
- 4194304	128 2	CPU    	msec: 43.481	GF/s:  20.84	GB/s:  27.78
- 8388608	  4 1	CPU    	msec: 58.949	GF/s:  30.74	GB/s:  40.98
- 8388608	  4 1	GPU5   	msec:  7.713	GF/s: 234.93	GB/s: 313.24
- 8388608	  4 1	GPU6   	msec:  8.568	GF/s: 211.48	GB/s: 281.98
- 8388608	  4 1	GPU7   	msec:  8.469	GF/s: 213.95	GB/s: 285.26
- 8388608	  4 1	CPU    	msec: 58.095	GF/s:  31.19	GB/s:  41.59
- 8388608	  4 2	CPU    	msec: 77.656	GF/s:  23.33	GB/s:  31.11
- 8388608	  4 2	GPU5   	msec:  6.063	GF/s: 298.86	GB/s: 398.47
- 8388608	  4 2	GPU6   	msec:  7.269	GF/s: 249.28	GB/s: 332.38
- 8388608	  4 2	GPU7   	msec:  7.140	GF/s: 253.78	GB/s: 338.38
- 8388608	  4 2	CPU    	msec: 80.694	GF/s:  22.45	GB/s:  29.94
- 8388608	  8 1	CPU    	msec: 58.907	GF/s:  30.76	GB/s:  41.01
- 8388608	  8 1	GPU5   	msec:  7.544	GF/s: 240.19	GB/s: 320.25
- 8388608	  8 1	GPU6   	msec:  7.596	GF/s: 238.54	GB/s: 318.06
- 8388608	  8 1	GPU7   	msec:  7.552	GF/s: 239.93	GB/s: 319.91
- 8388608	  8 1	CPU    	msec: 58.357	GF/s:  31.05	GB/s:  41.40
- 8388608	  8 2	CPU    	msec: 56.857	GF/s:  31.87	GB/s:  42.49
- 8388608	  8 2	GPU5   	msec:  5.282	GF/s: 343.02	GB/s: 457.35
- 8388608	  8 2	GPU6   	msec:  5.272	GF/s: 343.72	GB/s: 458.30
- 8388608	  8 2	GPU7   	msec:  5.254	GF/s: 344.85	GB/s: 459.80
- 8388608	  8 2	CPU    	msec: 58.392	GF/s:  31.03	GB/s:  41.37
- 8388608	 16 1	CPU    	msec: 46.226	GF/s:  39.20	GB/s:  52.26
- 8388608	 16 1	GPU5   	msec:  4.606	GF/s: 393.42	GB/s: 524.56
+    2048	 64 1	GPU6   	msec:  0.022	GF/s:  19.86	GB/s:  26.48
+    2048	 64 1	GPU7   	msec:  0.022	GF/s:  19.67	GB/s:  26.22
+    2048	 64 1	CPU    	msec:  0.007	GF/s:  62.91	GB/s:  83.89
+    2048	 64 2	CPU    	msec:  0.007	GF/s:  61.48	GB/s:  81.97
+    2048	 64 2	GPU5   	msec:  0.023	GF/s:  19.59	GB/s:  26.12
+    2048	 64 2	GPU6   	msec:  0.021	GF/s:  20.77	GB/s:  27.70
+    2048	 64 2	GPU7   	msec:  0.022	GF/s:  19.86	GB/s:  26.48
+    2048	 64 2	CPU    	msec:  0.007	GF/s:  59.23	GB/s:  78.97
+    2048	128 1	CPU    	msec:  0.011	GF/s:  39.60	GB/s:  52.80
+    2048	128 1	GPU5   	msec:  0.024	GF/s:  18.50	GB/s:  24.67
+    2048	128 1	GPU6   	msec:  0.023	GF/s:  18.98	GB/s:  25.31
+    2048	128 1	GPU7   	msec:  0.023	GF/s:  18.87	GB/s:  25.16
+    2048	128 1	CPU    	msec:  0.011	GF/s:  40.02	GB/s:  53.36
+    2048	128 2	CPU    	msec:  0.011	GF/s:  38.92	GB/s:  51.89
+    2048	128 2	GPU5   	msec:  0.022	GF/s:  20.56	GB/s:  27.41
+    2048	128 2	GPU6   	msec:  0.021	GF/s:  20.64	GB/s:  27.51
+    2048	128 2	GPU7   	msec:  0.022	GF/s:  20.22	GB/s:  26.95
+    2048	128 2	CPU    	msec:  0.011	GF/s:  39.49	GB/s:  52.65
+    4096	  8 1	CPU    	msec:  0.017	GF/s:  51.48	GB/s:  68.63
+    4096	  8 1	GPU5   	msec:  0.023	GF/s:  38.07	GB/s:  50.75
+    4096	  8 1	GPU6   	msec:  0.023	GF/s:  37.70	GB/s:  50.26
+    4096	  8 1	GPU7   	msec:  0.024	GF/s:  36.97	GB/s:  49.30
+    4096	  8 1	CPU    	msec:  0.024	GF/s:  37.19	GB/s:  49.59
+    4096	  8 2	CPU    	msec:  0.022	GF/s:  39.56	GB/s:  52.74
+    4096	  8 2	GPU5   	msec:  0.023	GF/s:  39.09	GB/s:  52.12
+    4096	  8 2	GPU6   	msec:  0.023	GF/s:  39.13	GB/s:  52.18
+    4096	  8 2	GPU7   	msec:  0.023	GF/s:  38.62	GB/s:  51.50
+    4096	  8 2	CPU    	msec:  0.030	GF/s:  29.53	GB/s:  39.37
+    4096	 16 1	CPU    	msec:  0.017	GF/s:  52.80	GB/s:  70.39
+    4096	 16 1	GPU5   	msec:  0.023	GF/s:  39.05	GB/s:  52.07
+    4096	 16 1	GPU6   	msec:  0.023	GF/s:  37.99	GB/s:  50.65
+    4096	 16 1	GPU7   	msec:  0.023	GF/s:  39.14	GB/s:  52.19
+    4096	 16 1	CPU    	msec:  0.018	GF/s:  48.15	GB/s:  64.20
+    4096	 16 2	CPU    	msec:  0.016	GF/s:  56.79	GB/s:  75.72
+    4096	 16 2	GPU5   	msec:  0.025	GF/s:  35.87	GB/s:  47.83
+    4096	 16 2	GPU6   	msec:  0.024	GF/s:  37.19	GB/s:  49.59
+    4096	 16 2	GPU7   	msec:  0.024	GF/s:  37.41	GB/s:  49.88
+    4096	 16 2	CPU    	msec:  0.014	GF/s:  63.30	GB/s:  84.40
+    4096	 32 1	CPU    	msec:  0.015	GF/s:  59.04	GB/s:  78.73
+    4096	 32 1	GPU5   	msec:  0.023	GF/s:  39.28	GB/s:  52.37
+    4096	 32 1	GPU6   	msec:  0.023	GF/s:  38.85	GB/s:  51.80
+    4096	 32 1	GPU7   	msec:  0.023	GF/s:  38.77	GB/s:  51.69
+    4096	 32 1	CPU    	msec:  0.016	GF/s:  56.29	GB/s:  75.05
+    4096	 32 2	CPU    	msec:  0.015	GF/s:  59.67	GB/s:  79.55
+    4096	 32 2	GPU5   	msec:  0.021	GF/s:  41.17	GB/s:  54.89
+    4096	 32 2	GPU6   	msec:  0.022	GF/s:  40.37	GB/s:  53.83
+    4096	 32 2	GPU7   	msec:  0.022	GF/s:  40.06	GB/s:  53.41
+    4096	 32 2	CPU    	msec:  0.016	GF/s:  55.24	GB/s:  73.66
+    4096	 64 1	CPU    	msec:  0.015	GF/s:  60.72	GB/s:  80.96
+    4096	 64 1	GPU5   	msec:  0.022	GF/s:  40.37	GB/s:  53.83
+    4096	 64 1	GPU6   	msec:  0.022	GF/s:  40.42	GB/s:  53.89
+    4096	 64 1	GPU7   	msec:  0.022	GF/s:  39.79	GB/s:  53.06
+    4096	 64 1	CPU    	msec:  0.015	GF/s:  59.11	GB/s:  78.81
+    4096	 64 2	CPU    	msec:  0.015	GF/s:  60.66	GB/s:  80.88
+    4096	 64 2	GPU5   	msec:  0.021	GF/s:  41.26	GB/s:  55.01
+    4096	 64 2	GPU6   	msec:  0.022	GF/s:  40.20	GB/s:  53.60
+    4096	 64 2	GPU7   	msec:  0.022	GF/s:  39.96	GB/s:  53.28
+    4096	 64 2	CPU    	msec:  0.015	GF/s:  58.68	GB/s:  78.24
+    4096	128 1	CPU    	msec:  0.016	GF/s:  54.55	GB/s:  72.73
+    4096	128 1	GPU5   	msec:  0.022	GF/s:  39.43	GB/s:  52.57
+    4096	128 1	GPU6   	msec:  0.022	GF/s:  40.65	GB/s:  54.20
+    4096	128 1	GPU7   	msec:  0.022	GF/s:  40.16	GB/s:  53.54
+    4096	128 1	CPU    	msec:  0.018	GF/s:  50.29	GB/s:  67.05
+    4096	128 2	CPU    	msec:  0.018	GF/s:  50.06	GB/s:  66.75
+    4096	128 2	GPU5   	msec:  0.021	GF/s:  41.23	GB/s:  54.97
+    4096	128 2	GPU6   	msec:  0.022	GF/s:  40.69	GB/s:  54.26
+    4096	128 2	GPU7   	msec:  0.023	GF/s:  39.04	GB/s:  52.05
+    4096	128 2	CPU    	msec:  0.017	GF/s:  51.85	GB/s:  69.14
+    8192	  8 1	CPU    	msec:  0.036	GF/s:  48.89	GB/s:  65.18
+    8192	  8 1	GPU5   	msec:  0.026	GF/s:  67.55	GB/s:  90.07
+    8192	  8 1	GPU6   	msec:  0.025	GF/s:  69.82	GB/s:  93.09
+    8192	  8 1	GPU7   	msec:  0.026	GF/s:  68.68	GB/s:  91.57
+    8192	  8 1	CPU    	msec:  0.035	GF/s:  49.93	GB/s:  66.58
+    8192	  8 2	CPU    	msec:  0.036	GF/s:  48.65	GB/s:  64.86
+    8192	  8 2	GPU5   	msec:  0.023	GF/s:  76.60	GB/s: 102.13
+    8192	  8 2	GPU6   	msec:  0.023	GF/s:  76.16	GB/s: 101.54
+    8192	  8 2	GPU7   	msec:  0.024	GF/s:  74.63	GB/s:  99.50
+    8192	  8 2	CPU    	msec:  0.029	GF/s:  61.43	GB/s:  81.91
+    8192	 16 1	CPU    	msec:  0.040	GF/s:  44.49	GB/s:  59.32
+    8192	 16 1	GPU5   	msec:  0.022	GF/s:  78.81	GB/s: 105.08
+    8192	 16 1	GPU6   	msec:  0.023	GF/s:  77.46	GB/s: 103.28
+    8192	 16 1	GPU7   	msec:  0.023	GF/s:  76.36	GB/s: 101.82
+    8192	 16 1	CPU    	msec:  0.042	GF/s:  42.55	GB/s:  56.73
+    8192	 16 2	CPU    	msec:  0.029	GF/s:  60.53	GB/s:  80.70
+    8192	 16 2	GPU5   	msec:  0.023	GF/s:  76.34	GB/s: 101.78
+    8192	 16 2	GPU6   	msec:  0.023	GF/s:  77.20	GB/s: 102.93
+    8192	 16 2	GPU7   	msec:  0.023	GF/s:  76.86	GB/s: 102.47
+    8192	 16 2	CPU    	msec:  0.031	GF/s:  57.69	GB/s:  76.92
+    8192	 32 1	CPU    	msec:  0.033	GF/s:  52.97	GB/s:  70.62
+    8192	 32 1	GPU5   	msec:  0.023	GF/s:  76.91	GB/s: 102.54
+    8192	 32 1	GPU6   	msec:  0.023	GF/s:  75.57	GB/s: 100.76
+    8192	 32 1	GPU7   	msec:  0.024	GF/s:  74.95	GB/s:  99.93
+    8192	 32 1	CPU    	msec:  0.034	GF/s:  51.76	GB/s:  69.01
+    8192	 32 2	CPU    	msec:  0.031	GF/s:  57.27	GB/s:  76.36
+    8192	 32 2	GPU5   	msec:  0.023	GF/s:  77.62	GB/s: 103.49
+    8192	 32 2	GPU6   	msec:  0.023	GF/s:  76.86	GB/s: 102.47
+    8192	 32 2	GPU7   	msec:  0.024	GF/s:  74.87	GB/s:  99.83
+    8192	 32 2	CPU    	msec:  0.032	GF/s:  55.57	GB/s:  74.09
+    8192	 64 1	CPU    	msec:  0.029	GF/s:  61.12	GB/s:  81.49
+    8192	 64 1	GPU5   	msec:  0.024	GF/s:  73.09	GB/s:  97.45
+    8192	 64 1	GPU6   	msec:  0.024	GF/s:  73.27	GB/s:  97.70
+    8192	 64 1	GPU7   	msec:  0.025	GF/s:  72.04	GB/s:  96.05
+    8192	 64 1	CPU    	msec:  0.031	GF/s:  57.41	GB/s:  76.55
+    8192	 64 2	CPU    	msec:  0.030	GF/s:  58.89	GB/s:  78.52
+    8192	 64 2	GPU5   	msec:  0.022	GF/s:  79.55	GB/s: 106.07
+    8192	 64 2	GPU6   	msec:  0.023	GF/s:  77.94	GB/s: 103.92
+    8192	 64 2	GPU7   	msec:  0.023	GF/s:  76.78	GB/s: 102.37
+    8192	 64 2	CPU    	msec:  0.031	GF/s:  57.59	GB/s:  76.78
+    8192	128 1	CPU    	msec:  0.036	GF/s:  49.65	GB/s:  66.20
+    8192	128 1	GPU5   	msec:  0.024	GF/s:  74.55	GB/s:  99.40
+    8192	128 1	GPU6   	msec:  0.024	GF/s:  73.63	GB/s:  98.18
+    8192	128 1	GPU7   	msec:  0.024	GF/s:  72.45	GB/s:  96.61
+    8192	128 1	CPU    	msec:  0.036	GF/s:  49.47	GB/s:  65.97
+    8192	128 2	CPU    	msec:  0.037	GF/s:  48.30	GB/s:  64.40
+    8192	128 2	GPU5   	msec:  0.022	GF/s:  80.00	GB/s: 106.67
+    8192	128 2	GPU6   	msec:  0.023	GF/s:  78.62	GB/s: 104.82
+    8192	128 2	GPU7   	msec:  0.023	GF/s:  77.78	GB/s: 103.71
+    8192	128 2	CPU    	msec:  0.036	GF/s:  49.14	GB/s:  65.52
+   16384	  8 1	CPU    	msec:  0.077	GF/s:  45.92	GB/s:  61.22
+   16384	  8 1	GPU5   	msec:  0.029	GF/s: 121.12	GB/s: 161.49
+   16384	  8 1	GPU6   	msec:  0.029	GF/s: 121.70	GB/s: 162.27
+   16384	  8 1	GPU7   	msec:  0.029	GF/s: 120.86	GB/s: 161.15
+   16384	  8 1	CPU    	msec:  0.076	GF/s:  46.44	GB/s:  61.92
+   16384	  8 2	CPU    	msec:  0.074	GF/s:  47.52	GB/s:  63.36
+   16384	  8 2	GPU5   	msec:  0.025	GF/s: 141.20	GB/s: 188.27
+   16384	  8 2	GPU6   	msec:  0.025	GF/s: 141.87	GB/s: 189.16
+   16384	  8 2	GPU7   	msec:  0.025	GF/s: 140.16	GB/s: 186.87
+   16384	  8 2	CPU    	msec:  0.074	GF/s:  47.59	GB/s:  63.46
+   16384	 16 1	CPU    	msec:  0.084	GF/s:  42.16	GB/s:  56.21
+   16384	 16 1	GPU5   	msec:  0.026	GF/s: 137.23	GB/s: 182.97
+   16384	 16 1	GPU6   	msec:  0.026	GF/s: 138.23	GB/s: 184.31
+   16384	 16 1	GPU7   	msec:  0.025	GF/s: 139.77	GB/s: 186.36
+   16384	 16 1	CPU    	msec:  0.081	GF/s:  43.73	GB/s:  58.30
+   16384	 16 2	CPU    	msec:  0.062	GF/s:  57.21	GB/s:  76.28
+   16384	 16 2	GPU5   	msec:  0.025	GF/s: 139.47	GB/s: 185.95
+   16384	 16 2	GPU6   	msec:  0.025	GF/s: 142.09	GB/s: 189.45
+   16384	 16 2	GPU7   	msec:  0.025	GF/s: 141.87	GB/s: 189.16
+   16384	 16 2	CPU    	msec:  0.063	GF/s:  56.31	GB/s:  75.08
+   16384	 32 1	CPU    	msec:  0.069	GF/s:  51.56	GB/s:  68.75
+   16384	 32 1	GPU5   	msec:  0.027	GF/s: 132.72	GB/s: 176.96
+   16384	 32 1	GPU6   	msec:  0.026	GF/s: 138.15	GB/s: 184.20
+   16384	 32 1	GPU7   	msec:  0.025	GF/s: 138.82	GB/s: 185.10
+   16384	 32 1	CPU    	msec:  0.068	GF/s:  51.66	GB/s:  68.88
+   16384	 32 2	CPU    	msec:  0.064	GF/s:  55.55	GB/s:  74.06
+   16384	 32 2	GPU5   	msec:  0.026	GF/s: 135.42	GB/s: 180.56
+   16384	 32 2	GPU6   	msec:  0.026	GF/s: 138.36	GB/s: 184.48
+   16384	 32 2	GPU7   	msec:  0.025	GF/s: 139.04	GB/s: 185.38
+   16384	 32 2	CPU    	msec:  0.064	GF/s:  55.57	GB/s:  74.10
+   16384	 64 1	CPU    	msec:  0.056	GF/s:  63.00	GB/s:  84.00
+   16384	 64 1	GPU5   	msec:  0.026	GF/s: 134.14	GB/s: 178.85
+   16384	 64 1	GPU6   	msec:  0.026	GF/s: 137.18	GB/s: 182.91
+   16384	 64 1	GPU7   	msec:  0.026	GF/s: 137.77	GB/s: 183.69
+   16384	 64 1	CPU    	msec:  0.061	GF/s:  58.31	GB/s:  77.75
+   16384	 64 2	CPU    	msec:  0.058	GF/s:  61.36	GB/s:  81.81
+   16384	 64 2	GPU5   	msec:  0.026	GF/s: 137.39	GB/s: 183.19
+   16384	 64 2	GPU6   	msec:  0.025	GF/s: 140.20	GB/s: 186.93
+   16384	 64 2	GPU7   	msec:  0.025	GF/s: 141.20	GB/s: 188.27
+   16384	 64 2	CPU    	msec:  0.061	GF/s:  58.33	GB/s:  77.77
+   16384	128 1	CPU    	msec:  0.077	GF/s:  45.90	GB/s:  61.21
+   16384	128 1	GPU5   	msec:  0.026	GF/s: 138.65	GB/s: 184.87
+   16384	128 1	GPU6   	msec:  0.026	GF/s: 138.70	GB/s: 184.93
+   16384	128 1	GPU7   	msec:  0.026	GF/s: 138.11	GB/s: 184.14
+   16384	128 1	CPU    	msec:  0.070	GF/s:  50.30	GB/s:  67.06
+   16384	128 2	CPU    	msec:  0.073	GF/s:  48.56	GB/s:  64.74
+   16384	128 2	GPU5   	msec:  0.024	GF/s: 146.41	GB/s: 195.21
+   16384	128 2	GPU6   	msec:  0.024	GF/s: 148.52	GB/s: 198.03
+   16384	128 2	GPU7   	msec:  0.024	GF/s: 147.94	GB/s: 197.25
+   16384	128 2	CPU    	msec:  0.072	GF/s:  48.86	GB/s:  65.15
+   32768	  8 1	CPU    	msec:  0.152	GF/s:  46.68	GB/s:  62.23
+   32768	  8 1	GPU5   	msec:  0.050	GF/s: 141.67	GB/s: 188.89
+   32768	  8 1	GPU6   	msec:  0.050	GF/s: 141.60	GB/s: 188.80
+   32768	  8 1	GPU7   	msec:  0.051	GF/s: 138.78	GB/s: 185.04
+   32768	  8 1	CPU    	msec:  0.152	GF/s:  46.51	GB/s:  62.01
+   32768	  8 2	CPU    	msec:  0.153	GF/s:  46.28	GB/s:  61.71
+   32768	  8 2	GPU5   	msec:  0.045	GF/s: 156.82	GB/s: 209.10
+   32768	  8 2	GPU6   	msec:  0.045	GF/s: 158.33	GB/s: 211.11
+   32768	  8 2	GPU7   	msec:  0.046	GF/s: 154.31	GB/s: 205.75
+   32768	  8 2	CPU    	msec:  0.146	GF/s:  48.55	GB/s:  64.74
+   32768	 16 1	CPU    	msec:  0.159	GF/s:  44.50	GB/s:  59.34
+   32768	 16 1	GPU5   	msec:  0.040	GF/s: 178.62	GB/s: 238.16
+   32768	 16 1	GPU6   	msec:  0.040	GF/s: 178.80	GB/s: 238.40
+   32768	 16 1	GPU7   	msec:  0.040	GF/s: 176.77	GB/s: 235.70
+   32768	 16 1	CPU    	msec:  0.156	GF/s:  45.26	GB/s:  60.35
+   32768	 16 2	CPU    	msec:  0.121	GF/s:  58.62	GB/s:  78.16
+   32768	 16 2	GPU5   	msec:  0.038	GF/s: 185.84	GB/s: 247.79
+   32768	 16 2	GPU6   	msec:  0.037	GF/s: 190.09	GB/s: 253.45
+   32768	 16 2	GPU7   	msec:  0.038	GF/s: 188.19	GB/s: 250.93
+   32768	 16 2	CPU    	msec:  0.135	GF/s:  52.54	GB/s:  70.06
+   32768	 32 1	CPU    	msec:  0.136	GF/s:  51.86	GB/s:  69.14
+   32768	 32 1	GPU5   	msec:  0.039	GF/s: 180.65	GB/s: 240.87
+   32768	 32 1	GPU6   	msec:  0.039	GF/s: 182.77	GB/s: 243.69
+   32768	 32 1	GPU7   	msec:  0.039	GF/s: 180.65	GB/s: 240.87
+   32768	 32 1	CPU    	msec:  0.136	GF/s:  52.06	GB/s:  69.41
+   32768	 32 2	CPU    	msec:  0.130	GF/s:  54.26	GB/s:  72.35
+   32768	 32 2	GPU5   	msec:  0.040	GF/s: 177.82	GB/s: 237.09
+   32768	 32 2	GPU6   	msec:  0.040	GF/s: 178.52	GB/s: 238.02
+   32768	 32 2	GPU7   	msec:  0.040	GF/s: 177.05	GB/s: 236.07
+   32768	 32 2	CPU    	msec:  0.131	GF/s:  53.95	GB/s:  71.93
+   32768	 64 1	CPU    	msec:  0.118	GF/s:  59.82	GB/s:  79.76
+   32768	 64 1	GPU5   	msec:  0.038	GF/s: 184.18	GB/s: 245.57
+   32768	 64 1	GPU6   	msec:  0.038	GF/s: 185.19	GB/s: 246.93
+   32768	 64 1	GPU7   	msec:  0.039	GF/s: 183.17	GB/s: 244.23
+   32768	 64 1	CPU    	msec:  0.122	GF/s:  57.93	GB/s:  77.25
+   32768	 64 2	CPU    	msec:  0.121	GF/s:  58.47	GB/s:  77.96
+   32768	 64 2	GPU5   	msec:  0.038	GF/s: 187.38	GB/s: 249.84
+   32768	 64 2	GPU6   	msec:  0.038	GF/s: 186.87	GB/s: 249.17
+   32768	 64 2	GPU7   	msec:  0.038	GF/s: 187.69	GB/s: 250.25
+   32768	 64 2	CPU    	msec:  0.120	GF/s:  58.75	GB/s:  78.33
+   32768	128 1	CPU    	msec:  0.146	GF/s:  48.52	GB/s:  64.70
+   32768	128 1	GPU5   	msec:  0.039	GF/s: 183.65	GB/s: 244.87
+   32768	128 1	GPU6   	msec:  0.038	GF/s: 184.10	GB/s: 245.47
+   32768	128 1	GPU7   	msec:  0.039	GF/s: 182.21	GB/s: 242.95
+   32768	128 1	CPU    	msec:  0.146	GF/s:  48.32	GB/s:  64.42
+   32768	128 2	CPU    	msec:  0.149	GF/s:  47.54	GB/s:  63.38
+   32768	128 2	GPU5   	msec:  0.038	GF/s: 184.78	GB/s: 246.37
+   32768	128 2	GPU6   	msec:  0.038	GF/s: 187.34	GB/s: 249.78
+   32768	128 2	GPU7   	msec:  0.038	GF/s: 186.49	GB/s: 248.65
+   32768	128 2	CPU    	msec:  0.150	GF/s:  47.31	GB/s:  63.08
+   65536	  8 1	CPU    	msec:  0.285	GF/s:  49.70	GB/s:  66.27
+   65536	  8 1	GPU5   	msec:  0.081	GF/s: 174.63	GB/s: 232.84
+   65536	  8 1	GPU6   	msec:  0.077	GF/s: 183.77	GB/s: 245.02
+   65536	  8 1	GPU7   	msec:  0.078	GF/s: 182.29	GB/s: 243.05
+   65536	  8 1	CPU    	msec:  0.283	GF/s:  50.04	GB/s:  66.72
+   65536	  8 2	CPU    	msec:  0.254	GF/s:  55.81	GB/s:  74.41
+   65536	  8 2	GPU5   	msec:  0.065	GF/s: 217.31	GB/s: 289.75
+   65536	  8 2	GPU6   	msec:  0.061	GF/s: 231.14	GB/s: 308.19
+   65536	  8 2	GPU7   	msec:  0.062	GF/s: 228.46	GB/s: 304.62
+   65536	  8 2	CPU    	msec:  0.250	GF/s:  56.51	GB/s:  75.35
+   65536	 16 1	CPU    	msec:  0.281	GF/s:  50.31	GB/s:  67.08
+   65536	 16 1	GPU5   	msec:  0.058	GF/s: 244.92	GB/s: 326.56
+   65536	 16 1	GPU6   	msec:  0.056	GF/s: 253.70	GB/s: 338.27
+   65536	 16 1	GPU7   	msec:  0.057	GF/s: 249.99	GB/s: 333.32
+   65536	 16 1	CPU    	msec:  0.282	GF/s:  50.17	GB/s:  66.90
+   65536	 16 2	CPU    	msec:  0.275	GF/s:  51.46	GB/s:  68.62
+   65536	 16 2	GPU5   	msec:  0.056	GF/s: 251.48	GB/s: 335.31
+   65536	 16 2	GPU6   	msec:  0.055	GF/s: 259.44	GB/s: 345.92
+   65536	 16 2	GPU7   	msec:  0.055	GF/s: 256.72	GB/s: 342.30
+   65536	 16 2	CPU    	msec:  0.280	GF/s:  50.50	GB/s:  67.33
+   65536	 32 1	CPU    	msec:  0.265	GF/s:  53.48	GB/s:  71.31
+   65536	 32 1	GPU5   	msec:  0.060	GF/s: 235.71	GB/s: 314.29
+   65536	 32 1	GPU6   	msec:  0.057	GF/s: 248.11	GB/s: 330.81
+   65536	 32 1	GPU7   	msec:  0.058	GF/s: 244.82	GB/s: 326.43
+   65536	 32 1	CPU    	msec:  0.264	GF/s:  53.54	GB/s:  71.39
+   65536	 32 2	CPU    	msec:  0.256	GF/s:  55.27	GB/s:  73.69
+   65536	 32 2	GPU5   	msec:  0.056	GF/s: 252.61	GB/s: 336.81
+   65536	 32 2	GPU6   	msec:  0.054	GF/s: 261.46	GB/s: 348.62
+   65536	 32 2	GPU7   	msec:  0.054	GF/s: 260.26	GB/s: 347.02
+   65536	 32 2	CPU    	msec:  0.258	GF/s:  54.84	GB/s:  73.12
+   65536	 64 1	CPU    	msec:  0.236	GF/s:  59.98	GB/s:  79.98
+   65536	 64 1	GPU5   	msec:  0.058	GF/s: 242.59	GB/s: 323.46
+   65536	 64 1	GPU6   	msec:  0.056	GF/s: 252.57	GB/s: 336.76
+   65536	 64 1	GPU7   	msec:  0.057	GF/s: 248.93	GB/s: 331.90
+   65536	 64 1	CPU    	msec:  0.244	GF/s:  58.10	GB/s:  77.47
+   65536	 64 2	CPU    	msec:  0.239	GF/s:  59.24	GB/s:  78.98
+   65536	 64 2	GPU5   	msec:  0.056	GF/s: 254.13	GB/s: 338.84
+   65536	 64 2	GPU6   	msec:  0.054	GF/s: 262.26	GB/s: 349.68
+   65536	 64 2	GPU7   	msec:  0.054	GF/s: 261.39	GB/s: 348.52
+   65536	 64 2	CPU    	msec:  0.239	GF/s:  59.27	GB/s:  79.02
+   65536	128 1	CPU    	msec:  0.291	GF/s:  48.72	GB/s:  64.95
+   65536	128 1	GPU5   	msec:  0.058	GF/s: 242.66	GB/s: 323.55
+   65536	128 1	GPU6   	msec:  0.056	GF/s: 253.03	GB/s: 337.37
+   65536	128 1	GPU7   	msec:  0.056	GF/s: 250.86	GB/s: 334.48
+   65536	128 1	CPU    	msec:  0.305	GF/s:  46.37	GB/s:  61.82
+   65536	128 2	CPU    	msec:  0.294	GF/s:  48.07	GB/s:  64.09
+   65536	128 2	GPU5   	msec:  0.056	GF/s: 250.93	GB/s: 334.57
+   65536	128 2	GPU6   	msec:  0.055	GF/s: 258.15	GB/s: 344.20
+   65536	128 2	GPU7   	msec:  0.055	GF/s: 256.50	GB/s: 342.00
+   65536	128 2	CPU    	msec:  0.292	GF/s:  48.46	GB/s:  64.61
+  131072	  8 1	CPU    	msec:  0.523	GF/s:  54.18	GB/s:  72.24
+  131072	  8 1	GPU5   	msec:  0.135	GF/s: 209.29	GB/s: 279.06
+  131072	  8 1	GPU6   	msec:  0.136	GF/s: 207.65	GB/s: 276.86
+  131072	  8 1	GPU7   	msec:  0.135	GF/s: 209.33	GB/s: 279.10
+  131072	  8 1	CPU    	msec:  0.501	GF/s:  56.46	GB/s:  75.29
+  131072	  8 2	CPU    	msec:  0.549	GF/s:  51.56	GB/s:  68.75
+  131072	  8 2	GPU5   	msec:  0.108	GF/s: 262.73	GB/s: 350.31
+  131072	  8 2	GPU6   	msec:  0.107	GF/s: 265.66	GB/s: 354.21
+  131072	  8 2	GPU7   	msec:  0.107	GF/s: 265.62	GB/s: 354.16
+  131072	  8 2	CPU    	msec:  0.542	GF/s:  52.22	GB/s:  69.63
+  131072	 16 1	CPU    	msec:  0.609	GF/s:  46.46	GB/s:  61.94
+  131072	 16 1	GPU5   	msec:  0.094	GF/s: 302.39	GB/s: 403.19
+  131072	 16 1	GPU6   	msec:  0.092	GF/s: 308.78	GB/s: 411.71
+  131072	 16 1	GPU7   	msec:  0.093	GF/s: 306.02	GB/s: 408.03
+  131072	 16 1	CPU    	msec:  0.620	GF/s:  45.65	GB/s:  60.87
+  131072	 16 2	CPU    	msec:  0.503	GF/s:  56.26	GB/s:  75.01
+  131072	 16 2	GPU5   	msec:  0.089	GF/s: 317.24	GB/s: 422.99
+  131072	 16 2	GPU6   	msec:  0.088	GF/s: 320.13	GB/s: 426.84
+  131072	 16 2	GPU7   	msec:  0.089	GF/s: 319.45	GB/s: 425.94
+  131072	 16 2	CPU    	msec:  0.520	GF/s:  54.44	GB/s:  72.58
+  131072	 32 1	CPU    	msec:  0.564	GF/s:  50.21	GB/s:  66.94
+  131072	 32 1	GPU5   	msec:  0.092	GF/s: 306.74	GB/s: 408.99
+  131072	 32 1	GPU6   	msec:  0.090	GF/s: 314.35	GB/s: 419.14
+  131072	 32 1	GPU7   	msec:  0.090	GF/s: 312.83	GB/s: 417.11
+  131072	 32 1	CPU    	msec:  0.561	GF/s:  50.50	GB/s:  67.33
+  131072	 32 2	CPU    	msec:  0.497	GF/s:  56.97	GB/s:  75.96
+  131072	 32 2	GPU5   	msec:  0.089	GF/s: 317.77	GB/s: 423.70
+  131072	 32 2	GPU6   	msec:  0.088	GF/s: 321.07	GB/s: 428.09
+  131072	 32 2	GPU7   	msec:  0.088	GF/s: 320.95	GB/s: 427.94
+  131072	 32 2	CPU    	msec:  0.503	GF/s:  56.30	GB/s:  75.06
+  131072	 64 1	CPU    	msec:  0.501	GF/s:  56.46	GB/s:  75.28
+  131072	 64 1	GPU5   	msec:  0.092	GF/s: 308.89	GB/s: 411.85
+  131072	 64 1	GPU6   	msec:  0.090	GF/s: 315.48	GB/s: 420.64
+  131072	 64 1	GPU7   	msec:  0.090	GF/s: 313.81	GB/s: 418.41
+  131072	 64 1	CPU    	msec:  0.516	GF/s:  54.90	GB/s:  73.21
+  131072	 64 2	CPU    	msec:  0.501	GF/s:  56.52	GB/s:  75.36
+  131072	 64 2	GPU5   	msec:  0.090	GF/s: 315.75	GB/s: 421.00
+  131072	 64 2	GPU6   	msec:  0.089	GF/s: 318.30	GB/s: 424.40
+  131072	 64 2	GPU7   	msec:  0.089	GF/s: 317.49	GB/s: 423.33
+  131072	 64 2	CPU    	msec:  0.500	GF/s:  56.61	GB/s:  75.48
+  131072	128 1	CPU    	msec:  0.607	GF/s:  46.67	GB/s:  62.23
+  131072	128 1	GPU5   	msec:  0.093	GF/s: 304.68	GB/s: 406.24
+  131072	128 1	GPU6   	msec:  0.091	GF/s: 311.87	GB/s: 415.82
+  131072	128 1	GPU7   	msec:  0.091	GF/s: 310.37	GB/s: 413.83
+  131072	128 1	CPU    	msec:  0.612	GF/s:  46.23	GB/s:  61.64
+  131072	128 2	CPU    	msec:  0.594	GF/s:  47.70	GB/s:  63.60
+  131072	128 2	GPU5   	msec:  0.089	GF/s: 317.02	GB/s: 422.70
+  131072	128 2	GPU6   	msec:  0.089	GF/s: 318.58	GB/s: 424.78
+  131072	128 2	GPU7   	msec:  0.089	GF/s: 317.63	GB/s: 423.51
+  131072	128 2	CPU    	msec:  0.590	GF/s:  47.98	GB/s:  63.97
+  262144	  8 1	CPU    	msec:  1.613	GF/s:  35.10	GB/s:  46.79
+  262144	  8 1	GPU5   	msec:  0.250	GF/s: 226.70	GB/s: 302.27
+  262144	  8 1	GPU6   	msec:  0.255	GF/s: 222.06	GB/s: 296.09
+  262144	  8 1	GPU7   	msec:  0.255	GF/s: 222.23	GB/s: 296.30
+  262144	  8 1	CPU    	msec:  1.604	GF/s:  35.30	GB/s:  47.06
+  262144	  8 2	CPU    	msec:  1.615	GF/s:  35.06	GB/s:  46.75
+  262144	  8 2	GPU5   	msec:  0.195	GF/s: 290.57	GB/s: 387.43
+  262144	  8 2	GPU6   	msec:  0.191	GF/s: 295.92	GB/s: 394.56
+  262144	  8 2	GPU7   	msec:  0.194	GF/s: 292.19	GB/s: 389.59
+  262144	  8 2	CPU    	msec:  1.618	GF/s:  34.99	GB/s:  46.66
+  262144	 16 1	CPU    	msec:  1.731	GF/s:  32.71	GB/s:  43.61
+  262144	 16 1	GPU5   	msec:  0.162	GF/s: 349.41	GB/s: 465.88
+  262144	 16 1	GPU6   	msec:  0.162	GF/s: 348.48	GB/s: 464.64
+  262144	 16 1	GPU7   	msec:  0.164	GF/s: 344.46	GB/s: 459.28
+  262144	 16 1	CPU    	msec:  1.731	GF/s:  32.71	GB/s:  43.61
+  262144	 16 2	CPU    	msec:  1.291	GF/s:  43.87	GB/s:  58.49
+  262144	 16 2	GPU5   	msec:  0.157	GF/s: 360.87	GB/s: 481.16
+  262144	 16 2	GPU6   	msec:  0.158	GF/s: 358.78	GB/s: 478.38
+  262144	 16 2	GPU7   	msec:  0.158	GF/s: 357.83	GB/s: 477.10
+  262144	 16 2	CPU    	msec:  1.333	GF/s:  42.47	GB/s:  56.62
+  262144	 32 1	CPU    	msec:  1.413	GF/s:  40.08	GB/s:  53.44
+  262144	 32 1	GPU5   	msec:  0.161	GF/s: 351.22	GB/s: 468.29
+  262144	 32 1	GPU6   	msec:  0.162	GF/s: 350.44	GB/s: 467.25
+  262144	 32 1	GPU7   	msec:  0.163	GF/s: 347.60	GB/s: 463.46
+  262144	 32 1	CPU    	msec:  1.411	GF/s:  40.12	GB/s:  53.50
+  262144	 32 2	CPU    	msec:  1.186	GF/s:  47.74	GB/s:  63.66
+  262144	 32 2	GPU5   	msec:  0.157	GF/s: 361.03	GB/s: 481.38
+  262144	 32 2	GPU6   	msec:  0.157	GF/s: 361.30	GB/s: 481.74
+  262144	 32 2	GPU7   	msec:  0.157	GF/s: 360.23	GB/s: 480.30
+  262144	 32 2	CPU    	msec:  1.193	GF/s:  47.48	GB/s:  63.30
+  262144	 64 1	CPU    	msec:  1.113	GF/s:  50.86	GB/s:  67.81
+  262144	 64 1	GPU5   	msec:  0.160	GF/s: 352.91	GB/s: 470.55
+  262144	 64 1	GPU6   	msec:  0.160	GF/s: 352.84	GB/s: 470.46
+  262144	 64 1	GPU7   	msec:  0.162	GF/s: 350.08	GB/s: 466.78
+  262144	 64 1	CPU    	msec:  1.142	GF/s:  49.58	GB/s:  66.11
+  262144	 64 2	CPU    	msec:  1.162	GF/s:  48.74	GB/s:  64.98
+  262144	 64 2	GPU5   	msec:  0.157	GF/s: 360.75	GB/s: 481.00
+  262144	 64 2	GPU6   	msec:  0.157	GF/s: 360.03	GB/s: 480.04
+  262144	 64 2	GPU7   	msec:  0.158	GF/s: 359.05	GB/s: 478.73
+  262144	 64 2	CPU    	msec:  1.159	GF/s:  48.86	GB/s:  65.15
+  262144	128 1	CPU    	msec:  1.286	GF/s:  44.02	GB/s:  58.70
+  262144	128 1	GPU5   	msec:  0.160	GF/s: 354.15	GB/s: 472.21
+  262144	128 1	GPU6   	msec:  0.160	GF/s: 354.66	GB/s: 472.88
+  262144	128 1	GPU7   	msec:  0.161	GF/s: 351.29	GB/s: 468.38
+  262144	128 1	CPU    	msec:  1.323	GF/s:  42.79	GB/s:  57.05
+  262144	128 2	CPU    	msec:  1.252	GF/s:  45.21	GB/s:  60.28
+  262144	128 2	GPU5   	msec:  0.156	GF/s: 361.97	GB/s: 482.63
+  262144	128 2	GPU6   	msec:  0.156	GF/s: 361.90	GB/s: 482.53
+  262144	128 2	GPU7   	msec:  0.157	GF/s: 360.24	GB/s: 480.33
+  262144	128 2	CPU    	msec:  1.245	GF/s:  45.50	GB/s:  60.66
+  524288	  8 1	CPU    	msec:  3.228	GF/s:  35.08	GB/s:  46.78
+  524288	  8 1	GPU5   	msec:  0.472	GF/s: 240.04	GB/s: 320.05
+  524288	  8 1	GPU6   	msec:  0.485	GF/s: 233.33	GB/s: 311.11
+  524288	  8 1	GPU7   	msec:  0.482	GF/s: 234.97	GB/s: 313.30
+  524288	  8 1	CPU    	msec:  3.240	GF/s:  34.96	GB/s:  46.61
+  524288	  8 2	CPU    	msec:  3.955	GF/s:  28.63	GB/s:  38.18
+  524288	  8 2	GPU5   	msec:  0.397	GF/s: 284.94	GB/s: 379.92
+  524288	  8 2	GPU6   	msec:  0.386	GF/s: 293.40	GB/s: 391.20
+  524288	  8 2	GPU7   	msec:  0.383	GF/s: 295.75	GB/s: 394.34
+  524288	  8 2	CPU    	msec:  3.938	GF/s:  28.76	GB/s:  38.34
+  524288	 16 1	CPU    	msec:  3.354	GF/s:  33.76	GB/s:  45.02
+  524288	 16 1	GPU5   	msec:  0.354	GF/s: 320.31	GB/s: 427.08
+  524288	 16 1	GPU6   	msec:  0.310	GF/s: 364.87	GB/s: 486.49
+  524288	 16 1	GPU7   	msec:  0.308	GF/s: 367.96	GB/s: 490.62
+  524288	 16 1	CPU    	msec:  3.390	GF/s:  33.41	GB/s:  44.54
+  524288	 16 2	CPU    	msec:  3.862	GF/s:  29.32	GB/s:  39.10
+  524288	 16 2	GPU5   	msec:  0.327	GF/s: 346.53	GB/s: 462.05
+  524288	 16 2	GPU6   	msec:  0.292	GF/s: 387.99	GB/s: 517.31
+  524288	 16 2	GPU7   	msec:  0.292	GF/s: 387.36	GB/s: 516.48
+  524288	 16 2	CPU    	msec:  3.910	GF/s:  28.96	GB/s:  38.62
+  524288	 32 1	CPU    	msec:  3.173	GF/s:  35.69	GB/s:  47.59
+  524288	 32 1	GPU5   	msec:  0.354	GF/s: 320.20	GB/s: 426.94
+  524288	 32 1	GPU6   	msec:  0.353	GF/s: 320.72	GB/s: 427.62
+  524288	 32 1	GPU7   	msec:  0.315	GF/s: 359.16	GB/s: 478.87
+  524288	 32 1	CPU    	msec:  3.172	GF/s:  35.70	GB/s:  47.60
+  524288	 32 2	CPU    	msec:  2.920	GF/s:  38.78	GB/s:  51.71
+  524288	 32 2	GPU5   	msec:  0.294	GF/s: 385.24	GB/s: 513.66
+  524288	 32 2	GPU6   	msec:  0.292	GF/s: 387.31	GB/s: 516.42
+  524288	 32 2	GPU7   	msec:  0.293	GF/s: 386.55	GB/s: 515.40
+  524288	 32 2	CPU    	msec:  2.919	GF/s:  38.79	GB/s:  51.72
+  524288	 64 1	CPU    	msec:  2.608	GF/s:  43.43	GB/s:  57.91
+  524288	 64 1	GPU5   	msec:  0.299	GF/s: 378.95	GB/s: 505.26
+  524288	 64 1	GPU6   	msec:  0.300	GF/s: 377.33	GB/s: 503.11
+  524288	 64 1	GPU7   	msec:  0.301	GF/s: 376.41	GB/s: 501.88
+  524288	 64 1	CPU    	msec:  2.677	GF/s:  42.30	GB/s:  56.40
+  524288	 64 2	CPU    	msec:  2.510	GF/s:  45.11	GB/s:  60.15
+  524288	 64 2	GPU5   	msec:  0.292	GF/s: 388.44	GB/s: 517.92
+  524288	 64 2	GPU6   	msec:  0.291	GF/s: 388.81	GB/s: 518.41
+  524288	 64 2	GPU7   	msec:  0.292	GF/s: 387.84	GB/s: 517.12
+  524288	 64 2	CPU    	msec:  2.519	GF/s:  44.95	GB/s:  59.94
+  524288	128 1	CPU    	msec:  2.871	GF/s:  39.45	GB/s:  52.59
+  524288	128 1	GPU5   	msec:  0.342	GF/s: 331.48	GB/s: 441.97
+  524288	128 1	GPU6   	msec:  0.342	GF/s: 331.57	GB/s: 442.09
+  524288	128 1	GPU7   	msec:  0.343	GF/s: 329.97	GB/s: 439.96
+  524288	128 1	CPU    	msec:  2.890	GF/s:  39.19	GB/s:  52.25
+  524288	128 2	CPU    	msec:  2.709	GF/s:  41.81	GB/s:  55.75
+  524288	128 2	GPU5   	msec:  0.352	GF/s: 321.65	GB/s: 428.87
+  524288	128 2	GPU6   	msec:  0.306	GF/s: 369.65	GB/s: 492.87
+  524288	128 2	GPU7   	msec:  0.292	GF/s: 388.43	GB/s: 517.91
+  524288	128 2	CPU    	msec:  2.690	GF/s:  42.09	GB/s:  56.12
+ 1048576	  8 1	CPU    	msec:  6.605	GF/s:  34.29	GB/s:  45.72
+ 1048576	  8 1	GPU5   	msec:  0.929	GF/s: 243.89	GB/s: 325.19
+ 1048576	  8 1	GPU6   	msec:  0.954	GF/s: 237.45	GB/s: 316.60
+ 1048576	  8 1	GPU7   	msec:  0.947	GF/s: 239.16	GB/s: 318.88
+ 1048576	  8 1	CPU    	msec:  6.615	GF/s:  34.24	GB/s:  45.65
+ 1048576	  8 2	CPU    	msec:  7.272	GF/s:  31.15	GB/s:  41.53
+ 1048576	  8 2	GPU5   	msec:  0.732	GF/s: 309.47	GB/s: 412.62
+ 1048576	  8 2	GPU6   	msec:  0.712	GF/s: 318.03	GB/s: 424.04
+ 1048576	  8 2	GPU7   	msec:  0.707	GF/s: 320.58	GB/s: 427.44
+ 1048576	  8 2	CPU    	msec:  7.267	GF/s:  31.17	GB/s:  41.55
+ 1048576	 16 1	CPU    	msec:  7.006	GF/s:  32.33	GB/s:  43.10
+ 1048576	 16 1	GPU5   	msec:  0.589	GF/s: 384.60	GB/s: 512.80
+ 1048576	 16 1	GPU6   	msec:  0.594	GF/s: 381.28	GB/s: 508.37
+ 1048576	 16 1	GPU7   	msec:  0.593	GF/s: 381.77	GB/s: 509.03
+ 1048576	 16 1	CPU    	msec:  7.072	GF/s:  32.03	GB/s:  42.70
+ 1048576	 16 2	CPU    	msec:  6.420	GF/s:  35.28	GB/s:  47.04
+ 1048576	 16 2	GPU5   	msec:  0.587	GF/s: 385.85	GB/s: 514.46
+ 1048576	 16 2	GPU6   	msec:  0.583	GF/s: 388.80	GB/s: 518.40
+ 1048576	 16 2	GPU7   	msec:  0.582	GF/s: 389.03	GB/s: 518.71
+ 1048576	 16 2	CPU    	msec:  6.514	GF/s:  34.77	GB/s:  46.36
+ 1048576	 32 1	CPU    	msec:  5.358	GF/s:  42.27	GB/s:  56.36
+ 1048576	 32 1	GPU5   	msec:  0.609	GF/s: 371.80	GB/s: 495.73
+ 1048576	 32 1	GPU6   	msec:  0.613	GF/s: 369.77	GB/s: 493.03
+ 1048576	 32 1	GPU7   	msec:  0.611	GF/s: 370.74	GB/s: 494.32
+ 1048576	 32 1	CPU    	msec:  5.344	GF/s:  42.38	GB/s:  56.51
+ 1048576	 32 2	CPU    	msec:  5.456	GF/s:  41.52	GB/s:  55.35
+ 1048576	 32 2	GPU5   	msec:  0.571	GF/s: 396.37	GB/s: 528.50
+ 1048576	 32 2	GPU6   	msec:  0.562	GF/s: 403.21	GB/s: 537.62
+ 1048576	 32 2	GPU7   	msec:  0.562	GF/s: 403.08	GB/s: 537.45
+ 1048576	 32 2	CPU    	msec:  5.487	GF/s:  41.28	GB/s:  55.04
+ 1048576	 64 1	CPU    	msec:  5.034	GF/s:  44.99	GB/s:  59.99
+ 1048576	 64 1	GPU5   	msec:  0.606	GF/s: 373.61	GB/s: 498.15
+ 1048576	 64 1	GPU6   	msec:  0.609	GF/s: 371.79	GB/s: 495.73
+ 1048576	 64 1	GPU7   	msec:  0.609	GF/s: 371.95	GB/s: 495.94
+ 1048576	 64 1	CPU    	msec:  5.072	GF/s:  44.65	GB/s:  59.54
+ 1048576	 64 2	CPU    	msec:  5.070	GF/s:  44.67	GB/s:  59.56
+ 1048576	 64 2	GPU5   	msec:  0.572	GF/s: 395.84	GB/s: 527.78
+ 1048576	 64 2	GPU6   	msec:  0.562	GF/s: 403.25	GB/s: 537.66
+ 1048576	 64 2	GPU7   	msec:  0.562	GF/s: 403.14	GB/s: 537.52
+ 1048576	 64 2	CPU    	msec:  4.992	GF/s:  45.37	GB/s:  60.49
+ 1048576	128 1	CPU    	msec:  5.613	GF/s:  40.35	GB/s:  53.80
+ 1048576	128 1	GPU5   	msec:  0.598	GF/s: 378.82	GB/s: 505.09
+ 1048576	128 1	GPU6   	msec:  0.601	GF/s: 376.68	GB/s: 502.24
+ 1048576	128 1	GPU7   	msec:  0.605	GF/s: 374.23	GB/s: 498.98
+ 1048576	128 1	CPU    	msec:  5.688	GF/s:  39.82	GB/s:  53.09
+ 1048576	128 2	CPU    	msec:  5.435	GF/s:  41.67	GB/s:  55.56
+ 1048576	128 2	GPU5   	msec:  0.563	GF/s: 402.20	GB/s: 536.26
+ 1048576	128 2	GPU6   	msec:  0.560	GF/s: 404.60	GB/s: 539.47
+ 1048576	128 2	GPU7   	msec:  0.561	GF/s: 403.80	GB/s: 538.40
+ 1048576	128 2	CPU    	msec:  5.459	GF/s:  41.49	GB/s:  55.32
+ 2097152	  8 1	CPU    	msec: 13.066	GF/s:  34.67	GB/s:  46.23
+ 2097152	  8 1	GPU5   	msec:  1.883	GF/s: 240.60	GB/s: 320.80
+ 2097152	  8 1	GPU6   	msec:  1.922	GF/s: 235.68	GB/s: 314.24
+ 2097152	  8 1	GPU7   	msec:  1.910	GF/s: 237.17	GB/s: 316.22
+ 2097152	  8 1	CPU    	msec: 12.816	GF/s:  35.35	GB/s:  47.13
+ 2097152	  8 2	CPU    	msec: 14.581	GF/s:  31.07	GB/s:  41.42
+ 2097152	  8 2	GPU5   	msec:  1.481	GF/s: 305.93	GB/s: 407.91
+ 2097152	  8 2	GPU6   	msec:  1.440	GF/s: 314.63	GB/s: 419.51
+ 2097152	  8 2	GPU7   	msec:  1.430	GF/s: 316.69	GB/s: 422.25
+ 2097152	  8 2	CPU    	msec: 15.028	GF/s:  30.14	GB/s:  40.19
+ 2097152	 16 1	CPU    	msec: 13.565	GF/s:  33.39	GB/s:  44.53
+ 2097152	 16 1	GPU5   	msec:  1.188	GF/s: 381.32	GB/s: 508.43
+ 2097152	 16 1	GPU6   	msec:  1.197	GF/s: 378.37	GB/s: 504.49
+ 2097152	 16 1	GPU7   	msec:  1.196	GF/s: 378.64	GB/s: 504.85
+ 2097152	 16 1	CPU    	msec: 13.660	GF/s:  33.16	GB/s:  44.21
+ 2097152	 16 2	CPU    	msec: 14.953	GF/s:  30.29	GB/s:  40.39
+ 2097152	 16 2	GPU5   	msec:  1.127	GF/s: 401.97	GB/s: 535.96
+ 2097152	 16 2	GPU6   	msec:  1.126	GF/s: 402.35	GB/s: 536.46
+ 2097152	 16 2	GPU7   	msec:  1.125	GF/s: 402.51	GB/s: 536.68
+ 2097152	 16 2	CPU    	msec: 15.087	GF/s:  30.03	GB/s:  40.03
+ 2097152	 32 1	CPU    	msec: 11.854	GF/s:  38.21	GB/s:  50.95
+ 2097152	 32 1	GPU5   	msec:  1.166	GF/s: 388.55	GB/s: 518.07
+ 2097152	 32 1	GPU6   	msec:  1.177	GF/s: 384.89	GB/s: 513.19
+ 2097152	 32 1	GPU7   	msec:  1.179	GF/s: 384.34	GB/s: 512.45
+ 2097152	 32 1	CPU    	msec: 11.797	GF/s:  38.40	GB/s:  51.20
+ 2097152	 32 2	CPU    	msec: 11.674	GF/s:  38.80	GB/s:  51.74
+ 2097152	 32 2	GPU5   	msec:  1.103	GF/s: 410.80	GB/s: 547.73
+ 2097152	 32 2	GPU6   	msec:  1.101	GF/s: 411.37	GB/s: 548.50
+ 2097152	 32 2	GPU7   	msec:  1.101	GF/s: 411.42	GB/s: 548.57
+ 2097152	 32 2	CPU    	msec: 11.702	GF/s:  38.71	GB/s:  51.61
+ 2097152	 64 1	CPU    	msec: 10.036	GF/s:  45.13	GB/s:  60.18
+ 2097152	 64 1	GPU5   	msec:  1.133	GF/s: 399.90	GB/s: 533.20
+ 2097152	 64 1	GPU6   	msec:  1.138	GF/s: 398.19	GB/s: 530.92
+ 2097152	 64 1	GPU7   	msec:  1.137	GF/s: 398.30	GB/s: 531.07
+ 2097152	 64 1	CPU    	msec: 10.241	GF/s:  44.23	GB/s:  58.98
+ 2097152	 64 2	CPU    	msec: 10.367	GF/s:  43.69	GB/s:  58.26
+ 2097152	 64 2	GPU5   	msec:  1.129	GF/s: 401.28	GB/s: 535.04
+ 2097152	 64 2	GPU6   	msec:  1.128	GF/s: 401.60	GB/s: 535.47
+ 2097152	 64 2	GPU7   	msec:  1.128	GF/s: 401.73	GB/s: 535.64
+ 2097152	 64 2	CPU    	msec: 10.346	GF/s:  43.78	GB/s:  58.38
+ 2097152	128 1	CPU    	msec: 11.407	GF/s:  39.71	GB/s:  52.95
+ 2097152	128 1	GPU5   	msec:  1.152	GF/s: 393.26	GB/s: 524.35
+ 2097152	128 1	GPU6   	msec:  1.159	GF/s: 390.80	GB/s: 521.07
+ 2097152	128 1	GPU7   	msec:  1.158	GF/s: 391.14	GB/s: 521.52
+ 2097152	128 1	CPU    	msec: 11.509	GF/s:  39.36	GB/s:  52.48
+ 2097152	128 2	CPU    	msec: 10.958	GF/s:  41.34	GB/s:  55.12
+ 2097152	128 2	GPU5   	msec:  1.099	GF/s: 412.18	GB/s: 549.58
+ 2097152	128 2	GPU6   	msec:  1.098	GF/s: 412.64	GB/s: 550.18
+ 2097152	128 2	GPU7   	msec:  1.099	GF/s: 412.07	GB/s: 549.43
+ 2097152	128 2	CPU    	msec: 10.767	GF/s:  42.07	GB/s:  56.10
+ 4194304	  8 1	CPU    	msec: 25.285	GF/s:  35.83	GB/s:  47.77
+ 4194304	  8 1	GPU5   	msec:  3.757	GF/s: 241.13	GB/s: 321.51
+ 4194304	  8 1	GPU6   	msec:  3.818	GF/s: 237.27	GB/s: 316.36
+ 4194304	  8 1	GPU7   	msec:  3.794	GF/s: 238.76	GB/s: 318.35
+ 4194304	  8 1	CPU    	msec: 25.656	GF/s:  35.31	GB/s:  47.08
+ 4194304	  8 2	CPU    	msec: 27.673	GF/s:  32.74	GB/s:  43.65
+ 4194304	  8 2	GPU5   	msec:  2.886	GF/s: 313.89	GB/s: 418.52
+ 4194304	  8 2	GPU6   	msec:  2.811	GF/s: 322.32	GB/s: 429.76
+ 4194304	  8 2	GPU7   	msec:  2.801	GF/s: 323.49	GB/s: 431.32
+ 4194304	  8 2	CPU    	msec: 27.750	GF/s:  32.65	GB/s:  43.53
+ 4194304	 16 1	CPU    	msec: 24.704	GF/s:  36.67	GB/s:  48.90
+ 4194304	 16 1	GPU5   	msec:  2.320	GF/s: 390.56	GB/s: 520.74
+ 4194304	 16 1	GPU6   	msec:  2.344	GF/s: 386.53	GB/s: 515.37
+ 4194304	 16 1	GPU7   	msec:  2.342	GF/s: 386.79	GB/s: 515.72
+ 4194304	 16 1	CPU    	msec: 24.211	GF/s:  37.42	GB/s:  49.89
+ 4194304	 16 2	CPU    	msec: 22.753	GF/s:  39.82	GB/s:  53.09
+ 4194304	 16 2	GPU5   	msec:  2.174	GF/s: 416.74	GB/s: 555.65
+ 4194304	 16 2	GPU6   	msec:  2.171	GF/s: 417.33	GB/s: 556.44
+ 4194304	 16 2	GPU7   	msec:  2.170	GF/s: 417.45	GB/s: 556.60
+ 4194304	 16 2	CPU    	msec: 22.766	GF/s:  39.80	GB/s:  53.06
+ 4194304	 32 1	CPU    	msec: 21.654	GF/s:  41.84	GB/s:  55.78
+ 4194304	 32 1	GPU5   	msec:  2.291	GF/s: 395.39	GB/s: 527.19
+ 4194304	 32 1	GPU6   	msec:  2.306	GF/s: 392.86	GB/s: 523.81
+ 4194304	 32 1	GPU7   	msec:  2.303	GF/s: 393.38	GB/s: 524.50
+ 4194304	 32 1	CPU    	msec: 21.106	GF/s:  42.92	GB/s:  57.23
+ 4194304	 32 2	CPU    	msec: 21.729	GF/s:  41.69	GB/s:  55.59
+ 4194304	 32 2	GPU5   	msec:  2.213	GF/s: 409.32	GB/s: 545.76
+ 4194304	 32 2	GPU6   	msec:  2.209	GF/s: 410.20	GB/s: 546.93
+ 4194304	 32 2	GPU7   	msec:  2.208	GF/s: 410.28	GB/s: 547.04
+ 4194304	 32 2	CPU    	msec: 21.790	GF/s:  41.58	GB/s:  55.44
+ 4194304	 64 1	CPU    	msec: 20.130	GF/s:  45.01	GB/s:  60.01
+ 4194304	 64 1	GPU5   	msec:  2.272	GF/s: 398.70	GB/s: 531.59
+ 4194304	 64 1	GPU6   	msec:  2.284	GF/s: 396.62	GB/s: 528.83
+ 4194304	 64 1	GPU7   	msec:  2.283	GF/s: 396.92	GB/s: 529.22
+ 4194304	 64 1	CPU    	msec: 20.428	GF/s:  44.35	GB/s:  59.13
+ 4194304	 64 2	CPU    	msec: 20.385	GF/s:  44.44	GB/s:  59.26
+ 4194304	 64 2	GPU5   	msec:  2.182	GF/s: 415.16	GB/s: 553.55
+ 4194304	 64 2	GPU6   	msec:  2.179	GF/s: 415.72	GB/s: 554.29
+ 4194304	 64 2	GPU7   	msec:  2.179	GF/s: 415.73	GB/s: 554.31
+ 4194304	 64 2	CPU    	msec: 20.251	GF/s:  44.74	GB/s:  59.65
+ 4194304	128 1	CPU    	msec: 22.441	GF/s:  40.37	GB/s:  53.83
+ 4194304	128 1	GPU5   	msec:  2.270	GF/s: 399.07	GB/s: 532.10
+ 4194304	128 1	GPU6   	msec:  2.284	GF/s: 396.60	GB/s: 528.80
+ 4194304	128 1	GPU7   	msec:  2.304	GF/s: 393.30	GB/s: 524.40
+ 4194304	128 1	CPU    	msec: 22.717	GF/s:  39.88	GB/s:  53.17
+ 4194304	128 2	CPU    	msec: 21.850	GF/s:  41.46	GB/s:  55.28
+ 4194304	128 2	GPU5   	msec:  2.234	GF/s: 405.47	GB/s: 540.63
+ 4194304	128 2	GPU6   	msec:  2.231	GF/s: 406.02	GB/s: 541.36
+ 4194304	128 2	GPU7   	msec:  2.234	GF/s: 405.50	GB/s: 540.67
+ 4194304	128 2	CPU    	msec: 21.861	GF/s:  41.44	GB/s:  55.26
+ 8388608	  8 1	CPU    	msec: 48.632	GF/s:  37.26	GB/s:  49.68
+ 8388608	  8 1	GPU5   	msec:  7.524	GF/s: 240.83	GB/s: 321.11
+ 8388608	  8 1	GPU6   	msec:  7.569	GF/s: 239.39	GB/s: 319.19
+ 8388608	  8 1	GPU7   	msec:  7.526	GF/s: 240.76	GB/s: 321.01
+ 8388608	  8 1	CPU    	msec: 48.900	GF/s:  37.05	GB/s:  49.41
+ 8388608	  8 2	CPU    	msec: 51.941	GF/s:  34.88	GB/s:  46.51
+ 8388608	  8 2	GPU5   	msec:  5.790	GF/s: 312.94	GB/s: 417.25
+ 8388608	  8 2	GPU6   	msec:  5.657	GF/s: 320.28	GB/s: 427.04
+ 8388608	  8 2	GPU7   	msec:  5.634	GF/s: 321.63	GB/s: 428.84
+ 8388608	  8 2	CPU    	msec: 53.986	GF/s:  33.56	GB/s:  44.75
+ 8388608	 16 1	CPU    	msec: 46.847	GF/s:  38.68	GB/s:  51.57
+ 8388608	 16 1	GPU5   	msec:  4.604	GF/s: 393.55	GB/s: 524.73
  8388608	 16 1	GPU6   	msec:  4.643	GF/s: 390.27	GB/s: 520.36
- 8388608	 16 1	GPU7   	msec:  4.634	GF/s: 390.97	GB/s: 521.29
- 8388608	 16 1	CPU    	msec: 47.887	GF/s:  37.84	GB/s:  50.45
- 8388608	 16 2	CPU    	msec: 48.129	GF/s:  37.65	GB/s:  50.20
- 8388608	 16 2	GPU5   	msec:  4.530	GF/s: 399.98	GB/s: 533.31
- 8388608	 16 2	GPU6   	msec:  4.631	GF/s: 391.29	GB/s: 521.73
- 8388608	 16 2	GPU7   	msec:  4.611	GF/s: 392.97	GB/s: 523.96
- 8388608	 16 2	CPU    	msec: 46.895	GF/s:  38.64	GB/s:  51.52
- 8388608	 32 1	CPU    	msec: 44.527	GF/s:  40.69	GB/s:  54.26
- 8388608	 32 1	GPU5   	msec:  4.533	GF/s: 399.70	GB/s: 532.94
- 8388608	 32 1	GPU6   	msec:  4.563	GF/s: 397.12	GB/s: 529.49
- 8388608	 32 1	GPU7   	msec:  4.556	GF/s: 397.71	GB/s: 530.29
- 8388608	 32 1	CPU    	msec: 44.898	GF/s:  40.36	GB/s:  53.81
- 8388608	 32 2	CPU    	msec: 44.839	GF/s:  40.41	GB/s:  53.88
- 8388608	 32 2	GPU5   	msec:  4.507	GF/s: 402.06	GB/s: 536.08
- 8388608	 32 2	GPU6   	msec:  4.622	GF/s: 392.04	GB/s: 522.72
- 8388608	 32 2	GPU7   	msec:  4.626	GF/s: 391.68	GB/s: 522.24
- 8388608	 32 2	CPU    	msec: 45.219	GF/s:  40.07	GB/s:  53.43
- 8388608	 64 1	CPU    	msec: 42.359	GF/s:  42.78	GB/s:  57.03
- 8388608	 64 1	GPU5   	msec:  4.460	GF/s: 406.25	GB/s: 541.67
- 8388608	 64 1	GPU6   	msec:  4.485	GF/s: 403.96	GB/s: 538.61
- 8388608	 64 1	GPU7   	msec:  4.501	GF/s: 402.54	GB/s: 536.72
- 8388608	 64 1	CPU    	msec: 41.669	GF/s:  43.48	GB/s:  57.98
- 8388608	 64 2	CPU    	msec: 42.756	GF/s:  42.38	GB/s:  56.51
- 8388608	 64 2	GPU5   	msec:  4.496	GF/s: 403.01	GB/s: 537.35
- 8388608	 64 2	GPU6   	msec:  4.595	GF/s: 394.33	GB/s: 525.77
- 8388608	 64 2	GPU7   	msec:  4.574	GF/s: 396.12	GB/s: 528.16
- 8388608	 64 2	CPU    	msec: 43.267	GF/s:  41.88	GB/s:  55.84
- 8388608	128 1	CPU    	msec: 85.375	GF/s:  21.22	GB/s:  28.30
- 8388608	128 1	GPU5   	msec:  4.453	GF/s: 406.88	GB/s: 542.50
- 8388608	128 1	GPU6   	msec:  4.481	GF/s: 404.40	GB/s: 539.21
- 8388608	128 1	GPU7   	msec:  4.494	GF/s: 403.16	GB/s: 537.55
- 8388608	128 1	CPU    	msec: 84.567	GF/s:  21.43	GB/s:  28.57
- 8388608	128 2	CPU    	msec: 86.488	GF/s:  20.95	GB/s:  27.93
- 8388608	128 2	GPU5   	msec:  4.448	GF/s: 407.35	GB/s: 543.14
- 8388608	128 2	GPU6   	msec:  4.547	GF/s: 398.49	GB/s: 531.32
- 8388608	128 2	GPU7   	msec:  4.577	GF/s: 395.86	GB/s: 527.82
- 8388608	128 2	CPU    	msec: 86.409	GF/s:  20.97	GB/s:  27.96
-16777216	  4 1	CPU    	msec: 118.143	GF/s:  30.67	GB/s:  40.90
-16777216	  4 1	GPU5   	msec: 15.507	GF/s: 233.70	GB/s: 311.60
-16777216	  4 1	GPU6   	msec: 17.094	GF/s: 211.99	GB/s: 282.66
-16777216	  4 1	GPU7   	msec: 16.893	GF/s: 214.52	GB/s: 286.02
-16777216	  4 1	CPU    	msec: 162.052	GF/s:  22.36	GB/s:  29.82
-16777216	  4 2	CPU    	msec: 150.371	GF/s:  24.10	GB/s:  32.13
-16777216	  4 2	GPU5   	msec: 12.133	GF/s: 298.68	GB/s: 398.25
-16777216	  4 2	GPU6   	msec: 14.533	GF/s: 249.36	GB/s: 332.48
-16777216	  4 2	GPU7   	msec: 14.275	GF/s: 253.86	GB/s: 338.48
-16777216	  4 2	CPU    	msec: 148.536	GF/s:  24.40	GB/s:  32.53
-16777216	  8 1	CPU    	msec: 110.322	GF/s:  32.85	GB/s:  43.80
-16777216	  8 1	GPU5   	msec: 15.252	GF/s: 237.59	GB/s: 316.79
-16777216	  8 1	GPU6   	msec: 15.149	GF/s: 239.22	GB/s: 318.96
-16777216	  8 1	GPU7   	msec: 15.060	GF/s: 240.62	GB/s: 320.83
-16777216	  8 1	CPU    	msec: 108.874	GF/s:  33.29	GB/s:  44.38
-16777216	  8 2	CPU    	msec: 125.429	GF/s:  28.89	GB/s:  38.52
-16777216	  8 2	GPU5   	msec: 10.590	GF/s: 342.21	GB/s: 456.28
-16777216	  8 2	GPU6   	msec: 10.491	GF/s: 345.43	GB/s: 460.57
-16777216	  8 2	GPU7   	msec: 10.451	GF/s: 346.75	GB/s: 462.33
-16777216	  8 2	CPU    	msec: 118.684	GF/s:  30.53	GB/s:  40.71
-16777216	 16 1	CPU    	msec: 91.997	GF/s:  39.39	GB/s:  52.52
-16777216	 16 1	GPU5   	msec:  9.165	GF/s: 395.40	GB/s: 527.20
-16777216	 16 1	GPU6   	msec:  9.242	GF/s: 392.10	GB/s: 522.81
-16777216	 16 1	GPU7   	msec:  9.231	GF/s: 392.56	GB/s: 523.41
-16777216	 16 1	CPU    	msec: 97.930	GF/s:  37.00	GB/s:  49.34
-16777216	 16 2	CPU    	msec: 95.565	GF/s:  37.92	GB/s:  50.56
-16777216	 16 2	GPU5   	msec:  9.018	GF/s: 401.85	GB/s: 535.81
-16777216	 16 2	GPU6   	msec:  9.236	GF/s: 392.35	GB/s: 523.13
-16777216	 16 2	GPU7   	msec:  9.193	GF/s: 394.20	GB/s: 525.59
-16777216	 16 2	CPU    	msec: 94.005	GF/s:  38.55	GB/s:  51.40
-16777216	 32 1	CPU    	msec: 89.899	GF/s:  40.31	GB/s:  53.75
-16777216	 32 1	GPU5   	msec:  9.023	GF/s: 401.64	GB/s: 535.53
-16777216	 32 1	GPU6   	msec:  9.094	GF/s: 398.50	GB/s: 531.34
-16777216	 32 1	GPU7   	msec:  9.090	GF/s: 398.65	GB/s: 531.53
-16777216	 32 1	CPU    	msec: 88.694	GF/s:  40.86	GB/s:  54.48
-16777216	 32 2	CPU    	msec: 89.018	GF/s:  40.71	GB/s:  54.28
-16777216	 32 2	GPU5   	msec:  9.041	GF/s: 400.84	GB/s: 534.46
-16777216	 32 2	GPU6   	msec:  9.276	GF/s: 390.66	GB/s: 520.87
-16777216	 32 2	GPU7   	msec:  9.239	GF/s: 392.25	GB/s: 523.00
-16777216	 32 2	CPU    	msec: 90.967	GF/s:  39.84	GB/s:  53.12
-16777216	 64 1	CPU    	msec: 86.952	GF/s:  41.68	GB/s:  55.57
-16777216	 64 1	GPU5   	msec:  8.923	GF/s: 406.15	GB/s: 541.53
-16777216	 64 1	GPU6   	msec:  8.976	GF/s: 403.75	GB/s: 538.33
-16777216	 64 1	GPU7   	msec:  8.966	GF/s: 404.16	GB/s: 538.89
-16777216	 64 1	CPU    	msec: 84.303	GF/s:  42.99	GB/s:  57.32
-16777216	 64 2	CPU    	msec: 87.403	GF/s:  41.46	GB/s:  55.28
-16777216	 64 2	GPU5   	msec:  9.006	GF/s: 402.38	GB/s: 536.50
-16777216	 64 2	GPU6   	msec:  9.191	GF/s: 394.30	GB/s: 525.74
-16777216	 64 2	GPU7   	msec:  9.148	GF/s: 396.15	GB/s: 528.20
-16777216	 64 2	CPU    	msec: 87.479	GF/s:  41.43	GB/s:  55.23
-16777216	128 1	CPU    	msec: 168.957	GF/s:  21.45	GB/s:  28.60
-16777216	128 1	GPU5   	msec:  8.887	GF/s: 407.77	GB/s: 543.69
-16777216	128 1	GPU6   	msec:  8.942	GF/s: 405.29	GB/s: 540.38
-16777216	128 1	GPU7   	msec:  8.928	GF/s: 405.92	GB/s: 541.22
-16777216	128 1	CPU    	msec: 170.435	GF/s:  21.26	GB/s:  28.35
-16777216	128 2	CPU    	msec: 173.600	GF/s:  20.87	GB/s:  27.83
-16777216	128 2	GPU5   	msec:  8.893	GF/s: 407.51	GB/s: 543.35
-16777216	128 2	GPU6   	msec:  9.099	GF/s: 398.26	GB/s: 531.02
-16777216	128 2	GPU7   	msec:  9.158	GF/s: 395.69	GB/s: 527.59
-16777216	128 2	CPU    	msec: 173.479	GF/s:  20.89	GB/s:  27.85
-33554432	  4 1	CPU    	msec: 226.315	GF/s:  32.03	GB/s:  42.70
-33554432	  4 1	GPU5   	msec: 31.484	GF/s: 230.20	GB/s: 306.94
-33554432	  4 1	GPU6   	msec: 34.159	GF/s: 212.18	GB/s: 282.91
-33554432	  4 1	GPU7   	msec: 33.757	GF/s: 214.71	GB/s: 286.27
-33554432	  4 1	CPU    	msec: 260.127	GF/s:  27.86	GB/s:  37.15
-33554432	  4 2	CPU    	msec: 351.053	GF/s:  20.65	GB/s:  27.53
-33554432	  4 2	GPU5   	msec: 24.304	GF/s: 298.21	GB/s: 397.61
-33554432	  4 2	GPU6   	msec: 29.074	GF/s: 249.28	GB/s: 332.38
-33554432	  4 2	GPU7   	msec: 28.551	GF/s: 253.85	GB/s: 338.47
-33554432	  4 2	CPU    	msec: 300.732	GF/s:  24.10	GB/s:  32.13
-33554432	  8 1	CPU    	msec: 215.932	GF/s:  33.57	GB/s:  44.75
-33554432	  8 1	GPU5   	msec: 30.816	GF/s: 235.19	GB/s: 313.59
-33554432	  8 1	GPU6   	msec: 30.262	GF/s: 239.50	GB/s: 319.33
-33554432	  8 1	GPU7   	msec: 30.087	GF/s: 240.90	GB/s: 321.19
-33554432	  8 1	CPU    	msec: 204.906	GF/s:  35.37	GB/s:  47.16
-33554432	  8 2	CPU    	msec: 257.348	GF/s:  28.16	GB/s:  37.55
-33554432	  8 2	GPU5   	msec: 21.208	GF/s: 341.74	GB/s: 455.65
-33554432	  8 2	GPU6   	msec: 20.903	GF/s: 346.73	GB/s: 462.31
-33554432	  8 2	GPU7   	msec: 20.825	GF/s: 348.03	GB/s: 464.04
-33554432	  8 2	CPU    	msec: 275.844	GF/s:  26.27	GB/s:  35.03
-33554432	 16 1	CPU    	msec: 192.908	GF/s:  37.57	GB/s:  50.09
-33554432	 16 1	GPU5   	msec: 18.282	GF/s: 396.44	GB/s: 528.59
-33554432	 16 1	GPU6   	msec: 18.428	GF/s: 393.31	GB/s: 524.41
-33554432	 16 1	GPU7   	msec: 18.389	GF/s: 394.14	GB/s: 525.52
-33554432	 16 1	CPU    	msec: 183.767	GF/s:  39.44	GB/s:  52.59
-33554432	 16 2	CPU    	msec: 187.092	GF/s:  38.74	GB/s:  51.65
-33554432	 16 2	GPU5   	msec: 17.979	GF/s: 403.12	GB/s: 537.50
-33554432	 16 2	GPU6   	msec: 18.360	GF/s: 394.77	GB/s: 526.35
-33554432	 16 2	GPU7   	msec: 18.275	GF/s: 396.59	GB/s: 528.79
-33554432	 16 2	CPU    	msec: 204.021	GF/s:  35.52	GB/s:  47.37
-33554432	 32 1	CPU    	msec: 183.513	GF/s:  39.49	GB/s:  52.66
-33554432	 32 1	GPU5   	msec: 17.986	GF/s: 402.96	GB/s: 537.28
-33554432	 32 1	GPU6   	msec: 18.099	GF/s: 400.45	GB/s: 533.94
-33554432	 32 1	GPU7   	msec: 18.073	GF/s: 401.03	GB/s: 534.70
-33554432	 32 1	CPU    	msec: 182.555	GF/s:  39.70	GB/s:  52.94
-33554432	 32 2	CPU    	msec: 182.262	GF/s:  39.77	GB/s:  53.02
-33554432	 32 2	GPU5   	msec: 18.044	GF/s: 401.67	GB/s: 535.56
-33554432	 32 2	GPU6   	msec: 18.451	GF/s: 392.82	GB/s: 523.75
-33554432	 32 2	GPU7   	msec: 18.386	GF/s: 394.20	GB/s: 525.60
-33554432	 32 2	CPU    	msec: 176.483	GF/s:  41.07	GB/s:  54.76
-33554432	 64 1	CPU    	msec: 170.457	GF/s:  42.52	GB/s:  56.69
-33554432	 64 1	GPU5   	msec: 17.813	GF/s: 406.89	GB/s: 542.52
-33554432	 64 1	GPU6   	msec: 17.890	GF/s: 405.12	GB/s: 540.16
-33554432	 64 1	GPU7   	msec: 17.895	GF/s: 405.02	GB/s: 540.03
-33554432	 64 1	CPU    	msec: 165.493	GF/s:  43.79	GB/s:  58.39
-33554432	 64 2	CPU    	msec: 169.839	GF/s:  42.67	GB/s:  56.90
-33554432	 64 2	GPU5   	msec: 17.978	GF/s: 403.15	GB/s: 537.53
-33554432	 64 2	GPU6   	msec: 18.334	GF/s: 395.33	GB/s: 527.10
-33554432	 64 2	GPU7   	msec: 18.271	GF/s: 396.68	GB/s: 528.90
-33554432	 64 2	CPU    	msec: 172.032	GF/s:  42.13	GB/s:  56.17
-33554432	128 1	CPU    	msec: 337.597	GF/s:  21.47	GB/s:  28.62
-33554432	128 1	GPU5   	msec: 17.783	GF/s: 407.56	GB/s: 543.41
-33554432	128 1	GPU6   	msec: 17.910	GF/s: 404.67	GB/s: 539.56
-33554432	128 1	GPU7   	msec: 17.867	GF/s: 405.64	GB/s: 540.86
-33554432	128 1	CPU    	msec: 339.847	GF/s:  21.33	GB/s:  28.44
-33554432	128 2	CPU    	msec: 346.719	GF/s:  20.90	GB/s:  27.87
-33554432	128 2	GPU5   	msec: 17.793	GF/s: 407.33	GB/s: 543.11
-33554432	128 2	GPU6   	msec: 18.171	GF/s: 398.87	GB/s: 531.82
-33554432	128 2	GPU7   	msec: 18.291	GF/s: 396.25	GB/s: 528.33
-33554432	128 2	CPU    	msec: 346.542	GF/s:  20.91	GB/s:  27.89
-67108864	  4 1	CPU    	msec: 536.953	GF/s:  27.00	GB/s:  35.99
-67108864	  4 1	GPU5   	msec: 64.470	GF/s: 224.84	GB/s: 299.79
-67108864	  4 1	GPU6   	msec: 68.306	GF/s: 212.22	GB/s: 282.95
-67108864	  4 1	GPU7   	msec: 67.501	GF/s: 214.75	GB/s: 286.33
-67108864	  4 1	CPU    	msec: 579.146	GF/s:  25.03	GB/s:  33.37
-67108864	  4 2	CPU    	msec: 586.467	GF/s:  24.72	GB/s:  32.96
-67108864	  4 2	GPU5   	msec: 49.059	GF/s: 295.47	GB/s: 393.96
-67108864	  4 2	GPU6   	msec: 58.027	GF/s: 249.81	GB/s: 333.07
-67108864	  4 2	GPU7   	msec: 56.975	GF/s: 254.42	GB/s: 339.22
-67108864	  4 2	CPU    	msec: 638.913	GF/s:  22.69	GB/s:  30.25
-67108864	  8 1	CPU    	msec: 461.766	GF/s:  31.39	GB/s:  41.86
-67108864	  8 1	GPU5   	msec: 62.060	GF/s: 233.57	GB/s: 311.43
-67108864	  8 1	GPU6   	msec: 60.476	GF/s: 239.69	GB/s: 319.59
-67108864	  8 1	GPU7   	msec: 60.130	GF/s: 241.07	GB/s: 321.43
-67108864	  8 1	CPU    	msec: 461.763	GF/s:  31.39	GB/s:  41.86
-67108864	  8 2	CPU    	msec: 536.645	GF/s:  27.01	GB/s:  36.02
-67108864	  8 2	GPU5   	msec: 42.624	GF/s: 340.08	GB/s: 453.44
-67108864	  8 2	GPU6   	msec: 41.791	GF/s: 346.86	GB/s: 462.47
-67108864	  8 2	GPU7   	msec: 41.633	GF/s: 348.18	GB/s: 464.24
-67108864	  8 2	CPU    	msec: 549.068	GF/s:  26.40	GB/s:  35.20
-67108864	 16 1	CPU    	msec: 387.177	GF/s:  37.44	GB/s:  49.92
-67108864	 16 1	GPU5   	msec: 36.504	GF/s: 397.10	GB/s: 529.46
-67108864	 16 1	GPU6   	msec: 36.802	GF/s: 393.88	GB/s: 525.18
-67108864	 16 1	GPU7   	msec: 36.719	GF/s: 394.77	GB/s: 526.36
-67108864	 16 1	CPU    	msec: 366.102	GF/s:  39.59	GB/s:  52.79
-67108864	 16 2	CPU    	msec: 405.547	GF/s:  35.74	GB/s:  47.66
-67108864	 16 2	GPU5   	msec: 35.910	GF/s: 403.66	GB/s: 538.22
-67108864	 16 2	GPU6   	msec: 36.656	GF/s: 395.45	GB/s: 527.26
-67108864	 16 2	GPU7   	msec: 36.487	GF/s: 397.28	GB/s: 529.70
-67108864	 16 2	CPU    	msec: 394.496	GF/s:  36.74	GB/s:  48.99
-67108864	 32 1	CPU    	msec: 375.731	GF/s:  38.58	GB/s:  51.44
-67108864	 32 1	GPU5   	msec: 35.956	GF/s: 403.15	GB/s: 537.53
-67108864	 32 1	GPU6   	msec: 36.187	GF/s: 400.57	GB/s: 534.10
-67108864	 32 1	GPU7   	msec: 36.127	GF/s: 401.24	GB/s: 534.98
-67108864	 32 1	CPU    	msec: 380.023	GF/s:  38.14	GB/s:  50.86
-67108864	 32 2	CPU    	msec: 368.871	GF/s:  39.30	GB/s:  52.40
-67108864	 32 2	GPU5   	msec: 35.966	GF/s: 403.03	GB/s: 537.37
-67108864	 32 2	GPU6   	msec: 36.835	GF/s: 393.53	GB/s: 524.71
-67108864	 32 2	GPU7   	msec: 36.672	GF/s: 395.27	GB/s: 527.03
-67108864	 32 2	CPU    	msec: 368.745	GF/s:  39.31	GB/s:  52.41
-67108864	 64 1	CPU    	msec: 341.555	GF/s:  42.44	GB/s:  56.59
-67108864	 64 1	GPU5   	msec: 35.538	GF/s: 407.88	GB/s: 543.85
+ 8388608	 16 1	GPU7   	msec:  4.634	GF/s: 391.03	GB/s: 521.38
+ 8388608	 16 1	CPU    	msec: 46.657	GF/s:  38.83	GB/s:  51.78
+ 8388608	 16 2	CPU    	msec: 46.483	GF/s:  38.98	GB/s:  51.97
+ 8388608	 16 2	GPU5   	msec:  4.336	GF/s: 417.88	GB/s: 557.17
+ 8388608	 16 2	GPU6   	msec:  4.321	GF/s: 419.30	GB/s: 559.07
+ 8388608	 16 2	GPU7   	msec:  4.344	GF/s: 417.14	GB/s: 556.18
+ 8388608	 16 2	CPU    	msec: 49.249	GF/s:  36.79	GB/s:  49.05
+ 8388608	 32 1	CPU    	msec: 43.676	GF/s:  41.49	GB/s:  55.31
+ 8388608	 32 1	GPU5   	msec:  4.550	GF/s: 398.20	GB/s: 530.93
+ 8388608	 32 1	GPU6   	msec:  4.570	GF/s: 396.47	GB/s: 528.62
+ 8388608	 32 1	GPU7   	msec:  4.576	GF/s: 395.93	GB/s: 527.90
+ 8388608	 32 1	CPU    	msec: 44.636	GF/s:  40.59	GB/s:  54.12
+ 8388608	 32 2	CPU    	msec: 43.362	GF/s:  41.79	GB/s:  55.72
+ 8388608	 32 2	GPU5   	msec:  4.370	GF/s: 414.66	GB/s: 552.88
+ 8388608	 32 2	GPU6   	msec:  4.367	GF/s: 414.91	GB/s: 553.21
+ 8388608	 32 2	GPU7   	msec:  4.368	GF/s: 414.82	GB/s: 553.09
+ 8388608	 32 2	CPU    	msec: 45.390	GF/s:  39.92	GB/s:  53.23
+ 8388608	 64 1	CPU    	msec: 41.334	GF/s:  43.84	GB/s:  58.45
+ 8388608	 64 1	GPU5   	msec:  4.460	GF/s: 406.26	GB/s: 541.67
+ 8388608	 64 1	GPU6   	msec:  4.513	GF/s: 401.48	GB/s: 535.30
+ 8388608	 64 1	GPU7   	msec:  4.510	GF/s: 401.75	GB/s: 535.67
+ 8388608	 64 1	CPU    	msec: 41.177	GF/s:  44.00	GB/s:  58.67
+ 8388608	 64 2	CPU    	msec: 41.320	GF/s:  43.85	GB/s:  58.47
+ 8388608	 64 2	GPU5   	msec:  4.370	GF/s: 414.60	GB/s: 552.80
+ 8388608	 64 2	GPU6   	msec:  4.361	GF/s: 415.48	GB/s: 553.97
+ 8388608	 64 2	GPU7   	msec:  4.360	GF/s: 415.55	GB/s: 554.06
+ 8388608	 64 2	CPU    	msec: 41.283	GF/s:  43.89	GB/s:  58.52
+ 8388608	128 1	CPU    	msec: 44.839	GF/s:  40.41	GB/s:  53.88
+ 8388608	128 1	GPU5   	msec:  4.482	GF/s: 404.27	GB/s: 539.02
+ 8388608	128 1	GPU6   	msec:  4.508	GF/s: 401.91	GB/s: 535.89
+ 8388608	128 1	GPU7   	msec:  4.502	GF/s: 402.49	GB/s: 536.65
+ 8388608	128 1	CPU    	msec: 44.941	GF/s:  40.32	GB/s:  53.76
+ 8388608	128 2	CPU    	msec: 43.461	GF/s:  41.69	GB/s:  55.59
+ 8388608	128 2	GPU5   	msec:  4.357	GF/s: 415.90	GB/s: 554.54
+ 8388608	128 2	GPU6   	msec:  4.347	GF/s: 416.83	GB/s: 555.77
+ 8388608	128 2	GPU7   	msec:  4.352	GF/s: 416.30	GB/s: 555.07
+ 8388608	128 2	CPU    	msec: 43.401	GF/s:  41.75	GB/s:  55.67
+16777216	  8 1	CPU    	msec: 101.293	GF/s:  35.78	GB/s:  47.70
+16777216	  8 1	GPU5   	msec: 15.252	GF/s: 237.60	GB/s: 316.79
+16777216	  8 1	GPU6   	msec: 15.147	GF/s: 239.25	GB/s: 318.99
+16777216	  8 1	GPU7   	msec: 15.061	GF/s: 240.61	GB/s: 320.82
+16777216	  8 1	CPU    	msec: 84.625	GF/s:  42.82	GB/s:  57.10
+16777216	  8 2	CPU    	msec: 106.966	GF/s:  33.88	GB/s:  45.17
+16777216	  8 2	GPU5   	msec: 11.543	GF/s: 313.94	GB/s: 418.59
+16777216	  8 2	GPU6   	msec: 11.335	GF/s: 319.72	GB/s: 426.29
+16777216	  8 2	GPU7   	msec: 11.265	GF/s: 321.70	GB/s: 428.94
+16777216	  8 2	CPU    	msec: 110.868	GF/s:  32.69	GB/s:  43.58
+16777216	 16 1	CPU    	msec: 92.295	GF/s:  39.26	GB/s:  52.35
+16777216	 16 1	GPU5   	msec:  9.161	GF/s: 395.59	GB/s: 527.45
+16777216	 16 1	GPU6   	msec:  9.239	GF/s: 392.23	GB/s: 522.97
+16777216	 16 1	GPU7   	msec:  9.218	GF/s: 393.12	GB/s: 524.16
+16777216	 16 1	CPU    	msec: 93.198	GF/s:  38.88	GB/s:  51.84
+16777216	 16 2	CPU    	msec: 94.887	GF/s:  38.19	GB/s:  50.92
+16777216	 16 2	GPU5   	msec:  8.627	GF/s: 420.05	GB/s: 560.07
+16777216	 16 2	GPU6   	msec:  8.606	GF/s: 421.08	GB/s: 561.44
+16777216	 16 2	GPU7   	msec:  8.623	GF/s: 420.26	GB/s: 560.35
+16777216	 16 2	CPU    	msec: 94.821	GF/s:  38.22	GB/s:  50.96
+16777216	 32 1	CPU    	msec: 87.181	GF/s:  41.57	GB/s:  55.42
+16777216	 32 1	GPU5   	msec:  9.049	GF/s: 400.48	GB/s: 533.98
+16777216	 32 1	GPU6   	msec:  9.114	GF/s: 397.62	GB/s: 530.16
+16777216	 32 1	GPU7   	msec:  9.101	GF/s: 398.19	GB/s: 530.92
+16777216	 32 1	CPU    	msec: 84.459	GF/s:  42.91	GB/s:  57.21
+16777216	 32 2	CPU    	msec: 85.870	GF/s:  42.20	GB/s:  56.27
+16777216	 32 2	GPU5   	msec:  8.739	GF/s: 414.68	GB/s: 552.90
+16777216	 32 2	GPU6   	msec:  8.724	GF/s: 415.40	GB/s: 553.87
+16777216	 32 2	GPU7   	msec:  8.721	GF/s: 415.53	GB/s: 554.04
+16777216	 32 2	CPU    	msec: 83.759	GF/s:  43.27	GB/s:  57.69
+16777216	 64 1	CPU    	msec: 80.100	GF/s:  45.24	GB/s:  60.32
+16777216	 64 1	GPU5   	msec:  8.930	GF/s: 405.81	GB/s: 541.08
+16777216	 64 1	GPU6   	msec:  9.015	GF/s: 402.00	GB/s: 535.99
+16777216	 64 1	GPU7   	msec:  9.007	GF/s: 402.34	GB/s: 536.45
+16777216	 64 1	CPU    	msec: 81.780	GF/s:  44.31	GB/s:  59.08
+16777216	 64 2	CPU    	msec: 78.940	GF/s:  45.91	GB/s:  61.21
+16777216	 64 2	GPU5   	msec:  8.718	GF/s: 415.67	GB/s: 554.22
+16777216	 64 2	GPU6   	msec:  8.709	GF/s: 416.09	GB/s: 554.79
+16777216	 64 2	GPU7   	msec:  8.709	GF/s: 416.12	GB/s: 554.82
+16777216	 64 2	CPU    	msec: 79.346	GF/s:  45.67	GB/s:  60.90
+16777216	128 1	CPU    	msec: 88.771	GF/s:  40.82	GB/s:  54.43
+16777216	128 1	GPU5   	msec:  8.915	GF/s: 406.48	GB/s: 541.98
+16777216	128 1	GPU6   	msec:  8.968	GF/s: 404.09	GB/s: 538.78
+16777216	128 1	GPU7   	msec:  8.954	GF/s: 404.72	GB/s: 539.62
+16777216	128 1	CPU    	msec: 89.095	GF/s:  40.67	GB/s:  54.23
+16777216	128 2	CPU    	msec: 85.856	GF/s:  42.21	GB/s:  56.28
+16777216	128 2	GPU5   	msec:  8.672	GF/s: 417.86	GB/s: 557.15
+16777216	128 2	GPU6   	msec:  8.653	GF/s: 418.82	GB/s: 558.43
+16777216	128 2	GPU7   	msec:  8.661	GF/s: 418.42	GB/s: 557.89
+16777216	128 2	CPU    	msec: 85.692	GF/s:  42.29	GB/s:  56.39
+33554432	  8 1	CPU    	msec: 187.790	GF/s:  38.60	GB/s:  51.46
+33554432	  8 1	GPU5   	msec: 30.837	GF/s: 235.03	GB/s: 313.38
+33554432	  8 1	GPU6   	msec: 30.283	GF/s: 239.33	GB/s: 319.11
+33554432	  8 1	GPU7   	msec: 30.110	GF/s: 240.71	GB/s: 320.94
+33554432	  8 1	CPU    	msec: 185.710	GF/s:  39.03	GB/s:  52.04
+33554432	  8 2	CPU    	msec: 229.940	GF/s:  31.52	GB/s:  42.03
+33554432	  8 2	GPU5   	msec: 23.031	GF/s: 314.69	GB/s: 419.59
+33554432	  8 2	GPU6   	msec: 22.641	GF/s: 320.12	GB/s: 426.82
+33554432	  8 2	GPU7   	msec: 22.477	GF/s: 322.45	GB/s: 429.94
+33554432	  8 2	CPU    	msec: 236.926	GF/s:  30.59	GB/s:  40.79
+33554432	 16 1	CPU    	msec: 198.511	GF/s:  36.51	GB/s:  48.68
+33554432	 16 1	GPU5   	msec: 18.263	GF/s: 396.86	GB/s: 529.15
+33554432	 16 1	GPU6   	msec: 18.421	GF/s: 393.45	GB/s: 524.60
+33554432	 16 1	GPU7   	msec: 18.383	GF/s: 394.27	GB/s: 525.70
+33554432	 16 1	CPU    	msec: 182.737	GF/s:  39.66	GB/s:  52.88
+33554432	 16 2	CPU    	msec: 193.922	GF/s:  37.37	GB/s:  49.83
+33554432	 16 2	GPU5   	msec: 17.255	GF/s: 420.03	GB/s: 560.04
+33554432	 16 2	GPU6   	msec: 17.214	GF/s: 421.05	GB/s: 561.40
+33554432	 16 2	GPU7   	msec: 17.212	GF/s: 421.09	GB/s: 561.46
+33554432	 16 2	CPU    	msec: 192.301	GF/s:  37.69	GB/s:  50.25
+33554432	 32 1	CPU    	msec: 174.008	GF/s:  41.65	GB/s:  55.54
+33554432	 32 1	GPU5   	msec: 17.983	GF/s: 403.03	GB/s: 537.37
+33554432	 32 1	GPU6   	msec: 18.096	GF/s: 400.52	GB/s: 534.03
+33554432	 32 1	GPU7   	msec: 18.069	GF/s: 401.12	GB/s: 534.83
+33554432	 32 1	CPU    	msec: 170.456	GF/s:  42.52	GB/s:  56.69
+33554432	 32 2	CPU    	msec: 175.024	GF/s:  41.41	GB/s:  55.21
+33554432	 32 2	GPU5   	msec: 17.320	GF/s: 418.47	GB/s: 557.96
+33554432	 32 2	GPU6   	msec: 17.294	GF/s: 419.08	GB/s: 558.78
+33554432	 32 2	GPU7   	msec: 17.307	GF/s: 418.77	GB/s: 558.36
+33554432	 32 2	CPU    	msec: 171.253	GF/s:  42.32	GB/s:  56.43
+33554432	 64 1	CPU    	msec: 161.187	GF/s:  44.96	GB/s:  59.95
+33554432	 64 1	GPU5   	msec: 17.796	GF/s: 407.28	GB/s: 543.04
+33554432	 64 1	GPU6   	msec: 17.901	GF/s: 404.88	GB/s: 539.84
+33554432	 64 1	GPU7   	msec: 17.882	GF/s: 405.30	GB/s: 540.40
+33554432	 64 1	CPU    	msec: 161.287	GF/s:  44.94	GB/s:  59.92
+33554432	 64 2	CPU    	msec: 161.331	GF/s:  44.92	GB/s:  59.90
+33554432	 64 2	GPU5   	msec: 17.324	GF/s: 418.35	GB/s: 557.81
+33554432	 64 2	GPU6   	msec: 17.287	GF/s: 419.27	GB/s: 559.02
+33554432	 64 2	GPU7   	msec: 17.285	GF/s: 419.32	GB/s: 559.09
+33554432	 64 2	CPU    	msec: 162.615	GF/s:  44.57	GB/s:  59.43
+33554432	128 1	CPU    	msec: 177.560	GF/s:  40.82	GB/s:  54.42
+33554432	128 1	GPU5   	msec: 17.802	GF/s: 407.12	GB/s: 542.83
+33554432	128 1	GPU6   	msec: 17.926	GF/s: 404.31	GB/s: 539.08
+33554432	128 1	GPU7   	msec: 17.897	GF/s: 404.97	GB/s: 539.96
+33554432	128 1	CPU    	msec: 180.462	GF/s:  40.16	GB/s:  53.55
+33554432	128 2	CPU    	msec: 170.574	GF/s:  42.49	GB/s:  56.65
+33554432	128 2	GPU5   	msec: 17.335	GF/s: 418.09	GB/s: 557.45
+33554432	128 2	GPU6   	msec: 17.291	GF/s: 419.15	GB/s: 558.87
+33554432	128 2	GPU7   	msec: 17.307	GF/s: 418.77	GB/s: 558.35
+33554432	128 2	CPU    	msec: 170.590	GF/s:  42.49	GB/s:  56.65
+67108864	  8 1	CPU    	msec: 375.758	GF/s:  38.58	GB/s:  51.44
+67108864	  8 1	GPU5   	msec: 62.051	GF/s: 233.61	GB/s: 311.47
+67108864	  8 1	GPU6   	msec: 60.479	GF/s: 239.68	GB/s: 319.57
+67108864	  8 1	GPU7   	msec: 60.127	GF/s: 241.08	GB/s: 321.44
+67108864	  8 1	CPU    	msec: 397.752	GF/s:  36.44	GB/s:  48.59
+67108864	  8 2	CPU    	msec: 465.714	GF/s:  31.13	GB/s:  41.50
+67108864	  8 2	GPU5   	msec: 46.012	GF/s: 315.03	GB/s: 420.05
+67108864	  8 2	GPU6   	msec: 45.275	GF/s: 320.16	GB/s: 426.89
+67108864	  8 2	GPU7   	msec: 44.863	GF/s: 323.11	GB/s: 430.81
+67108864	  8 2	CPU    	msec: 453.491	GF/s:  31.96	GB/s:  42.62
+67108864	 16 1	CPU    	msec: 383.180	GF/s:  37.83	GB/s:  50.44
+67108864	 16 1	GPU5   	msec: 36.500	GF/s: 397.14	GB/s: 529.52
+67108864	 16 1	GPU6   	msec: 36.802	GF/s: 393.88	GB/s: 525.17
+67108864	 16 1	GPU7   	msec: 36.721	GF/s: 394.75	GB/s: 526.34
+67108864	 16 1	CPU    	msec: 383.839	GF/s:  37.76	GB/s:  50.35
+67108864	 16 2	CPU    	msec: 388.767	GF/s:  37.29	GB/s:  49.71
+67108864	 16 2	GPU5   	msec: 34.472	GF/s: 420.50	GB/s: 560.66
+67108864	 16 2	GPU6   	msec: 34.378	GF/s: 421.65	GB/s: 562.21
+67108864	 16 2	GPU7   	msec: 34.375	GF/s: 421.69	GB/s: 562.25
+67108864	 16 2	CPU    	msec: 380.355	GF/s:  38.11	GB/s:  50.81
+67108864	 32 1	CPU    	msec: 343.438	GF/s:  42.21	GB/s:  56.28
+67108864	 32 1	GPU5   	msec: 35.921	GF/s: 403.54	GB/s: 538.05
+67108864	 32 1	GPU6   	msec: 36.146	GF/s: 401.03	GB/s: 534.70
+67108864	 32 1	GPU7   	msec: 36.091	GF/s: 401.64	GB/s: 535.52
+67108864	 32 1	CPU    	msec: 332.757	GF/s:  43.56	GB/s:  58.08
+67108864	 32 2	CPU    	msec: 346.184	GF/s:  41.87	GB/s:  55.83
+67108864	 32 2	GPU5   	msec: 34.645	GF/s: 418.40	GB/s: 557.87
+67108864	 32 2	GPU6   	msec: 34.577	GF/s: 419.23	GB/s: 558.97
+67108864	 32 2	GPU7   	msec: 34.565	GF/s: 419.37	GB/s: 559.16
+67108864	 32 2	CPU    	msec: 346.016	GF/s:  41.89	GB/s:  55.86
+67108864	 64 1	CPU    	msec: 322.706	GF/s:  44.92	GB/s:  59.89
+67108864	 64 1	GPU5   	msec: 35.541	GF/s: 407.85	GB/s: 543.80
 67108864	 64 1	GPU6   	msec: 35.752	GF/s: 405.44	GB/s: 540.59
-67108864	 64 1	GPU7   	msec: 35.713	GF/s: 405.88	GB/s: 541.18
-67108864	 64 1	CPU    	msec: 329.314	GF/s:  44.02	GB/s:  58.69
-67108864	 64 2	CPU    	msec: 341.697	GF/s:  42.42	GB/s:  56.56
-67108864	 64 2	GPU5   	msec: 35.911	GF/s: 403.66	GB/s: 538.21
-67108864	 64 2	GPU6   	msec: 36.600	GF/s: 396.05	GB/s: 528.07
-67108864	 64 2	GPU7   	msec: 36.428	GF/s: 397.93	GB/s: 530.57
-67108864	 64 2	CPU    	msec: 338.514	GF/s:  42.82	GB/s:  57.09
-67108864	128 1	CPU    	msec: 680.066	GF/s:  21.31	GB/s:  28.42
-67108864	128 1	GPU5   	msec: 35.548	GF/s: 407.78	GB/s: 543.70
-67108864	128 1	GPU6   	msec: 35.769	GF/s: 405.25	GB/s: 540.34
-67108864	128 1	GPU7   	msec: 35.707	GF/s: 405.96	GB/s: 541.28
-67108864	128 1	CPU    	msec: 680.585	GF/s:  21.30	GB/s:  28.40
-67108864	128 2	CPU    	msec: 693.026	GF/s:  20.92	GB/s:  27.89
-67108864	128 2	GPU5   	msec: 35.484	GF/s: 408.51	GB/s: 544.68
-67108864	128 2	GPU6   	msec: 36.230	GF/s: 400.10	GB/s: 533.47
-67108864	128 2	GPU7   	msec: 36.465	GF/s: 397.51	GB/s: 530.02
-67108864	128 2	CPU    	msec: 691.836	GF/s:  20.95	GB/s:  27.94
+67108864	 64 1	GPU7   	msec: 35.709	GF/s: 405.94	GB/s: 541.25
+67108864	 64 1	CPU    	msec: 327.165	GF/s:  44.31	GB/s:  59.08
+67108864	 64 2	CPU    	msec: 320.862	GF/s:  45.18	GB/s:  60.24
+67108864	 64 2	GPU5   	msec: 34.568	GF/s: 419.34	GB/s: 559.12
+67108864	 64 2	GPU6   	msec: 34.504	GF/s: 420.11	GB/s: 560.14
+67108864	 64 2	GPU7   	msec: 34.490	GF/s: 420.28	GB/s: 560.37
+67108864	 64 2	CPU    	msec: 322.192	GF/s:  44.99	GB/s:  59.99
+67108864	128 1	CPU    	msec: 352.984	GF/s:  41.07	GB/s:  54.75
+67108864	128 1	GPU5   	msec: 35.508	GF/s: 408.23	GB/s: 544.31
+67108864	128 1	GPU6   	msec: 35.722	GF/s: 405.78	GB/s: 541.04
+67108864	128 1	GPU7   	msec: 35.663	GF/s: 406.46	GB/s: 541.94
+67108864	128 1	CPU    	msec: 356.619	GF/s:  40.65	GB/s:  54.20
+67108864	128 2	CPU    	msec: 341.761	GF/s:  42.41	GB/s:  56.55
+67108864	128 2	GPU5   	msec: 34.546	GF/s: 419.60	GB/s: 559.47
+67108864	128 2	GPU6   	msec: 34.455	GF/s: 420.71	GB/s: 560.94
+67108864	128 2	GPU7   	msec: 34.488	GF/s: 420.30	GB/s: 560.41
+67108864	128 2	CPU    	msec: 346.676	GF/s:  41.81	GB/s:  55.75
