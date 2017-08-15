@@ -175,8 +175,8 @@ proc `:=`*[V,M:static[int],X,Y](x:VectorizedObj[V,M,X], y:var Y) =
       vm = cast[VEA](y.addr)
     when sizeof(E) == C:
       # echo "sizeof(E) = C"
-      # for i in 0..<S: m[i] = p[i]
-      for i in 0..<VL: vm[i] = vp[i]
+      # for i in 0..<S: p[i] = m[i]
+      for i in 0..<VL: vp[i] = vm[i]
     elif sizeof(E) > C:
       # echo "sizeof(E) > C"
       const L = sizeof(E) div C
