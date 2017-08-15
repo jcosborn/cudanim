@@ -50,6 +50,7 @@ proc test(vecLen, memLen: static[int]; N: int) =
   z.free
 
 for n in 10..26:
-  staticFor v, 3, 7:
-    staticFor ml, 1, 2:
-      test(1 shl v, ml, 1 shl n)
+  staticFor v, 2, 7:
+    when (1 shl v) >= (structsize(vectorizedElementType(float32)) div sizeof(float32)):
+      staticFor ml, 1, 2:
+        test(1 shl v, ml, 1 shl n)

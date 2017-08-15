@@ -1,11 +1,20 @@
-import gpuarray
-export gpuarray
+const USEGPU {.intdefine.} = 1
+const useGPU = when USEGPU == 0: false else: true
+when useGPU:
+  import gpuarray
+  export gpuarray
+  import ../expr
+  import ../cuda
+  export cuda
+else:
+  template onGpu*(x:untyped) = threads: x
+  template onGpu*(n,x:untyped) = threads: x
+  template onGpu*(n,t,x:untyped) = threads: x
+  template packVarsStmt(x,y:untyped) = discard
+
 import coalesced
 export coalesced
 import macros
-import ../cuda
-export cuda
-import ../expr
 import linalg
 export linalg
 include system/ansi_c
@@ -26,15 +35,23 @@ export vectorized
 #     p*:ptr array[0,SimdS4] # 4=VLEN
 # template `[]`*(x:SVec, i:int):auto = x.p[i]
 
-type
-  ArrayObj*[V,M:static[int],T] = object
-    p*: Coalesced[V,M,T]
-    # p*: SVec
-    n*: int
-    g*: GpuArrayObj[V,M,T]
-    lastOnGpu*: bool
-    unifiedMem*: bool
-    mem:pointer ## Pointer to the allocated memory.
+when useGPU:
+  type
+    ArrayObj*[V,M:static[int],T] = object
+      p*: Coalesced[V,M,T]
+      # p*: SVec
+      n*: int
+      g*: GpuArrayObj[V,M,T]
+      lastOnGpu*: bool
+      unifiedMem*: bool
+      mem:pointer ## Pointer to the allocated memory.
+else:
+  type
+    ArrayObj*[V,M:static[int],T] = object
+      p*: Coalesced[V,M,T]
+      # p*: SVec
+      n*: int
+      mem:pointer ## Pointer to the allocated memory.
   # Array*[V,M:static[int],T] = ref ArrayObj[V,M,T]
   # Array*[V,M:static[int],T] = ArrayRef[V,M,T]
   # Arrays* = ArrayObj | ArrayRef
@@ -45,19 +62,24 @@ proc initArrayObj*(r: var ArrayObj, n: int) =
   const align = 64
   type T = r.T
   var p: ptr T
-  r.unifiedMem = true
-  if r.unifiedMem:
-    let err = cudaMallocManaged(cast[ptr pointer](addr p), n*sizeof(T))
-    # Somehow == and != doesn't work as expected here??!
-    if err:
-      if cast[cint](err) == cast[cint](cudaErrorNotSupported):
-        echo "WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory."
-        r.unifiedMem = false
-      else:
-        echo "ERROR: cudaMallocManaged ", n*sizeof(T)
-        quit cast[cint](err)
-  if not r.unifiedMem:
-    # p = createSharedU(T, n)
+  when useGPU:
+    r.unifiedMem = true
+    if r.unifiedMem:
+      let err = cudaMallocManaged(cast[ptr pointer](addr p), n*sizeof(T))
+      # Somehow == and != doesn't work as expected here??!
+      if err:
+        if cast[cint](err) == cast[cint](cudaErrorNotSupported):
+          echo "WARNING: cudaMallocManaged not supported.  Fall back to non-unified memory."
+          r.unifiedMem = false
+        else:
+          echo "ERROR: cudaMallocManaged ", n*sizeof(T)
+          quit cast[cint](err)
+    if not r.unifiedMem:
+      # p = createSharedU(T, n)
+      p = cast[ptr T](allocShared(n*sizeof(T)+align))
+    r.g.n = 0          # Meaning uninitialized
+    r.lastOnGpu = false
+  else:
     p = cast[ptr T](allocShared(n*sizeof(T)+align))
   r.mem = p
   let x = cast[ByteAddress](p)
@@ -68,19 +90,20 @@ proc initArrayObj*(r: var ArrayObj, n: int) =
   r.n = n
   r.p.initCoalesced(p, n)
   # r.p.p = cast[type(r.p.p)](p)
-  r.g.n = 0          # Meaning uninitialized
-  r.lastOnGpu = false
 # proc init[T](r: var ArrayRef[T], n: int) =
 #   r.new
 #   r[].init(n)
 
 proc free*(r: var ArrayObj) =
-  if r.unifiedMem:
-    discard r.p.p.cudaFree
+  when useGPU:
+    if r.unifiedMem:
+      discard r.p.p.cudaFree
+    else:
+      # r.p.p.freeShared
+      r.mem.deallocShared
+      r.g.free # Same as `toGpu`, r.g is not passed to init with unifiedMem.
   else:
-    # r.p.p.freeShared
     r.mem.deallocShared
-    r.g.free # Same as `toGpu`, r.g is not passed to init with unifiedMem.
 # proc free*[T](r: ArrayRef[T]) =
 #   if r.unifiedMem:
 #     discard r.p.p.cudaFree
@@ -104,35 +127,38 @@ template getThreadNum*: untyped = threadNum
 template getNumThreads*: untyped = numThreads
 
 proc toGpu*(x: var ArrayObj) =
-  # echo ">>> toGpu"
-  if x.unifiedMem:
-    if x.g.n==0:
-      x.g.n = x.n
-      x.g.p = x.p
-      # x.g.p.initCoalesced(cast[ptr x.T](x.p.p),x.n)
-  else:
-    if not x.lastOnGpu:
-      if x.g.n==0: x.g.initGpuArrayObj(x.n)
-      let err = cudaMemcpy(x.g.p.p, x.p.p, x.n*sizeof(x.T), cudaMemcpyHostToDevice)
-      if err:
-        echo err
-        quit cast[cint](err)
-      x.lastOnGpu = true
-
-proc toCpu*(x: var ArrayObj) =
-  if not x.unifiedMem:
-    if getThreadNum() == 0:
-      if x.lastOnGpu and x.g.n > 0:
-        let err = cudaMemcpy(x.p.p, x.g.p.p, x.n*sizeof(x.T), cudaMemcpyDeviceToHost)
+  when useGPU:
+    # echo ">>> toGpu"
+    if x.unifiedMem:
+      if x.g.n==0:
+        x.g.n = x.n
+        x.g.p = x.p
+        # x.g.p.initCoalesced(cast[ptr x.T](x.p.p),x.n)
+    else:
+      if not x.lastOnGpu:
+        if x.g.n==0: x.g.initGpuArrayObj(x.n)
+        let err = cudaMemcpy(x.g.p.p, x.p.p, x.n*sizeof(x.T), cudaMemcpyHostToDevice)
         if err:
           echo err
           quit cast[cint](err)
-        x.lastOnGpu = false
-    threadBarrier()
+        x.lastOnGpu = true
+
+proc toCpu*(x: var ArrayObj) =
+  when useGPU:
+    if not x.unifiedMem:
+      if getThreadNum() == 0:
+        if x.lastOnGpu and x.g.n > 0:
+          let err = cudaMemcpy(x.p.p, x.g.p.p, x.n*sizeof(x.T), cudaMemcpyDeviceToHost)
+          if err:
+            echo err
+            quit cast[cint](err)
+          x.lastOnGpu = false
+      threadBarrier()
 
 template getGpuPtr*(x: var ArrayObj): untyped =
-  x.toGpu
-  x.g
+  when useGPU:
+    x.toGpu
+    x.g
 
 type ArrayIndex* = SomeInteger or ShortVectorIndex
 template indexArray*(x: ArrayObj, i: ArrayIndex): untyped =
@@ -266,14 +292,16 @@ proc printf*(frmt: cstring): cint {.
 
 when isMainModule:
   threads:
-    echo "Threads ",getThreadNum(),"/",getNumThreads()
+    if getThreadNum() == 0: echo "Threads ",getThreadNum(),"/",getNumThreads()
   var N = 128
+  type T = float32
+  const V = structsize(SVec) div sizeof(T)
 
   proc testfloat =
     echo "### float"
-    var x = newArrayObj(8,1,N,float32)
-    var y = newArrayObj(8,1,N,float32)
-    var z = newArrayObj(8,1,N,float32)
+    var x = newArrayObj(V,1,N,T)
+    var y = newArrayObj(V,1,N,T)
+    var z = newArrayObj(V,1,N,T)
     threads:
       x := 1
       y := 2
@@ -299,9 +327,9 @@ when isMainModule:
 
   proc testcomplex =
     echo "### complex"
-    var x = newArrayObj(8,2,N,Complex[float32])
-    var y = newArrayObj(8,2,N,Complex[float32])
-    var z = newArrayObj(8,2,N,Complex[float32])
+    var x = newArrayObj(V,2,N,Complex[T])
+    var y = newArrayObj(V,2,N,Complex[T])
+    var z = newArrayObj(V,2,N,Complex[T])
     threads:
       x := 1
       y := 2
@@ -330,9 +358,9 @@ when isMainModule:
 
   proc testcolmat =
     echo "### colmat"
-    var x = newArrayObj(8,2,N,Colmat[3,float32])
-    var y = newArrayObj(8,2,N,Colmat[3,float32])
-    var z = newArrayObj(8,2,N,Colmat[3,float32])
+    var x = newArrayObj(V,2,N,Colmat[3,T])
+    var y = newArrayObj(V,2,N,Colmat[3,T])
+    var z = newArrayObj(V,2,N,Colmat[3,T])
     threads:
       x := 1
       y := 2

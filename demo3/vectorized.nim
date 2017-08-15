@@ -48,6 +48,9 @@ macro defsimd:auto =
     result.add( quote do:
       import qexLite/simd
     )
+  else:
+    echo "ERROR: unsupported value of CPUVLEN: ", CPUVLEN
+    quit 1
   result.add( quote do:
     type
       SVec* {.inject.} = `s`
@@ -57,7 +60,7 @@ macro defsimd:auto =
   )
   # echo result.repr
 defsimd()
-template vectorizedElementType(t:typedesc):untyped =
+template vectorizedElementType*(t:typedesc):untyped =
   when t is float32: SVec
   elif t is float64: DVec
   else: t
@@ -69,7 +72,7 @@ template vectorType(vlen:static[int],t:typedesc):untyped =
     mvlen = getsize(VE) div sizeof(E) # guaranteed to be divisible
     svlen = vlen div mvlen
   when svlen*mvlen != vlen:
-    {.fatal:"Inner vector length " & $vlen & " not divisible by machin vector length " & $mvlen.}
+    {.fatal:"Inner vector length " & $vlen & " not divisible by machine vector length " & $mvlen.}
   type SV = ShortVector[svlen,VE]
   vectorType(t,SV)
 
@@ -96,15 +99,23 @@ template fromVectorized*(x:VectorizedObj):untyped =
     N = getSize(x.T) div C
     S = N*x.V*x.M
   mixin vectorType, elementType
-  type E = elementType(x.T)
-  type V = vectorType(x.V,x.T)
+  type
+    E = elementType(x.T)
+    VE = vectorizedElementType(E)
+    VEA{.unchecked.} = ptr array[0,VE]
+    V = vectorType(x.V,x.T)
+  const VL = (x.V * sizeof(E)) div structsize(VE)
   let ix = x.i.int
-  let p = cast[RWA](cast[RWA](x.o.p)[ix*S].addr)
   var r {.noinit.}: V
-  let m = cast[RWA](r.addr)
+  let
+    p = cast[RWA](cast[RWA](x.o.p)[ix*S].addr)
+    vp = cast[VEA](cast[RWA](x.o.p)[ix*S].addr)
+    m = cast[RWA](r.addr)
+    vm = cast[VEA](r.addr)
   when sizeof(E) == C:
     # echo "sizeof(E) = C"
-    for i in 0..<S: m[i] = p[i]
+    # for i in 0..<S: m[i] = p[i]
+    for i in 0..<VL: vm[i] = vp[i]
   elif sizeof(E) > C:
     # echo "sizeof(E) > C"
     const L = sizeof(E) div C
@@ -153,15 +164,19 @@ proc `:=`*[V,M:static[int],X,Y](x:VectorizedObj[V,M,X], y:var Y) =
       N = getSize(x.T) div C
       S = N*x.V*x.M
     let ix = x.i.int
-    let p = cast[RWA](cast[RWA](x.o.p)[ix*S].addr)
-    # The code violates the strict aliasing rule.  GCC tends to optimize it away.
-    # To be safe: always pass `-fno-strict-aliasing` to GCC.
-    let m = cast[RWA](y.addr)
-    # var m {.noinit.}: array[S,RegisterWord]
-    # for i in 0..<S: m[i] = cast[RWA](y.addr)[i]
+    type
+      VE = vectorizedElementType(E)
+      VEA{.unchecked.} = ptr array[0,VE]
+    const VL = (x.V * sizeof(E)) div structsize(VE)
+    let
+      p = cast[RWA](cast[RWA](x.o.p)[ix*S].addr)
+      vp = cast[VEA](cast[RWA](x.o.p)[ix*S].addr)
+      m = cast[RWA](y.addr)
+      vm = cast[VEA](y.addr)
     when sizeof(E) == C:
       # echo "sizeof(E) = C"
-      for i in 0..<S: p[i] = m[i]
+      # for i in 0..<S: m[i] = p[i]
+      for i in 0..<VL: vm[i] = vp[i]
     elif sizeof(E) > C:
       # echo "sizeof(E) > C"
       const L = sizeof(E) div C
@@ -217,6 +232,11 @@ iterator vectorIndices*(x:Coalesced):auto =
     yield ShortVectorIndex(i)
     inc i
 
+proc `+`*(x:ShortVector, y:SomeNumber):auto {.noinit.} =
+  const V = x.len
+  var z {.noinit.}:ShortVector
+  for i in 0..<V: z[i] = x[i] + y
+  z
 proc `+`*(x,y:ShortVector):auto {.noinit.} =
   const V = x.len
   var z {.noinit.}:ShortVector
