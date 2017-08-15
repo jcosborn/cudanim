@@ -1,0 +1,5 @@
+#!/bin/sh
+args=("$@")
+if ((${#args[@]} == 0));then args=("ex1.nim");fi
+nim c '--warning[SmallLshouldNotBeUsed]:off' -d:SSE -d:AVX -d:CPUVLEN=256 -d:USEGPU=0 -d:release "${args[@]}"
+#nim c '--warning[SmallLshouldNotBeUsed]:off' -d:SSE -d:AVX -d:AVX512 -d:CPUVLEN=512 -d:USEGPU=0 -d:release "${args[@]}"

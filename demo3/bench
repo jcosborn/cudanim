@@ -1,9 +1,11 @@
 #!/bin/bash
 n="$(hostname)"
 c="$HOME/tmp/samples/1_Utilities"
+#c="../../cuda_samples-8.0.61/1_Utilities"
 [[ -d out ]] || mkdir out
 if [[ ! -s out/$n.info ]];then
-  cat /proc/cpuinfo > "out/$n.info"
+  ./ccwrapper --version > "out/$n.info"
+  cat /proc/cpuinfo >> "out/$n.info"
   "$c/deviceQuery/deviceQuery" >> "out/$n.info"
   "$c/bandwidthTest/bandwidthTest" >> "out/$n.info"
 fi

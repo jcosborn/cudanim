@@ -1,6 +1,14 @@
 #!/bin/bash
 nvcc="/usr/local/cuda/bin/nvcc"
-args=(-arch sm_21 -ccbin g++-4.8)
+#nvcc=nvcc
+cc=g++-4.8
+#args=(-arch sm_60 -ccbin $cc)
+args=(-arch sm_21 -ccbin $cc)
+if (($# == 1)) && [[ $1 == --version ]];then
+  $nvcc "$@"
+  $cc "$@"
+  exit
+fi
 ccargs=""
 #verbosity=1
 forcc(){

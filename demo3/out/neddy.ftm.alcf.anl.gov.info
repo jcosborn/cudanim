@@ -1,3 +1,12 @@
+nvcc: NVIDIA (R) Cuda compiler driver
+Copyright (c) 2005-2016 NVIDIA Corporation
+Built on Tue_Jan_10_13:22:03_CST_2017
+Cuda compilation tools, release 8.0, V8.0.61
+g++ (GCC) 4.8.5 20150623 (Red Hat 4.8.5-11)
+Copyright (C) 2015 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
 processor	: 0
 vendor_id	: GenuineIntel
 cpu family	: 6
@@ -880,17 +889,17 @@ Running on...
  Host to Device Bandwidth, 1 Device(s)
  PINNED Memory Transfers
    Transfer Size (Bytes)	Bandwidth(MB/s)
-   33554432			11643.2
+   33554432			11634.1
 
  Device to Host Bandwidth, 1 Device(s)
  PINNED Memory Transfers
    Transfer Size (Bytes)	Bandwidth(MB/s)
-   33554432			12888.7
+   33554432			12874.6
 
  Device to Device Bandwidth, 1 Device(s)
  PINNED Memory Transfers
    Transfer Size (Bytes)	Bandwidth(MB/s)
-   33554432			497293.8
+   33554432			497395.2
 
 Result = PASS
 

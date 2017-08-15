@@ -1,0 +1,10 @@
+#!/bin/bash
+n="$(hostname)"
+[[ -d out ]] || mkdir out
+if [[ ! -s out/$n.info ]];then
+  gcc --version > "out/$n.info"
+  numactl -H >> "out/$n.info"
+  cat /proc/cpuinfo >> "out/$n.info"
+fi
+./compile_cpu ex2
+numactl -m 1 ./ex2 > out/$n.ex2
