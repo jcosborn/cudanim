@@ -23,6 +23,7 @@ defined corresponding to those of T.
 ]#
 
 import coalesced
+import qexLite/metaUtils
 import macros
 
 const CPUVLEN* {.intdefine.} = 256 ## CPU SIMD vector length in bits.  Off if zero.
@@ -101,33 +102,41 @@ template fromVectorized*(x:VectorizedObj):untyped =
   mixin vectorType, elementType
   type
     E = elementType(x.T)
-    VE = vectorizedElementType(E) # Machine simd vector if available
-    VEA{.unchecked.} = ptr array[0,VE]
     V = vectorType(x.V,x.T)
-  const VL = (x.V * getSize(x.T)) div getSize(VE) # Number of vectorized element in a block of x.V objects
   let ix = x.i.int
   var r {.noinit.}: V
-  let
-    p = cast[RWA](cast[RWA](x.o.p)[ix*S].addr)
-    vp = cast[VEA](cast[RWA](x.o.p)[ix*S].addr)
-    m = cast[RWA](r.addr)
-    vm = cast[VEA](r.addr)
   when sizeof(E) == C:
     # echo "sizeof(E) = C"
+    type
+      VE = vectorizedElementType(E) # Machine simd vector if available
+      VEA{.unchecked.} = ptr array[0,VE]
+    const VL = (x.V * getSize(x.T)) div getSize(VE) # Number of vectorized element in a block of x.V objects
+    let
+      vp = cast[VEA](cast[RWA](x.o.p)[ix*S].addr)
+      vm = cast[VEA](r.addr)
     # for i in 0..<S: m[i] = p[i]
-    for i in 0..<VL: vm[i] = vp[i]
+    staticfor i, 0, VL-1: vm[i] = vp[i]
   elif sizeof(E) > C:
     # echo "sizeof(E) > C"
+    let
+      p = cast[RWA](cast[RWA](x.o.p)[ix*S].addr)
+      m = cast[RWA](r.addr)
     const L = sizeof(E) div C
     when L*C != sizeof(E):
       # We can deal with this but let's leave it for future exercises.
       {.fatal:"Vector element size not divisible by memory word size.".}
+    #staticfor i, 0, N-1:
     for i in 0..<N:
+      #staticfor j, 0, x.V-1:
       for j in 0..<x.V:
+        #staticfor k, 0, x.M-1:
         for k in 0..<x.M:
           m[x.V*x.M*L*(i div L) + x.M*L*j + k + x.M*(i mod L)] = p[x.V*x.M*i + x.M*j + k]
   elif sizeof(E) >= sizeof(RegisterWord): # sizeof(E) < C
     # echo "sizeof(RegisterWord) <= sizeof(E) < C"
+    let
+      p = cast[RWA](cast[RWA](x.o.p)[ix*S].addr)
+      m = cast[RWA](r.addr)
     const
       L = C div sizeof(E)
       K = sizeof(E) div sizeof(RegisterWord)
@@ -138,8 +147,11 @@ template fromVectorized*(x:VectorizedObj):untyped =
     when L*sizeof(E) != C or K*sizeof(RegisterWord) != sizeof(E):
       # We can deal with this but let's leave it for future exercises.
       {.fatal:"Memory word size not divisible by vector element size.".}
+    #staticfor i, 0, N-1:
     for i in 0..<N:
+      #staticfor j, 0, x.V-1:
       for j in 0..<x.V:
+        #staticfor k, 0, x.M-1:
         for k in 0..<x.M:
           m[x.V*K*(k div K) + x.V*x.M*i + K*j + (k mod K)] = p[x.V*x.M*i + x.M*j + k]
   else:
@@ -164,31 +176,38 @@ proc `:=`*[V,M:static[int],X,Y](x:VectorizedObj[V,M,X], y:var Y) {.inline.} =
       N = getSize(x.T) div C
       S = N*x.V*x.M
     let ix = x.i.int
-    type
-      VE = vectorizedElementType(E)
-      VEA{.unchecked.} = ptr array[0,VE]
-    const VL = (x.V * getSize(x.T)) div getSize(VE)
-    let
-      p = cast[RWA](cast[RWA](x.o.p)[ix*S].addr)
-      vp = cast[VEA](cast[RWA](x.o.p)[ix*S].addr)
-      m = cast[RWA](y.addr)
-      vm = cast[VEA](y.addr)
     when sizeof(E) == C:
       # echo "sizeof(E) = C"
+      type
+        VE = vectorizedElementType(E)
+        VEA{.unchecked.} = ptr array[0,VE]
+      const VL = (x.V * getSize(x.T)) div getSize(VE)
+      let
+        vp = cast[VEA](cast[RWA](x.o.p)[ix*S].addr)
+        vm = cast[VEA](y.addr)
       # for i in 0..<S: p[i] = m[i]
-      for i in 0..<VL: vp[i] = vm[i]
+      staticfor i, 0, VL-1: vp[i] = vm[i]
     elif sizeof(E) > C:
       # echo "sizeof(E) > C"
+      let
+        p = cast[RWA](cast[RWA](x.o.p)[ix*S].addr)
+        m = cast[RWA](y.addr)
       const L = sizeof(E) div C
       when L*C != sizeof(E):
         # We can deal with this but let's leave it for future exercises.
         {.fatal:"Vector element size not divisible by memory word size.".}
+      #staticfor i, 0, N-1:
       for i in 0..<N:
+        #staticfor j, 0, x.V-1:
         for j in 0..<x.V:
+          #staticfor k, 0, x.M-1:
           for k in 0..<x.M:
             p[x.V*x.M*i + x.M*j + k] = m[x.V*x.M*L*(i div L) + x.M*L*j + k + x.M*(i mod L)]
     elif sizeof(E) >= sizeof(RegisterWord): # sizeof(E) < C
       # echo "sizeof(RegisterWord) <= sizeof(E) < C"
+      let
+        p = cast[RWA](cast[RWA](x.o.p)[ix*S].addr)
+        m = cast[RWA](y.addr)
       const
         L = C div sizeof(E)
         K = sizeof(E) div sizeof(RegisterWord)
@@ -199,18 +218,22 @@ proc `:=`*[V,M:static[int],X,Y](x:VectorizedObj[V,M,X], y:var Y) {.inline.} =
       when L*sizeof(E) != C or K*sizeof(RegisterWord) != sizeof(E):
         # We can deal with this but let's leave it for future exercises.
         {.fatal:"Memory word size not divisible by vector element size.".}
+      #staticfor i, 0, N-1:
       for i in 0..<N:
+        #staticfor j, 0, x.V-1:
         for j in 0..<x.V:
+          #staticfor k, 0, x.M-1:
           for k in 0..<x.M:
             p[x.V*x.M*i + x.M*j + k] = m[x.V*K*(k div K) + x.V*x.M*i + K*j + (k mod K)]
     else:
       # We can deal with this but let's leave it for future exercises.
       {.fatal:"Register word size larger than vector element size.".}
   else:
+    mixin `:=`
     var ty {.noinit.}:V
     ty := y
     x := y
-proc `:=`*[V,M:static[int],X,Y](x:VectorizedObj[V,M,X], y:Y) {.inline.} =
+template `:=`*[V,M:static[int],X,Y](x:VectorizedObj[V,M,X], y:Y) =
   mixin `:=`,vectorType,elementType
   type V = vectorType(x.V,x.T)
   var ty {.noinit.}:V

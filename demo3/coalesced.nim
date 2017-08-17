@@ -26,7 +26,7 @@ Original comments from Nvidia's coalesced_ptr.h follows:
 
 ]#
 
-import macros
+import macros, qexLite/metaUtils
 
 type
   Coalesced*[V,M:static[int],T] = object
@@ -109,41 +109,13 @@ proc newCoalesced*[T](V,M:static[int], p:ptr T, n:int):auto {.noinit.} =
 template `[]`*(x:Coalesced, ix:int):untyped = CoalescedObj[x.V,x.M,x.T](o:x, i:ix)
 template len*(x:Coalesced):untyped = x.n
 
-# template MWA(M:static[int],p:pointer):untyped =
-#   bind MemoryWord
-#   type W = MemoryWord(M)
-#   type A{.unchecked.} = ptr array[0,W]
-#   cast[A](p)
-
-# proc copy(x:pointer, y:pointer, n:static[int]) = # n is number of RegisterWord in x
-#   let
-#     x = cast[RWA](x)
-#     y = cast[RWA](y)
-#   for i in 0..<n: x[i] = y[i]
-# proc copy(x:ptr MemoryWord, y:ptr RegisterWord, n:int) = # n is number of MemoryWord in x
-#   let
-#     x = cast[MWA[x.M]](x)
-#     y = cast[RWA](y)
-#   for i in 0..<n:
-#     for j in 0..<x.M:
-#       x[i].a[j] = y[x.M*i+j]
-# proc copy(x:ptr RegisterWord, y:ptr MemoryWord, n:int) = # n is number of MemoryWord in y
-#   let
-#     x = cast[RWA](x)
-#     y = cast[MWA[y.M]](y)
-#   for i in 0..<n:
-#     for j in 0..<y.M:
-#       x[y.M*i+j] = y[i].a[j]
-
 template fromCoalesced*(x:CoalescedObj):untyped =
   const N = getSize(x.T) div (x.M*sizeof(RegisterWord))
   type A {.unchecked.}= ptr array[0,MemoryWord(x.M)]
-  # let p = MWA(x.M,x.o.p)
   var r {.noinit.}: x.T
-  # let m = MWA(x.M,r.addr)
-  # var m {.noinit.}: array[N,MemoryWord[x.M]]
-  for i in 0..<N: cast[A](r.addr)[i] = cast[A](x.o.p)[((x.i div x.V)*N + i)*x.V + x.i mod x.V]
-  # copy(r.addr, m[0].addr, N*x.M)
+  let offset = (x.i div x.V)*N*x.V + x.i mod x.V
+  staticfor j, 0, N-1: cast[A](r.addr)[j] = cast[A](x.o.p)[offset + j*x.V]
+  #for j in 0..<N: cast[A](r.addr)[j] = cast[A](x.o.p)[offset + j*x.V]
   r
 macro `[]`*(x:CoalescedObj, ys:varargs[untyped]):untyped =
   let o = newCall(bindsym"fromCoalesced", x)
@@ -153,34 +125,25 @@ macro `[]`*(x:CoalescedObj, ys:varargs[untyped]):untyped =
     result = newCall("[]", o)
     for y in ys: result.add y
 
-proc `:=`*[Y](x:CoalescedObj, y:Y) =
+proc `:=`*[V,M:static[int],X,Y](x:CoalescedObj[V,M,X], y:var Y) {.inline.} =
   when Y is x.T:
     const N = getSize(x.T) div (x.M*sizeof(RegisterWord))
     type A {.unchecked.}= ptr array[0,MemoryWord(x.M)]
-    when not compiles(y.addr):
-      var y {.noinit.} = y
-    for i in 0..<N: cast[A](x.o.p)[((x.i div x.V)*N + i)*x.V + x.i mod x.V] = cast[A](y.addr)[i]
+    let offset = (x.i div x.V)*N*x.V + x.i mod x.V
+    staticfor j, 0, N-1: cast[A](x.o.p)[offset + j*x.V] = cast[A](y.addr)[j]
+    #for j in 0..<N: cast[A](x.o.p)[offset + j*x.V] = cast[A](y.addr)[j]
   else:
     mixin `:=`
     var ty {.noinit.}:x.T
     ty := y
     x := ty
-# proc `:=`*[Y](x:CoalescedObj, y:Y) =
-#   when Y is x.T:
-#     const N = getSize(x.T) div (x.M*sizeof(RegisterWord))
-#     # let p = cast[MWA[x.M]](x.o.p)
-#     when not compiles(y.addr):
-#       var y {.noinit.} = y
-#     var m {.noinit.}: array[N,MemoryWord[x.M]]
-#     copy(m[0].addr, y.addr, N*x.M)
-#     for i in 0..<N: cast[MWA[x.M]](x.o.p)[((x.i div x.V)*N + i)*x.V + x.i mod x.V] = m[i]
-#   else:
-#     mixin `:=`
-#     var ty {.noinit.}:x.T
-#     ty := y
-#     x := ty
+template `:=`*[V,M:static[int],X,Y](x:CoalescedObj[V,M,X], y:Y) =
+  mixin `:=`
+  var ty {.noinit.}:x.T
+  ty := y
+  x := ty
 
-proc `*`*[VX,MX,VY,MY:static[int],X,Y](x:CoalescedObj[VX,MX,X], y:CoalescedObj[VY,MY,Y]):auto {.noinit.} =
+proc `*`*[VX,MX,VY,MY:static[int],X,Y](x:CoalescedObj[VX,MX,X], y:CoalescedObj[VY,MY,Y]):auto {.noinit,inline.} =
   let
     tx {.noinit.} = fromCoalesced(x)
     ty {.noinit.} = fromCoalesced(y)

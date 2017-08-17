@@ -145,15 +145,14 @@ proc toGpu*(x: var ArrayObj) =
 
 proc toCpu*(x: var ArrayObj) =
   when useGPU:
-    if not x.unifiedMem:
-      if getThreadNum() == 0:
-        if x.lastOnGpu and x.g.n > 0:
-          let err = cudaMemcpy(x.p.p, x.g.p.p, x.n*sizeof(x.T), cudaMemcpyDeviceToHost)
-          if err:
-            echo err
-            quit cast[cint](err)
-          x.lastOnGpu = false
-      threadBarrier()
+    if (not x.unifiedMem) and x.lastOnGpu:
+      threadSingle:
+        let err = cudaMemcpy(x.p.p, x.g.p.p, x.n*sizeof(x.T), cudaMemcpyDeviceToHost)
+        if err:
+          echo err
+          quit cast[cint](err)
+      threadSingle:
+        x.lastOnGpu = false
 
 template getGpuPtr*(x: var ArrayObj): untyped =
   when useGPU:

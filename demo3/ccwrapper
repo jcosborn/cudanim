@@ -18,7 +18,7 @@ forcc(){
   *) return 1 ;;
   esac
 }
-ps(){ if ((verbosity>0));then printf "#";printf " '%s'" "$@";printf "\n";fi;"$@"; }
+ps(){ if ((verbosity>0));then printf "#";printf " '%s'" "$@";printf "\n";fi;"$@";ret=$?; }
 ex(){ # OUTFILE ERRFILE CMD [...]
   local O="$1" E="$2"; shift 2
   { { ps "$@" | tee -a "$O"; } 2>&1 1>&3 | tee -a "$E"; } 3>&1 1>&2
@@ -31,4 +31,6 @@ while (($#>0));do
   fi
   shift
 done
+ret=0
 ex ccwrapper.{out,err} "$nvcc" "${args[@]}" -Xcompiler "${ccargs#,}"
+exit $ret
