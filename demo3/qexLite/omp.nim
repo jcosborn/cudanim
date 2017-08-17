@@ -6,6 +6,7 @@ when defined(noOpenmp):
   template omp_get_max_threads*(): cint = 1
   template omp_get_thread_num*(): cint = 0
   template ompPragma(p:string):untyped = discard
+  template setupGc = discard
 else:
   const OMPFlag {.strDefine.} = "-fopenmp"
   {. passC: OMPFlag .}
@@ -16,7 +17,9 @@ else:
   proc omp_get_max_threads*(): cint {.omp.}
   proc omp_get_thread_num*(): cint {.omp.}
   template ompPragma(p:string):untyped =
-    {. emit:"#pragma omp " & p .}
+    {. emit:"\n#pragma omp " & p .}
+  template setupGc =
+    if(omp_get_thread_num()!=0): setupForeignThreadGc()
 
 template ompBarrier* = ompPragma("barrier")
 template ompBlock(p:string; body:untyped):untyped =
@@ -26,8 +29,7 @@ template ompBlock(p:string; body:untyped):untyped =
 
 template ompParallel*(body:untyped):untyped =
   ompBlock("parallel"):
-    if(omp_get_thread_num()!=0):
-      setupForeignThreadGc()
+    setupGc()
     body
 template ompMaster*(body:untyped):untyped = ompBlock("master", body)
 template ompSingle*(body:untyped):untyped = ompBlock("single", body)

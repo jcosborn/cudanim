@@ -95,16 +95,16 @@ type RWA{.unchecked.} = ptr array[0,RegisterWord]
 
 template fromVectorized*(x:VectorizedObj):untyped =
   const
-    C = x.M*sizeof(RegisterWord)
-    N = getSize(x.T) div C
-    S = N*x.V*x.M
+    C = x.M*sizeof(RegisterWord) # MemoryWord size
+    N = getSize(x.T) div C       # Number of MemoryWord in the type x.T
+    S = N*x.V*x.M                # Number of RegisterWord in a block of x.V objects
   mixin vectorType, elementType
   type
     E = elementType(x.T)
-    VE = vectorizedElementType(E)
+    VE = vectorizedElementType(E) # Machine simd vector if available
     VEA{.unchecked.} = ptr array[0,VE]
     V = vectorType(x.V,x.T)
-  const VL = (x.V * sizeof(E)) div structsize(VE)
+  const VL = (x.V * getSize(x.T)) div getSize(VE) # Number of vectorized element in a block of x.V objects
   let ix = x.i.int
   var r {.noinit.}: V
   let
@@ -154,7 +154,7 @@ macro `[]`*(x:VectorizedObj, ys:varargs[untyped]):untyped =
     result = newCall("[]", o)
     for y in ys: result.add y
 
-proc `:=`*[V,M:static[int],X,Y](x:VectorizedObj[V,M,X], y:var Y) =
+proc `:=`*[V,M:static[int],X,Y](x:VectorizedObj[V,M,X], y:var Y) {.inline.} =
   mixin vectorType, elementType
   type E = elementType(x.T)
   type V = vectorType(x.V,x.T)
@@ -167,7 +167,7 @@ proc `:=`*[V,M:static[int],X,Y](x:VectorizedObj[V,M,X], y:var Y) =
     type
       VE = vectorizedElementType(E)
       VEA{.unchecked.} = ptr array[0,VE]
-    const VL = (x.V * sizeof(E)) div structsize(VE)
+    const VL = (x.V * getSize(x.T)) div getSize(VE)
     let
       p = cast[RWA](cast[RWA](x.o.p)[ix*S].addr)
       vp = cast[VEA](cast[RWA](x.o.p)[ix*S].addr)
@@ -210,16 +210,20 @@ proc `:=`*[V,M:static[int],X,Y](x:VectorizedObj[V,M,X], y:var Y) =
     var ty {.noinit.}:V
     ty := y
     x := y
-proc `:=`*[V,M:static[int],X,Y](x:VectorizedObj[V,M,X], y:Y) =
+proc `:=`*[V,M:static[int],X,Y](x:VectorizedObj[V,M,X], y:Y) {.inline.} =
   mixin `:=`,vectorType,elementType
   type V = vectorType(x.V,x.T)
   var ty {.noinit.}:V
   ty := y
   x := ty
 
-template `+=`*(x:VectorizedObj, y:typed) = x := x[] + y
+template `+=`*(xx:VectorizedObj, yy:typed) =
+  let
+    x = xx
+    y = yy
+  x := x[] + y
 
-proc `*`*[VX,MX,VY,MY:static[int],X,Y](x:VectorizedObj[VX,MX,X], y:VectorizedObj[VY,MY,Y]):auto {.noinit.} =
+proc `*`*[VX,MX,VY,MY:static[int],X,Y](x:VectorizedObj[VX,MX,X], y:VectorizedObj[VY,MY,Y]):auto {.noinit,inline.} =
   let
     tx {.noinit.} = x[]
     ty {.noinit.} = y[]
@@ -232,33 +236,33 @@ iterator vectorIndices*(x:Coalesced):auto =
     yield ShortVectorIndex(i)
     inc i
 
-proc `+`*(x:ShortVector, y:SomeNumber):auto {.noinit.} =
+proc `+`*(x:ShortVector, y:SomeNumber):auto {.noinit,inline.} =
   const V = x.len
   var z {.noinit.}:ShortVector
   for i in 0..<V: z[i] = x[i] + y
   z
-proc `+`*(x,y:ShortVector):auto {.noinit.} =
+proc `+`*(x,y:ShortVector):auto {.noinit,inline.} =
   const V = x.len
   var z {.noinit.}:ShortVector
   for i in 0..<V: z[i] = x[i] + y[i]
   z
-proc `-`*(x,y:ShortVector):auto {.noinit.} =
+proc `-`*(x,y:ShortVector):auto {.noinit,inline.} =
   const V = x.len
   var z {.noinit.}:ShortVector
   for i in 0..<V: z[i] = x[i] - y[i]
   z
-proc `*`*(x,y:ShortVector):auto {.noinit.} =
+proc `*`*(x,y:ShortVector):auto {.noinit,inline.} =
   const V = x.len
   var z {.noinit.}:ShortVector
   for i in 0..<V: z[i] = x[i] * y[i]
   z
-proc `+=`*(x:var ShortVector, y:ShortVector) =
+proc `+=`*(x:var ShortVector, y:ShortVector) {.inline.} =
   const V = x.len
   for i in 0..<V: x[i] += y[i]
-proc `:=`*(x:var ShortVector, y:ShortVector) =
+proc `:=`*(x:var ShortVector, y:ShortVector) {.inline.} =
   const V = x.len
   for i in 0..<V: x[i] = y[i]
-proc `:=`*(x:var ShortVector, y:SomeNumber) =
+proc `:=`*(x:var ShortVector, y:SomeNumber) {.inline.} =
   const V = x.len
   for i in 0..<V: x[i] := y
 
