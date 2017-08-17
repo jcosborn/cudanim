@@ -19,11 +19,11 @@ proc test(vecLen, memLen: static[int]; N: int) =
     while true:
       t = timex(rep, R, s)
       threadSingle:
-        R *= int(1+0.5/t)       # set up to run at least 0.5 sec
+        R *= int(1+0.8/t)       # set up to run at least 0.8 sec
         T -= t
       if T < 0: break           # Repeat until time is up
     threadSingle:               # Use the last R & t for performance measure
-      printf("%8d %2d %d %-8s rep: %7d KB: %6.0f ms: %6.3f GF/s: %6.2f GB/s: %6.2f\n",
+      printf("%8d %3d %d %-8s rep: %7d KB: %6.0f ms: %6.3f GF/s: %6.2f GB/s: %6.2f\n",
              N, vecLen, memLen, label, R, 1024*1024*mr, 1e3*t/R.float, fp*R.float/t, mt*R.float/t)
 
   threads:                 # CPU threads
