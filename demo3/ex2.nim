@@ -9,31 +9,34 @@ proc test(vecLen, memLen: static[int]; N: int) =
 
   let
     mr = float(3 * 8 * x.T.N * x.T.N * N) / float(1024 * 1024 * 1024) # Resident memory in 2^30 bytes
-    mt = 4 * mr / 3           # Memory transaction
+    mt = 4 * mr / 3             # Memory transaction
     fp = float(8 * x.T.N * x.T.N * x.T.N * N) * 1e-9 # Floating point op / 10^9
   template timeit(label:string, s:untyped) =
     var
-      R {.global.} = 64         # Base repeat
-      T {.global.} = 1.0        # Time limit
-      t:float
+      R {.global.}:int
+      T {.global.}:float
+    threadSingle:
+      R = 64                    # Base repeat
+      T = 1.0                   # Time limit
+    var t = timex(rep, R, s)    # Always warm up cache
     while true:
-      t = timex(rep, R, s)
       threadSingle:
-        R *= int(1+0.8/t)       # set up to run at least 0.8 sec
         T -= t
-      if T < 0: break           # Repeat until time is up
-    threadSingle:               # Use the last R & t for performance measure
-      printf("%8d %3d %d %-8s rep: %7d KB: %6.0f ms: %6.3f GF/s: %6.2f GB/s: %6.2f\n",
-             N, vecLen, memLen, label, R, 1024*1024*mr, 1e3*t/R.float, fp*R.float/t, mt*R.float/t)
+        if T < 0:               # Use the last R & t for performance measure
+          printf("%8d %3d %d %-8s rep: %7d KB: %6.0f ms: %6.3f GF/s: %6.2f GB/s: %6.2f\n",
+                 N, vecLen, memLen, label, R, 1024*1024*mr, 1e3*t/R.float, fp*R.float/t, mt*R.float/t)
+        R = max(R,int(R.float*0.8/t)) # set up to run for at least 0.8 sec
+      if T < 0: break
+      t = timex(rep, R, s)
 
-  threads:                 # CPU threads
-    x := 0                 # set them to diagonal matrices on CPU
+  threads:                      # CPU threads
+    x := 0                      # set them to diagonal matrices on CPU
     y := 1
     z := 2
     timeit "CPU": x += y * z
 
-  timeit "GPU5": # includes kernel launching and synchronization
-    onGpu(N, 32):       # Number of threads, threads per block
+  timeit "GPU5":                # includes kernel launching and synchronization
+    onGpu(N, 32):               # Number of threads, threads per block
       x += y * z
   timeit "GPU6": onGpu(N, 64): x += y * z
   timeit "GPU7": onGpu(N, 128): x += y * z

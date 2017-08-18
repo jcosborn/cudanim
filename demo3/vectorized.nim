@@ -24,6 +24,7 @@ defined corresponding to those of T.
 
 import coalesced
 import qexLite/metaUtils
+import ../inline
 import macros
 
 const CPUVLEN* {.intdefine.} = 256 ## CPU SIMD vector length in bits.  Off if zero.
@@ -231,63 +232,85 @@ proc `:=`*[V,M:static[int],X,Y](x:VectorizedObj[V,M,X], y:var Y) {.inline.} =
   else:
     mixin `:=`
     var ty {.noinit.}:V
-    ty := y
+    inlineProcs:
+      ty := y
     x := y
 template `:=`*[V,M:static[int],X,Y](x:VectorizedObj[V,M,X], y:Y) =
   mixin `:=`,vectorType,elementType
   type V = vectorType(x.V,x.T)
   var ty {.noinit.}:V
-  ty := y
+  inlineProcs:
+    ty := y
   x := ty
 
 template `+=`*(xx:VectorizedObj, yy:typed) =
   let
     x = xx
     y = yy
-  x := x[] + y
+  var xy {.noinit.}:type(x[]+y)
+  inlineProcs: xy := x[] + y
+  x := xy
 
-proc `*`*[VX,MX,VY,MY:static[int],X,Y](x:VectorizedObj[VX,MX,X], y:VectorizedObj[VY,MY,Y]):auto {.noinit,inline.} =
+template `*`*[VX,MX,VY,MY:static[int],X,Y](x:VectorizedObj[VX,MX,X], y:VectorizedObj[VY,MY,Y]):untyped =
   let
     tx {.noinit.} = x[]
     ty {.noinit.} = y[]
   mixin `*`
-  tx * ty
+  var z {.noinit.}:type(tx*ty)
+  inlineProcs:
+    z := tx * ty
+  z
 
-iterator vectorIndices*(x:Coalesced):auto =
+iterator vectorIndices*(x:Coalesced):ShortVectorIndex =
   var i = 0
   while i < x.veclen:
     yield ShortVectorIndex(i)
     inc i
 
-proc `+`*(x:ShortVector, y:SomeNumber):auto {.noinit,inline.} =
-  const V = x.len
-  var z {.noinit.}:ShortVector
-  for i in 0..<V: z[i] = x[i] + y
+template `+`*(x:ShortVector, y:SomeNumber):untyped =
+  const V = x.len-1
+  let
+    xx = x
+    yy = y
+  var z {.noinit.}:type(xx)
+  staticfor i, 0, V: z[i] = xx[i] + yy
   z
-proc `+`*(x,y:ShortVector):auto {.noinit,inline.} =
-  const V = x.len
-  var z {.noinit.}:ShortVector
-  for i in 0..<V: z[i] = x[i] + y[i]
+template `+`*(x,y:ShortVector):untyped =
+  const V = x.len-1
+  let
+    xx = x
+    yy = y
+  var z {.noinit.}:type(xx)
+  staticfor i, 0, V: z[i] = xx[i] + yy[i]
   z
-proc `-`*(x,y:ShortVector):auto {.noinit,inline.} =
-  const V = x.len
-  var z {.noinit.}:ShortVector
-  for i in 0..<V: z[i] = x[i] - y[i]
+template `-`*(x,y:ShortVector):untyped =
+  const V = x.len-1
+  let
+    xx = x
+    yy = y
+  var z {.noinit.}:type(xx)
+  staticfor i, 0, V: z[i] = xx[i] - yy[i]
   z
-proc `*`*(x,y:ShortVector):auto {.noinit,inline.} =
-  const V = x.len
-  var z {.noinit.}:ShortVector
-  for i in 0..<V: z[i] = x[i] * y[i]
+template `*`*(x,y:ShortVector):untyped =
+  const V = x.len-1
+  let
+    xx = x
+    yy = y
+  var z {.noinit.}:type(xx)
+  staticfor i, 0, V: z[i] = xx[i] * yy[i]
   z
-proc `+=`*(x:var ShortVector, y:ShortVector) {.inline.} =
-  const V = x.len
-  for i in 0..<V: x[i] += y[i]
-proc `:=`*(x:var ShortVector, y:ShortVector) {.inline.} =
-  const V = x.len
-  for i in 0..<V: x[i] = y[i]
-proc `:=`*(x:var ShortVector, y:SomeNumber) {.inline.} =
-  const V = x.len
-  for i in 0..<V: x[i] := y
+template `+=`*(x:var ShortVector, y:ShortVector) =
+  const V = x.len-1
+  let yy = y
+  staticfor i, 0, V: x[i] += yy[i]
+template `:=`*(x:var ShortVector, y:ShortVector) =
+  const V = x.len-1
+  let yy = y
+  staticfor i, 0, V: x[i] = yy[i]
+template `:=`*(x:var ShortVector, y:SomeNumber) =
+  const V = x.len-1
+  let yy = y
+  staticfor i, 0, V: x[i] := yy
 
 when isMainModule:
   import strutils, typetraits

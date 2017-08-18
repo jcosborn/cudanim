@@ -124,7 +124,7 @@ proc replaceAlt(n,x,y:NimNode, k:NimNodeKind):NimNode =
       result.add c.replaceAlt(x,y,k)
 
 proc replaceExcl(n,x,y:NimNode, k:NimNodeKind):NimNode =
-  # Same as replace but the optional paranet node kind k excluds the replacement.
+  # Same as replace but the optional parent node kind k excluds the replacement.
   if n.kind == k and n.len==1 and n[0] == x:
     result = n.copyNimTree
   elif n == x:
