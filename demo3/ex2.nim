@@ -16,7 +16,7 @@ proc test(vecLen, memLen: static[int]; N: int) =
       R {.global.}:int
       T {.global.}:float
     threadSingle:
-      R = 64                    # Base repeat
+      R = 128                   # Base repeat
       T = 1.0                   # Time limit
     var t = timex(rep, R, s)    # Always warm up cache
     while true:
@@ -43,9 +43,9 @@ proc test(vecLen, memLen: static[int]; N: int) =
 
   threads: timeit "CPU": x += y * z # back to CPU threads again
 
-  if classify(x[100][1,1].re) == fcNan or abs(2-x[100][1,1].re/rep.float) > 1e-4:
+  if rep < 16777216 and (classify(x[100][1,1].re) == fcNan or abs(2-x[100][1,1].re/rep.float) > 1e-4):
     echo "ERROR"
-    printf("# repeated: %7d  x[0][1,1]: %e\n", rep, x[100][1,1].re)
+    printf("# repeated: %7d  x[0][1,1]: %f\n", rep, x[100][1,1].re)
     quit 1
   x.free
   y.free
