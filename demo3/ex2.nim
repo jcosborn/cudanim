@@ -21,13 +21,13 @@ proc test(vecLen, memLen: static[int]; N: int) =
     var t = timex(rep, R, s)    # Always warm up cache
     while true:
       threadSingle:
-        T -= t
-        if T < 0:               # Use the last R & t for performance measure
-          printf("%8d %3d %d %-8s rep: %7d KB: %6.0f ms: %6.3f GF/s: %6.2f GB/s: %6.2f\n",
-                 N, vecLen, memLen, label, R, 1024*1024*mr, 1e3*t/R.float, fp*R.float/t, mt*R.float/t)
-        R = max(R,int(R.float*0.8/t)) # set up to run for at least 0.8 sec
-      if T < 0: break
+        R = min(64*R,max(R,int(R.float*0.8/t))) # set up to run for at least 0.8 sec or 64*R
       t = timex(rep, R, s)
+      threadSingle: T -= t
+      if T < 0: break
+    threadSingle:               # Use the last R & t for performance measure
+      printf("%8d %3d %d %-8s rep: %7d KB: %8.0f ms: %8.4f GF/s: %7.2f GB/s: %7.2f\n",
+             N, vecLen, memLen, label, R, 1024*1024*mr, 1e3*t/R.float, fp*R.float/t, mt*R.float/t)
 
   threads:                      # CPU threads
     x := 0                      # set them to diagonal matrices on CPU
@@ -43,10 +43,11 @@ proc test(vecLen, memLen: static[int]; N: int) =
 
   threads: timeit "CPU": x += y * z # back to CPU threads again
 
-  if rep < 16777216 and (classify(x[100][1,1].re) == fcNan or abs(2-x[100][1,1].re/rep.float) > 1e-4):
-    echo "ERROR"
-    printf("# repeated: %7d  x[0][1,1]: %f\n", rep, x[100][1,1].re)
-    quit 1
+  let scale = 0.5 / (sqrt(3.0) * rep.float)
+  threads:
+    x *= scale
+    var n = x.norm2
+    threadSingle: echo "# Final scaled x.norm2: ",n,"  rep: ",rep
   x.free
   y.free
   z.free

@@ -49,6 +49,7 @@ macro defsimd:auto =
     ds = ss
     result.add( quote do:
       import qexLite/simd
+      export simd
     )
   else:
     echo "ERROR: unsupported value of CPUVLEN: ", CPUVLEN
@@ -167,7 +168,8 @@ macro `[]`*(x:VectorizedObj, ys:varargs[untyped]):untyped =
     result = newCall("[]", o)
     for y in ys: result.add y
 
-proc `:=`*[V,M:static[int],X,Y](x:VectorizedObj[V,M,X], y:var Y) {.inline.} =
+#proc `:=`*[V,M:static[int],X,Y](x:VectorizedObj[V,M,X], y:var Y) {.inline.} =
+template `:=`*[Y](x:VectorizedObj, y:var Y) =
   mixin vectorType, elementType
   type E = elementType(x.T)
   type V = vectorType(x.V,x.T)
@@ -230,26 +232,36 @@ proc `:=`*[V,M:static[int],X,Y](x:VectorizedObj[V,M,X], y:var Y) {.inline.} =
       # We can deal with this but let's leave it for future exercises.
       {.fatal:"Register word size larger than vector element size.".}
   else:
-    mixin `:=`
-    var ty {.noinit.}:V
     inlineProcs:
+      mixin `:=`
+      var ty {.noinit.}:V
       ty := y
-    x := y
-template `:=`*[V,M:static[int],X,Y](x:VectorizedObj[V,M,X], y:Y) =
-  mixin `:=`,vectorType,elementType
-  type V = vectorType(x.V,x.T)
-  var ty {.noinit.}:V
+      x := y
+template `:=`*[Y](x:VectorizedObj, y:Y) =
   inlineProcs:
+    mixin `:=`,vectorType,elementType
+    type V = vectorType(x.V,x.T)
+    var ty {.noinit.}:V
     ty := y
-  x := ty
+    x := ty
 
 template `+=`*(xx:VectorizedObj, yy:typed) =
-  let
-    x = xx
-    y = yy
-  var xy {.noinit.}:type(x[]+y)
-  inlineProcs: xy := x[] + y
-  x := xy
+  inlineProcs:
+    let
+      x = xx
+      y = yy
+    var xy {.noinit.} = x[]
+    xy += y
+    x := xy
+
+template `*=`*(xx:VectorizedObj, yy:typed) =
+  inlineProcs:
+    let
+      x = xx
+      y = yy
+    var xv {.noinit.} = x[]
+    xv *= y
+    x := xv
 
 template `*`*[VX,MX,VY,MY:static[int],X,Y](x:VectorizedObj[VX,MX,X], y:VectorizedObj[VY,MY,Y]):untyped =
   let
@@ -257,9 +269,10 @@ template `*`*[VX,MX,VY,MY:static[int],X,Y](x:VectorizedObj[VX,MX,X], y:Vectorize
     ty {.noinit.} = y[]
   mixin `*`
   var z {.noinit.}:type(tx*ty)
-  inlineProcs:
-    z := tx * ty
+  z := tx * ty
   z
+  #tx * ty
+template norm2*(x:VectorizedObj):untyped = x[].norm2
 
 iterator vectorIndices*(x:Coalesced):ShortVectorIndex =
   var i = 0
@@ -269,34 +282,38 @@ iterator vectorIndices*(x:Coalesced):ShortVectorIndex =
 
 template `+`*(x:ShortVector, y:SomeNumber):untyped =
   const V = x.len-1
+  type tx = type(x)
   let
     xx = x
     yy = y
-  var z {.noinit.}:type(xx)
+  var z {.noinit.}:tx
   staticfor i, 0, V: z[i] = xx[i] + yy
   z
 template `+`*(x,y:ShortVector):untyped =
   const V = x.len-1
+  type tx = type(x)
   let
     xx = x
     yy = y
-  var z {.noinit.}:type(xx)
+  var z {.noinit.}:tx
   staticfor i, 0, V: z[i] = xx[i] + yy[i]
   z
 template `-`*(x,y:ShortVector):untyped =
   const V = x.len-1
+  type tx = type(x)
   let
     xx = x
     yy = y
-  var z {.noinit.}:type(xx)
+  var z {.noinit.}:tx
   staticfor i, 0, V: z[i] = xx[i] - yy[i]
   z
 template `*`*(x,y:ShortVector):untyped =
   const V = x.len-1
+  type tx = type(x)
   let
     xx = x
     yy = y
-  var z {.noinit.}:type(xx)
+  var z {.noinit.}:tx
   staticfor i, 0, V: z[i] = xx[i] * yy[i]
   z
 template `+=`*(x:var ShortVector, y:ShortVector) =
@@ -311,6 +328,19 @@ template `:=`*(x:var ShortVector, y:SomeNumber) =
   const V = x.len-1
   let yy = y
   staticfor i, 0, V: x[i] := yy
+template `*=`*(x:var ShortVector, y:SomeNumber) =
+  const V = x.len-1
+  let yy = y
+  staticfor i, 0, V: x[i] *= yy
+template norm2*(xx:ShortVector):untyped =
+  const V = xx.len-1
+  let x = xx
+  type N2 = type(xx[0].norm2)
+  var r {.noinit.}:N2
+  r = x[0].norm2
+  when V>0:
+    staticfor i, 1, V: r += x[i].norm2
+  r
 
 when isMainModule:
   import strutils, typetraits

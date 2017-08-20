@@ -329,6 +329,43 @@ proc cleanIterator(n:NimNode):NimNode =
   # echo "<<<<<< cleanIterator"
   # echo result.treerepr
 
+proc inlineLets(n:NimNode):NimNode =
+  proc get(n:NimNode):NimNode =
+    result = newPar()
+    if n.kind == nnkLetSection:
+      for d in n:
+        if d.kind != nnkIdentDefs or d.len<3:
+          echo "Internal ERROR: regenSym: get: can't handle:"
+          echo n.treerepr
+          quit 1
+        if d[^1].kind in AtomicNodes:
+          for i in 0..<d.len-2:   # Last 2 is type and value.
+            if d[i].kind == nnkSym:
+              result.add newPar(d[i],d[^1])
+            else: error("inlineLets can't handel: " & n.treerepr)
+          for c in d[^1]: result.append get c
+    else:
+      for c in n: result.append get c
+  proc rep(n,x,y:NimNode):NimNode =
+    if n == x: result = y.copy
+    elif n.kind == nnkLetSection:
+      var ll = n.copyNimNode
+      for d in n:
+        var dd = d.copyNimNode
+        for i in 0..<d.len-2:
+          if d[i] != x: dd.add d[i].copy
+        if dd.len > 0:
+          dd.add(d[^2].copy, d[^1].rep(x,y))
+          ll.add dd
+      if ll.len > 0: result = ll
+      else: result = newNimNode(nnkDiscardStmt,n).add(newStrLitNode(n.repr))
+    else:
+      result = n.copyNimNode
+      for c in n:
+        result.add c.rep(x,y)
+  result = n.copy
+  for x in get n: result = result.rep(x[0],x[1])
+
 proc regenSym(n:NimNode):NimNode =
   # Only regen nskVar and nskLet symbols.
 
@@ -373,9 +410,16 @@ proc inlineProcsY*(call: NimNode, procImpl: NimNode): NimNode =
     else:
       result = n.copyNimNode
       for c in n: result.add removeRoutines c
+  proc removeTypeSections(n:NimNode):NimNode =
+    # Type section is special.  Once the type is instantiated, it exists, and we don't want duplicates.
+    if n.kind == nnkTypeSection:
+      result = newNimNode(nnkDiscardStmt,n).add(newStrLitNode(n.repr))
+    else:
+      result = n.copyNimNode
+      for c in n: result.add removeTypeSections c
   var
     pre = newStmtList()
-    body = procImpl.body.copyNimTree.removeRoutines
+    body = procImpl.body.copyNimTree.removeRoutines.removeTypeSections
   # echo "### body w/o routines:"
   # echo body.repr
   body = cleanIterator body
@@ -508,7 +552,7 @@ proc inlineProcsY*(call: NimNode, procImpl: NimNode): NimNode =
   # echo sl.repr
   # echo "^^^^^^"
   # result = sl
-  result = regenSym sl
+  result = regenSym inlineLets sl
   # echo "<<<<<< inlineProcsY"
   # echo result.treerepr
 

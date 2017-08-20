@@ -198,61 +198,101 @@ template `[]`*(x: ArrayObj, i: ArrayIndex): untyped = indexArray(x, i)
 #  x.p[][i] = y
 
 template veclen(x:ArrayObj):untyped = x.p.veclen
+iterator vIndicesT*(x:ArrayObj):ShortVectorIndex =
+  let
+    tid = getThreadNum()
+    nid = getNumThreads()
+    n0 = 0
+    n1 = x.veclen
+    n = n1 - n0
+    ti0 = n0 + ((tid*n) div nid)
+    ti1 = n0 + (((threadNum+1)*n) div nid)
+  #echo "ti0: ", ti0, "  ti1: ", ti1
+  var i = ti0
+  while i < ti1:
+    yield i.ShortVectorIndex
+    inc(i)
+  # var i = tid
+  # while i<x.veclen:
+  #   yield i.ShortVectorIndex
+  #   i += nid
 
 # var threadNum* = 0
 # var numThreads* = 1
 template `:=`*(x: ArrayObj, y: ArrayObj) =
   #cprintf("t %i/%i  b %i/%i\n", getThreadIdx(), getThreadDim(), getBlockIdx(), getBlockDim())
   #let i = getBlockDim().x * getBlockIdx().x + getThreadIdx().x
-  let tid = getThreadNum()
-  let nid = getNumThreads()
+  # let tid = getThreadNum()
+  # let nid = getNumThreads()
   packVarsStmt((x,y), toCpu)
-  var i = tid
-  # while i<x.n:
-  # while i<x.n div VLEN:
-  while i<x.veclen:
-    x[i.ShortVectorIndex] := y[i.ShortVectorIndex]
-    i += nid
+  # var i = tid
+  # # while i<x.n:
+  # # while i<x.n div VLEN:
+  # while i<x.veclen:
+  #   x[i.ShortVectorIndex] := y[i.ShortVectorIndex]
+  #   i += nid
+  for i in vIndicesT(x):
+    x[i] := y[i]
 
 template `:=`*(x: ArrayObj, y: SomeNumber) =
   #cprintf("t %i/%i  b %i/%i\n", getThreadIdx(), getThreadDim(), getBlockIdx(), getBlockDim())
   #let i = getBlockDim().x * getBlockIdx().x + getThreadIdx().x
-  let tid = getThreadNum()
-  let nid = getNumThreads()
+  # let tid = getThreadNum()
+  # let nid = getNumThreads()
   packVarsStmt(x, toCpu)
-  var i = tid
-  # while i<x.n:
-  # while i<x.n div VLEN:
-  while i<x.veclen:
-    x[i.ShortVectorIndex] := y
-    i += nid
+  # var i = tid
+  # # while i<x.n:
+  # # while i<x.n div VLEN:
+  # while i<x.veclen:
+  #   x[i.ShortVectorIndex] := y
+  #   i += nid
+  for i in vIndicesT(x):
+    x[i] := y
 
 template `+=`*(x: ArrayObj, y: SomeNumber) =
   #cprintf("t %i/%i  b %i/%i\n", getThreadIdx(), getThreadDim(), getBlockIdx(), getBlockDim())
   #let i = getBlockDim().x * getBlockIdx().x + getThreadIdx().x
-  let tid = getThreadNum()
-  let nid = getNumThreads()
+  # let tid = getThreadNum()
+  # let nid = getNumThreads()
   packVarsStmt((x,y), toCpu)
-  var i = tid
-  # while i<x.n:
-  # while i<x.n div VLEN:
-  while i<x.veclen:
-    x[i.ShortVectorIndex] += y
-    i += nid
+  # var i = tid
+  # # while i<x.n:
+  # # while i<x.n div VLEN:
+  # while i<x.veclen:
+  #   x[i.ShortVectorIndex] += y
+  #   i += nid
+  for i in vIndicesT(x):
+    x[i] += y
 
 #template `+=`*(x: ArrayObj, y: ArrayObj) =
 template `+=`*[VX,VY,MX,MY:static[int],TX,TY](x: ArrayObj[VX,MX,TX], y: ArrayObj[VY,MY,TY]) =
   #cprintf("t %i/%i  b %i/%i\n", getThreadIdx(), getThreadDim(), getBlockIdx(), getBlockDim())
   #let i = getBlockDim().x * getBlockIdx().x + getThreadIdx().x
-  let tid = getThreadNum()
-  let nid = getNumThreads()
+  # let tid = getThreadNum()
+  # let nid = getNumThreads()
   packVarsStmt((x,y), toCpu)
-  var i = tid
-  # while i<x.n:
-  # while i<x.n div VLEN:
-  while i<x.veclen:
-    x[i.ShortVectorIndex] += y[i.ShortVectorIndex]
-    i += nid
+  # var i = tid
+  # # while i<x.n:
+  # # while i<x.n div VLEN:
+  # while i<x.veclen:
+  #   x[i.ShortVectorIndex] += y[i.ShortVectorIndex]
+  #   i += nid
+  for i in vIndicesT(x):
+    x[i] += y[i]
+
+template `*=`*(x: ArrayObj, y: SomeNumber) =
+  packVarsStmt(x, toCpu)
+  for i in vIndicesT(x):
+    x[i] *= y
+
+template norm2*(x:ArrayObj): untyped =
+  packVarsStmt(x, toCpu)
+  var r:type(toDouble(norm2(x[0.ShortVectorIndex])))
+  for i in vIndicesT(x):
+    r += x[i].norm2
+  var z = simdSum(r)
+  threadSum(z)
+  z
 
 proc `+`*[VX,VY,MX,MY:static[int],TX,TY](x: ArrayObj[VX,MX,TX], y: ArrayObj[VY,MY,TY]): auto =
   var r: ArrayObj[x.V,x.M,type(x[0]+y[0])]
@@ -380,6 +420,9 @@ when isMainModule:
       if (x.n-1) mod getNumThreads() == getThreadNum():
         cprintf("thread %i/%i\n", getThreadNum(), getNumThreads())
         cprintf("x[%i][0,0]: %g\n", x.n-1, x[x.n-1][].d[0][0].re)
+      var n = x.norm2
+      threadSingle:
+        cprintf("x.norm2: %g\n", n)
     x.free
     y.free
     z.free
