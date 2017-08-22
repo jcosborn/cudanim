@@ -3,6 +3,7 @@ set key outside width 4
 set log x
 set xlabel 'Memory footprint (KB)'
 set ylabel 'Effective bandwidth (GB/s)'
+set xrange [50:15000000]
 plot \
   p( 8,1, 'CPU') u 8:14 w l ls  1 t  'V=8, M=1, CPU', \
   p( 8,2, 'CPU') u 8:14 w l ls 21 t  'V=8, M=2, CPU', \

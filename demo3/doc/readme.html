@@ -1,0 +1,671 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2017-08-22 Tue 00:20 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Portable expressions in Nim</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Xiao-Yong Jin and James C. Osborn" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<style type="text/css">
+<!--
+body {font-family: 'Lucida Bright OT','Source Serif Pro',Serif;
+font-size: 18pt;
+line-height: 1.5;}
+pre {font-family: 'Lucida Console DK','Source Code Pro',monospace;
+line-height: 1.2;}
+-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Portable expressions in Nim</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org791025e">1. Code portability in Nim</a></li>
+<li><a href="#orgb73c8cf">2. Implementation details</a></li>
+<li><a href="#org52587bd">3. CPU threads</a></li>
+<li><a href="#orga941f5a">4. Offloading</a>
+<ul>
+<li><a href="#org0003e95">4.1. The <code>kern</code> procedure in <code>onGpu</code></a></li>
+<li><a href="#org8a361e2">4.2. Expression handling</a></li>
+</ul>
+</li>
+<li><a href="#orgb01a135">5. AST based overloading for array operations</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org791025e" class="outline-2">
+<h2 id="org791025e"><span class="section-number-2">1</span> Code portability in Nim</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Here's an benchmark example.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-nim"><span class="linenr"> 1: </span><span style="color: #718c00;">import</span> timing, cpugpuarray, qexLite/metaUtils, math
+<span class="linenr"> 2: </span>
+<span class="linenr"> 3: </span><span style="color: #718c00;">proc</span><span style="color: #f5871f;"> test</span>(vecLen, memLen: <span style="color: #4271ae;">static</span>[<span style="color: #4271ae;">int</span>]; N: <span style="color: #4271ae;">int</span>) =
+<span class="linenr"> 4: </span>  <span style="color: #718c00;">var</span>
+<span class="linenr"> 5: </span>    x = newColorMatrixArray(vecLen,memLen,N) <span style="color: #8e908c; font-style: italic;"># array of N 3x3 single prec complex matrices</span>
+<span class="linenr"> 6: </span>    y = newColorMatrixArray(vecLen,memLen,N)
+<span class="linenr"> 7: </span>    z = newColorMatrixArray(vecLen,memLen,N)
+<span class="linenr"> 8: </span>    rep = <span style="font-style: italic;">0</span>                     <span style="color: #8e908c; font-style: italic;"># accumulates the number of runs</span>
+<span class="linenr"> 9: </span>
+<span class="linenr">10: </span>  <span style="color: #718c00;">let</span>
+<span class="linenr">11: </span>    mr = <span style="color: #4271ae;">float</span>(<span style="font-style: italic;">3</span> * <span style="font-style: italic;">8</span> * x.T.N * x.T.N * N) / <span style="color: #4271ae;">float</span>(<span style="font-style: italic;">1024</span> * <span style="font-style: italic;">1024</span> * <span style="font-style: italic;">1024</span>) <span style="color: #8e908c; font-style: italic;"># Resident memory in 2^30 bytes</span>
+<span class="linenr">12: </span>    mt = <span style="font-style: italic;">4</span> * mr / <span style="font-style: italic;">3</span>             <span style="color: #8e908c; font-style: italic;"># Memory transaction</span>
+<span class="linenr">13: </span>    fp = <span style="color: #4271ae;">float</span>(<span style="font-style: italic;">8</span> * x.T.N * x.T.N * x.T.N * N) * 1e-<span style="font-style: italic;">9</span> <span style="color: #8e908c; font-style: italic;"># Floating point op / 10^9</span>
+<span class="linenr">14: </span>  <span style="color: #718c00;">template</span><span style="color: #f5871f;"> timeit</span>(label:<span style="color: #4271ae;">string</span>, s:<span style="color: #4271ae;">untyped</span>) =
+<span class="linenr">15: </span>    <span style="color: #718c00;">var</span>
+<span class="linenr">16: </span>      R {.<span style="color: #8959a8;">global</span>.}:<span style="color: #4271ae;">int</span>
+<span class="linenr">17: </span>      T {.<span style="color: #8959a8;">global</span>.}:<span style="color: #4271ae;">float</span>
+<span class="linenr">18: </span>    threadSingle:
+<span class="linenr">19: </span>      R = <span style="font-style: italic;">128</span>                   <span style="color: #8e908c; font-style: italic;"># Base repeat</span>
+<span class="linenr">20: </span>      T = <span style="font-style: italic;">1</span>.<span style="font-style: italic;">0</span>                   <span style="color: #8e908c; font-style: italic;"># Time limit</span>
+<span class="linenr">21: </span>    <span style="color: #718c00;">var</span> <span style="color: #eab700;">t </span>= timex(rep, R, s)    <span style="color: #8e908c; font-style: italic;"># Always warm up cache</span>
+<span class="linenr">22: </span>    <span style="color: #718c00;">while</span> <span style="color: #4271ae;">true</span>:
+<span class="linenr">23: </span>      threadSingle:
+<span class="linenr">24: </span>        R = <span style="color: #8959a8;">min</span>(<span style="font-style: italic;">64</span>*R,<span style="color: #8959a8;">max</span>(R,<span style="color: #4271ae;">int</span>(R.<span style="color: #4271ae;">float</span>*<span style="font-style: italic;">0</span>.<span style="font-style: italic;">8</span>/t))) <span style="color: #8e908c; font-style: italic;"># set up to run for at least 0.8 sec or 64*R</span>
+<span class="linenr">25: </span>      t = timex(rep, R, s)
+<span class="linenr">26: </span>      threadSingle: T -= t
+<span class="linenr">27: </span>      <span style="color: #718c00;">if</span> T &lt; <span style="font-style: italic;">0</span>: <span style="color: #718c00;">break</span>
+<span class="linenr">28: </span>    threadSingle:               <span style="color: #8e908c; font-style: italic;"># Use the last R &amp; t for performance measure</span>
+<span class="linenr">29: </span>      printf(<span style="color: #3e999f;">"%8d %3d %d %-8s rep: %7d KB: %8.0f ms: %8.4f GF/s: %7.2f GB/s: %7.2f\n"</span>,
+<span class="linenr">30: </span>             N, vecLen, memLen, label, R, <span style="font-style: italic;">1024</span>*<span style="font-style: italic;">1024</span>*mr, 1e3*t/R.<span style="color: #4271ae;">float</span>, fp*R.<span style="color: #4271ae;">float</span>/t, mt*R.<span style="color: #4271ae;">float</span>/t)
+<span class="linenr">31: </span>
+<span class="linenr">32: </span>  threads:                      <span style="color: #8e908c; font-style: italic;"># CPU threads</span>
+<span class="linenr">33: </span>    x := <span style="font-style: italic;">0</span>                      <span style="color: #8e908c; font-style: italic;"># set them to diagonal matrices on CPU</span>
+<span class="linenr">34: </span>    y := <span style="font-style: italic;">1</span>
+<span class="linenr">35: </span>    z := <span style="font-style: italic;">2</span>
+<span class="linenr">36: </span>    timeit <span style="color: #3e999f;">"CPU"</span>: x += y * z
+<span class="linenr">37: </span>
+<span class="linenr">38: </span>  timeit <span style="color: #3e999f;">"GPU5"</span>:                <span style="color: #8e908c; font-style: italic;"># includes kernel launching and synchronization</span>
+<span class="linenr">39: </span>    onGpu(N, <span style="font-style: italic;">32</span>):               <span style="color: #8e908c; font-style: italic;"># Number of threads, threads per block</span>
+<span class="linenr">40: </span>      x += y * z
+<span class="linenr">41: </span>  timeit <span style="color: #3e999f;">"GPU6"</span>: onGpu(N, <span style="font-style: italic;">64</span>): x += y * z
+<span class="linenr">42: </span>  timeit <span style="color: #3e999f;">"GPU7"</span>: onGpu(N, <span style="font-style: italic;">128</span>): x += y * z
+<span class="linenr">43: </span>
+<span class="linenr">44: </span>  threads: timeit <span style="color: #3e999f;">"CPU"</span>: x += y * z <span style="color: #8e908c; font-style: italic;"># back to CPU threads again</span>
+<span class="linenr">45: </span>
+<span class="linenr">46: </span>  <span style="color: #718c00;">let</span> <span style="color: #eab700;">scale </span>= <span style="font-style: italic;">0</span>.<span style="font-style: italic;">5</span> / (sqrt(<span style="font-style: italic;">3</span>.<span style="font-style: italic;">0</span>) * rep.<span style="color: #4271ae;">float</span>)
+<span class="linenr">47: </span>  threads:
+<span class="linenr">48: </span>    x *= scale
+<span class="linenr">49: </span>    <span style="color: #718c00;">var</span> <span style="color: #eab700;">n </span>= x.norm2
+<span class="linenr">50: </span>    threadSingle: <span style="color: #8959a8;">echo</span> <span style="color: #3e999f;">"# Final scaled x.norm2: "</span>,n,<span style="color: #3e999f;">"  rep: "</span>,rep
+<span class="linenr">51: </span>  x.free
+<span class="linenr">52: </span>  y.free
+<span class="linenr">53: </span>  z.free
+<span class="linenr">54: </span>
+<span class="linenr">55: </span><span style="color: #718c00;">for</span> n <span style="color: #718c00;">in</span> <span style="font-style: italic;">8</span>..<span style="font-style: italic;">26</span>:
+<span class="linenr">56: </span>  staticFor v, <span style="font-style: italic;">2</span>, <span style="font-style: italic;">7</span>:
+<span class="linenr">57: </span>    <span style="color: #718c00;">when</span> (<span style="font-style: italic;">1</span> <span style="color: #8959a8;">shl</span> v) &gt;= (structsize(vectorizedElementType(<span style="color: #4271ae;">float32</span>)) <span style="color: #8959a8;">div</span> <span style="color: #8959a8; font-style: italic;">sizeof</span>(<span style="color: #4271ae;">float32</span>)):
+<span class="linenr">58: </span>      staticFor ml, <span style="font-style: italic;">1</span>, <span style="font-style: italic;">2</span>:
+<span class="linenr">59: </span>        test(<span style="font-style: italic;">1</span> <span style="color: #8959a8;">shl</span> v, ml, <span style="font-style: italic;">1</span> <span style="color: #8959a8;">shl</span> n)
+</pre>
+</div>
+
+<p>
+The above can be compiled and run with
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">nim cpp -d:SSE -d:AVX -d:<span style="color: #eab700;">CPUVLEN</span>=256 -d:release ex2
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb73c8cf" class="outline-2">
+<h2 id="orgb73c8cf"><span class="section-number-2">2</span> Implementation details</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+The main container object in the example above is an array that can live
+on the CPU and also the GPU.  This is defined as
+</p>
+
+<div class="org-src-container">
+<pre class="src src-nim"><span class="linenr"> 1: </span><span style="color: #718c00;">when</span> useGPU:
+<span class="linenr"> 2: </span>  <span style="color: #718c00;">type</span>
+<span class="linenr"> 3: </span>    ArrayObj*[V,M:<span style="color: #718c00;">static</span>[<span style="color: #4271ae;">int</span>],T] = <span style="color: #718c00;">object</span>
+<span class="linenr"> 4: </span>      <span style="color: #f5871f; font-weight: bold; font-style: italic;">p*</span>: Coalesced[V,M,T]
+<span class="linenr"> 5: </span>      <span style="color: #f5871f; font-weight: bold; font-style: italic;">n*</span>: <span style="color: #4271ae;">int</span>
+<span class="linenr"> 6: </span>      <span style="color: #f5871f; font-weight: bold; font-style: italic;">g*</span>: GpuArrayObj[V,M,T]
+<span class="linenr"> 7: </span>      <span style="color: #f5871f; font-weight: bold; font-style: italic;">lastOnGpu*</span>: <span style="color: #4271ae;">bool</span>
+<span class="linenr"> 8: </span>      <span style="color: #f5871f; font-weight: bold; font-style: italic;">unifiedMem*</span>: <span style="color: #4271ae;">bool</span>
+<span class="linenr"> 9: </span>      mem:<span style="color: #4271ae;">pointer</span> <span style="color: #8959a8;">## Pointer to the allocated memory.</span>
+<span class="linenr">10: </span><span style="color: #718c00;">else</span>:
+<span class="linenr">11: </span>  <span style="color: #718c00;">type</span>
+<span class="linenr">12: </span>    ArrayObj*[V,M:<span style="color: #718c00;">static</span>[<span style="color: #4271ae;">int</span>],T] = <span style="color: #718c00;">object</span>
+<span class="linenr">13: </span>      <span style="color: #f5871f; font-weight: bold; font-style: italic;">p*</span>: Coalesced[V,M,T]
+<span class="linenr">14: </span>      <span style="color: #f5871f; font-weight: bold; font-style: italic;">n*</span>: <span style="color: #4271ae;">int</span>
+<span class="linenr">15: </span>      mem:<span style="color: #4271ae;">pointer</span> <span style="color: #8959a8;">## Pointer to the allocated memory.</span>
+<span class="linenr">16: </span>
+<span class="linenr">17: </span><span style="color: #718c00;">type</span>
+<span class="linenr">18: </span>  GpuArrayObj*[V,M:<span style="color: #718c00;">static</span>[<span style="color: #4271ae;">int</span>],T] = <span style="color: #718c00;">object</span>
+<span class="linenr">19: </span>    <span style="color: #f5871f; font-weight: bold; font-style: italic;">p*</span>: Coalesced[V,M,T]
+<span class="linenr">20: </span>    <span style="color: #f5871f; font-weight: bold; font-style: italic;">n*</span>: <span style="color: #4271ae;">int</span>
+<span class="linenr">21: </span>
+<span class="linenr">22: </span><span style="color: #718c00;">type</span>
+<span class="linenr">23: </span>  Coalesced*[V,M:<span style="color: #718c00;">static</span>[<span style="color: #4271ae;">int</span>],T] = <span style="color: #718c00;">object</span>
+<span class="linenr">24: </span>    <span style="color: #8959a8;">## </span><span style="color: #4271ae;">`V`</span><span style="color: #8959a8;">: Inner array length.</span>
+<span class="linenr">25: </span>    <span style="color: #8959a8;">## </span><span style="color: #4271ae;">`M`</span><span style="color: #8959a8;">: Number of RegisterWords in a MemoryWord, the granularity of memory transactions.</span>
+<span class="linenr">26: </span>    <span style="color: #f5871f; font-weight: bold; font-style: italic;">p*</span>: <span style="color: #718c00;">ptr</span> T                   <span style="color: #8959a8;">## pointer to an array of T</span>
+<span class="linenr">27: </span>    <span style="color: #f5871f; font-weight: bold; font-style: italic;">n*</span>: <span style="color: #4271ae;">int</span>                     <span style="color: #8959a8;">## the length of the array being coalesced</span>
+<span class="linenr">28: </span>  CoalescedObj[V,M:<span style="color: #718c00;">static</span>[<span style="color: #4271ae;">int</span>],T] = <span style="color: #718c00;">object</span>
+<span class="linenr">29: </span>    <span style="color: #f5871f; font-weight: bold; font-style: italic;">o*</span>: Coalesced[V,M,T]
+<span class="linenr">30: </span>    <span style="color: #f5871f; font-weight: bold; font-style: italic;">i*</span>: <span style="color: #4271ae;">int</span>                     <span style="color: #8e908c; font-style: italic;"># the index to which we asks</span>
+<span class="linenr">31: </span>
+<span class="linenr">32: </span><span style="color: #718c00;">template</span><span style="color: #f5871f; font-weight: bold; font-style: italic;"> `[]`*</span>(x:<span style="color: #4271ae;">Coalesced</span>, ix:<span style="color: #4271ae;">int</span>):<span style="color: #4271ae;">untyped</span> = CoalescedObj[x.V,x.M,x.T](o:<span style="color: #4271ae;">x</span>, i:<span style="color: #4271ae;">ix</span>)
+<span class="linenr">33: </span><span style="color: #718c00;">template</span><span style="color: #f5871f; font-weight: bold; font-style: italic;"> len*</span>(x:<span style="color: #4271ae;">Coalesced</span>):<span style="color: #4271ae;">untyped</span> = x.n
+<span class="linenr">34: </span>
+<span class="linenr">35: </span><span style="color: #718c00;">template</span><span style="color: #f5871f; font-weight: bold; font-style: italic;"> fromCoalesced*</span>(x:<span style="color: #4271ae;">CoalescedObj</span>):<span style="color: #4271ae;">untyped</span> =
+<span class="linenr">36: </span>  <span style="color: #718c00;">const</span> <span style="color: #eab700;">N </span>= getSize(x.T) <span style="color: #8959a8;">div</span> (x.M*<span style="color: #8959a8; font-style: italic;">sizeof</span>(RegisterWord))
+<span class="linenr">37: </span>  <span style="color: #718c00;">type</span> <span style="color: #eab700;">A </span>{.<span style="color: #8959a8;">unchecked</span>.}= <span style="color: #718c00;">ptr</span> <span style="color: #4271ae;">array</span>[<span style="font-style: italic;">0</span>,MemoryWord(x.M)]
+<span class="linenr">38: </span>  <span style="color: #718c00;">var</span> <span style="color: #eab700;">r </span>{.<span style="color: #8959a8;">noinit</span>.}: x.T
+<span class="linenr">39: </span>  <span style="color: #718c00;">let</span> <span style="color: #eab700;">offset </span>= (x.i <span style="color: #8959a8;">div</span> x.V)*N*x.V + x.i <span style="color: #8959a8;">mod</span> x.V
+<span class="linenr">40: </span>  staticfor j, <span style="font-style: italic;">0</span>, N-<span style="font-style: italic;">1</span>: <span style="color: #718c00;">cast</span>[A](r.<span style="color: #718c00;">addr</span>)[j] = <span style="color: #718c00;">cast</span>[A](x.o.p)[offset + j*x.V]
+<span class="linenr">41: </span>  r
+<span class="linenr">42: </span>
+<span class="linenr">43: </span><span style="color: #718c00;">type</span>
+<span class="linenr">44: </span>  ShortVector*[V:<span style="color: #718c00;">static</span>[<span style="color: #4271ae;">int</span>],E] = <span style="color: #718c00;">object</span>
+<span class="linenr">45: </span>    <span style="color: #f5871f; font-weight: bold; font-style: italic;">a*</span>:<span style="color: #4271ae;">array</span>[V,E]
+<span class="linenr">46: </span>  <span style="color: #f5871f; font-weight: bold; font-style: italic;">ShortVectorIndex*</span> = <span style="color: #718c00;">distinct</span> <span style="color: #4271ae;">int</span>
+<span class="linenr">47: </span>  VectorizedObj*[V,M:<span style="color: #718c00;">static</span>[<span style="color: #4271ae;">int</span>],T] = <span style="color: #718c00;">object</span>
+<span class="linenr">48: </span>    <span style="color: #f5871f; font-weight: bold; font-style: italic;">o*</span>:Coalesced[V,M,T]
+<span class="linenr">49: </span>    <span style="color: #f5871f; font-weight: bold; font-style: italic;">i*</span>:ShortVectorIndex
+<span class="linenr">50: </span>
+<span class="linenr">51: </span><span style="color: #718c00;">template</span><span style="color: #f5871f; font-weight: bold; font-style: italic;"> `[]`*</span>(x:<span style="color: #4271ae;">Coalesced</span>, ix:<span style="color: #4271ae;">ShortVectorIndex</span>):<span style="color: #4271ae;">untyped</span> = VectorizedObj[x.V,x.M,x.T](o:<span style="color: #4271ae;">x</span>,i:<span style="color: #4271ae;">ix</span>)
+<span class="linenr">52: </span><span style="color: #718c00;">template</span><span style="color: #f5871f; font-weight: bold; font-style: italic;"> veclen*</span>(x:<span style="color: #4271ae;">Coalesced</span>):<span style="color: #4271ae;">untyped</span> = x.n <span style="color: #8959a8;">div</span> x.V
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org52587bd" class="outline-2">
+<h2 id="org52587bd"><span class="section-number-2">3</span> CPU threads</h2>
+<div class="outline-text-2" id="text-3">
+<div class="org-src-container">
+<pre class="src src-nim"><span class="linenr"> 1: </span><span style="color: #718c00;">import</span> omp
+<span class="linenr"> 2: </span>
+<span class="linenr"> 3: </span><span style="color: #718c00;">when</span> <span style="color: #8959a8; font-style: italic;">defined</span>(noOpenmp):
+<span class="linenr"> 4: </span>  <span style="color: #718c00;">template</span><span style="color: #f5871f; font-weight: bold; font-style: italic;"> omp_set_num_threads*</span>(x: <span style="color: #4271ae;">cint</span>) = <span style="color: #718c00;">discard</span>
+<span class="linenr"> 5: </span>  <span style="color: #718c00;">template</span><span style="color: #f5871f; font-weight: bold; font-style: italic;"> omp_get_num_threads*</span>(): <span style="color: #4271ae;">cint</span> = <span style="font-style: italic;">1</span>
+<span class="linenr"> 6: </span>  <span style="color: #718c00;">template</span><span style="color: #f5871f; font-weight: bold; font-style: italic;"> omp_get_max_threads*</span>(): <span style="color: #4271ae;">cint</span> = <span style="font-style: italic;">1</span>
+<span class="linenr"> 7: </span>  <span style="color: #718c00;">template</span><span style="color: #f5871f; font-weight: bold; font-style: italic;"> omp_get_thread_num*</span>(): <span style="color: #4271ae;">cint</span> = <span style="font-style: italic;">0</span>
+<span class="linenr"> 8: </span>  <span style="color: #718c00;">template</span><span style="color: #f5871f;"> ompPragma</span>(p:<span style="color: #4271ae;">string</span>):<span style="color: #4271ae;">untyped</span> = <span style="color: #718c00;">discard</span>
+<span class="linenr"> 9: </span>  <span style="color: #718c00;">template</span><span style="color: #f5871f;"> setupGc </span>= <span style="color: #718c00;">discard</span>
+<span class="linenr">10: </span><span style="color: #718c00;">else</span>:
+<span class="linenr">11: </span>  <span style="color: #718c00;">const</span> <span style="color: #eab700;">OMPFlag </span>{.<span style="color: #8959a8;">strDefine</span>.} = <span style="color: #3e999f;">"-fopenmp"</span>
+<span class="linenr">12: </span>  {. <span style="color: #8959a8;">passC</span>: OMPFlag .}
+<span class="linenr">13: </span>  {. <span style="color: #8959a8;">passL</span>: OMPFlag .}
+<span class="linenr">14: </span>  {. <span style="color: #8959a8;">pragma</span>: omp, <span style="color: #8959a8;">header</span>:<span style="color: #3e999f;">"omp.h"</span> .}
+<span class="linenr">15: </span>  <span style="color: #718c00;">proc</span><span style="color: #f5871f; font-weight: bold; font-style: italic;"> omp_set_num_threads*</span>(x: <span style="color: #4271ae;">cint</span>) {.omp.}
+<span class="linenr">16: </span>  <span style="color: #718c00;">proc</span><span style="color: #f5871f; font-weight: bold; font-style: italic;"> omp_get_num_threads*</span>(): <span style="color: #4271ae;">cint</span> {.omp.}
+<span class="linenr">17: </span>  <span style="color: #718c00;">proc</span><span style="color: #f5871f; font-weight: bold; font-style: italic;"> omp_get_max_threads*</span>(): <span style="color: #4271ae;">cint</span> {.omp.}
+<span class="linenr">18: </span>  <span style="color: #718c00;">proc</span><span style="color: #f5871f; font-weight: bold; font-style: italic;"> omp_get_thread_num*</span>(): <span style="color: #4271ae;">cint</span> {.omp.}
+<span class="linenr">19: </span>  <span style="color: #718c00;">template</span><span style="color: #f5871f;"> ompPragma</span>(p:<span style="color: #4271ae;">string</span>):<span style="color: #4271ae;">untyped</span> =
+<span class="linenr">20: </span>    {. <span style="color: #8959a8;">emit</span>:<span style="color: #3e999f;">"\n#pragma omp "</span> &amp; p .}
+<span class="linenr">21: </span>  <span style="color: #718c00;">template</span><span style="color: #f5871f;"> setupGc </span>=
+<span class="linenr">22: </span>    <span style="color: #718c00;">if</span>(omp_get_thread_num()!=<span style="font-style: italic;">0</span>): setupForeignThreadGc()
+<span class="linenr">23: </span>
+<span class="linenr">24: </span><span style="color: #718c00;">template</span><span style="color: #f5871f; font-weight: bold; font-style: italic;"> ompBarrier*</span> = ompPragma(<span style="color: #3e999f;">"barrier"</span>)
+<span class="linenr">25: </span><span style="color: #718c00;">template</span><span style="color: #f5871f;"> ompBlock</span>(p:<span style="color: #4271ae;">string</span>; body:<span style="color: #4271ae;">untyped</span>):<span style="color: #4271ae;">untyped</span> =
+<span class="linenr">26: </span>  ompPragma(p)
+<span class="linenr">27: </span>  <span style="color: #718c00;">block</span>:
+<span class="linenr">28: </span>    body
+<span class="linenr">29: </span>
+<span class="linenr">30: </span><span style="color: #718c00;">template</span><span style="color: #f5871f; font-weight: bold; font-style: italic;"> ompParallel*</span>(body:<span style="color: #4271ae;">untyped</span>):<span style="color: #4271ae;">untyped</span> =
+<span class="linenr">31: </span>  ompBlock(<span style="color: #3e999f;">"parallel"</span>):
+<span class="linenr">32: </span>    setupGc()
+<span class="linenr">33: </span>    body
+<span class="linenr">34: </span><span style="color: #718c00;">template</span><span style="color: #f5871f; font-weight: bold; font-style: italic;"> ompMaster*</span>(body:<span style="color: #4271ae;">untyped</span>):<span style="color: #4271ae;">untyped</span> = ompBlock(<span style="color: #3e999f;">"master"</span>, body)
+<span class="linenr">35: </span><span style="color: #718c00;">template</span><span style="color: #f5871f; font-weight: bold; font-style: italic;"> ompSingle*</span>(body:<span style="color: #4271ae;">untyped</span>):<span style="color: #4271ae;">untyped</span> = ompBlock(<span style="color: #3e999f;">"single"</span>, body)
+<span class="linenr">36: </span><span style="color: #718c00;">template</span><span style="color: #f5871f; font-weight: bold; font-style: italic;"> ompCritical*</span>(body:<span style="color: #4271ae;">untyped</span>):<span style="color: #4271ae;">untyped</span> = ompBlock(<span style="color: #3e999f;">"critical"</span>, body)
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-nim"><span class="linenr"> 1: </span><span style="color: #718c00;">template</span><span style="color: #f5871f; font-weight: bold; font-style: italic;"> threads*</span>(body:<span style="color: #4271ae;">untyped</span>):<span style="color: #4271ae;">untyped</span> =
+<span class="linenr"> 2: </span>  checkInit()
+<span class="linenr"> 3: </span>  <span style="color: #718c00;">let</span> <span style="color: #eab700;">tidOld </span>= threadNum
+<span class="linenr"> 4: </span>  <span style="color: #718c00;">let</span> <span style="color: #eab700;">nidOld </span>= numThreads
+<span class="linenr"> 5: </span>  <span style="color: #718c00;">let</span> <span style="color: #eab700;">tlOld </span>= threadLocals
+<span class="linenr"> 6: </span>  <span style="color: #718c00;">proc</span><span style="color: #f5871f;"> tproc</span>{.<span style="color: #8959a8;">genSym</span>.} =
+<span class="linenr"> 7: </span>    <span style="color: #718c00;">var</span> <span style="color: #eab700;">ts</span>:<span style="color: #4271ae;">seq</span>[ThreadShare]
+<span class="linenr"> 8: </span>    ompParallel:
+<span class="linenr"> 9: </span>      threadNum = ompGetThreadNum()
+<span class="linenr">10: </span>      numThreads = ompGetNumThreads()
+<span class="linenr">11: </span>      <span style="color: #718c00;">if</span> threadNum==<span style="font-style: italic;">0</span>: ts.<span style="color: #8959a8;">newSeq</span>(numThreads)
+<span class="linenr">12: </span>      threadBarrierO()
+<span class="linenr">13: </span>      initThreadLocals(ts)
+<span class="linenr">14: </span>      body
+<span class="linenr">15: </span>      threadBarrierO()
+<span class="linenr">16: </span>  tproc()
+<span class="linenr">17: </span>  threadNum = tidOld
+<span class="linenr">18: </span>  numThreads = nidOld
+<span class="linenr">19: </span>  threadLocals = tlOld
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga941f5a" class="outline-2">
+<h2 id="orga941f5a"><span class="section-number-2">4</span> Offloading</h2>
+<div class="outline-text-2" id="text-4">
+<div class="org-src-container">
+<pre class="src src-nim"><span class="linenr"> 1: </span><span style="color: #718c00;">template</span><span style="color: #f5871f;"> cudaDefs</span>(body: <span style="color: #4271ae;">untyped</span>): <span style="color: #4271ae;">untyped</span> {.<span style="color: #8959a8;">dirty</span>.} =
+<span class="linenr"> 2: </span>  <span style="color: #718c00;">var</span> <span style="color: #eab700;">gridDim</span>{.<span style="color: #8959a8;">global</span>,<span style="color: #8959a8;">importC</span>,<span style="color: #8959a8;">noDecl</span>.}: CudaDim3
+<span class="linenr"> 3: </span>  <span style="color: #718c00;">var</span> <span style="color: #eab700;">blockIdx</span>{.<span style="color: #8959a8;">global</span>,<span style="color: #8959a8;">importC</span>,<span style="color: #8959a8;">noDecl</span>.}: CudaDim3
+<span class="linenr"> 4: </span>  <span style="color: #718c00;">var</span> <span style="color: #eab700;">blockDim</span>{.<span style="color: #8959a8;">global</span>,<span style="color: #8959a8;">importC</span>,<span style="color: #8959a8;">noDecl</span>.}: CudaDim3
+<span class="linenr"> 5: </span>  <span style="color: #718c00;">var</span> <span style="color: #eab700;">threadIdx</span>{.<span style="color: #8959a8;">global</span>,<span style="color: #8959a8;">importC</span>,<span style="color: #8959a8;">noDecl</span>.}: CudaDim3
+<span class="linenr"> 6: </span>  <span style="color: #718c00;">template</span><span style="color: #f5871f;"> getGridDim</span>: <span style="color: #4271ae;">untyped</span> {.used.} = gridDim
+<span class="linenr"> 7: </span>  <span style="color: #718c00;">template</span><span style="color: #f5871f;"> getBlockIdx</span>: <span style="color: #4271ae;">untyped</span> {.used.} = blockIdx
+<span class="linenr"> 8: </span>  <span style="color: #718c00;">template</span><span style="color: #f5871f;"> getBlockDim</span>: <span style="color: #4271ae;">untyped</span> {.used.} = blockDim
+<span class="linenr"> 9: </span>  <span style="color: #718c00;">template</span><span style="color: #f5871f;"> getThreadIdx</span>: <span style="color: #4271ae;">untyped</span> {.used.} = threadIdx
+<span class="linenr">10: </span>  <span style="color: #718c00;">template</span><span style="color: #f5871f;"> getThreadNum</span>: <span style="color: #4271ae;">untyped</span> {.used.} = blockDim.x * blockIdx.x + threadIdx.x
+<span class="linenr">11: </span>  <span style="color: #718c00;">template</span><span style="color: #f5871f;"> getNumThreads</span>: <span style="color: #4271ae;">untyped</span> {.used.} = gridDim.x * blockDim.x
+<span class="linenr">12: </span>  <span style="color: #718c00;">bind</span> inlineProcs
+<span class="linenr">13: </span>  inlineProcs:
+<span class="linenr">14: </span>    body
+<span class="linenr">15: </span>
+<span class="linenr">16: </span><span style="color: #718c00;">template</span><span style="color: #f5871f; font-weight: bold; font-style: italic;"> cudaLaunch*</span>(p: <span style="color: #4271ae;">proc</span>; blocksPerGrid,threadsPerBlock: <span style="color: #4271ae;">SomeInteger</span>;
+<span class="linenr">17: </span>                     arg: <span style="color: #4271ae;">varargs</span>[<span style="color: #4271ae;">pointer</span>,dataAddr]) =
+<span class="linenr">18: </span>  <span style="color: #718c00;">var</span> <span style="color: #eab700;">pp</span>: <span style="color: #718c00;">proc</span> = p
+<span class="linenr">19: </span>  <span style="color: #718c00;">var</span> <span style="color: #eab700;">gridDim</span>, blockDim: CudaDim3
+<span class="linenr">20: </span>  gridDim.x = blocksPerGrid
+<span class="linenr">21: </span>  gridDim.y = <span style="font-style: italic;">1</span>
+<span class="linenr">22: </span>  gridDim.z = <span style="font-style: italic;">1</span>
+<span class="linenr">23: </span>  blockDim.x = threadsPerBlock
+<span class="linenr">24: </span>  blockDim.y = <span style="font-style: italic;">1</span>
+<span class="linenr">25: </span>  blockDim.z = <span style="font-style: italic;">1</span>
+<span class="linenr">26: </span>  <span style="color: #718c00;">var</span> <span style="color: #eab700;">args</span>: <span style="color: #4271ae;">array</span>[arg.<span style="color: #8959a8;">len</span>, <span style="color: #4271ae;">pointer</span>]
+<span class="linenr">27: </span>  <span style="color: #718c00;">for</span> i <span style="color: #718c00;">in</span> <span style="font-style: italic;">0</span>..&lt;arg.<span style="color: #8959a8;">len</span>: args[i] = arg[i]
+<span class="linenr">28: </span>  <span style="color: #8e908c; font-style: italic;">#echo "really launching kernel"</span>
+<span class="linenr">29: </span>  <span style="color: #718c00;">let</span> <span style="color: #eab700;">err </span>= cudaLaunchKernel(pp, gridDim, blockDim, <span style="color: #718c00;">addr</span> args[<span style="font-style: italic;">0</span>])
+<span class="linenr">30: </span>  <span style="color: #718c00;">if</span> err:
+<span class="linenr">31: </span>    <span style="color: #8959a8;">echo</span> err
+<span class="linenr">32: </span>    <span style="color: #8959a8;">quit</span> <span style="color: #718c00;">cast</span>[<span style="color: #4271ae;">cint</span>](err)
+<span class="linenr">33: </span>
+<span class="linenr">34: </span><span style="color: #718c00;">macro</span><span style="color: #f5871f; font-weight: bold; font-style: italic;"> cuda*</span>(s,p: <span style="color: #4271ae;">untyped</span>): <span style="color: #4271ae;">auto</span> =
+<span class="linenr">35: </span>  <span style="color: #718c00;">let</span> <span style="color: #eab700;">ss </span>= s.strVal
+<span class="linenr">36: </span>  p.expectKind nnkProcDef
+<span class="linenr">37: </span>  <span style="color: #eab700;">result</span> = p
+<span class="linenr">38: </span>  <span style="color: #eab700;">result</span>.addPragma parseExpr(<span style="color: #3e999f;">"{.codegenDecl:\""</span>&amp;ss&amp;<span style="color: #3e999f;">" $# $#$#\".}"</span>)[<span style="font-style: italic;">0</span>]
+<span class="linenr">39: </span>  <span style="color: #eab700;">result</span>.body = <span style="color: #8959a8; font-style: italic;">getAst</span>(cudaDefs(<span style="color: #eab700;">result</span>.body))
+<span class="linenr">40: </span>  <span style="color: #718c00;">var</span> <span style="color: #eab700;">sl </span>= newStmtList()
+<span class="linenr">41: </span>  sl.<span style="color: #8959a8;">add</span>( quote <span style="color: #718c00;">do</span>:
+<span class="linenr">42: </span>    {.<span style="color: #8959a8;">push</span> <span style="color: #8959a8;">checks</span>: <span style="color: #4271ae;">off</span>.}
+<span class="linenr">43: </span>    {.push stacktrace: <span style="color: #4271ae;">off</span>.} )
+<span class="linenr">44: </span>  sl.<span style="color: #8959a8;">add</span> <span style="color: #eab700;">result</span>
+<span class="linenr">45: </span>  <span style="color: #eab700;">result</span> = sl
+<span class="linenr">46: </span><span style="color: #718c00;">template</span><span style="color: #f5871f; font-weight: bold; font-style: italic;"> cudaGlobal*</span>(p: <span style="color: #4271ae;">untyped</span>): <span style="color: #4271ae;">auto</span> = cuda(<span style="color: #3e999f;">"__global__"</span>,p)
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-nim"><span class="linenr"> 1: </span><span style="color: #718c00;">template</span><span style="color: #f5871f; font-weight: bold; font-style: italic;"> onGpu*</span>(nn,tpb: <span style="color: #4271ae;">untyped</span>, body: <span style="color: #4271ae;">untyped</span>): <span style="color: #4271ae;">untyped</span> =
+<span class="linenr"> 2: </span>  <span style="color: #718c00;">block</span>:
+<span class="linenr"> 3: </span>    <span style="color: #718c00;">var</span> <span style="color: #eab700;">v </span>= packVars(body, getGpuPtr)
+<span class="linenr"> 4: </span>    <span style="color: #718c00;">type</span> <span style="color: #eab700;">ByCopy </span>{.<span style="color: #8959a8;">bycopy</span>.} [T] = <span style="color: #718c00;">object</span>
+<span class="linenr"> 5: </span>      d: T
+<span class="linenr"> 6: </span>    <span style="color: #718c00;">proc</span><span style="color: #f5871f;"> kern</span>(xx: <span style="color: #4271ae;">ByCopy</span>[<span style="color: #718c00;">type</span>(v)]) {.cudaGlobal.} =
+<span class="linenr"> 7: </span>      <span style="color: #718c00;">template</span><span style="color: #f5871f;"> deref</span>(k: <span style="color: #4271ae;">int</span>): <span style="color: #4271ae;">untyped</span> = xx.d[k]
+<span class="linenr"> 8: </span>      substVars(body, deref)
+<span class="linenr"> 9: </span>    <span style="color: #718c00;">let</span> <span style="color: #eab700;">ni </span>= nn.<span style="color: #4271ae;">int32</span>
+<span class="linenr">10: </span>    <span style="color: #718c00;">let</span> <span style="color: #eab700;">threadsPerBlock </span>= tpb.<span style="color: #4271ae;">int32</span>
+<span class="linenr">11: </span>    <span style="color: #718c00;">let</span> <span style="color: #eab700;">blocksPerGrid </span>= (ni+threadsPerBlock-<span style="font-style: italic;">1</span>) <span style="color: #8959a8;">div</span> threadsPerBlock
+<span class="linenr">12: </span>    cudaLaunch(kern, blocksPerGrid, threadsPerBlock, v)
+<span class="linenr">13: </span>    <span style="color: #718c00;">discard</span> cudaDeviceSynchronize()
+<span class="linenr">14: </span><span style="color: #718c00;">template</span><span style="color: #f5871f; font-weight: bold; font-style: italic;"> onGpu*</span>(nn: <span style="color: #4271ae;">untyped</span>, body: <span style="color: #4271ae;">untyped</span>): <span style="color: #4271ae;">untyped</span> = onGpu(nn, <span style="font-style: italic;">64</span>, body)
+<span class="linenr">15: </span><span style="color: #718c00;">template</span><span style="color: #f5871f; font-weight: bold; font-style: italic;"> onGpu*</span>(body: <span style="color: #4271ae;">untyped</span>): <span style="color: #4271ae;">untyped</span> = onGpu(<span style="font-style: italic;">512</span>*<span style="font-style: italic;">64</span>, <span style="font-style: italic;">64</span>, body)
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org0003e95" class="outline-3">
+<h3 id="org0003e95"><span class="section-number-3">4.1</span> The <code>kern</code> procedure in <code>onGpu</code></h3>
+<div class="outline-text-3" id="text-4-1">
+<div class="org-src-container">
+<pre class="src src-nim"><span class="linenr"> 1: </span><span style="color: #718c00;">proc</span><span style="color: #f5871f;"> kern</span>(xx670162: <span style="color: #4271ae;">ByCopy670160</span>[<span style="color: #718c00;">type</span>(v670158)])
+<span class="linenr"> 2: </span>     {.<span style="color: #8959a8;">codegenDecl</span>: <span style="color: #3e999f;">"__global__ </span><span style="color: #8959a8;">$#</span><span style="color: #3e999f;"> </span><span style="color: #8959a8;">$#$#</span><span style="color: #3e999f;">"</span>.} =
+<span class="linenr"> 3: </span>  <span style="color: #718c00;">var</span> <span style="color: #eab700;">gridDim </span>{.<span style="color: #8959a8;">global</span>, <span style="color: #8959a8;">importC</span>, <span style="color: #8959a8;">noDecl</span>.}: CudaDim3
+<span class="linenr"> 4: </span>  <span style="color: #718c00;">var</span> <span style="color: #eab700;">blockIdx </span>{.<span style="color: #8959a8;">global</span>, <span style="color: #8959a8;">importC</span>, <span style="color: #8959a8;">noDecl</span>.}: CudaDim3
+<span class="linenr"> 5: </span>  <span style="color: #718c00;">var</span> <span style="color: #eab700;">blockDim </span>{.<span style="color: #8959a8;">global</span>, <span style="color: #8959a8;">importC</span>, <span style="color: #8959a8;">noDecl</span>.}: CudaDim3
+<span class="linenr"> 6: </span>  <span style="color: #718c00;">var</span> <span style="color: #eab700;">threadIdx </span>{.<span style="color: #8959a8;">global</span>, <span style="color: #8959a8;">importC</span>, <span style="color: #8959a8;">noDecl</span>.}: CudaDim3
+<span class="linenr"> 7: </span>  <span style="color: #718c00;">template</span><span style="color: #f5871f;"> getGridDim</span>(): <span style="color: #4271ae;">untyped</span> {.used.} = gridDim
+<span class="linenr"> 8: </span>  <span style="color: #718c00;">template</span><span style="color: #f5871f;"> getBlockIdx</span>(): <span style="color: #4271ae;">untyped</span> {.used.} = blockIdx
+<span class="linenr"> 9: </span>  <span style="color: #718c00;">template</span><span style="color: #f5871f;"> getBlockDim</span>(): <span style="color: #4271ae;">untyped</span> {.used.} = blockDim
+<span class="linenr">10: </span>  <span style="color: #718c00;">template</span><span style="color: #f5871f;"> getThreadIdx</span>(): <span style="color: #4271ae;">untyped</span> {.used.} = threadIdx
+<span class="linenr">11: </span>  <span style="color: #718c00;">template</span><span style="color: #f5871f;"> getThreadNum</span>(): <span style="color: #4271ae;">untyped</span> {.used.} = blockDim.x * blockIdx.x + threadIdx.x
+<span class="linenr">12: </span>  <span style="color: #718c00;">template</span><span style="color: #f5871f;"> getNumThreads</span>(): <span style="color: #4271ae;">untyped</span> {.used.} = gridDim.x * blockDim.x
+<span class="linenr">13: </span>  inlineProcs:
+<span class="linenr">14: </span>    <span style="color: #718c00;">template</span><span style="color: #f5871f;"> deref</span>(k670164: <span style="color: #4271ae;">int</span>): <span style="color: #4271ae;">untyped</span> =
+<span class="linenr">15: </span>      xx670162.d[k670164]
+<span class="linenr">16: </span>    substVars((x += y * z), deref)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8a361e2" class="outline-3">
+<h3 id="org8a361e2"><span class="section-number-3">4.2</span> Expression handling</h3>
+<div class="outline-text-3" id="text-4-2">
+<div class="org-src-container">
+<pre class="src src-nim"><span class="linenr"> 1: </span><span style="color: #718c00;">proc</span><span style="color: #f5871f; font-weight: bold; font-style: italic;"> getVars*</span>(v: <span style="color: #718c00;">var</span> <span style="color: #4271ae;">seq</span>[<span style="color: #4271ae;">NimNode</span>], x,a: <span style="color: #4271ae;">NimNode</span>): <span style="color: #4271ae;">NimNode</span> =
+<span class="linenr"> 2: </span>  <span style="color: #718c00;">proc</span><span style="color: #f5871f;"> recurse</span>(it: <span style="color: #4271ae;">NimNode</span>, vars: <span style="color: #718c00;">var</span> <span style="color: #4271ae;">seq</span>[<span style="color: #4271ae;">NimNode</span>], a: <span style="color: #4271ae;">NimNode</span>): <span style="color: #4271ae;">NimNode</span> =
+<span class="linenr"> 3: </span>    <span style="color: #718c00;">var</span> <span style="color: #eab700;">r0 </span>= <span style="font-style: italic;">0</span>
+<span class="linenr"> 4: </span>    <span style="color: #718c00;">var</span> <span style="color: #eab700;">r1 </span>= it.<span style="color: #8959a8;">len</span> - <span style="font-style: italic;">1</span>
+<span class="linenr"> 5: </span>    <span style="color: #718c00;">case</span> it.kind
+<span class="linenr"> 6: </span>    <span style="color: #8959a8; font-style: italic;">of</span> {nnkSym, nnkIdent}:
+<span class="linenr"> 7: </span>      <span style="color: #718c00;">let</span> <span style="color: #eab700;">i </span>= vars.addIfNewSym(it)
+<span class="linenr"> 8: </span>      <span style="color: #718c00;">if</span> i&gt;=<span style="font-style: italic;">0</span>:
+<span class="linenr"> 9: </span>        <span style="color: #718c00;">let</span> <span style="color: #eab700;">ii </span>= newLit(i)
+<span class="linenr">10: </span>        <span style="color: #718c00;">return</span> newCall(a,ii)
+<span class="linenr">11: </span>    <span style="color: #8959a8; font-style: italic;">of</span> nnkCallKinds: r0 = <span style="font-style: italic;">1</span>
+<span class="linenr">12: </span>    <span style="color: #8959a8; font-style: italic;">of</span> nnkDotExpr: r1 = <span style="font-style: italic;">0</span>
+<span class="linenr">13: </span>    <span style="color: #8959a8; font-style: italic;">of</span> {nnkVarSection,nnkLetSection}:
+<span class="linenr">14: </span>      <span style="color: #eab700;">result</span> = it.cpNimNode
+<span class="linenr">15: </span>      <span style="color: #718c00;">for</span> c <span style="color: #718c00;">in</span> it:
+<span class="linenr">16: </span>        <span style="color: #eab700;">result</span>.<span style="color: #8959a8;">add</span> c.cpNimNode
+<span class="linenr">17: </span>        <span style="color: #718c00;">for</span> i <span style="color: #718c00;">in</span> <span style="font-style: italic;">0</span>..(c.<span style="color: #8959a8;">len</span>-<span style="font-style: italic;">3</span>):
+<span class="linenr">18: </span>          ignore.<span style="color: #8959a8;">add</span> c[i]
+<span class="linenr">19: </span>          <span style="color: #eab700;">result</span>[^<span style="font-style: italic;">1</span>].<span style="color: #8959a8;">add</span> c[i].cpNimNode
+<span class="linenr">20: </span>        <span style="color: #eab700;">result</span>[^<span style="font-style: italic;">1</span>].<span style="color: #8959a8;">add</span> c[^<span style="font-style: italic;">2</span>].cpNimNode
+<span class="linenr">21: </span>        <span style="color: #eab700;">result</span>[^<span style="font-style: italic;">1</span>].<span style="color: #8959a8;">add</span> recurse(c[^<span style="font-style: italic;">1</span>], vars, a)
+<span class="linenr">22: </span>      <span style="color: #718c00;">return</span>
+<span class="linenr">23: </span>    <span style="color: #718c00;">else</span>: <span style="color: #718c00;">discard</span>
+<span class="linenr">24: </span>    <span style="color: #eab700;">result</span> = it.cpNimNode
+<span class="linenr">25: </span>    <span style="color: #718c00;">for</span> i <span style="color: #718c00;">in</span> <span style="font-style: italic;">0</span>..&lt;r0:
+<span class="linenr">26: </span>      <span style="color: #eab700;">result</span>.<span style="color: #8959a8;">add</span> it[i].cpNimNode
+<span class="linenr">27: </span>    <span style="color: #718c00;">for</span> i <span style="color: #718c00;">in</span> r0..r1:
+<span class="linenr">28: </span>      <span style="color: #eab700;">result</span>.<span style="color: #8959a8;">add</span> recurse(it[i], vars, a)
+<span class="linenr">29: </span>    <span style="color: #718c00;">for</span> i <span style="color: #718c00;">in</span> (r1+<span style="font-style: italic;">1</span>)..&lt;it.<span style="color: #8959a8;">len</span>:
+<span class="linenr">30: </span>      <span style="color: #eab700;">result</span>.<span style="color: #8959a8;">add</span> it[i].cpNimNode
+<span class="linenr">31: </span>  ignore.<span style="color: #8959a8;">newSeq</span>(<span style="font-style: italic;">0</span>)
+<span class="linenr">32: </span>  <span style="color: #eab700;">result</span> = recurse(x, v, a)
+<span class="linenr">33: </span>
+<span class="linenr">34: </span><span style="color: #718c00;">macro</span><span style="color: #f5871f; font-weight: bold; font-style: italic;"> packVarsStmt*</span>(x: <span style="color: #4271ae;">untyped</span>, f: <span style="color: #4271ae;">untyped</span>): <span style="color: #4271ae;">auto</span> =
+<span class="linenr">35: </span>  <span style="color: #718c00;">var</span> <span style="color: #eab700;">v </span>= <span style="color: #8959a8;">newSeq</span>[<span style="color: #4271ae;">NimNode</span>](<span style="font-style: italic;">0</span>)
+<span class="linenr">36: </span>  <span style="color: #718c00;">let</span> <span style="color: #eab700;">a </span>= ident(<span style="color: #3e999f;">"foo"</span>)
+<span class="linenr">37: </span>  <span style="color: #718c00;">let</span> <span style="color: #eab700;">e </span>= getVars(v, x, a)
+<span class="linenr">38: </span>  <span style="color: #718c00;">var</span> <span style="color: #eab700;">p </span>= newStmtList()
+<span class="linenr">39: </span>  <span style="color: #718c00;">for</span> vs <span style="color: #718c00;">in</span> v:
+<span class="linenr">40: </span>    p.<span style="color: #8959a8;">add</span> newCall(f,vs)
+<span class="linenr">41: </span>  <span style="color: #eab700;">result</span> = p
+<span class="linenr">42: </span>
+<span class="linenr">43: </span><span style="color: #718c00;">macro</span><span style="color: #f5871f; font-weight: bold; font-style: italic;"> packVars*</span>(x: <span style="color: #4271ae;">untyped</span>, f: <span style="color: #4271ae;">untyped</span>): <span style="color: #4271ae;">auto</span> =
+<span class="linenr">44: </span>  <span style="color: #718c00;">var</span> <span style="color: #eab700;">v </span>= <span style="color: #8959a8;">newSeq</span>[<span style="color: #4271ae;">NimNode</span>](<span style="font-style: italic;">0</span>)
+<span class="linenr">45: </span>  <span style="color: #718c00;">let</span> <span style="color: #eab700;">a </span>= ident(<span style="color: #3e999f;">"foo"</span>)
+<span class="linenr">46: </span>  <span style="color: #718c00;">let</span> <span style="color: #eab700;">e </span>= getVars(v, x, a)
+<span class="linenr">47: </span>  <span style="color: #718c00;">var</span> <span style="color: #eab700;">p </span>= newPar()
+<span class="linenr">48: </span>  <span style="color: #718c00;">if</span> v.<span style="color: #8959a8;">len</span>==<span style="font-style: italic;">0</span>:
+<span class="linenr">49: </span>    p.<span style="color: #8959a8;">add</span> newNimNode(nnkExprColonExpr).<span style="color: #8959a8;">add</span>(ident(<span style="color: #3e999f;">"Field0"</span>),newLit(<span style="font-style: italic;">1</span>))
+<span class="linenr">50: </span>  <span style="color: #718c00;">elif</span> v.<span style="color: #8959a8;">len</span>==<span style="font-style: italic;">1</span>:
+<span class="linenr">51: </span>    <span style="color: #718c00;">let</span> <span style="color: #eab700;">vi </span>= ident($v[<span style="font-style: italic;">0</span>])
+<span class="linenr">52: </span>    p.<span style="color: #8959a8;">add</span> newNimNode(nnkExprColonExpr).<span style="color: #8959a8;">add</span>(ident(<span style="color: #3e999f;">"Field0"</span>),newCall(f,vi))
+<span class="linenr">53: </span>  <span style="color: #718c00;">else</span>:
+<span class="linenr">54: </span>    <span style="color: #718c00;">for</span> vs <span style="color: #718c00;">in</span> v:
+<span class="linenr">55: </span>      p.<span style="color: #8959a8;">add</span> newCall(f,vs)
+<span class="linenr">56: </span>  <span style="color: #eab700;">result</span> = p
+<span class="linenr">57: </span>
+<span class="linenr">58: </span><span style="color: #718c00;">macro</span><span style="color: #f5871f; font-weight: bold; font-style: italic;"> substVars*</span>(x: <span style="color: #4271ae;">untyped</span>, a: <span style="color: #4271ae;">untyped</span>): <span style="color: #4271ae;">auto</span> =
+<span class="linenr">59: </span>  <span style="color: #718c00;">var</span> <span style="color: #eab700;">v </span>= <span style="color: #8959a8;">newSeq</span>[<span style="color: #4271ae;">NimNode</span>](<span style="font-style: italic;">0</span>)
+<span class="linenr">60: </span>  <span style="color: #718c00;">let</span> <span style="color: #eab700;">e </span>= getVars(v, x, a)
+<span class="linenr">61: </span>  <span style="color: #eab700;">result</span> = e
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb01a135" class="outline-2">
+<h2 id="orgb01a135"><span class="section-number-2">5</span> AST based overloading for array operations</h2>
+<div class="outline-text-2" id="text-5">
+<div class="org-src-container">
+<pre class="src src-nim"><span class="linenr"> 1: </span><span style="color: #718c00;">type</span> <span style="color: #f5871f; font-weight: bold; font-style: italic;">ArrayIndex*</span> = <span style="color: #4271ae;">SomeInteger</span> <span style="color: #8959a8;">or</span> ShortVectorIndex
+<span class="linenr"> 2: </span>
+<span class="linenr"> 3: </span><span style="color: #718c00;">template</span><span style="color: #f5871f; font-weight: bold; font-style: italic;"> indexArray*</span>(x: <span style="color: #4271ae;">ArrayObj</span>, i: <span style="color: #4271ae;">ArrayIndex</span>): <span style="color: #4271ae;">untyped</span> =
+<span class="linenr"> 4: </span>  x.p[i]
+<span class="linenr"> 5: </span>
+<span class="linenr"> 6: </span><span style="color: #718c00;">macro</span><span style="color: #f5871f; font-weight: bold; font-style: italic;"> indexArray*</span>(x: <span style="color: #4271ae;">ArrayObj</span>{call}, y: <span style="color: #4271ae;">ArrayIndex</span>): <span style="color: #4271ae;">untyped</span> =
+<span class="linenr"> 7: </span>  <span style="color: #eab700;">result</span> = newCall(ident($x[<span style="font-style: italic;">0</span>]))
+<span class="linenr"> 8: </span>  <span style="color: #718c00;">for</span> i <span style="color: #718c00;">in</span> <span style="font-style: italic;">1</span>..&lt;x.<span style="color: #8959a8;">len</span>:
+<span class="linenr"> 9: </span>    <span style="color: #718c00;">let</span> <span style="color: #eab700;">xi </span>= x[i]
+<span class="linenr">10: </span>    <span style="color: #eab700;">result</span>.<span style="color: #8959a8;">add</span>( quote <span style="color: #718c00;">do</span>:
+<span class="linenr">11: </span>      indexArray(`xi`,`y`) )
+<span class="linenr">12: </span>
+<span class="linenr">13: </span><span style="color: #718c00;">template</span><span style="color: #f5871f; font-weight: bold; font-style: italic;"> `[]`*</span>(x: <span style="color: #4271ae;">ArrayObj</span>, i: <span style="color: #4271ae;">ArrayIndex</span>): <span style="color: #4271ae;">untyped</span> = indexArray(x, i)
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Xiao-Yong Jin and James C. Osborn</p>
+<p class="date">Created: 2017-08-22 Tue 00:20</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

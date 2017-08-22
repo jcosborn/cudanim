@@ -2,72 +2,87 @@
 
 #+AUTHOR: Xiao-Yong Jin and James C. Osborn
 
+#+OPTIONS: toc:2
+#+HTML_HEAD_EXTRA: <style type="text/css">
+#+HTML_HEAD_EXTRA: <!--
+#+HTML_HEAD_EXTRA: body {font-family: 'Lucida Bright OT','Source Serif Pro',Serif;
+#+HTML_HEAD_EXTRA:       font-size: 18pt;
+#+HTML_HEAD_EXTRA:       line-height: 1.5;}
+#+HTML_HEAD_EXTRA: pre {font-family: 'Lucida Console DK','Source Code Pro',monospace;
+#+HTML_HEAD_EXTRA:      line-height: 1.2;}
+#+HTML_HEAD_EXTRA: -->
+#+HTML_HEAD_EXTRA: </style>
+
 * Code portability in Nim
 
 Here's an benchmark example.
 
-#+BEGIN_SRC nim
-import cpugpuarray
-import qexLite/metaUtils
-include system/timers
+#+BEGIN_SRC nim -n
+import timing, cpugpuarray, qexLite/metaUtils, math
 
 proc test(vecLen, memLen: static[int]; N: int) =
-  var x = newColorMatrixArray(vecLen,memLen,N)
-  var y = newColorMatrixArray(vecLen,memLen,N)
-  var z = newColorMatrixArray(vecLen,memLen,N)
+  var
+    x = newColorMatrixArray(vecLen,memLen,N) # array of N 3x3 single prec complex matrices
+    y = newColorMatrixArray(vecLen,memLen,N)
+    z = newColorMatrixArray(vecLen,memLen,N)
+    rep = 0                     # accumulates the number of runs
 
-  template timeit(s:string, b:untyped) =
-    const R = 128
-    b # for warming up
-    let t0 = getTicks()
-    for i in 0..<R: b
-    let t = float(getTicks()-t0)
-    if getThreadNum()==0:
-      let n = x.T.N
-      let v = n*n*N*R
-      printf("%8lld\t%3d %d\t%-7s\tmsec: %6.3f\tGF/s: %6.2f\tGB/s: %6.2f\n",
-             N, vecLen, memLen, s,
-             t*1e-6/R.float, float(8*n*v)/t, float(4*8*v)/t)
+  let
+    mr = float(3 * 8 * x.T.N * x.T.N * N) / float(1024 * 1024 * 1024) # Resident memory in 2^30 bytes
+    mt = 4 * mr / 3             # Memory transaction
+    fp = float(8 * x.T.N * x.T.N * x.T.N * N) * 1e-9 # Floating point op / 10^9
+  template timeit(label:string, s:untyped) =
+    var
+      R {.global.}:int
+      T {.global.}:float
+    threadSingle:
+      R = 128                   # Base repeat
+      T = 1.0                   # Time limit
+    var t = timex(rep, R, s)    # Always warm up cache
+    while true:
+      threadSingle:
+        R = min(64*R,max(R,int(R.float*0.8/t))) # set up to run for at least 0.8 sec or 64*R
+      t = timex(rep, R, s)
+      threadSingle: T -= t
+      if T < 0: break
+    threadSingle:               # Use the last R & t for performance measure
+      printf("%8d %3d %d %-8s rep: %7d KB: %8.0f ms: %8.4f GF/s: %7.2f GB/s: %7.2f\n",
+             N, vecLen, memLen, label, R, 1024*1024*mr, 1e3*t/R.float, fp*R.float/t, mt*R.float/t)
 
-  threads:                 # CPU threads
-    # set them to diagonal matrices on CPU
-    x := 1
-    y := 2
-    z := 3
+  threads:                      # CPU threads
+    x := 0                      # set them to diagonal matrices on CPU
+    y := 1
+    z := 2
+    timeit "CPU": x += y * z
 
-    # do something on CPU
-    timeit "CPU":
+  timeit "GPU5":                # includes kernel launching and synchronization
+    onGpu(N, 32):               # Number of threads, threads per block
       x += y * z
+  timeit "GPU6": onGpu(N, 64): x += y * z
+  timeit "GPU7": onGpu(N, 128): x += y * z
 
-  timeit "GPU5":
-    onGpu(N, 32):       # Number of threads, threads per block
-      x += y * z
-  timeit "GPU6":
-    onGpu(N, 64):
-      x += y * z
-  timeit "GPU7":
-    onGpu(N, 128):
-      x += y * z
+  threads: timeit "CPU": x += y * z # back to CPU threads again
 
-  threads:                 # CPU threads
-    # do something on CPU again
-    timeit "CPU":
-      x += y * z
-
+  let scale = 0.5 / (sqrt(3.0) * rep.float)
+  threads:
+    x *= scale
+    var n = x.norm2
+    threadSingle: echo "# Final scaled x.norm2: ",n,"  rep: ",rep
   x.free
   y.free
   z.free
 
-for n in 10..26:
+for n in 8..26:
   staticFor v, 2, 7:
-    staticFor ml, 1, 2:
-      test(1 shl v, ml, 1 shl n)
+    when (1 shl v) >= (structsize(vectorizedElementType(float32)) div sizeof(float32)):
+      staticFor ml, 1, 2:
+        test(1 shl v, ml, 1 shl n)
 #+END_SRC
 
 The above can be compiled and run with
 
 #+BEGIN_SRC sh
-nim cpp -d:SSE -d:AVX -d:VLEN=4 -d:release -r ex2.nim
+nim cpp -d:SSE -d:AVX -d:CPUVLEN=256 -d:release ex2
 #+END_SRC
 
 * Implementation details
@@ -75,20 +90,29 @@ nim cpp -d:SSE -d:AVX -d:VLEN=4 -d:release -r ex2.nim
 The main container object in the example above is an array that can live
 on the CPU and also the GPU.  This is defined as
 
-#+BEGIN_SRC nim
-type
-  ArrayObj*[V,M:static[int],T] = object
-    p*: Coalesced[V,M,T]
-    n*: int
-    g*: GpuArrayObj[V,M,T]
-    lastOnGpu*: bool
-    unifiedMem*: bool
-    mem:pointer ## Pointer to the allocated memory.
+#+BEGIN_SRC nim -n
+when useGPU:
+  type
+    ArrayObj*[V,M:static[int],T] = object
+      p*: Coalesced[V,M,T]
+      n*: int
+      g*: GpuArrayObj[V,M,T]
+      lastOnGpu*: bool
+      unifiedMem*: bool
+      mem:pointer ## Pointer to the allocated memory.
+else:
+  type
+    ArrayObj*[V,M:static[int],T] = object
+      p*: Coalesced[V,M,T]
+      n*: int
+      mem:pointer ## Pointer to the allocated memory.
 
+type
   GpuArrayObj*[V,M:static[int],T] = object
     p*: Coalesced[V,M,T]
     n*: int
 
+type
   Coalesced*[V,M:static[int],T] = object
     ## `V`: Inner array length.
     ## `M`: Number of RegisterWords in a MemoryWord, the granularity of memory transactions.
@@ -98,10 +122,262 @@ type
     o*: Coalesced[V,M,T]
     i*: int                     # the index to which we asks
 
+template `[]`*(x:Coalesced, ix:int):untyped = CoalescedObj[x.V,x.M,x.T](o:x, i:ix)
+template len*(x:Coalesced):untyped = x.n
+
+template fromCoalesced*(x:CoalescedObj):untyped =
+  const N = getSize(x.T) div (x.M*sizeof(RegisterWord))
+  type A {.unchecked.}= ptr array[0,MemoryWord(x.M)]
+  var r {.noinit.}: x.T
+  let offset = (x.i div x.V)*N*x.V + x.i mod x.V
+  staticfor j, 0, N-1: cast[A](r.addr)[j] = cast[A](x.o.p)[offset + j*x.V]
+  r
+
+type
   ShortVector*[V:static[int],E] = object
     a*:array[V,E]
   ShortVectorIndex* = distinct int
   VectorizedObj*[V,M:static[int],T] = object
     o*:Coalesced[V,M,T]
     i*:ShortVectorIndex
+
+template `[]`*(x:Coalesced, ix:ShortVectorIndex):untyped = VectorizedObj[x.V,x.M,x.T](o:x,i:ix)
+template veclen*(x:Coalesced):untyped = x.n div x.V
+#+END_SRC
+
+* CPU threads
+
+#+BEGIN_SRC nim -n
+import omp
+
+when defined(noOpenmp):
+  template omp_set_num_threads*(x: cint) = discard
+  template omp_get_num_threads*(): cint = 1
+  template omp_get_max_threads*(): cint = 1
+  template omp_get_thread_num*(): cint = 0
+  template ompPragma(p:string):untyped = discard
+  template setupGc = discard
+else:
+  const OMPFlag {.strDefine.} = "-fopenmp"
+  {. passC: OMPFlag .}
+  {. passL: OMPFlag .}
+  {. pragma: omp, header:"omp.h" .}
+  proc omp_set_num_threads*(x: cint) {.omp.}
+  proc omp_get_num_threads*(): cint {.omp.}
+  proc omp_get_max_threads*(): cint {.omp.}
+  proc omp_get_thread_num*(): cint {.omp.}
+  template ompPragma(p:string):untyped =
+    {. emit:"\n#pragma omp " & p .}
+  template setupGc =
+    if(omp_get_thread_num()!=0): setupForeignThreadGc()
+
+template ompBarrier* = ompPragma("barrier")
+template ompBlock(p:string; body:untyped):untyped =
+  ompPragma(p)
+  block:
+    body
+
+template ompParallel*(body:untyped):untyped =
+  ompBlock("parallel"):
+    setupGc()
+    body
+template ompMaster*(body:untyped):untyped = ompBlock("master", body)
+template ompSingle*(body:untyped):untyped = ompBlock("single", body)
+template ompCritical*(body:untyped):untyped = ompBlock("critical", body)
+#+END_SRC
+
+#+BEGIN_SRC nim -n
+template threads*(body:untyped):untyped =
+  checkInit()
+  let tidOld = threadNum
+  let nidOld = numThreads
+  let tlOld = threadLocals
+  proc tproc{.genSym.} =
+    var ts:seq[ThreadShare]
+    ompParallel:
+      threadNum = ompGetThreadNum()
+      numThreads = ompGetNumThreads()
+      if threadNum==0: ts.newSeq(numThreads)
+      threadBarrierO()
+      initThreadLocals(ts)
+      body
+      threadBarrierO()
+  tproc()
+  threadNum = tidOld
+  numThreads = nidOld
+  threadLocals = tlOld
+#+END_SRC
+
+* Offloading
+
+#+BEGIN_SRC nim -n
+template cudaDefs(body: untyped): untyped {.dirty.} =
+  var gridDim{.global,importC,noDecl.}: CudaDim3
+  var blockIdx{.global,importC,noDecl.}: CudaDim3
+  var blockDim{.global,importC,noDecl.}: CudaDim3
+  var threadIdx{.global,importC,noDecl.}: CudaDim3
+  template getGridDim: untyped {.used.} = gridDim
+  template getBlockIdx: untyped {.used.} = blockIdx
+  template getBlockDim: untyped {.used.} = blockDim
+  template getThreadIdx: untyped {.used.} = threadIdx
+  template getThreadNum: untyped {.used.} = blockDim.x * blockIdx.x + threadIdx.x
+  template getNumThreads: untyped {.used.} = gridDim.x * blockDim.x
+  bind inlineProcs
+  inlineProcs:
+    body
+
+template cudaLaunch*(p: proc; blocksPerGrid,threadsPerBlock: SomeInteger;
+                     arg: varargs[pointer,dataAddr]) =
+  var pp: proc = p
+  var gridDim, blockDim: CudaDim3
+  gridDim.x = blocksPerGrid
+  gridDim.y = 1
+  gridDim.z = 1
+  blockDim.x = threadsPerBlock
+  blockDim.y = 1
+  blockDim.z = 1
+  var args: array[arg.len, pointer]
+  for i in 0..<arg.len: args[i] = arg[i]
+  #echo "really launching kernel"
+  let err = cudaLaunchKernel(pp, gridDim, blockDim, addr args[0])
+  if err:
+    echo err
+    quit cast[cint](err)
+
+macro cuda*(s,p: untyped): auto =
+  let ss = s.strVal
+  p.expectKind nnkProcDef
+  result = p
+  result.addPragma parseExpr("{.codegenDecl:\""&ss&" $# $#$#\".}")[0]
+  result.body = getAst(cudaDefs(result.body))
+  var sl = newStmtList()
+  sl.add( quote do:
+    {.push checks: off.}
+    {.push stacktrace: off.} )
+  sl.add result
+  result = sl
+template cudaGlobal*(p: untyped): auto = cuda("__global__",p)
+#+END_SRC
+
+#+BEGIN_SRC nim -n
+template onGpu*(nn,tpb: untyped, body: untyped): untyped =
+  block:
+    var v = packVars(body, getGpuPtr)
+    type ByCopy {.bycopy.} [T] = object
+      d: T
+    proc kern(xx: ByCopy[type(v)]) {.cudaGlobal.} =
+      template deref(k: int): untyped = xx.d[k]
+      substVars(body, deref)
+    let ni = nn.int32
+    let threadsPerBlock = tpb.int32
+    let blocksPerGrid = (ni+threadsPerBlock-1) div threadsPerBlock
+    cudaLaunch(kern, blocksPerGrid, threadsPerBlock, v)
+    discard cudaDeviceSynchronize()
+template onGpu*(nn: untyped, body: untyped): untyped = onGpu(nn, 64, body)
+template onGpu*(body: untyped): untyped = onGpu(512*64, 64, body)
+#+END_SRC
+
+** The ~kern~ procedure in ~onGpu~
+
+#+BEGIN_SRC nim -n
+proc kern(xx670162: ByCopy670160[type(v670158)])
+     {.codegenDecl: "__global__ $# $#$#".} =
+  var gridDim {.global, importC, noDecl.}: CudaDim3
+  var blockIdx {.global, importC, noDecl.}: CudaDim3
+  var blockDim {.global, importC, noDecl.}: CudaDim3
+  var threadIdx {.global, importC, noDecl.}: CudaDim3
+  template getGridDim(): untyped {.used.} = gridDim
+  template getBlockIdx(): untyped {.used.} = blockIdx
+  template getBlockDim(): untyped {.used.} = blockDim
+  template getThreadIdx(): untyped {.used.} = threadIdx
+  template getThreadNum(): untyped {.used.} = blockDim.x * blockIdx.x + threadIdx.x
+  template getNumThreads(): untyped {.used.} = gridDim.x * blockDim.x
+  inlineProcs:
+    template deref(k670164: int): untyped =
+      xx670162.d[k670164]
+    substVars((x += y * z), deref)
+#+END_SRC
+
+** Expression handling
+
+#+BEGIN_SRC nim -n
+proc getVars*(v: var seq[NimNode], x,a: NimNode): NimNode =
+  proc recurse(it: NimNode, vars: var seq[NimNode], a: NimNode): NimNode =
+    var r0 = 0
+    var r1 = it.len - 1
+    case it.kind
+    of {nnkSym, nnkIdent}:
+      let i = vars.addIfNewSym(it)
+      if i>=0:
+        let ii = newLit(i)
+        return newCall(a,ii)
+    of nnkCallKinds: r0 = 1
+    of nnkDotExpr: r1 = 0
+    of {nnkVarSection,nnkLetSection}:
+      result = it.cpNimNode
+      for c in it:
+        result.add c.cpNimNode
+        for i in 0..(c.len-3):
+          ignore.add c[i]
+          result[^1].add c[i].cpNimNode
+        result[^1].add c[^2].cpNimNode
+        result[^1].add recurse(c[^1], vars, a)
+      return
+    else: discard
+    result = it.cpNimNode
+    for i in 0..<r0:
+      result.add it[i].cpNimNode
+    for i in r0..r1:
+      result.add recurse(it[i], vars, a)
+    for i in (r1+1)..<it.len:
+      result.add it[i].cpNimNode
+  ignore.newSeq(0)
+  result = recurse(x, v, a)
+
+macro packVarsStmt*(x: untyped, f: untyped): auto =
+  var v = newSeq[NimNode](0)
+  let a = ident("foo")
+  let e = getVars(v, x, a)
+  var p = newStmtList()
+  for vs in v:
+    p.add newCall(f,vs)
+  result = p
+
+macro packVars*(x: untyped, f: untyped): auto =
+  var v = newSeq[NimNode](0)
+  let a = ident("foo")
+  let e = getVars(v, x, a)
+  var p = newPar()
+  if v.len==0:
+    p.add newNimNode(nnkExprColonExpr).add(ident("Field0"),newLit(1))
+  elif v.len==1:
+    let vi = ident($v[0])
+    p.add newNimNode(nnkExprColonExpr).add(ident("Field0"),newCall(f,vi))
+  else:
+    for vs in v:
+      p.add newCall(f,vs)
+  result = p
+
+macro substVars*(x: untyped, a: untyped): auto =
+  var v = newSeq[NimNode](0)
+  let e = getVars(v, x, a)
+  result = e
+#+END_SRC
+
+* AST based overloading for array operations
+
+#+BEGIN_SRC nim -n
+type ArrayIndex* = SomeInteger or ShortVectorIndex
+
+template indexArray*(x: ArrayObj, i: ArrayIndex): untyped =
+  x.p[i]
+
+macro indexArray*(x: ArrayObj{call}, y: ArrayIndex): untyped =
+  result = newCall(ident($x[0]))
+  for i in 1..<x.len:
+    let xi = x[i]
+    result.add( quote do:
+      indexArray(`xi`,`y`) )
+
+template `[]`*(x: ArrayObj, i: ArrayIndex): untyped = indexArray(x, i)
 #+END_SRC
