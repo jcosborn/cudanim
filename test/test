@@ -1,0 +1,41 @@
+#!/bin/bash
+
+rm -rf nimcache
+
+if (($#>0));then
+    declare -ar Ts=( "$@" )
+else
+    declare -ar Ts=( $(echo t*.nim) )
+fi
+logfile(){ printf "out/%s.log" "${Ts[$1]}"; }
+[[ -d out ]] || mkdir out
+declare -i j ret
+declare -ai F
+for ((j=0;j<${#Ts[@]};++j));do
+    printf "Testing: % 6d / %d" $j "${#Ts[@]}"
+    nim c -r "${Ts[j]}" > "$(logfile $j)" 2>&1
+    ret=$?
+    if ((ret!=0));then
+        printf '\rFail: %s\n' "${Ts[j]}"
+        F+=( $j )
+    else
+        rm "$(logfile $j)"
+        printf '\r%60s\r' ' '
+    fi
+    rm -f "${Ts[j]%.nim}"
+done
+echo
+echo "Total:  ${#Ts[@]}"
+echo "Passed: $((${#Ts[@]}-${#F[@]}))"
+if ((${#F[@]}>0));then
+    echo "Failed: ${#F[@]}"
+    echo
+    echo "Check log file(s):"
+    for j in ${F[@]};do
+        echo "$(logfile $j)"
+    done
+else
+    rm -rf out
+fi
+
+rm -rf nimcache
