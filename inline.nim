@@ -435,7 +435,8 @@ proc inlineProcsY*(call: NimNode, procImpl: NimNode): NimNode =
       let x = y
     # echo "sym: ",sym.lineinfo," :: ",sym.lisprepr
     # echo "typ: ",typ.lineinfo," :: ",typ.lisprepr
-    let p = if call[i].kind in {nnkHiddenAddr,nnkHiddenDeref}: call[i][0] else: call[i]
+    # let p = if call[i].kind in {nnkHiddenAddr,nnkHiddenDeref}: call[i][0] else: call[i]
+    let p = call[i]
     if typ.kind == nnkStaticTy:
       # echo typ.lisprepr
       # echo p.lisprepr
